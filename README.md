@@ -3,7 +3,7 @@
 ### Entregas
 
 ---
-#### $1^{ra}$ Entrega (5 de junio - 8 de junio)
+#### 1ra Entrega (5 de junio - 8 de junio)
 
 Turnos, Jugadores, Unidades, Tablero, casillero, transformaciones con costo de Ki únicamente
 
@@ -16,9 +16,9 @@ Turnos, Jugadores, Unidades, Tablero, casillero, transformaciones con costo de K
 7. Combinaciones en modos de: Ubicar un Guerrero Z, ubicar un Enemigo de la Tierra, pedir que se ataquen respetando ( y no ) las distancias verificando los daños ( o no daños ).
 
 ---
-#### $2^{da}$ Entrega (12 de junio - 15 de junio)
+#### 2da Entrega (12 de junio - 15 de junio)
 
-$1^{ra}$ entrega + transformaciones con requisitos especiales + ataques especiales con efectos
+1ra entrega + transformaciones con requisitos especiales + ataques especiales con efectos
 
 1. Posicionar a los Guerreros Z, llevar a Gohan a su primera transformación, comprobar que no puede llegar a la segunda.
 2. Posicionar a los Guerreros Z, dejar a Goku y Piccolo con la vida necesaria para la transformación de Gohan, y comprobar que se realiza correctamente.
@@ -31,9 +31,9 @@ $1^{ra}$ entrega + transformaciones con requisitos especiales + ataques especial
 9. Posicionar a Goku y verificar que su daño aumenta, al reducir su vida por debajo del 20%.
 
 ---
-#### $3^{ra}$ Entrega: (19 de junio - 22 de junio)
+#### 3ra Entrega: (19 de junio - 22 de junio)
 
-$2^{da}$ entrega + Consumibles. Trabajo Práctico completo funcionando, con interfaz gráfica final, sonidos e informe completo.
+2da entrega + Consumibles. Trabajo Práctico completo funcionando, con interfaz gráfica final, sonidos e informe completo.
 
 1. Ubicar un consumible y un personaje en casilleros diferentes, y verificar que el consumible desaparece, al mover el personaje al mismo casillero.
 2. Repetir 1 y verificar que se aplica correctamente el efecto de cada consumible (un test por cada consumible).
