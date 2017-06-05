@@ -47,7 +47,7 @@ public abstract class Personaje implements ObjetoJuego {
     //throw ErrorValorNegativo
     {
         if (_ki < 0) return; //throw ErrorValorNegativo;
-        this.ki += _ki;
+        this.ki -= _ki;
     }
     
     /*
@@ -57,7 +57,7 @@ public abstract class Personaje implements ObjetoJuego {
     //throw ErrorValorNegativo
     {
         if (_vida < 0) return; //throw ErrorValorNegativo;
-        this.ki += _vida;
+        this.vida += _vida;
     }
     
     /*
@@ -67,7 +67,7 @@ public abstract class Personaje implements ObjetoJuego {
     //throw ErrorValorNegativo
     {
         if (_vida < 0) return; //throw ErrorValorNegativo;
-        this.ki += _vida;
+        this.vida -= _vida;
     }
     
     /*
@@ -81,7 +81,6 @@ public abstract class Personaje implements ObjetoJuego {
         return false;
     }
     
-<<<<<<< HEAD
     /*
      * Cambiar Estado
      * (es lo mismo que el personaje se transforme)
