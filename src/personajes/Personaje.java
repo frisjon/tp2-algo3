@@ -1,6 +1,6 @@
 package personajes;
 
-public abstract class Personaje {
+public abstract class Personaje implements ObjetoJuego {
     
     protected String nombre;
     protected double vida;
@@ -49,6 +49,14 @@ public abstract class Personaje {
     
     public double danioAtaqueNormal() {
         return this.estado.getPoderDePelea();
+    }
+    
+     public void setCasillero(Casillero casillero){
+    	this.casillero = casillero;
+    }
+    
+    public Casillero getCasillero(){
+    	return this.casillero;
     }
     
 }
