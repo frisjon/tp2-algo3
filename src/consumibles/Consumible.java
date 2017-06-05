@@ -22,6 +22,7 @@ public abstract class Consumible implements ObjetoJuego {
      */
     protected Boolean instantaneo;
     protected int cantidadUsosRestantes;
+    protected Casillero casillero;
     
     
     public String getNombre(){
