@@ -1,14 +1,18 @@
 package personajes.Cell;
 
-import personajes.EstadoPersonaje;
-import personajes.Ataque;
+import personajes.ConstantesPersonajes;
 import personajes.Personaje;
 
 public class Cell extends Personaje {
    public Cell() {
-       this.nombre = "Cell";
-       this.vida = 500;
+       this.nombre = ConstantesPersonajes.CELL_NOMBRE;
+       this.vida = ConstantesPersonajes.CELL_CANTIDAD_VIDA_INICIAL;
+       this.ki = ConstantesPersonajes.CANTIDAD_KI_INICIAL;
        this.estado = new CellEstado1();
-       this.ataqueEspecial = null;
+       this.ataqueEspecial = ConstantesPersonajes.CELL_NOMBRE_ATAQUE_ESPECIAL;
+   }
+
+   public double calcularDanoAtaqueEspecial() {
+       return this.danioAtaqueNormal();
    }
 }
