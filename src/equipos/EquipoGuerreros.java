@@ -15,6 +15,7 @@ import personajes.Piccolo.Piccolo;
 public class EquipoGuerreros extends Equipo {
 
 	public EquipoGuerreros() {
+		super();
 		Personaje goku = new Goku();
 		Personaje gohan = new Gohan();
 		Personaje piccolo = new Piccolo();

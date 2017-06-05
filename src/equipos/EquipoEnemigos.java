@@ -14,6 +14,7 @@ import personajes.MajinBoo.MajinBoo;
 
 public class EquipoEnemigos extends Equipo {
 	public EquipoEnemigos() {
+		super();
 		Personaje freezer = new Freezer();
 		Personaje cell = new Cell();
 		Personaje majinboo = new MajinBoo();

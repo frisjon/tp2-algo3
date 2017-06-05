@@ -13,6 +13,10 @@ import personajes.Personaje;
 public abstract class Equipo {
 	protected ArrayList<Personaje> listapersonajes;
 	
+	public Equipo() {
+		this.listapersonajes = new ArrayList<Personaje>();
+	}
+	
 	public ArrayList<Personaje> pedirListaPersonajes() {
 		return this.listapersonajes;
 	}
