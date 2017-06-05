@@ -8,5 +8,6 @@ public class PiccoloEstado3 extends EstadoPersonaje {
        this.poderDePelea = ConstantesPersonajes.PICCOLO_ESTADO_3_PODER_DE_PELEA;
        this.distanciaAtaque = ConstantesPersonajes.PICCOLO_ESTADO_3_DISTANCIA_DE_ATAQUE;
        this.velocidad = ConstantesPersonajes.PICCOLO_ESTADO_3_VELOCIDAD;
+       this.idEstado = ConstantesPersonajes.PICCOLO_ESTADO_3_ID;
    }
 }

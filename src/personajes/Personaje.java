@@ -8,15 +8,30 @@ public abstract class Personaje {
     protected EstadoPersonaje estado;
     protected String ataqueEspecial;
 
-    
+    /*
+     * Devuelve el nombre del personaje
+     */
     public String getNombre() {
         return this.nombre;
     }
     
+    /*
+     * Devuelve la cantidad de vida del personaje
+     */
     public double getVida() {
         return this.vida;
     }
     
+    /*
+     * Devuelve la cantidad de Ki del personaje
+     */
+    public double getKi() {
+        return this.ki;
+    }
+    
+    /*
+     * Permite modificar el valor de ki
+     */
     public void agregarKi(double _ki)
     //throw ErrorValorNegativo
     {
@@ -24,6 +39,9 @@ public abstract class Personaje {
         this.ki += _ki;
     }
     
+    /*
+     * Permite modificar el valor de ki
+     */
     public void quitarKi(double _ki)
     //throw ErrorValorNegativo
     {
@@ -31,6 +49,9 @@ public abstract class Personaje {
         this.ki += _ki;
     }
     
+    /*
+     * Permite modificar la cantidad de vida del personaje
+     */
     public void agregarVida(double _vida)
     //throw ErrorValorNegativo
     {
@@ -38,6 +59,9 @@ public abstract class Personaje {
         this.ki += _vida;
     }
     
+    /*
+     * Permite modificar la cantidad de vida del personaje
+     */
     public void quitarVida(double _vida)
     //throw ErrorValorNegativo
     {
@@ -45,10 +69,27 @@ public abstract class Personaje {
         this.ki += _vida;
     }
     
-    public abstract double calcularDanoAtaqueEspecial();
-    
-    public double danioAtaqueNormal() {
-        return this.estado.getPoderDePelea();
+    /*
+     * Determina si hay suficiente Ki
+     * Devuelve true, si el Ki actual es mayor o igual al pedido
+     * Devuelve false, en otro caso
+     * 
+     */
+    public boolean kiSuficiente(double _ki) {
+        if (_ki <= this.ki) return true;
+        return false;
     }
+    
+    /*
+     * Cambiar Estado
+     * (es lo mismo que el personaje se transforme)
+     */
+    //public abstract void cambiarEstado(int idEstado);
+    
+    /*
+     * Devuelve true, si se cumplen las condiciones necesarias para realizar el ataque especial.
+     * (Depende del personaje, por eso es un metodo abstracto)
+     */
+    public abstract boolean puedeRealizarAtaqueEspecial();
     
 }

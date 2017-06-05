@@ -8,5 +8,6 @@ public class CellEstado3 extends EstadoPersonaje {
        this.poderDePelea = ConstantesPersonajes.CELL_ESTADO_3_PODER_DE_PELEA;
        this.distanciaAtaque = ConstantesPersonajes.CELL_ESTADO_3_DISTANCIA_DE_ATAQUE;
        this.velocidad = ConstantesPersonajes.CELL_ESTADO_3_VELOCIDAD;
+       this.idEstado = ConstantesPersonajes.CELL_ESTADO_3_ID;
    }
 }

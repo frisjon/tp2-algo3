@@ -8,5 +8,6 @@ public class FreezerEstado1 extends EstadoPersonaje {
        this.poderDePelea = ConstantesPersonajes.FREEZER_ESTADO_1_PODER_DE_PELEA;
        this.distanciaAtaque = ConstantesPersonajes.FREEZER_ESTADO_1_DISTANCIA_DE_ATAQUE;
        this.velocidad = ConstantesPersonajes.FREEZER_ESTADO_1_VELOCIDAD;
+       this.idEstado = ConstantesPersonajes.FREEZER_ESTADO_1_ID;
    }
 }

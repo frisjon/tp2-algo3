@@ -8,5 +8,6 @@ public class GohanEstado1 extends EstadoPersonaje {
        this.poderDePelea = ConstantesPersonajes.GOHAN_ESTADO_1_PODER_DE_PELEA;
        this.distanciaAtaque = ConstantesPersonajes.GOHAN_ESTADO_1_DISTANCIA_DE_ATAQUE;
        this.velocidad = ConstantesPersonajes.GOHAN_ESTADO_1_VELOCIDAD;
+       this.idEstado = ConstantesPersonajes.GOHAN_ESTADO_1_ID;
    }
 }
