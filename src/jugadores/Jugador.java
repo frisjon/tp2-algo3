@@ -1,4 +1,6 @@
-package juego;
+package jugadores;
+
+import equipos.Equipo;
 
 /**
  * Clase que representa un Jugador, con su nombre y el equipo al que pertenece.
@@ -9,13 +11,21 @@ package juego;
 
 public class Jugador {
 	private String nombre;
-	private String equipo;
+	private Equipo equipo;
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre;
 	}
 	
-	private String getNombre() {
+	public void establecerEquipo(Equipo equipo_jugador) {
+		this.equipo = equipo_jugador;
+	}
+	
+	public String getNombre() {
 		return this.nombre;
+	}
+	
+	public Equipo getEquipo() {
+		return this.equipo;
 	}
 }
