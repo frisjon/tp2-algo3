@@ -1,14 +1,18 @@
 package personajes.Freezer;
 
-import personajes.EstadoPersonaje;
-import personajes.Ataque;
+import personajes.ConstantesPersonajes;
 import personajes.Personaje;
 
 public class Freezer extends Personaje {
    public Freezer() {
-       this.nombre = "Freezer";
-       this.vida = 400;
+       this.nombre = ConstantesPersonajes.FREEZER_NOMBRE;
+       this.vida = ConstantesPersonajes.FREEZER_CANTIDAD_VIDA_INICIAL;
+       this.ki = ConstantesPersonajes.CANTIDAD_KI_INICIAL;
        this.estado = new FreezerEstado1();
-       this.ataqueEspecial = null;
+       this.ataqueEspecial = ConstantesPersonajes.FREEZER_NOMBRE_ATAQUE_ESPECIAL;
+   }
+
+   public double calcularDanoAtaqueEspecial() {
+       return this.danioAtaqueNormal();
    }
 }
