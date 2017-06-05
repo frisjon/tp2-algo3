@@ -9,7 +9,7 @@ import consumibles.ErrorNoHayUsosRestantes;
  * 
  * @author Thomas
  */
-public abstract class Consumible {
+public abstract class Consumible implements ObjetoJuego {
     protected String nombre;
     protected String atributo;
     /**
@@ -61,5 +61,13 @@ public abstract class Consumible {
         }
 
         this.cantidadUsosRestantes -= 1;
+    }
+    
+     public void setCasillero(Casillero casillero){
+    	this.casillero = casillero;
+     }
+    
+    public Casillero getCasillero(){
+    	return this.casillero;
     }
 }
