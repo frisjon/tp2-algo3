@@ -1,6 +1,6 @@
 package personajes;
 
-public abstract class Personaje {
+public abstract class Personaje implements ObjetoJuego {
     
     protected String nombre;
     protected double vida;
@@ -80,6 +80,7 @@ public abstract class Personaje {
         return false;
     }
     
+<<<<<<< HEAD
     /*
      * Cambiar Estado
      * (es lo mismo que el personaje se transforme)
@@ -91,5 +92,14 @@ public abstract class Personaje {
      * (Depende del personaje, por eso es un metodo abstracto)
      */
     public abstract boolean puedeRealizarAtaqueEspecial();
+=======
+     public void setCasillero(Casillero casillero){
+    	this.casillero = casillero;
+    }
+    
+    public Casillero getCasillero(){
+    	return this.casillero;
+    }
+>>>>>>> 92c41fe0e747f2c7f16c722682f86d549f8651ee
     
 }
