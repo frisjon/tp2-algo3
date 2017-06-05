@@ -7,6 +7,7 @@ public abstract class Personaje implements ObjetoJuego {
     protected double ki;
     protected EstadoPersonaje estado;
     protected String ataqueEspecial;
+    protected Casillero casillero;
 
     /*
      * Devuelve el nombre del personaje
@@ -92,7 +93,7 @@ public abstract class Personaje implements ObjetoJuego {
      * (Depende del personaje, por eso es un metodo abstracto)
      */
     public abstract boolean puedeRealizarAtaqueEspecial();
-=======
+
      public void setCasillero(Casillero casillero){
     	this.casillero = casillero;
     }
@@ -100,6 +101,5 @@ public abstract class Personaje implements ObjetoJuego {
     public Casillero getCasillero(){
     	return this.casillero;
     }
->>>>>>> 92c41fe0e747f2c7f16c722682f86d549f8651ee
     
 }
