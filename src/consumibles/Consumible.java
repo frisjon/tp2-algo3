@@ -1,5 +1,7 @@
 package consumibles;
 
+import tablero.ObjetoJuego;
+import tablero.Casillero;
 import consumibles.ErrorConsumibleInstantaneo;
 import consumibles.ErrorNoHayUsosRestantes;
 
@@ -20,7 +22,7 @@ public abstract class Consumible implements ObjetoJuego {
     /**
      * Si instantaneo es true, la cantidad de turnos restantes no sera tenida en cuenta.
      */
-    protected Boolean instantaneo;
+    protected boolean instantaneo;
     protected int cantidadUsosRestantes;
     protected Casillero casillero;
     
@@ -37,12 +39,16 @@ public abstract class Consumible implements ObjetoJuego {
         return this.cantidadAtributo;
     }
     
-    public Boolean getInstantaneo(){
+    public boolean getInstantaneo(){
         return this.instantaneo;
     }
     
     public int getCantidadUsosRestantes(){
         return this.cantidadUsosRestantes;
+    }
+
+    public Casillero getCasillero(){
+        return this.casillero;
     }
     
     /**
@@ -64,11 +70,7 @@ public abstract class Consumible implements ObjetoJuego {
         this.cantidadUsosRestantes -= 1;
     }
     
-     public void setCasillero(Casillero casillero){
+    public void setCasillero(Casillero casillero){
     	this.casillero = casillero;
-     }
-    
-    public Casillero getCasillero(){
-    	return this.casillero;
     }
 }
