@@ -1,5 +1,10 @@
 package personajes;
 
+
+import tablero.Casillero;
+import tablero.ObjetoJuego;
+
+
 public abstract class Personaje implements ObjetoJuego {
     
     protected String nombre;
@@ -8,66 +13,59 @@ public abstract class Personaje implements ObjetoJuego {
     protected EstadoPersonaje estado;
     protected String ataqueEspecial;
     protected Casillero casillero;
+    public static final String KI_INSUFICIENTE = "Ki Insuficiente"; 
 
-    /*
-     * Devuelve el nombre del personaje
-     */
+    
     public String getNombre() {
         return this.nombre;
     }
     
-    /*
-     * Devuelve la cantidad de vida del personaje
-     */
     public double getVida() {
         return this.vida;
     }
     
-    /*
-     * Devuelve la cantidad de Ki del personaje
-     */
     public double getKi() {
         return this.ki;
     }
     
-    /*
-     * Permite modificar el valor de ki
-     */
-    public void agregarKi(double _ki)
-    //throw ErrorValorNegativo
+    public void agregarKi(double _ki) //throw ErrorValorNegativo
     {
         if (_ki < 0) return; //throw ErrorValorNegativo;
         this.ki += _ki;
     }
     
-    /*
-     * Permite modificar el valor de ki
-     */
-    public void quitarKi(double _ki)
-    //throw ErrorValorNegativo
+    public void quitarKi(double _ki) //throw ErrorValorNegativo
     {
         if (_ki < 0) return; //throw ErrorValorNegativo;
         this.ki -= _ki;
     }
     
-    /*
-     * Permite modificar la cantidad de vida del personaje
-     */
-    public void agregarVida(double _vida)
-    //throw ErrorValorNegativo
+    public void agregarVida(double _vida) //throw ErrorValorNegativo
     {
         if (_vida < 0) return; //throw ErrorValorNegativo;
         this.vida += _vida;
     }
     
-    /*
-     * Permite modificar la cantidad de vida del personaje
-     */
-    public void quitarVida(double _vida)
-    //throw ErrorValorNegativo
+    public void quitarVida(double _vida) //throw ErrorValorNegativo
     {
         if (_vida < 0) return; //throw ErrorValorNegativo;
         this.vida -= _vida;
+    }
+    
+    public String getAtaqueEspecial() {
+        return this.ataqueEspecial;
+    }
+    
+    public double getPoderDePelea() {
+        return this.estado.getPoderDePelea();
+    }
+    
+    public double getDistanciaAtaque() {
+        return this.estado.getDistanciaAtaque();
+    }
+    
+    public double getVelocidad() {
+        return this.estado.getVelocidad();
     }
     
     /*
@@ -81,24 +79,37 @@ public abstract class Personaje implements ObjetoJuego {
         return false;
     }
     
+    public void setCasillero(Casillero _casillero) {
+        this.casillero = _casillero;
+    }
+    
+    public Casillero getCasillero() {
+        return this.casillero;
+    }
+    
+    public int getIdEstado() {
+        return this.estado.getIdEstado();
+    }
+    
+    /*
+     * Metodos Abstractos
+     */
+    
     /*
      * Cambiar Estado
      * (es lo mismo que el personaje se transforme)
      */
     //public abstract void cambiarEstado(int idEstado);
+    public abstract void cambiarAEstado1();
+    public abstract void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado;
+    public abstract void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado;
+    //public abstract void cambiarAEstado4();
     
     /*
      * Devuelve true, si se cumplen las condiciones necesarias para realizar el ataque especial.
      * (Depende del personaje, por eso es un metodo abstracto)
      */
     public abstract boolean puedeRealizarAtaqueEspecial();
-
-     public void setCasillero(Casillero casillero){
-    	this.casillero = casillero;
-    }
     
-    public Casillero getCasillero(){
-    	return this.casillero;
-    }
     
 }
