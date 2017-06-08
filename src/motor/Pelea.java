@@ -3,6 +3,7 @@ package motor;
 import personajes.*;
 import consumibles.*;
 import motor.ErrorNoHayKi;
+import motor.ErrorNoSePuedeRealizarAtaqueEspecial;
 
 /**
  * Clase que se encargara de desarollar una pelea entre dos personajes.
@@ -52,8 +53,8 @@ public class Pelea {
      * @param pj2
      */
     public void ataqueBasico(Personaje pj1, Personaje pj2){
-        double poderPeleaPj1 = pj1.getPoderPelea();
-        double poderPeleaPj2 = pj2.getPoderPelea();
+        double poderPeleaPj1 = pj1.getPoderDePelea();
+        double poderPeleaPj2 = pj2.getPoderDePelea();
         /**
          * Daño realizado al pj2.
          */
@@ -103,11 +104,12 @@ public class Pelea {
      * @param pj1
      * @param pj2
      * @throws ErrorNoHayKi
+     * @throws ErrorNoSePuedeRealizarAtaqueEspecial
      */
-    public void ataqueEspecial(Personaje pj1, Personaje pj2) throws ErrorNoHayKi{
+    public void ataqueEspecial(Personaje pj1, Personaje pj2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
         double kiAtaqueEspecial = pj1.getKiNecesario();
-        double poderPeleaPj1 = pj1.getPoderPelea();
-        double poderPeleaPj2 = pj2.getPoderPelea();
+        double poderPeleaPj1 = pj1.getPoderDePelea();
+        double poderPeleaPj2 = pj2.getPoderDePelea();
         /**
          * Daño realizado al pj2.
          */
@@ -131,6 +133,10 @@ public class Pelea {
         
         if (pj1.kiSuficiente(kiAtaqueEspecial) == false){
             throw new ErrorNoHayKi("No hay Ki sufieciente.");
+        }
+        
+        if (pj1.puedeRealizarAtaqueEspecial() == false){
+            throw new ErrorNoSePuedeRealizarAtaqueEspecial("El personaje no cumple con los requisitos necesarios.");
         }
         
         if (pj1.tieneConsumible()){
