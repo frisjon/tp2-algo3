@@ -16,7 +16,7 @@ public class Tablero {
 	// private DesarrolladorAtaque desarrolladorAtaque;
 	// private ValidadorMovimiento validadorMovimiento;
 	
-	public void crearCasilleros(){
+	private void crearCasilleros(){
 		for (int i = 0; i < this.ancho; i++){
 			for (int j = 0; j < this.alto; j++){
 				Casillero casillero = new Casillero(i, j);
