@@ -3,21 +3,21 @@ package personajes;
 import personajes.ConstantesGoku;
 import personajes.ConstantesGohan;
 import personajes.ConstantesPiccolo;
-import personajes.ConstantesCel;
+import personajes.ConstantesCell;
 import personajes.ConstantesFreezer;
 import personajes.ConstantesMajinBoo;
 
 
 public class EstadoPersonaje {
 
-    private double poderDePelea;
-    private double distanciaAtaque;
-    private double velocidad;
-    private int idEstado;
+    protected double poderPelea;
+    protected double distanciaAtaque;
+    protected double velocidad;
+    protected int idEstado;
     
     
-    public double getPoderDePelea() {
-        return this.poderDePelea;
+    public double getPoderPelea() {
+        return this.poderPelea;
     }
     
     public double getDistanciaAtaque() {
@@ -32,19 +32,19 @@ public class EstadoPersonaje {
         return this.idEstado;
     }
     
-    private void setPoderDePelea(double _poderDePelea) {
-        this.poderDePelea = _poderDePelea;
+    public void setPoderDePelea(double _poderDePelea) {
+        this.poderPelea = _poderDePelea;
     }
     
-    private void setDistanciaAtaque(double _distanciaAtaque) {
+    public void setDistanciaAtaque(double _distanciaAtaque) {
         this.distanciaAtaque = _distanciaAtaque;
     }
     
-    private void setVelocidad(double _velocidad) {
+    public void setVelocidad(double _velocidad) {
         this.velocidad = _velocidad;
     }
     
-    private void setIdEstado(int _idEstado) {
+    public void setIdEstado(int _idEstado) {
         this.idEstado = _idEstado;
     }
 
@@ -114,25 +114,25 @@ public class EstadoPersonaje {
     }
 
 
-    public void cambiarACelEstado1() {
-        this.setPoderDePelea(ConstantesCel.CEL_ESTADO_1_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesCel.CEL_ESTADO_1_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesCel.CEL_ESTADO_1_VELOCIDAD);
-        this.setIdEstado(ConstantesCel.CEL_ESTADO_1_ID);
+    public void cambiarACellEstado1() {
+        this.setPoderDePelea(ConstantesCell.CELL_ESTADO_1_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesCell.CELL_ESTADO_1_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesCell.CELL_ESTADO_1_VELOCIDAD);
+        this.setIdEstado(ConstantesCell.CELL_ESTADO_1_ID);
     }
 
-    public void cambiarACelEstado2() {
-        this.setPoderDePelea(ConstantesCel.CEL_ESTADO_2_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesCel.CEL_ESTADO_2_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesCel.CEL_ESTADO_2_VELOCIDAD);
-        this.setIdEstado(ConstantesCel.CEL_ESTADO_2_ID);
+    public void cambiarACellEstado2() {
+        this.setPoderDePelea(ConstantesCell.CELL_ESTADO_2_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesCell.CELL_ESTADO_2_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesCell.CELL_ESTADO_2_VELOCIDAD);
+        this.setIdEstado(ConstantesCell.CELL_ESTADO_2_ID);
     }
 
-    public void cambiarACelEstado3() {
-        this.setPoderDePelea(ConstantesCel.CEL_ESTADO_3_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesCel.CEL_ESTADO_3_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesCel.CEL_ESTADO_3_VELOCIDAD);
-        this.setIdEstado(ConstantesCel.CEL_ESTADO_3_ID);
+    public void cambiarACellEstado3() {
+        this.setPoderDePelea(ConstantesCell.CELL_ESTADO_3_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesCell.CELL_ESTADO_3_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesCell.CELL_ESTADO_3_VELOCIDAD);
+        this.setIdEstado(ConstantesCell.CELL_ESTADO_3_ID);
     }
 
 
@@ -177,6 +177,14 @@ public class EstadoPersonaje {
         this.setDistanciaAtaque(ConstantesMajinBoo.MAJINBOO_ESTADO_3_DISTANCIA_DE_ATAQUE);
         this.setVelocidad(ConstantesMajinBoo.MAJINBOO_ESTADO_3_VELOCIDAD);
         this.setIdEstado(ConstantesMajinBoo.MAJINBOO_ESTADO_3_ID);
+    }
+
+    public double getAumentoAtaqueEspecial() {
+        return 0;
+    }
+
+    public double getAumentoPasiva() {
+        return 0;
     }
 
 
