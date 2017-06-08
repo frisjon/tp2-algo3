@@ -4,6 +4,7 @@ public final class ConstantesCell {
     public static final double CELL_CANTIDAD_KI_INICIAL = 0;
     public static final double CELL_CANTIDAD_VIDA_INICIAL = 500;
     public static final double CELL_KI_ATAQUE_ESPECIAL = 5;
+    public static final double CELL_PORCENTAJE_DANIO_ATAQUE_ESPECIAL = 1;
     public static final String CELL_NOMBRE = "Cell";
     public static final String CELL_NOMBRE_ATAQUE_ESPECIAL = "Absorber";
     public static final String CELL_MENSAJE_ABSORCIONES_INSUFICIENTES = "Cantidad de absorciones insuficientes.";

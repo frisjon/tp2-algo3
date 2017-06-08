@@ -6,8 +6,10 @@ import motor.ErrorNoHayKi;
 import personajes.EstadoPersonaje;
 
 public class Piccolo extends Personaje {
+	
     private Personaje protegido;
-    private double vidaProtegido;
+    private double vidaInicialProtegido;
+    
     public Piccolo() {
         this.estado = new EstadoPersonaje();
         this.estado.cambiarAPiccoloEstado1();
@@ -19,13 +21,13 @@ public class Piccolo extends Personaje {
         this.kiAtaqueEspecial = ConstantesPiccolo.PICCOLO_KI_ATAQUE_ESPECIAL;
         
         this.protegido = null;
-        this.vidaProtegido = 0;
+        this.vidaInicialProtegido = 0;
     }
     
     
     public void setProtegido(Personaje _protegido) {
         this.protegido = _protegido;
-        this.vidaProtegido = this.protegido.getVida();
+        this.vidaInicialProtegido = this.protegido.getVida();
     }
 
     /*
@@ -56,6 +58,8 @@ public class Piccolo extends Personaje {
     public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
         if (!this.kiSuficiente(ConstantesPiccolo.PICCOLO_ESTADO_3_COSTO))
             throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+        if (!(this.vidaInicialProtegido * ConstantesPiccolo.PICCOLO_PORCENTAJE_VIDA_PROTEGIDO <= this.vidaInicialProtegido))
+        	throw new ErrorCambiarEstadoCondicionesNoCumplidas(ConstantesPiccolo.PICCOLO_PROTEGIDO_SANO);
         this.quitarKi(ConstantesPiccolo.PICCOLO_ESTADO_3_COSTO);
         this.estado.cambiarAPiccoloEstado3();
     }

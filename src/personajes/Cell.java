@@ -6,7 +6,9 @@ import personajes.EstadoPersonaje;
 import personajes.ErrorCambiarEstadoCondicionesNoCumplidas;
 
 public class Cell extends Personaje {
-    private int cantidadAtaquesEspecialesRealizados;
+	
+    private int cantidadAbsorciones;
+    
     public Cell() {
         this.estado = new EstadoPersonaje();
         this.estado.cambiarACellEstado1();
@@ -16,7 +18,7 @@ public class Cell extends Personaje {
         this.vida = ConstantesCell.CELL_CANTIDAD_VIDA_INICIAL;
         this.ataqueEspecial = ConstantesCell.CELL_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = ConstantesCell.CELL_KI_ATAQUE_ESPECIAL;
-        this.cantidadAtaquesEspecialesRealizados = 0;
+        this.cantidadAbsorciones = 0;
     }
 
 
@@ -38,7 +40,7 @@ public class Cell extends Personaje {
     public void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
         if (!this.kiSuficiente(ConstantesCell.CELL_ESTADO_2_COSTO))
             throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
-        if (!(ConstantesCell.CELL_ESTADO_2_COSTO_ATAQUE_ESPECIAL <= this.cantidadAtaquesEspecialesRealizados))
+        if (!(ConstantesCell.CELL_ESTADO_2_COSTO_ATAQUE_ESPECIAL <= this.cantidadAbsorciones))
             throw new ErrorCambiarEstadoCondicionesNoCumplidas(ConstantesCell.CELL_MENSAJE_ABSORCIONES_INSUFICIENTES);
         this.quitarKi(ConstantesCell.CELL_ESTADO_2_COSTO);
         this.estado.cambiarACellEstado2();
@@ -50,10 +52,15 @@ public class Cell extends Personaje {
     public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
         if (!this.kiSuficiente(ConstantesCell.CELL_ESTADO_3_COSTO))
             throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
-        if (!(ConstantesCell.CELL_ESTADO_3_COSTO_ATAQUE_ESPECIAL <= this.cantidadAtaquesEspecialesRealizados))
+        if (!(ConstantesCell.CELL_ESTADO_3_COSTO_ATAQUE_ESPECIAL <= this.cantidadAbsorciones))
             throw new ErrorCambiarEstadoCondicionesNoCumplidas(ConstantesCell.CELL_MENSAJE_ABSORCIONES_INSUFICIENTES);
         this.quitarKi(ConstantesCell.CELL_ESTADO_3_COSTO);
         this.estado.cambiarACellEstado3();
+    }
+    
+    public void aumentarCantidadAbsorciones() {
+    	this.quitarKi(ConstantesCell.CELL_KI_ATAQUE_ESPECIAL);
+    	this.cantidadAbsorciones += 1;
     }
 
     /*

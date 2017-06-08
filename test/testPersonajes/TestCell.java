@@ -33,8 +33,10 @@ public class TestCell{
 
     @Test
     public void test04CambiarCellAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    	cell.agregarKi(20);
+        for (int i=0;i<3;i++)
+        	cell.aumentarCantidadAbsorciones();
         try {
-            cell.agregarKi(20);
             cell.cambiarAEstado2();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -44,18 +46,15 @@ public class TestCell{
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test05CambiarCellAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas{
-        try {
-            cell.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+    	cell.cambiarAEstado2();
     }
 
     @Test
     public void test06CambiarCellAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    	cell.agregarKi(20);
+        for (int i=0;i<3;i++)
+        	cell.aumentarCantidadAbsorciones();
         try {
-            cell.agregarKi(50);
             cell.cambiarAEstado3();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -65,12 +64,7 @@ public class TestCell{
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test07CambiarCellAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            cell.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+    	cell.cambiarAEstado3();
     }
 
     @Test

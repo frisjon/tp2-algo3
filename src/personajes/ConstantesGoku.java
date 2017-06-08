@@ -4,6 +4,7 @@ public final class ConstantesGoku {
     public static final double GOKU_CANTIDAD_KI_INICIAL = 0;
     public static final double GOKU_CANTIDAD_VIDA_INICIAL = 500;
     public static final double GOKU_KI_ATAQUE_ESPECIAL = 20;
+    public static final double GOKU_PORCENTAJE_DANIO_ATAQUE_ESPECIAL = 1.5;
     public static final String GOKU_NOMBRE = "Goku";
     public static final String GOKU_NOMBRE_ATAQUE_ESPECIAL = "Kamehameha";
 

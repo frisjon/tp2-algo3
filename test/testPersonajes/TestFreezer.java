@@ -35,8 +35,8 @@ public class TestFreezer{
 
     @Test
     public void test04CambiarFreezerAEstado2() {
+    	freezer.agregarKi(20);
         try {
-            freezer.agregarKi(20);
             freezer.cambiarAEstado2();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -46,18 +46,13 @@ public class TestFreezer{
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test05CambiarFreezerAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            freezer.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+        freezer.cambiarAEstado2();
     }
 
     @Test
     public void test06CambiarFreezerAEstado3() {
+    	freezer.agregarKi(50);
         try {
-            freezer.agregarKi(50);
             freezer.cambiarAEstado3();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -67,12 +62,7 @@ public class TestFreezer{
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test07CambiarFreezerAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            freezer.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+        freezer.cambiarAEstado3();
     }
 
     @Test

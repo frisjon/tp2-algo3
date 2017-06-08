@@ -6,6 +6,7 @@ public final class ConstantesGohan {
     public static final double GOHAN_KI_ATAQUE_ESPECIAL = 10;
     public static final double GOHAN_PORCENTAJE_VIDA_ALIADO_1 = 0.3;
     public static final double GOHAN_PORCENTAJE_VIDA_ALIADO_2 = 0.3;
+    public static final double GOHAN_PORCENTAJE_DANIO_ATAQUE_ESPECIAL = 1.25;
     public static final String GOHAN_NOMBRE = "Gohan";
     public static final String GOHAN_NOMBRE_ATAQUE_ESPECIAL = "Masenko";
     public static final String GOHAN_MENSAJE_ALIADOS_SANOS = "Aliados sanos.";

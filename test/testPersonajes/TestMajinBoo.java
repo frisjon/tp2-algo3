@@ -35,8 +35,8 @@ public class TestMajinBoo{
 
     @Test
     public void test04CambiarMajinBooAEstado2() {
+    	majinboo.agregarKi(20);
         try {
-            majinboo.agregarKi(20);
             majinboo.cambiarAEstado2();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -46,18 +46,13 @@ public class TestMajinBoo{
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test05CambiarMajinBooAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            majinboo.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+        majinboo.cambiarAEstado2();
     }
 
     @Test
     public void test06CambiarMajinBooAEstado3() {
+    	majinboo.agregarKi(50);
         try {
-            majinboo.agregarKi(50);
             majinboo.cambiarAEstado3();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -67,12 +62,7 @@ public class TestMajinBoo{
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test07CambiarMajinBooAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            majinboo.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+        majinboo.cambiarAEstado3();
     }
 
     @Test

@@ -35,8 +35,8 @@ public class TestGoku{
 
     @Test
     public void test04CambiarGokuAEstado2() {
+    	goku.agregarKi(20);
         try {
-            goku.agregarKi(20);
             goku.cambiarAEstado2();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -46,18 +46,13 @@ public class TestGoku{
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test05CambiarGokuAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            goku.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+    	goku.cambiarAEstado2();
     }
 
     @Test
     public void test06CambiarGokuAEstado3() {
+    	goku.agregarKi(50);
         try {
-            goku.agregarKi(50);
             goku.cambiarAEstado3();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -67,12 +62,7 @@ public class TestGoku{
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test07CambiarGokuAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            goku.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+        goku.cambiarAEstado3();
     }
 
     @Test

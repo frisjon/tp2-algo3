@@ -4,6 +4,7 @@ public final class ConstantesFreezer {
     public static final double FREEZER_CANTIDAD_KI_INICIAL = 0;
     public static final double FREEZER_CANTIDAD_VIDA_INICIAL = 400;
     public static final double FREEZER_KI_ATAQUE_ESPECIAL = 20;
+    public static final double FREEZER_PORCENTAJE_DANIO_ATAQUE_ESPECIAL = 1.5;
     public static final String FREEZER_NOMBRE = "Freezer";
     public static final String FREEZER_NOMBRE_ATAQUE_ESPECIAL = "Rayo Mortal";
 

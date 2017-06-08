@@ -4,6 +4,7 @@ public final class ConstantesMajinBoo {
     public static final double MAJINBOO_CANTIDAD_KI_INICIAL = 0;
     public static final double MAJINBOO_CANTIDAD_VIDA_INICIAL = 300;
     public static final double MAJINBOO_KI_ATAQUE_ESPECIAL = 30;
+    public static final double MAJINBOO_PORCENTAJE_DANIO_ATAQUE_ESPECIAL = 1;
     public static final String MAJINBOO_NOMBRE = "MajinBoo";
     public static final String MAJINBOO_NOMBRE_ATAQUE_ESPECIAL = "Conviertete En Chocolate";
 

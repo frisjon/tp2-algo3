@@ -2,6 +2,8 @@ package testPersonajes;
 
 import personajes.ErrorCambiarEstadoCondicionesNoCumplidas;
 import personajes.Gohan;
+import personajes.Goku;
+import personajes.Piccolo;
 
 import org.junit.Test;
 
@@ -46,18 +48,19 @@ public class TestGohan {
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test05CambiarGohanAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            gohan.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+    	gohan.cambiarAEstado2();
     }
 
     @Test
     public void test06CambiarGohanAEstado3() {
+    	Goku goku = new Goku();
+    	Piccolo piccolo = new Piccolo();
+    	gohan.setAliado1(goku);
+    	gohan.setAliado2(piccolo);
+    	gohan.agregarKi(30);
+    	goku.quitarVida(351);
+    	piccolo.quitarVida(351);
         try {
-            gohan.agregarKi(30);
             gohan.cambiarAEstado3();
         } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
             fail("Error Inesperado");
@@ -67,12 +70,7 @@ public class TestGohan {
 
     @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
     public void test07CambiarGohanAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        try {
-            gohan.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
-            throw e1;
-        }
-        fail("Error Inesperado");
+        gohan.cambiarAEstado3();
     }
 
     @Test
