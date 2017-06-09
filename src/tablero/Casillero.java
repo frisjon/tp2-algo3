@@ -10,7 +10,7 @@ public class Casillero {
 		this.coordenada = new Coordenada(x,y);
 	}
 	
-	public boolean estaLibre(){ // boolean o Boolean ? 
+	public boolean estaLibre(){ 
 		return this.objeto == null;
 	}
 	
