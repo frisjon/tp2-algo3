@@ -8,8 +8,8 @@ public final class ConstantesPiccolo {
     public static final double PICCOLO_PORCENTAJE_VIDA_PROTEGIDO = 0.2;
     public static final String PICCOLO_NOMBRE = "Piccolo";
     public static final String PICCOLO_NOMBRE_ATAQUE_ESPECIAL = "Makankosappo";
-    public static final String PICCOLO_PROTEGIDO_SANO = "Protegido sano.";
-    //public static final String PICCOLO_MENSAJE_PROTEGIDO_SANO;
+    public static final String PICCOLO_MENSAJE_PROTEGIDO_SANO = "Protegido sano.";
+    public static final String PICCOLO_MENSAJE_PROTEGIDO_INVALIDO = "Protegido Invalido";
 
     public static final double PICCOLO_ESTADO_1_PODER_DE_PELEA = 20;
     public static final double PICCOLO_ESTADO_1_DISTANCIA_DE_ATAQUE = 2;
@@ -28,6 +28,5 @@ public final class ConstantesPiccolo {
     public static final double PICCOLO_ESTADO_3_VELOCIDAD = 4;
     public static final double PICCOLO_ESTADO_3_COSTO = 0;
     public static final int PICCOLO_ESTADO_3_ID = 3;
-
-
+    
 }

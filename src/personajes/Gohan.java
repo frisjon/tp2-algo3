@@ -20,6 +20,7 @@ public class Gohan extends Personaje {
         this.vida = ConstantesGohan.GOHAN_CANTIDAD_VIDA_INICIAL;
         this.ataqueEspecial = ConstantesGohan.GOHAN_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = ConstantesGohan.GOHAN_KI_ATAQUE_ESPECIAL;
+        this.aumentoAtaqueEspecial = ConstantesGohan.GOHAN_PORCENTAJE_DANIO_ATAQUE_ESPECIAL;
         
         this.aliado1 = null;
         this.vidaInicialAliado1 = 0;
@@ -53,9 +54,9 @@ public class Gohan extends Personaje {
      * Nota: El personaje Gohan conoce el nivel de Ki requerido, y no el Estado. Es por eso que
      * se verifica la cantidad requirida de Ki para la transformacion en esta clase. No en Estado.
      */
-    public void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesGohan.GOHAN_ESTADO_2_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         this.quitarKi(ConstantesGohan.GOHAN_ESTADO_2_COSTO);
         this.estado.cambiarAGohanEstado2();
     }
@@ -63,14 +64,14 @@ public class Gohan extends Personaje {
     /*
      * Se cambia el Estado al de Gohan Estado 3
      */
-    public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesGohan.GOHAN_ESTADO_3_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         if (this.aliado1 == null || this.aliado2 == null)
-            return; //throw
-        if (!((this.vidaInicialAliado1 * ConstantesGohan.GOHAN_PORCENTAJE_VIDA_ALIADO_1 < this.vidaInicialAliado1) &&
-              (this.vidaInicialAliado2 * ConstantesGohan.GOHAN_PORCENTAJE_VIDA_ALIADO_2 < this.vidaInicialAliado2)))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas(ConstantesGohan.GOHAN_MENSAJE_ALIADOS_SANOS);
+            throw new ErrorNoPuedeCambiarEstado(ConstantesGohan.GOHAN_MENSAJE_ALIADO_INVALIDO);
+        if (!((this.aliado1.getVida() < this.vidaInicialAliado1 * ConstantesGohan.GOHAN_PORCENTAJE_VIDA_ALIADO_1) &&
+              (this.aliado2.getVida() < this.vidaInicialAliado2 * ConstantesGohan.GOHAN_PORCENTAJE_VIDA_ALIADO_2) ))
+            throw new ErrorNoPuedeCambiarEstado(ConstantesGohan.GOHAN_MENSAJE_ALIADOS_SANOS);
         this.quitarKi(ConstantesGohan.GOHAN_ESTADO_3_COSTO);
         this.estado.cambiarAGohanEstado3();
     }
@@ -78,7 +79,6 @@ public class Gohan extends Personaje {
     /*
      * Determina si el personaje Gohan tiene Ki suficiente para realizar el ataque especial.
      */
-    @Override
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesGohan.GOHAN_KI_ATAQUE_ESPECIAL);
     }

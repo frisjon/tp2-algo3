@@ -19,6 +19,8 @@ public class Piccolo extends Personaje {
         this.vida = ConstantesPiccolo.PICCOLO_CANTIDAD_VIDA_INICIAL;
         this.ataqueEspecial = ConstantesPiccolo.PICCOLO_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = ConstantesPiccolo.PICCOLO_KI_ATAQUE_ESPECIAL;
+        this.aumentoAtaqueEspecial = ConstantesPiccolo.PICCOLO_PORCENTAJE_DANIO_ATAQUE_ESPECIAL;
+
         
         this.protegido = null;
         this.vidaInicialProtegido = 0;
@@ -45,9 +47,9 @@ public class Piccolo extends Personaje {
      * Nota: El personaje Piccolo conoce el nivel de Ki requerido, y no el Estado. Es por eso que
      * se verifica la cantidad requirida de Ki para la transformacion en esta clase. No en Estado.
      */
-    public void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesPiccolo.PICCOLO_ESTADO_2_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         this.quitarKi(ConstantesPiccolo.PICCOLO_ESTADO_2_COSTO);
         this.estado.cambiarAPiccoloEstado2();
     }
@@ -55,11 +57,13 @@ public class Piccolo extends Personaje {
     /*
      * Se cambia el Estado al de Piccolo Estado 3
      */
-    public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesPiccolo.PICCOLO_ESTADO_3_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
-        if (!(this.vidaInicialProtegido * ConstantesPiccolo.PICCOLO_PORCENTAJE_VIDA_PROTEGIDO <= this.vidaInicialProtegido))
-        	throw new ErrorCambiarEstadoCondicionesNoCumplidas(ConstantesPiccolo.PICCOLO_PROTEGIDO_SANO);
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
+        if (this.protegido == null)
+            throw new ErrorNoPuedeCambiarEstado(ConstantesPiccolo.PICCOLO_MENSAJE_PROTEGIDO_INVALIDO);
+        if (!(this.protegido.getVida() < this.vidaInicialProtegido * ConstantesPiccolo.PICCOLO_PORCENTAJE_VIDA_PROTEGIDO))
+        	throw new ErrorNoPuedeCambiarEstado(ConstantesPiccolo.PICCOLO_MENSAJE_PROTEGIDO_SANO);
         this.quitarKi(ConstantesPiccolo.PICCOLO_ESTADO_3_COSTO);
         this.estado.cambiarAPiccoloEstado3();
     }
@@ -67,7 +71,6 @@ public class Piccolo extends Personaje {
     /*
      * Determina si el personaje Piccolo tiene Ki suficiente para realizar el ataque especial.
      */
-    @Override
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesPiccolo.PICCOLO_KI_ATAQUE_ESPECIAL);
     }

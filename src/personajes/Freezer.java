@@ -15,6 +15,7 @@ public class Freezer extends Personaje {
         this.vida = ConstantesFreezer.FREEZER_CANTIDAD_VIDA_INICIAL;
         this.ataqueEspecial = ConstantesFreezer.FREEZER_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = ConstantesFreezer.FREEZER_KI_ATAQUE_ESPECIAL;
+        this.aumentoAtaqueEspecial = ConstantesFreezer.FREEZER_PORCENTAJE_DANIO_ATAQUE_ESPECIAL;
     }
 
 
@@ -33,9 +34,9 @@ public class Freezer extends Personaje {
      * Nota: El personaje Freezer conoce el nivel de Ki requerido, y no el Estado. Es por eso que
      * se verifica la cantidad requirida de Ki para la transformacion en esta clase. No en Estado.
      */
-    public void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesFreezer.FREEZER_ESTADO_2_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         this.quitarKi(ConstantesFreezer.FREEZER_ESTADO_2_COSTO);
         this.estado.cambiarAFreezerEstado2();
     }
@@ -43,9 +44,9 @@ public class Freezer extends Personaje {
     /*
      * Se cambia el Estado al de Freezer Estado 3
      */
-    public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesFreezer.FREEZER_ESTADO_3_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         this.quitarKi(ConstantesFreezer.FREEZER_ESTADO_3_COSTO);
         this.estado.cambiarAFreezerEstado3();
     }
@@ -53,7 +54,6 @@ public class Freezer extends Personaje {
     /*
      * Determina si el personaje Freezer tiene Ki suficiente para realizar el ataque especial.
      */
-    @Override
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesFreezer.FREEZER_KI_ATAQUE_ESPECIAL);
     }

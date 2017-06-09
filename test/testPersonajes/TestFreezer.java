@@ -1,15 +1,16 @@
 package testPersonajes;
 
-import personajes.ErrorCambiarEstadoCondicionesNoCumplidas;
-import personajes.Freezer;
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
+import org.junit.Test;
+
+import personajes.ErrorNoPuedeCambiarEstado;
+import personajes.Freezer;
 
 public class TestFreezer{
+    
     private Freezer freezer;
 
     @Before
@@ -38,14 +39,14 @@ public class TestFreezer{
     	freezer.agregarKi(20);
         try {
             freezer.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(2, freezer.getIdEstado());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test05CambiarFreezerAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test05CambiarFreezerAEstado2KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
         freezer.cambiarAEstado2();
     }
 
@@ -54,14 +55,14 @@ public class TestFreezer{
     	freezer.agregarKi(50);
         try {
             freezer.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(3, freezer.getIdEstado());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test07CambiarFreezerAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test07CambiarFreezerAEstado3KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
         freezer.cambiarAEstado3();
     }
 

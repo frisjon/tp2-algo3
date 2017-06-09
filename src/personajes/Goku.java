@@ -15,6 +15,7 @@ public class Goku extends Personaje {
         this.vida = ConstantesGoku.GOKU_CANTIDAD_VIDA_INICIAL;
         this.ataqueEspecial = ConstantesGoku.GOKU_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = ConstantesGoku.GOKU_KI_ATAQUE_ESPECIAL;
+        this.aumentoAtaqueEspecial = ConstantesGoku.GOKU_PORCENTAJE_DANIO_ATAQUE_ESPECIAL;
     }
 
 
@@ -33,9 +34,9 @@ public class Goku extends Personaje {
      * Nota: El personaje Goku conoce el nivel de Ki requerido, y no el Estado. Es por eso que
      * se verifica la cantidad requirida de Ki para la transformacion en esta clase. No en Estado.
      */
-    public void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesGoku.GOKU_ESTADO_2_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         this.quitarKi(ConstantesGoku.GOKU_ESTADO_2_COSTO);
         this.estado.cambiarAGokuEstado2();
     }
@@ -43,9 +44,9 @@ public class Goku extends Personaje {
     /*
      * Se cambia el Estado al de Goku Estado 3
      */
-    public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesGoku.GOKU_ESTADO_3_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         this.quitarKi(ConstantesGoku.GOKU_ESTADO_3_COSTO);
         this.estado.cambiarAGokuEstado3();
     }
@@ -53,7 +54,6 @@ public class Goku extends Personaje {
     /*
      * Determina si el personaje Goku tiene Ki suficiente para realizar el ataque especial.
      */
-    @Override
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesGoku.GOKU_KI_ATAQUE_ESPECIAL);
     }

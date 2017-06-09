@@ -10,6 +10,7 @@ public final class ConstantesGohan {
     public static final String GOHAN_NOMBRE = "Gohan";
     public static final String GOHAN_NOMBRE_ATAQUE_ESPECIAL = "Masenko";
     public static final String GOHAN_MENSAJE_ALIADOS_SANOS = "Aliados sanos.";
+    public static final String GOHAN_MENSAJE_ALIADO_INVALIDO = "Aliado Invalido";
 
     public static final double GOHAN_ESTADO_1_PODER_DE_PELEA = 15;
     public static final double GOHAN_ESTADO_1_DISTANCIA_DE_ATAQUE = 2;

@@ -15,6 +15,7 @@ public abstract class Personaje implements ObjetoJuego {
     protected String ataqueEspecial;
     protected Casillero casillero;
     protected Consumible consumible;
+    protected double aumentoAtaqueEspecial;
     
         
     public String getNombre() {
@@ -113,7 +114,7 @@ public abstract class Personaje implements ObjetoJuego {
     } 
     
     public double getAumentoAtaqueEspecial() {
-        return estado.getAumentoAtaqueEspecial();
+        return this.aumentoAtaqueEspecial;
     }
     
     
@@ -127,8 +128,8 @@ public abstract class Personaje implements ObjetoJuego {
      */
     //public abstract void cambiarEstado(int idEstado);
     public abstract void cambiarAEstado1();
-    public abstract void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas;
-    public abstract void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas;
+    public abstract void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado;
+    public abstract void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado;
     //public abstract void cambiarAEstado4();
     
     /*

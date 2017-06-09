@@ -18,14 +18,14 @@ public final class ConstantesCell {
     public static final double CELL_ESTADO_2_PODER_DE_PELEA = 40;
     public static final double CELL_ESTADO_2_DISTANCIA_DE_ATAQUE = 4;
     public static final double CELL_ESTADO_2_VELOCIDAD = 3;
-    public static final double CELL_ESTADO_2_COSTO = 0;
+    public static final double CELL_ESTADO_2_COSTO = 4;
     public static final int CELL_ESTADO_2_ID = 2;
     public static final int CELL_ESTADO_2_COSTO_ATAQUE_ESPECIAL = 4;
 
     public static final double CELL_ESTADO_3_PODER_DE_PELEA = 80;
     public static final double CELL_ESTADO_3_DISTANCIA_DE_ATAQUE = 4;
     public static final double CELL_ESTADO_3_VELOCIDAD = 4;
-    public static final double CELL_ESTADO_3_COSTO = 0;
+    public static final double CELL_ESTADO_3_COSTO = 8;
     public static final int CELL_ESTADO_3_ID = 3;
     public static final int CELL_ESTADO_3_COSTO_ATAQUE_ESPECIAL = 8;
 }

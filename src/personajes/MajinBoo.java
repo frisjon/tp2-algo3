@@ -15,6 +15,7 @@ public class MajinBoo extends Personaje {
         this.vida = ConstantesMajinBoo.MAJINBOO_CANTIDAD_VIDA_INICIAL;
         this.ataqueEspecial = ConstantesMajinBoo.MAJINBOO_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = ConstantesMajinBoo.MAJINBOO_KI_ATAQUE_ESPECIAL;
+        this.aumentoAtaqueEspecial = ConstantesMajinBoo.MAJINBOO_PORCENTAJE_DANIO_ATAQUE_ESPECIAL;
     }
 
 
@@ -33,9 +34,9 @@ public class MajinBoo extends Personaje {
      * Nota: El personaje MajinBoo conoce el nivel de Ki requerido, y no el Estado. Es por eso que
      * se verifica la cantidad requirida de Ki para la transformacion en esta clase. No en Estado.
      */
-    public void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesMajinBoo.MAJINBOO_ESTADO_2_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         this.quitarKi(ConstantesMajinBoo.MAJINBOO_ESTADO_2_COSTO);
         this.estado.cambiarAMajinBooEstado2();
     }
@@ -43,9 +44,9 @@ public class MajinBoo extends Personaje {
     /*
      * Se cambia el Estado al de MajinBoo Estado 3
      */
-    public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(ConstantesMajinBoo.MAJINBOO_ESTADO_3_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
         this.quitarKi(ConstantesMajinBoo.MAJINBOO_ESTADO_3_COSTO);
         this.estado.cambiarAMajinBooEstado3();
     }
@@ -53,7 +54,6 @@ public class MajinBoo extends Personaje {
     /*
      * Determina si el personaje MajinBoo tiene Ki suficiente para realizar el ataque especial.
      */
-    @Override
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesMajinBoo.MAJINBOO_KI_ATAQUE_ESPECIAL);
     }

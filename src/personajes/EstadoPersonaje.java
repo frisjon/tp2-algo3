@@ -13,7 +13,6 @@ public class EstadoPersonaje {
     protected double poderPelea;
     protected double distanciaAtaque;
     protected double velocidad;
-    protected double aumentoAtaqueEspecial; 
     protected int idEstado;
     
     
@@ -45,10 +44,6 @@ public class EstadoPersonaje {
         this.velocidad = _velocidad;
     }
     
-    public void setAumentoAtaqueEspecial(double _aumentoAtaqueEspecial) {
-    	this.aumentoAtaqueEspecial = _aumentoAtaqueEspecial;
-    }
-    
     public void setIdEstado(int _idEstado) {
         this.idEstado = _idEstado;
     }
@@ -58,7 +53,6 @@ public class EstadoPersonaje {
         this.setDistanciaAtaque(ConstantesGoku.GOKU_ESTADO_1_DISTANCIA_DE_ATAQUE);
         this.setVelocidad(ConstantesGoku.GOKU_ESTADO_1_VELOCIDAD);
         this.setIdEstado(ConstantesGoku.GOKU_ESTADO_1_ID);
-        this.setAumentoAtaqueEspecial(ConstantesGoku.GOKU_PORCENTAJE_DANIO_ATAQUE_ESPECIAL);
     }
 
     public void cambiarAGokuEstado2() {
@@ -81,7 +75,6 @@ public class EstadoPersonaje {
         this.setDistanciaAtaque(ConstantesGohan.GOHAN_ESTADO_1_DISTANCIA_DE_ATAQUE);
         this.setVelocidad(ConstantesGohan.GOHAN_ESTADO_1_VELOCIDAD);
         this.setIdEstado(ConstantesGohan.GOHAN_ESTADO_1_ID);
-        this.setAumentoAtaqueEspecial(ConstantesGohan.GOHAN_PORCENTAJE_DANIO_ATAQUE_ESPECIAL);
     }
 
     public void cambiarAGohanEstado2() {
@@ -104,7 +97,6 @@ public class EstadoPersonaje {
         this.setDistanciaAtaque(ConstantesPiccolo.PICCOLO_ESTADO_1_DISTANCIA_DE_ATAQUE);
         this.setVelocidad(ConstantesPiccolo.PICCOLO_ESTADO_1_VELOCIDAD);
         this.setIdEstado(ConstantesPiccolo.PICCOLO_ESTADO_1_ID);
-        this.setAumentoAtaqueEspecial(ConstantesPiccolo.PICCOLO_PORCENTAJE_DANIO_ATAQUE_ESPECIAL);
     }
 
     public void cambiarAPiccoloEstado2() {
@@ -127,7 +119,6 @@ public class EstadoPersonaje {
         this.setDistanciaAtaque(ConstantesCell.CELL_ESTADO_1_DISTANCIA_DE_ATAQUE);
         this.setVelocidad(ConstantesCell.CELL_ESTADO_1_VELOCIDAD);
         this.setIdEstado(ConstantesCell.CELL_ESTADO_1_ID);
-        this.setAumentoAtaqueEspecial(ConstantesCell.CELL_PORCENTAJE_DANIO_ATAQUE_ESPECIAL);
     }
 
     public void cambiarACellEstado2() {
@@ -150,7 +141,6 @@ public class EstadoPersonaje {
         this.setDistanciaAtaque(ConstantesFreezer.FREEZER_ESTADO_1_DISTANCIA_DE_ATAQUE);
         this.setVelocidad(ConstantesFreezer.FREEZER_ESTADO_1_VELOCIDAD);
         this.setIdEstado(ConstantesFreezer.FREEZER_ESTADO_1_ID);
-        this.setAumentoAtaqueEspecial(ConstantesFreezer.FREEZER_PORCENTAJE_DANIO_ATAQUE_ESPECIAL);
     }
 
     public void cambiarAFreezerEstado2() {
@@ -173,7 +163,6 @@ public class EstadoPersonaje {
         this.setDistanciaAtaque(ConstantesMajinBoo.MAJINBOO_ESTADO_1_DISTANCIA_DE_ATAQUE);
         this.setVelocidad(ConstantesMajinBoo.MAJINBOO_ESTADO_1_VELOCIDAD);
         this.setIdEstado(ConstantesMajinBoo.MAJINBOO_ESTADO_1_ID);
-        this.setAumentoAtaqueEspecial(ConstantesMajinBoo.MAJINBOO_PORCENTAJE_DANIO_ATAQUE_ESPECIAL);
     }
 
     public void cambiarAMajinBooEstado2() {
@@ -190,12 +179,8 @@ public class EstadoPersonaje {
         this.setIdEstado(ConstantesMajinBoo.MAJINBOO_ESTADO_3_ID);
     }
 
-    public double getAumentoAtaqueEspecial() {
-        return this.aumentoAtaqueEspecial;
-    }
-
     public double getAumentoPasiva() {
-        return 0;
+        return 9001;
     }
 
 
