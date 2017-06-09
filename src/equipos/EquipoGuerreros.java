@@ -1,9 +1,9 @@
 package equipos;
 
 import personajes.Personaje;
-import personajes.Gohan.Gohan;
-import personajes.Goku.Goku;
-import personajes.Piccolo.Piccolo;
+import personajes.Gohan;
+import personajes.Goku;
+import personajes.Piccolo;
 
 /**
  * Clase que representa al equipo de los guerreros z.

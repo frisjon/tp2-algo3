@@ -1,5 +1,6 @@
 package testMotorPelea;
 
+import consumibles.Esfera;
 import junit.framework.*;
 import motor.Pelea;
 import personajes.*;
