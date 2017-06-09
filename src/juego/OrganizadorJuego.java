@@ -26,10 +26,6 @@ public class OrganizadorJuego {
 		this.turno = jugador_que_juega;
 	}
 	
-	public void otorgarEquipo(Jugador jugador, Equipo equipo) {
-		jugador.establecerEquipo(equipo);
-	}
-	
 	public void colocarPersonajesEnTablero(Jugador jugador1, Jugador jugador2) {
 			
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
