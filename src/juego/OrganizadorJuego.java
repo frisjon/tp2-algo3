@@ -1,10 +1,10 @@
 package juego;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import equipos.Equipo;
 import jugadores.Jugador;
-import personajes.Personaje;
 import tablero.Tablero;
 /**
  * Clase que representa al Organizador del Juego, encargado de generar el tablero, ubicar los personajes, los consumibles, etc.
@@ -32,11 +32,10 @@ public class OrganizadorJuego {
 	
 	public void colocarPersonajesEnTablero(Jugador jugador1, Jugador jugador2) {
 			
-		ArrayList<ArrayList<Personaje>> listaEquipos = new ArrayList<ArrayList<Personaje>>();
-		ArrayList<Personaje> equipo1 = new ArrayList<Personaje>();
-		ArrayList<Personaje> equipo2 = new ArrayList<Personaje>();
-		equipo1 = (ArrayList<Personaje>) jugador1.getEquipo().pedirListaPersonajes();
-		equipo2 = (ArrayList<Personaje>) jugador2.getEquipo().pedirListaPersonajes();
+		List<Equipo> listaEquipos = new ArrayList<Equipo>();
+		
+		Equipo equipo1 = jugador1.getEquipo(); 
+		Equipo equipo2 = jugador2.getEquipo();
 		
 		listaEquipos.add(equipo1);
 		listaEquipos.add(equipo2);

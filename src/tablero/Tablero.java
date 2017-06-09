@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import consumibles.Consumible;
+import equipos.Equipo;
 import personajes.Personaje;
 
 public class Tablero {
@@ -46,25 +47,21 @@ public class Tablero {
 		return null; // momentaneo asi no me molesta con los try - catch
 	}
 	
-	public void colocarPersonajes(ArrayList<ArrayList<Personaje>> equipos){
+	public void colocarPersonajes(List<Equipo> equipos){
 		int tipoDeExtremo = -1;
 		
 		for (int j = 0; j < equipos.size(); j++){
 			// recorro equipo por equipo
 			
 			tipoDeExtremo++;
-			List<Personaje> personajes = equipos.get(j);
+			List<Personaje> personajes = equipos.get(j).pedirListaPersonajes();
 			for (int i = 0; i < personajes.size(); i++){
 				// recorro todos los personajes del equipo
 				
 				Personaje personaje = personajes.get(i);
 				Casillero casillero = this.buscarExtremo(tipoDeExtremo);
 				personaje.setCasillero(casillero);
-				try {
-					casillero.setObjeto(personaje);
-				} catch (ErrorCasilleroYaOcupado e) {
-					continue; // nunca va a entrar porque se chequea en buscarExtremo
-				}
+				casillero.setObjeto(personaje);
 				this.personajes.add(personaje);
 			}		
 		}		

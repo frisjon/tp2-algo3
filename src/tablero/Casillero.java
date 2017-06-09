@@ -21,9 +21,10 @@ public class Casillero {
 		return this.objeto;
 	}
 	
-	public void setObjeto(ObjetoJuego objeto) throws ErrorCasilleroYaOcupado {
+	public void setObjeto(ObjetoJuego objeto) {
 		if (!this.estaLibre())
-			throw new ErrorCasilleroYaOcupado("Casillero ocupado");
+			//throw new ErrorCasilleroYaOcupado("Casillero ocupado");
+			return;
 		
 		this.objeto = objeto;
 	}
@@ -35,7 +36,7 @@ public class Casillero {
 		if (tipoDeExtremo == 1) // derecha
 			return (this.coordenada.getX() + 1 == ancho);
 				
-		if (tipoDeExtremo == 0) // arriba 
+		if (tipoDeExtremo == 2) // arriba 
 			return (this.coordenada.getY() == 0);
 		
 		// abajo	
