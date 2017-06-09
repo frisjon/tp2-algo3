@@ -1,3 +1,11 @@
 /ConstantesPersonajes.class
 /EstadoPersonaje.class
 /Personaje.class
+/Cell.class
+/ConstantesCell.class
+/ErrorCambiarEstadoCondicionesNoCumplidas.class
+/Freezer.class
+/Gohan.class
+/Goku.class
+/MajinBoo.class
+/Piccolo.class

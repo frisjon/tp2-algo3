@@ -13,11 +13,8 @@ public class Jugador {
 	private String nombre;
 	private Equipo equipo;
 	
-	public Jugador(String nombre) {
+	public Jugador(String nombre, Equipo equipo_jugador) {
 		this.nombre = nombre;
-	}
-	
-	public void establecerEquipo(Equipo equipo_jugador) {
 		this.equipo = equipo_jugador;
 	}
 	
