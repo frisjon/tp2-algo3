@@ -6,8 +6,11 @@ import org.junit.Test;
 import org.junit.Assert;
 import junit.framework.*;
 import java.util.ArrayList;
+
+import personajes.Gohan;
+import personajes.Goku;
 import personajes.Personaje;
-import personajes.Gohan.Gohan;
+import personajes.Piccolo;
 
 public class TestEquipo extends TestCase {
 	

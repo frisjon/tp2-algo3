@@ -6,7 +6,8 @@ import consumibles.Esfera;
 
 import org.junit.Assert;
 import junit.framework.*;
-import Gohan;
+import personajes.Gohan;
+import personajes.Personaje;
 import tablero.Casillero;
 import tablero.ErrorCasilleroYaOcupado;
 import tablero.ErrorNoHayObjeto;
@@ -51,7 +52,7 @@ public class TestCasillero extends TestCase {
 	@Test
 	public void test06AlPonerUnObjetoEnCasilleroOcupadoDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado {
 		Casillero casillero = new Casillero(20, 20);
-		Gohan gohan = new Gohan();
+		Personaje gohan = new Gohan();
 		Esfera esfera = new Esfera();
 		casillero.setObjeto(gohan);
 		try {
