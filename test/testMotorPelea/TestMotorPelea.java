@@ -2,19 +2,20 @@ package testMotorPelea;
 
 import consumibles.Esfera;
 import junit.framework.*;
+import motor.ErrorNoHayKi;
 import motor.Pelea;
 import personajes.*;
 
 public class TestMotorPelea extends TestCase{
     private Gohan gohan1;
     private Freezer freezer1;
-    private Pelea pelea;
+    //private Pelea pelea;
     private Esfera esfera;
     
     @Override
     protected void setUp() throws Exception{
         super.setUp();
-        this.pelea = new Pelea();
+       // this.pelea = new Pelea();
         this.gohan1 = new Gohan();
         this.freezer1 = new Freezer();
         this.esfera = new Esfera();

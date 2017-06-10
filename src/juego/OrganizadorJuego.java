@@ -36,7 +36,6 @@ public class OrganizadorJuego {
 		listaEquipos.add(equipo1);
 		listaEquipos.add(equipo2);
 		
-		this.tablero.colocarPersonajes(jugador1.getEquipo(), jugador2.getEquipo());
-		this.tablero.mostrarPosicionesPersonajes();
+		this.tablero.colocarPersonajes(listaEquipos);
 	}
 }

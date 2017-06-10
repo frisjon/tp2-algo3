@@ -1,15 +1,16 @@
 package testPersonajes;
 
-import personajes.ErrorCambiarEstadoCondicionesNoCumplidas;
-import personajes.Goku;
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
+import org.junit.Test;
+
+import personajes.ErrorNoPuedeCambiarEstado;
+import personajes.Goku;
 
 public class TestGoku{
+    
     private Goku goku;
 
     @Before
@@ -38,14 +39,14 @@ public class TestGoku{
     	goku.agregarKi(20);
         try {
             goku.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(2, goku.getIdEstado());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test05CambiarGokuAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test05CambiarGokuAEstado2KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
     	goku.cambiarAEstado2();
     }
 
@@ -54,20 +55,15 @@ public class TestGoku{
     	goku.agregarKi(50);
         try {
             goku.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(3, goku.getIdEstado());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test07CambiarGokuAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test07CambiarGokuAEstado3KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
         goku.cambiarAEstado3();
-    }
-
-    @Test
-    public void test08() {
-
     }
 }
 

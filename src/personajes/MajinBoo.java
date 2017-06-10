@@ -1,20 +1,18 @@
 package personajes;
 
-import personajes.ConstantesMajinBoo;
-import personajes.Personaje;
-import motor.ErrorNoHayKi;
-import personajes.EstadoPersonaje;
-
 public class MajinBoo extends Personaje {
+
     public MajinBoo() {
         this.estado = new EstadoPersonaje();
         this.estado.cambiarAMajinBooEstado1();
 
-        this.ki = ConstantesMajinBoo.MAJINBOO_CANTIDAD_KI_INICIAL;
-        this.nombre = ConstantesMajinBoo.MAJINBOO_NOMBRE;
-        this.vida = ConstantesMajinBoo.MAJINBOO_CANTIDAD_VIDA_INICIAL;
-        this.ataqueEspecial = ConstantesMajinBoo.MAJINBOO_NOMBRE_ATAQUE_ESPECIAL;
-        this.kiAtaqueEspecial = ConstantesMajinBoo.MAJINBOO_KI_ATAQUE_ESPECIAL;
+        this.ki = ConstantesPersonajes.MAJINBOO_CANTIDAD_KI_INICIAL;
+        this.nombre = ConstantesPersonajes.MAJINBOO_NOMBRE;
+        this.vida = ConstantesPersonajes.MAJINBOO_CANTIDAD_VIDA_INICIAL;
+        this.ataqueEspecial = ConstantesPersonajes.MAJINBOO_NOMBRE_ATAQUE_ESPECIAL;
+        this.kiAtaqueEspecial = ConstantesPersonajes.MAJINBOO_KI_ATAQUE_ESPECIAL;
+        this.aumentoAtaquePasiva = ConstantesPersonajes.MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
+        this.aumentoAtaqueEspecial = ConstantesPersonajes.MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
     }
 
 
@@ -33,28 +31,27 @@ public class MajinBoo extends Personaje {
      * Nota: El personaje MajinBoo conoce el nivel de Ki requerido, y no el Estado. Es por eso que
      * se verifica la cantidad requirida de Ki para la transformacion en esta clase. No en Estado.
      */
-    public void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        if (!this.kiSuficiente(ConstantesMajinBoo.MAJINBOO_ESTADO_2_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
-        this.quitarKi(ConstantesMajinBoo.MAJINBOO_ESTADO_2_COSTO);
+    public void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado {
+        if (!this.kiSuficiente(ConstantesPersonajes.MAJINBOO_ESTADO_2_COSTO))
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
+        this.quitarKi(ConstantesPersonajes.MAJINBOO_ESTADO_2_COSTO);
         this.estado.cambiarAMajinBooEstado2();
     }
 
     /*
      * Se cambia el Estado al de MajinBoo Estado 3
      */
-    public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        if (!this.kiSuficiente(ConstantesMajinBoo.MAJINBOO_ESTADO_3_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
-        this.quitarKi(ConstantesMajinBoo.MAJINBOO_ESTADO_3_COSTO);
+    public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
+        if (!this.kiSuficiente(ConstantesPersonajes.MAJINBOO_ESTADO_3_COSTO))
+            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
+        this.quitarKi(ConstantesPersonajes.MAJINBOO_ESTADO_3_COSTO);
         this.estado.cambiarAMajinBooEstado3();
     }
 
     /*
      * Determina si el personaje MajinBoo tiene Ki suficiente para realizar el ataque especial.
      */
-    @Override
     public boolean puedeRealizarAtaqueEspecial() {
-        return this.kiSuficiente(ConstantesMajinBoo.MAJINBOO_KI_ATAQUE_ESPECIAL);
+        return this.kiSuficiente(ConstantesPersonajes.MAJINBOO_KI_ATAQUE_ESPECIAL);
     }
 }

@@ -1,20 +1,21 @@
 package personajes;
 
-import consumibles.Consumible;
-import motor.ErrorNoHayKi;
 import tablero.Casillero;
 import tablero.ObjetoJuego;
+import consumibles.Consumible;
 
 public abstract class Personaje implements ObjetoJuego {
-    
-    protected String nombre;
-    protected double vida;
+
     protected double ki;
-    protected EstadoPersonaje estado;
+    protected double vida;    
     protected double kiAtaqueEspecial;
+    protected double aumentoAtaqueEspecial;
+    protected double aumentoAtaquePasiva;
+    protected String nombre;
     protected String ataqueEspecial;
     protected Casillero casillero;
     protected Consumible consumible;
+    protected EstadoPersonaje estado;
     
         
     public String getNombre() {
@@ -29,27 +30,27 @@ public abstract class Personaje implements ObjetoJuego {
         return this.ki;
     }
     
-    public void agregarKi(double _ki) //throw ErrorValorNegativo
+    public void agregarKi(double _ki)
     {
-        if (_ki < 0) return; //throw ErrorValorNegativo;
+        if (_ki < 0) return;
         this.ki += _ki;
     }
     
-    public void quitarKi(double _ki) //throw ErrorValorNegativo
+    public void quitarKi(double _ki)
     {
-        if (_ki < 0) return; //throw ErrorValorNegativo;
+        if (_ki < 0) return;
         this.ki -= _ki;
     }
     
-    public void agregarVida(double _vida) //throw ErrorValorNegativo
+    public void agregarVida(double _vida)
     {
-        if (_vida < 0) return; //throw ErrorValorNegativo;
+        if (_vida < 0) return;
         this.vida += _vida;
     }
     
-    public void quitarVida(double _vida) //throw ErrorValorNegativo
+    public void quitarVida(double _vida)
     {
-        if (_vida < 0) return; //throw ErrorValorNegativo;
+        if (_vida < 0) return;
         this.vida -= _vida;
     }
     
@@ -105,7 +106,7 @@ public abstract class Personaje implements ObjetoJuego {
     }
     
     public double getAumentoPasiva() {
-        return this.estado.getAumentoPasiva();
+        return this.aumentoAtaquePasiva;
     }
     
     public double getKiNecesario() {
@@ -113,7 +114,7 @@ public abstract class Personaje implements ObjetoJuego {
     } 
     
     public double getAumentoAtaqueEspecial() {
-        return estado.getAumentoAtaqueEspecial();
+        return this.aumentoAtaqueEspecial;
     }
     
     
@@ -127,8 +128,8 @@ public abstract class Personaje implements ObjetoJuego {
      */
     //public abstract void cambiarEstado(int idEstado);
     public abstract void cambiarAEstado1();
-    public abstract void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas;
-    public abstract void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas;
+    public abstract void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado;
+    public abstract void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado;
     //public abstract void cambiarAEstado4();
     
     /*

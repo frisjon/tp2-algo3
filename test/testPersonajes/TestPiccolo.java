@@ -1,21 +1,26 @@
 package testPersonajes;
 
-import personajes.ErrorCambiarEstadoCondicionesNoCumplidas;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import personajes.ErrorNoPuedeCambiarEstado;
 import personajes.Piccolo;
 import personajes.Gohan;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-
 public class TestPiccolo{
+    
     private Piccolo piccolo;
+    private Gohan gohan;
 
     @Before
     public void setUp() {
         piccolo = new Piccolo();
+        gohan = new Gohan();
+        
+        piccolo.setProtegido(gohan);
     }
 
     @Test
@@ -39,33 +44,33 @@ public class TestPiccolo{
     	piccolo.agregarKi(20);
         try {
             piccolo.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(2, piccolo.getIdEstado());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test05CambiarPiccoloAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test05CambiarPiccoloAEstado2KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
+        piccolo.agregarKi(19);
         piccolo.cambiarAEstado2();
     }
 
     @Test
-    public void test06CambiarPiccoloAEstado3() {
-    	Gohan gohan = new Gohan();
-    	piccolo.setProtegido(gohan);
-    	gohan.quitarVida(211);
+    public void test06CambiarPiccoloAEstado3() throws ErrorNoPuedeCambiarEstado {
+    	gohan.quitarVida(241);
         try {
             piccolo.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(3, piccolo.getIdEstado());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test07CambiarPiccoloAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test07CambiarPiccoloAEstado3KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
         piccolo.cambiarAEstado3();
     }
+   
 }
 

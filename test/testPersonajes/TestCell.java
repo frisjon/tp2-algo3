@@ -1,13 +1,16 @@
 package testPersonajes;
 
-import personajes.Cell;
-import personajes.ErrorCambiarEstadoCondicionesNoCumplidas;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.Test;
+
+import personajes.ErrorNoPuedeCambiarEstado;
+import personajes.Cell;
 
 public class TestCell{
+    
     private Cell cell;
 
     @Before
@@ -32,38 +35,40 @@ public class TestCell{
     }
 
     @Test
-    public void test04CambiarCellAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    public void test04CambiarCellAEstado2() throws ErrorNoPuedeCambiarEstado {
     	cell.agregarKi(20);
-        for (int i=0;i<3;i++)
+        for (int i=0;i<4;i++)
         	cell.aumentarCantidadAbsorciones();
         try {
             cell.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(2, cell.getIdEstado());
+        assertEquals(0, (int)cell.getKi());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test05CambiarCellAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas{
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test05CambiarCellAEstado2KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado{
     	cell.cambiarAEstado2();
     }
 
     @Test
-    public void test06CambiarCellAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-    	cell.agregarKi(20);
-        for (int i=0;i<3;i++)
+    public void test06CambiarCellAEstado3() throws ErrorNoPuedeCambiarEstado {
+    	cell.agregarKi(40);
+        for (int i=0;i<8;i++)
         	cell.aumentarCantidadAbsorciones();
         try {
             cell.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(3, cell.getIdEstado());
+        assertEquals(0, (int)cell.getKi());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test07CambiarCellAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test07CambiarCellAEstado3KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
     	cell.cambiarAEstado3();
     }
 

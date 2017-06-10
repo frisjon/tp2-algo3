@@ -29,14 +29,14 @@ public class Casillero {
 		this.objeto = objeto;
 	}
 	
-	public boolean esExtremo (int tipoDeExtremo, int ancho, int alto){
-		if (tipoDeExtremo == 0) // izquierda
+	public boolean esExtremo (String tipoDeExtremo, int ancho, int alto){
+		if (tipoDeExtremo.equals(Extremos.izquierda))
 			return (this.coordenada.getX() == 0);
 		
-		if (tipoDeExtremo == 1) // derecha
+		if (tipoDeExtremo.equals(Extremos.derecha))
 			return (this.coordenada.getX() + 1 == ancho);
 				
-		if (tipoDeExtremo == 2) // arriba 
+		if (tipoDeExtremo.equals(Extremos.arriba)) 
 			return (this.coordenada.getY() == 0);
 		
 		// abajo	

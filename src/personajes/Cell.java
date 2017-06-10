@@ -1,10 +1,5 @@
 package personajes;
 
-import personajes.ConstantesCell;
-import personajes.Personaje;
-import personajes.EstadoPersonaje;
-import personajes.ErrorCambiarEstadoCondicionesNoCumplidas;
-
 public class Cell extends Personaje {
 	
     private int cantidadAbsorciones;
@@ -13,12 +8,14 @@ public class Cell extends Personaje {
         this.estado = new EstadoPersonaje();
         this.estado.cambiarACellEstado1();
 
-        this.ki = ConstantesCell.CELL_CANTIDAD_KI_INICIAL;
-        this.nombre = ConstantesCell.CELL_NOMBRE;
-        this.vida = ConstantesCell.CELL_CANTIDAD_VIDA_INICIAL;
-        this.ataqueEspecial = ConstantesCell.CELL_NOMBRE_ATAQUE_ESPECIAL;
-        this.kiAtaqueEspecial = ConstantesCell.CELL_KI_ATAQUE_ESPECIAL;
+        this.ki = ConstantesPersonajes.CELL_CANTIDAD_KI_INICIAL;
+        this.nombre = ConstantesPersonajes.CELL_NOMBRE;
+        this.vida = ConstantesPersonajes.CELL_CANTIDAD_VIDA_INICIAL;
+        this.ataqueEspecial = ConstantesPersonajes.CELL_NOMBRE_ATAQUE_ESPECIAL;
+        this.kiAtaqueEspecial = ConstantesPersonajes.CELL_KI_ATAQUE_ESPECIAL;
         this.cantidadAbsorciones = 0;
+        this.aumentoAtaquePasiva = ConstantesPersonajes.CELL_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
+        this.aumentoAtaqueEspecial = ConstantesPersonajes.CELL_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
     }
 
 
@@ -37,37 +34,30 @@ public class Cell extends Personaje {
      * Nota: El personaje Cell conoce el nivel de Ki requerido, y no el Estado. Es por eso que
      * se verifica la cantidad requirida de Ki para la transformacion en esta clase. No en Estado.
      */
-    public void cambiarAEstado2() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        if (!this.kiSuficiente(ConstantesCell.CELL_ESTADO_2_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
-        if (!(ConstantesCell.CELL_ESTADO_2_COSTO_ATAQUE_ESPECIAL <= this.cantidadAbsorciones))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas(ConstantesCell.CELL_MENSAJE_ABSORCIONES_INSUFICIENTES);
-        this.quitarKi(ConstantesCell.CELL_ESTADO_2_COSTO);
+    public void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado {
+        if (!(ConstantesPersonajes.CELL_ESTADO_2_COSTO <= this.cantidadAbsorciones))
+            throw new ErrorNoPuedeCambiarEstado(ConstantesPersonajes.CELL_MENSAJE_ABSORCIONES_INSUFICIENTES);
         this.estado.cambiarACellEstado2();
     }
 
     /*
      * Se cambia el Estado al de Cell Estado 3
      */
-    public void cambiarAEstado3() throws ErrorCambiarEstadoCondicionesNoCumplidas {
-        if (!this.kiSuficiente(ConstantesCell.CELL_ESTADO_3_COSTO))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas("Ki insuficiente.");
-        if (!(ConstantesCell.CELL_ESTADO_3_COSTO_ATAQUE_ESPECIAL <= this.cantidadAbsorciones))
-            throw new ErrorCambiarEstadoCondicionesNoCumplidas(ConstantesCell.CELL_MENSAJE_ABSORCIONES_INSUFICIENTES);
-        this.quitarKi(ConstantesCell.CELL_ESTADO_3_COSTO);
+    public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
+        if (!(ConstantesPersonajes.CELL_ESTADO_3_COSTO <= this.cantidadAbsorciones))
+            throw new ErrorNoPuedeCambiarEstado(ConstantesPersonajes.CELL_MENSAJE_ABSORCIONES_INSUFICIENTES);
         this.estado.cambiarACellEstado3();
     }
     
     public void aumentarCantidadAbsorciones() {
-    	this.quitarKi(ConstantesCell.CELL_KI_ATAQUE_ESPECIAL);
+    	this.quitarKi(ConstantesPersonajes.CELL_KI_ATAQUE_ESPECIAL);
     	this.cantidadAbsorciones += 1;
     }
 
     /*
      * Determina si el personaje Cell tiene Ki suficiente para realizar el ataque especial.
      */
-    @Override
     public boolean puedeRealizarAtaqueEspecial() {
-        return this.kiSuficiente(ConstantesCell.CELL_KI_ATAQUE_ESPECIAL);
+        return this.kiSuficiente(ConstantesPersonajes.CELL_KI_ATAQUE_ESPECIAL);
     }
 }

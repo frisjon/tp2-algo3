@@ -1,15 +1,17 @@
 package testPersonajes;
 
-import personajes.ErrorCambiarEstadoCondicionesNoCumplidas;
-import personajes.MajinBoo;
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
+import org.junit.Test;
+
+import personajes.ErrorNoPuedeCambiarEstado;
+import personajes.MajinBoo;
+
 
 public class TestMajinBoo{
+    
     private MajinBoo majinboo;
 
     @Before
@@ -38,14 +40,14 @@ public class TestMajinBoo{
     	majinboo.agregarKi(20);
         try {
             majinboo.cambiarAEstado2();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(2, majinboo.getIdEstado());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test05CambiarMajinBooAEstado2KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test05CambiarMajinBooAEstado2KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
         majinboo.cambiarAEstado2();
     }
 
@@ -54,14 +56,14 @@ public class TestMajinBoo{
     	majinboo.agregarKi(50);
         try {
             majinboo.cambiarAEstado3();
-        } catch (ErrorCambiarEstadoCondicionesNoCumplidas e1) {
+        } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
         assertEquals(3, majinboo.getIdEstado());
     }
 
-    @Test (expected=ErrorCambiarEstadoCondicionesNoCumplidas.class)
-    public void test07CambiarMajinBooAEstado3KiInsuficienteLanzaExcepcion() throws ErrorCambiarEstadoCondicionesNoCumplidas {
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test07CambiarMajinBooAEstado3KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
         majinboo.cambiarAEstado3();
     }
 
