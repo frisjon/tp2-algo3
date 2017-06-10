@@ -25,7 +25,7 @@ public class Equipo {
 	 */
 	public ArrayList<Personaje> pedirListaPersonajes() {
 		 ArrayList<Personaje> personajes_enlistados = new ArrayList<Personaje>();
-		 Enumeration<Personaje> personajes = listapersonajes.elements();
+		 Enumeration<Personaje> personajes = this.listapersonajes.elements();
 		 while(personajes.hasMoreElements()) {
 			 personajes_enlistados.add(personajes.nextElement());
 		 }
