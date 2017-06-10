@@ -75,13 +75,31 @@ public class TestGohan {
 
     @Test (expected=ErrorNoPuedeCambiarEstado.class)
     public void test07CambiarGohanAEstado3KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
-        gohan.agregarKi(30);
+        gohan.agregarKi(29);
         gohan.cambiarAEstado3();
     }
-
-    @Test
-    public void test08() {
-
+    
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test08CambiarGohanAEstado3AliadosNoDaniadosLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
+        gohan.agregarKi(30);
+        goku.quitarVida(350);
+        piccolo.quitarVida(350);
+        gohan.cambiarAEstado3();
     }
+    
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
+    public void test09CambiarAPiccoloAEstado1YGohanNoPuedeCambiar () throws ErrorNoPuedeCambiarEstado {
+        piccolo.agregarKi(10);
+        piccolo.cambiarAEstado1();
+        gohan.cambiarAEstado2();
+    }
+    
+    @Test
+    public void test10CambiarAPiccoloAEstado2YGohanNoPuedeCambiar () throws ErrorNoPuedeCambiarEstado {
+        piccolo.agregarKi(20);
+        piccolo.cambiarAEstado2();
+        gohan.cambiarAEstado2();
+    }
+
 }
 

@@ -65,10 +65,5 @@ public class TestGoku{
     public void test07CambiarGokuAEstado3KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
         goku.cambiarAEstado3();
     }
-
-    @Test
-    public void test08() {
-
-    }
 }
 
