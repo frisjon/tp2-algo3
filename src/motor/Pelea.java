@@ -10,7 +10,7 @@ import motor.ErrorNoSePuedeRealizarAtaqueEspecial;
  * @author Thomas
  *
  */
-public class Pelea {
+public abstract class Pelea {
     public Pelea(){
     }
     
@@ -25,7 +25,7 @@ public class Pelea {
      * @param dmgRealizado
      * @param kiUtilizado
      */
-    public void actualizarPersonajes(Personaje pj1, Personaje pj2, double hpSanado, double dmgRealizado, double kiUtilizado){
+    private static boolean actualizarPersonajes(Personaje pj1, Personaje pj2, double hpSanado, double dmgRealizado, double kiUtilizado){
         if (pj1.tieneConsumible()){
             Consumible consumiblePj1 = pj1.getConsumible();
             
@@ -39,8 +39,11 @@ public class Pelea {
         pj2.quitarVida(dmgRealizado);
         
         if (pj2.getVida() == 0.0){
-            pj2.morir();
+            // pj2.morir();
+        	return true;
         }
+        
+        return false;
     }
     
     /**
@@ -52,9 +55,9 @@ public class Pelea {
      * @param pj1
      * @param pj2
      */
-    public void ataqueBasico(Personaje pj1, Personaje pj2){
-        double poderPeleaPj1 = pj1.getPoderDePelea();
-        double poderPeleaPj2 = pj2.getPoderDePelea();
+    public static boolean ataqueBasico(Personaje pj1, Personaje pj2){
+        double poderPeleaPj1 = pj1.getPoderPelea();
+        double poderPeleaPj2 = pj2.getPoderPelea();
         /**
          * Daño realizado al pj2.
          */
@@ -92,7 +95,7 @@ public class Pelea {
         
         dmg = poderPeleaPj1 + aumentoConsumible + aumentoPasiva - descuentoDifPoder;
         
-        this.actualizarPersonajes(pj1, pj2, 0, dmg, 0);
+        return Pelea.actualizarPersonajes(pj1, pj2, 0, dmg, 0);
     }
     
     /**
@@ -106,10 +109,10 @@ public class Pelea {
      * @throws ErrorNoHayKi
      * @throws ErrorNoSePuedeRealizarAtaqueEspecial
      */
-    public void ataqueEspecial(Personaje pj1, Personaje pj2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
+    public static boolean ataqueEspecial(Personaje pj1, Personaje pj2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
         double kiAtaqueEspecial = pj1.getKiNecesario();
-        double poderPeleaPj1 = pj1.getPoderDePelea();
-        double poderPeleaPj2 = pj2.getPoderDePelea();
+        double poderPeleaPj1 = pj1.getPoderPelea();
+        double poderPeleaPj2 = pj2.getPoderPelea();
         /**
          * Daño realizado al pj2.
          */
@@ -156,6 +159,6 @@ public class Pelea {
         
         dmg = poderPeleaPj1 + aumentoConsumible + aumentoPasiva + aumentoAtaqueEspecial - descuentoDifPoder;
         
-        this.actualizarPersonajes(pj1, pj2, 0, dmg, kiAtaqueEspecial);
+        return Pelea.actualizarPersonajes(pj1, pj2, 0, dmg, kiAtaqueEspecial);
     }
 }

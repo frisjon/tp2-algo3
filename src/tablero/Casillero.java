@@ -30,13 +30,13 @@ public class Casillero {
 	}
 	
 	public boolean esExtremo (int tipoDeExtremo, int ancho, int alto){
-		if (tipoDeExtremo == 0) // izquierda
+		if (tipoDeExtremo == Extremos.izquierda)
 			return (this.coordenada.getX() == 0);
 		
-		if (tipoDeExtremo == 1) // derecha
+		if (tipoDeExtremo == Extremos.derecha)
 			return (this.coordenada.getX() + 1 == ancho);
 				
-		if (tipoDeExtremo == 2) // arriba 
+		if (tipoDeExtremo == Extremos.arriba) 
 			return (this.coordenada.getY() == 0);
 		
 		// abajo	

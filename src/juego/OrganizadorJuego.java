@@ -37,6 +37,5 @@ public class OrganizadorJuego {
 		listaEquipos.add(equipo2);
 		
 		this.tablero.colocarPersonajes(listaEquipos);
-		this.tablero.mostrarPosicionesPersonajes();
 	}
 }
