@@ -37,7 +37,7 @@ public class Tablero {
 		this.crearCasilleros();
 	}
 
-	private Casillero buscarExtremo(int tipoDeExtremo) {
+	private Casillero buscarExtremo(String tipoDeExtremo) {
 		for (int i = 0; i < this.casilleros.size(); i++){
 			Casillero casillero = this.casilleros.get(i); 
 			if (casillero.estaLibre() && casillero.esExtremo(tipoDeExtremo, this.ancho, this.alto))
@@ -49,7 +49,7 @@ public class Tablero {
 	}
 	
 	public void colocarPersonajes(List<Equipo> equipos){
-		int tipoDeExtremo = Extremos.izquierda;
+		String tipoDeExtremo = Extremos.izquierda;
 		
 		for (int j = 0; j < equipos.size(); j++){
 			// recorro equipo por equipo

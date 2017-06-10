@@ -4,7 +4,7 @@ import java.util.List;
 
 import personajes.Personaje;
 
-public abstract class ValidadorMovimientoyAtaque {
+public final class ValidadorMovimientoyAtaque {
 	
 	public static boolean movimientoValido(Personaje personaje, List<Casillero> camino){
 				

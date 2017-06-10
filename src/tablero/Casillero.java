@@ -29,7 +29,7 @@ public class Casillero {
 		this.objeto = objeto;
 	}
 	
-	public boolean esExtremo (int tipoDeExtremo, int ancho, int alto){
+	public boolean esExtremo (String tipoDeExtremo, int ancho, int alto){
 		if (tipoDeExtremo == Extremos.izquierda)
 			return (this.coordenada.getX() == 0);
 		

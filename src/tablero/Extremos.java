@@ -1,17 +1,28 @@
 package tablero;
 
-public abstract class Extremos {
+import java.util.ArrayList;
+import java.util.List;
+
+public final class Extremos {
 	
-	 public static final int izquierda = 1;
-	 public static final int derecha = 2;
-	 public static final int arriba = 3;
-	 public static final int abajo = 4;
-	 
-	 public static int obtenerSiguienteExtremo (int extremoActual){
-		 if (extremoActual == 4)
-			 return 1;
+	 public static final String izquierda = "izq";
+	 public static final String derecha = "der";
+	 public static final String arriba = "arriba";
+	 public static final String abajo = "abajo";
+	 private static final List<String> orden = new ArrayList<String>(){
+		 {
+			 add(izquierda);
+		     add(derecha);
+		     add(arriba);
+		     add(abajo);	        
+		 }
+	 };
+
+	 public static String obtenerSiguienteExtremo (String extremoActual){
+		 if (orden.indexOf(extremoActual) == orden.size() - 1)
+			 return izquierda;
 		 
-		 return extremoActual++;
+		 return orden.get(orden.indexOf(extremoActual) + 1); 
 	 }
 
 }

@@ -10,7 +10,7 @@ import motor.ErrorNoSePuedeRealizarAtaqueEspecial;
  * @author Thomas
  *
  */
-public abstract class Pelea {
+public final class Pelea {
     public Pelea(){
     }
     
@@ -95,7 +95,7 @@ public abstract class Pelea {
         
         dmg = poderPeleaPj1 + aumentoConsumible + aumentoPasiva - descuentoDifPoder;
         
-        return Pelea.actualizarPersonajes(pj1, pj2, 0, dmg, 0);
+        return actualizarPersonajes(pj1, pj2, 0, dmg, 0);
     }
     
     /**
@@ -159,6 +159,6 @@ public abstract class Pelea {
         
         dmg = poderPeleaPj1 + aumentoConsumible + aumentoPasiva + aumentoAtaqueEspecial - descuentoDifPoder;
         
-        return Pelea.actualizarPersonajes(pj1, pj2, 0, dmg, kiAtaqueEspecial);
+        return actualizarPersonajes(pj1, pj2, 0, dmg, kiAtaqueEspecial);
     }
 }
