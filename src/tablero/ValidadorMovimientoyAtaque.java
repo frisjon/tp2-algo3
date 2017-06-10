@@ -6,6 +6,18 @@ import personajes.Personaje;
 
 public final class ValidadorMovimientoyAtaque {
 	
+	private static int diferencia(int n1, int n2){
+		int diferencia;
+		
+		if (n2 > n1){
+			diferencia = n2 - n1;
+		}else{
+			diferencia = n1 - n2;		
+		}
+		
+		return diferencia;		
+	}	
+	
 	public static boolean movimientoValido(Personaje personaje, List<Casillero> camino){
 				
 		double velocidad = personaje.getVelocidad();
@@ -19,17 +31,8 @@ public final class ValidadorMovimientoyAtaque {
 		
 		int diferenciaX, diferenciaY;
 		
-		if (xDestino > x){
-			diferenciaX = xDestino - x;
-		}else{
-			diferenciaX = x - xDestino;		
-		}
-		
-		if (yDestino > y){
-			diferenciaY = yDestino - y;
-		}else{
-			diferenciaY = y - yDestino;		
-		}
+		diferenciaX = diferencia(x, xDestino);
+		diferenciaY = diferencia(y, yDestino);
 		
 		int diferenciaTotal = diferenciaX + diferenciaY;
 		// hice que no se pueda mover en diagonal, sino seria muy 'rapido' cada movimiento
@@ -59,17 +62,8 @@ public final class ValidadorMovimientoyAtaque {
 		
 		int diferenciaX, diferenciaY;
 		
-		if (xDestino > x){
-			diferenciaX = xDestino - x;
-		}else{
-			diferenciaX = x - xDestino;		
-		}
-		
-		if (yDestino > y){
-			diferenciaY = yDestino - y;
-		}else{
-			diferenciaY = y - yDestino;		
-		}
+		diferenciaX = diferencia(x, xDestino);
+		diferenciaY = diferencia(y, yDestino);
 		
 		if (diferenciaX > distanciaAtaque || diferenciaY > distanciaAtaque)
 			return false;		
