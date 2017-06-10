@@ -1,13 +1,5 @@
 package personajes;
 
-import personajes.ConstantesGoku;
-import personajes.ConstantesGohan;
-import personajes.ConstantesPiccolo;
-import personajes.ConstantesCell;
-import personajes.ConstantesFreezer;
-import personajes.ConstantesMajinBoo;
-
-
 public class EstadoPersonaje {
 
     protected double poderPelea;
@@ -49,134 +41,134 @@ public class EstadoPersonaje {
     }
     
     public void cambiarAGokuEstado1() {
-        this.setPoderDePelea(ConstantesGoku.GOKU_ESTADO_1_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesGoku.GOKU_ESTADO_1_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesGoku.GOKU_ESTADO_1_VELOCIDAD);
-        this.setIdEstado(ConstantesGoku.GOKU_ESTADO_1_ID);
+        this.setPoderDePelea(ConstantesPersonajes.GOKU_ESTADO_1_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.GOKU_ESTADO_1_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.GOKU_ESTADO_1_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.GOKU_ESTADO_1_ID);
     }
 
     public void cambiarAGokuEstado2() {
-        this.setPoderDePelea(ConstantesGoku.GOKU_ESTADO_2_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesGoku.GOKU_ESTADO_2_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesGoku.GOKU_ESTADO_2_VELOCIDAD);
-        this.setIdEstado(ConstantesGoku.GOKU_ESTADO_2_ID);
+        this.setPoderDePelea(ConstantesPersonajes.GOKU_ESTADO_2_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.GOKU_ESTADO_2_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.GOKU_ESTADO_2_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.GOKU_ESTADO_2_ID);
     }
 
     public void cambiarAGokuEstado3() {
-        this.setPoderDePelea(ConstantesGoku.GOKU_ESTADO_3_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesGoku.GOKU_ESTADO_3_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesGoku.GOKU_ESTADO_3_VELOCIDAD);
-        this.setIdEstado(ConstantesGoku.GOKU_ESTADO_3_ID);
+        this.setPoderDePelea(ConstantesPersonajes.GOKU_ESTADO_3_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.GOKU_ESTADO_3_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.GOKU_ESTADO_3_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.GOKU_ESTADO_3_ID);
     }
 
 
     public void cambiarAGohanEstado1() {
-        this.setPoderDePelea(ConstantesGohan.GOHAN_ESTADO_1_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesGohan.GOHAN_ESTADO_1_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesGohan.GOHAN_ESTADO_1_VELOCIDAD);
-        this.setIdEstado(ConstantesGohan.GOHAN_ESTADO_1_ID);
+        this.setPoderDePelea(ConstantesPersonajes.GOHAN_ESTADO_1_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.GOHAN_ESTADO_1_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.GOHAN_ESTADO_1_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.GOHAN_ESTADO_1_ID);
     }
 
     public void cambiarAGohanEstado2() {
-        this.setPoderDePelea(ConstantesGohan.GOHAN_ESTADO_2_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesGohan.GOHAN_ESTADO_2_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesGohan.GOHAN_ESTADO_2_VELOCIDAD);
-        this.setIdEstado(ConstantesGohan.GOHAN_ESTADO_2_ID);
+        this.setPoderDePelea(ConstantesPersonajes.GOHAN_ESTADO_2_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.GOHAN_ESTADO_2_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.GOHAN_ESTADO_2_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.GOHAN_ESTADO_2_ID);
     }
 
     public void cambiarAGohanEstado3() {
-        this.setPoderDePelea(ConstantesGohan.GOHAN_ESTADO_3_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesGohan.GOHAN_ESTADO_3_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesGohan.GOHAN_ESTADO_3_VELOCIDAD);
-        this.setIdEstado(ConstantesGohan.GOHAN_ESTADO_3_ID);
+        this.setPoderDePelea(ConstantesPersonajes.GOHAN_ESTADO_3_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.GOHAN_ESTADO_3_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.GOHAN_ESTADO_3_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.GOHAN_ESTADO_3_ID);
     }
 
 
     public void cambiarAPiccoloEstado1() {
-        this.setPoderDePelea(ConstantesPiccolo.PICCOLO_ESTADO_1_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesPiccolo.PICCOLO_ESTADO_1_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesPiccolo.PICCOLO_ESTADO_1_VELOCIDAD);
-        this.setIdEstado(ConstantesPiccolo.PICCOLO_ESTADO_1_ID);
+        this.setPoderDePelea(ConstantesPersonajes.PICCOLO_ESTADO_1_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.PICCOLO_ESTADO_1_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.PICCOLO_ESTADO_1_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.PICCOLO_ESTADO_1_ID);
     }
 
     public void cambiarAPiccoloEstado2() {
-        this.setPoderDePelea(ConstantesPiccolo.PICCOLO_ESTADO_2_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesPiccolo.PICCOLO_ESTADO_2_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesPiccolo.PICCOLO_ESTADO_2_VELOCIDAD);
-        this.setIdEstado(ConstantesPiccolo.PICCOLO_ESTADO_2_ID);
+        this.setPoderDePelea(ConstantesPersonajes.PICCOLO_ESTADO_2_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.PICCOLO_ESTADO_2_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.PICCOLO_ESTADO_2_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.PICCOLO_ESTADO_2_ID);
     }
 
     public void cambiarAPiccoloEstado3() {
-        this.setPoderDePelea(ConstantesPiccolo.PICCOLO_ESTADO_3_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesPiccolo.PICCOLO_ESTADO_3_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesPiccolo.PICCOLO_ESTADO_3_VELOCIDAD);
-        this.setIdEstado(ConstantesPiccolo.PICCOLO_ESTADO_3_ID);
+        this.setPoderDePelea(ConstantesPersonajes.PICCOLO_ESTADO_3_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.PICCOLO_ESTADO_3_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.PICCOLO_ESTADO_3_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.PICCOLO_ESTADO_3_ID);
     }
 
 
     public void cambiarACellEstado1() {
-        this.setPoderDePelea(ConstantesCell.CELL_ESTADO_1_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesCell.CELL_ESTADO_1_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesCell.CELL_ESTADO_1_VELOCIDAD);
-        this.setIdEstado(ConstantesCell.CELL_ESTADO_1_ID);
+        this.setPoderDePelea(ConstantesPersonajes.CELL_ESTADO_1_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.CELL_ESTADO_1_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.CELL_ESTADO_1_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.CELL_ESTADO_1_ID);
     }
 
     public void cambiarACellEstado2() {
-        this.setPoderDePelea(ConstantesCell.CELL_ESTADO_2_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesCell.CELL_ESTADO_2_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesCell.CELL_ESTADO_2_VELOCIDAD);
-        this.setIdEstado(ConstantesCell.CELL_ESTADO_2_ID);
+        this.setPoderDePelea(ConstantesPersonajes.CELL_ESTADO_2_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.CELL_ESTADO_2_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.CELL_ESTADO_2_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.CELL_ESTADO_2_ID);
     }
 
     public void cambiarACellEstado3() {
-        this.setPoderDePelea(ConstantesCell.CELL_ESTADO_3_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesCell.CELL_ESTADO_3_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesCell.CELL_ESTADO_3_VELOCIDAD);
-        this.setIdEstado(ConstantesCell.CELL_ESTADO_3_ID);
+        this.setPoderDePelea(ConstantesPersonajes.CELL_ESTADO_3_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.CELL_ESTADO_3_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.CELL_ESTADO_3_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.CELL_ESTADO_3_ID);
     }
 
 
     public void cambiarAFreezerEstado1() {
-        this.setPoderDePelea(ConstantesFreezer.FREEZER_ESTADO_1_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesFreezer.FREEZER_ESTADO_1_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesFreezer.FREEZER_ESTADO_1_VELOCIDAD);
-        this.setIdEstado(ConstantesFreezer.FREEZER_ESTADO_1_ID);
+        this.setPoderDePelea(ConstantesPersonajes.FREEZER_ESTADO_1_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.FREEZER_ESTADO_1_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.FREEZER_ESTADO_1_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.FREEZER_ESTADO_1_ID);
     }
 
     public void cambiarAFreezerEstado2() {
-        this.setPoderDePelea(ConstantesFreezer.FREEZER_ESTADO_2_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesFreezer.FREEZER_ESTADO_2_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesFreezer.FREEZER_ESTADO_2_VELOCIDAD);
-        this.setIdEstado(ConstantesFreezer.FREEZER_ESTADO_2_ID);
+        this.setPoderDePelea(ConstantesPersonajes.FREEZER_ESTADO_2_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.FREEZER_ESTADO_2_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.FREEZER_ESTADO_2_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.FREEZER_ESTADO_2_ID);
     }
 
     public void cambiarAFreezerEstado3() {
-        this.setPoderDePelea(ConstantesFreezer.FREEZER_ESTADO_3_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesFreezer.FREEZER_ESTADO_3_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesFreezer.FREEZER_ESTADO_3_VELOCIDAD);
-        this.setIdEstado(ConstantesFreezer.FREEZER_ESTADO_3_ID);
+        this.setPoderDePelea(ConstantesPersonajes.FREEZER_ESTADO_3_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.FREEZER_ESTADO_3_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.FREEZER_ESTADO_3_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.FREEZER_ESTADO_3_ID);
     }
 
 
     public void cambiarAMajinBooEstado1() {
-        this.setPoderDePelea(ConstantesMajinBoo.MAJINBOO_ESTADO_1_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesMajinBoo.MAJINBOO_ESTADO_1_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesMajinBoo.MAJINBOO_ESTADO_1_VELOCIDAD);
-        this.setIdEstado(ConstantesMajinBoo.MAJINBOO_ESTADO_1_ID);
+        this.setPoderDePelea(ConstantesPersonajes.MAJINBOO_ESTADO_1_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.MAJINBOO_ESTADO_1_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.MAJINBOO_ESTADO_1_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.MAJINBOO_ESTADO_1_ID);
     }
 
     public void cambiarAMajinBooEstado2() {
-        this.setPoderDePelea(ConstantesMajinBoo.MAJINBOO_ESTADO_2_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesMajinBoo.MAJINBOO_ESTADO_2_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesMajinBoo.MAJINBOO_ESTADO_2_VELOCIDAD);
-        this.setIdEstado(ConstantesMajinBoo.MAJINBOO_ESTADO_2_ID);
+        this.setPoderDePelea(ConstantesPersonajes.MAJINBOO_ESTADO_2_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.MAJINBOO_ESTADO_2_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.MAJINBOO_ESTADO_2_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.MAJINBOO_ESTADO_2_ID);
     }
 
     public void cambiarAMajinBooEstado3() {
-        this.setPoderDePelea(ConstantesMajinBoo.MAJINBOO_ESTADO_3_PODER_DE_PELEA);
-        this.setDistanciaAtaque(ConstantesMajinBoo.MAJINBOO_ESTADO_3_DISTANCIA_DE_ATAQUE);
-        this.setVelocidad(ConstantesMajinBoo.MAJINBOO_ESTADO_3_VELOCIDAD);
-        this.setIdEstado(ConstantesMajinBoo.MAJINBOO_ESTADO_3_ID);
+        this.setPoderDePelea(ConstantesPersonajes.MAJINBOO_ESTADO_3_PODER_DE_PELEA);
+        this.setDistanciaAtaque(ConstantesPersonajes.MAJINBOO_ESTADO_3_DISTANCIA_DE_ATAQUE);
+        this.setVelocidad(ConstantesPersonajes.MAJINBOO_ESTADO_3_VELOCIDAD);
+        this.setIdEstado(ConstantesPersonajes.MAJINBOO_ESTADO_3_ID);
     }
 
     public double getAumentoPasiva() {
