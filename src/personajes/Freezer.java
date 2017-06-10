@@ -1,21 +1,18 @@
 package personajes;
 
-import personajes.ConstantesFreezer;
-import personajes.Personaje;
-import motor.ErrorNoHayKi;
-import personajes.EstadoPersonaje;
-
 public class Freezer extends Personaje {
+
     public Freezer() {
         this.estado = new EstadoPersonaje();
         this.estado.cambiarAFreezerEstado1();
 
-        this.ki = ConstantesFreezer.FREEZER_CANTIDAD_KI_INICIAL;
-        this.nombre = ConstantesFreezer.FREEZER_NOMBRE;
-        this.vida = ConstantesFreezer.FREEZER_CANTIDAD_VIDA_INICIAL;
-        this.ataqueEspecial = ConstantesFreezer.FREEZER_NOMBRE_ATAQUE_ESPECIAL;
-        this.kiAtaqueEspecial = ConstantesFreezer.FREEZER_KI_ATAQUE_ESPECIAL;
-        this.aumentoAtaqueEspecial = ConstantesFreezer.FREEZER_PORCENTAJE_DANIO_ATAQUE_ESPECIAL;
+        this.ki = ConstantesPersonajes.FREEZER_CANTIDAD_KI_INICIAL;
+        this.nombre = ConstantesPersonajes.FREEZER_NOMBRE;
+        this.vida = ConstantesPersonajes.FREEZER_CANTIDAD_VIDA_INICIAL;
+        this.ataqueEspecial = ConstantesPersonajes.FREEZER_NOMBRE_ATAQUE_ESPECIAL;
+        this.kiAtaqueEspecial = ConstantesPersonajes.FREEZER_KI_ATAQUE_ESPECIAL;
+        this.aumentoAtaquePasiva = ConstantesPersonajes.FREEZER_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
+        this.aumentoAtaqueEspecial = ConstantesPersonajes.FREEZER_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
     }
 
 
@@ -35,9 +32,9 @@ public class Freezer extends Personaje {
      * se verifica la cantidad requirida de Ki para la transformacion en esta clase. No en Estado.
      */
     public void cambiarAEstado2() throws ErrorNoPuedeCambiarEstado {
-        if (!this.kiSuficiente(ConstantesFreezer.FREEZER_ESTADO_2_COSTO))
+        if (!this.kiSuficiente(ConstantesPersonajes.FREEZER_ESTADO_2_COSTO))
             throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
-        this.quitarKi(ConstantesFreezer.FREEZER_ESTADO_2_COSTO);
+        this.quitarKi(ConstantesPersonajes.FREEZER_ESTADO_2_COSTO);
         this.estado.cambiarAFreezerEstado2();
     }
 
@@ -45,9 +42,9 @@ public class Freezer extends Personaje {
      * Se cambia el Estado al de Freezer Estado 3
      */
     public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
-        if (!this.kiSuficiente(ConstantesFreezer.FREEZER_ESTADO_3_COSTO))
+        if (!this.kiSuficiente(ConstantesPersonajes.FREEZER_ESTADO_3_COSTO))
             throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
-        this.quitarKi(ConstantesFreezer.FREEZER_ESTADO_3_COSTO);
+        this.quitarKi(ConstantesPersonajes.FREEZER_ESTADO_3_COSTO);
         this.estado.cambiarAFreezerEstado3();
     }
 
@@ -55,6 +52,6 @@ public class Freezer extends Personaje {
      * Determina si el personaje Freezer tiene Ki suficiente para realizar el ataque especial.
      */
     public boolean puedeRealizarAtaqueEspecial() {
-        return this.kiSuficiente(ConstantesFreezer.FREEZER_KI_ATAQUE_ESPECIAL);
+        return this.kiSuficiente(ConstantesPersonajes.FREEZER_KI_ATAQUE_ESPECIAL);
     }
 }
