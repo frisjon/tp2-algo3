@@ -39,4 +39,5 @@ public class OrganizadorJuego {
 		}
 		
 		this.tablero.colocarPersonajes(listaEquipos);
+	}
 }

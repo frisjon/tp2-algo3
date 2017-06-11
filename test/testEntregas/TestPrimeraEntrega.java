@@ -210,8 +210,26 @@ public class TestPrimeraEntrega extends TestCase {
 		
 		freezer.agregarKi(20);
 		Pelea.ataqueEspecial(freezer, goku);
+		int vida_goku = (int) goku.getVida();
+		Assert.assertEquals(vida_goku, 476);
 		
+	}
+	
+	public void test10VerificarImposibilidadDeAtacarDebidoADistanciaDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado, ErrorNoHayKi, ErrorConsumibleInstantaneo {
+		Casillero casilleroconguerrero = new Casillero(5,5);
+		Casillero casilleroconenemigo = new Casillero(5,9);
+		Goku goku = new Goku();
+		Freezer freezer = new Freezer();
 		
+		goku.setCasillero(casilleroconguerrero);
+		casilleroconguerrero.setObjeto(goku);
+		freezer.setCasillero(casilleroconenemigo);
+		casilleroconenemigo.setObjeto(freezer);
+		
+		try {
+			freezer.agregarKi(20);
+			Pelea.ataqueEspecial(freezer, goku);
+		} catch (ErrorNoSePuedeRealizarAtaqueEspecial e) {}
 	}
 	
 }
