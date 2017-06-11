@@ -1,15 +1,19 @@
 package testEntregas;
 
-import org.junit.Test;
-
 import equipos.Equipo;
 import juego.Juego;
 import jugadores.Jugador;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
+
+import consumibles.ErrorConsumibleInstantaneo;
 import junit.framework.*;
+import motor.ErrorNoHayKi;
+import motor.ErrorNoSePuedeRealizarAtaqueEspecial;
+import motor.Pelea;
 import personajes.Cell;
 import personajes.ErrorNoPuedeCambiarEstado;
 import personajes.Freezer;
@@ -32,7 +36,7 @@ public class TestPrimeraEntrega extends TestCase {
 		Casillero casillero2 = new Casillero(0,1);
 		Casillero casillero3 = new Casillero(0,2);
 		Goku goku = new Goku();
-		ArrayList<Casillero> camino = new ArrayList<Casillero>();
+		List<Casillero> camino = new ArrayList<Casillero>();
 		
 		camino.add(casillero2);
 		camino.add(casillero3);
@@ -51,7 +55,7 @@ public class TestPrimeraEntrega extends TestCase {
 		Casillero casillero3 = new Casillero(0,2);
 		Casillero casillero4 = new Casillero(0,3);
 		Goku goku = new Goku();
-		ArrayList<Casillero> camino = new ArrayList<Casillero>();
+		List<Casillero> camino = new ArrayList<Casillero>();
 		
 		camino.add(casillero2);
 		camino.add(casillero3);
@@ -80,7 +84,7 @@ public class TestPrimeraEntrega extends TestCase {
 		Casillero casillero3 = new Casillero(0,2);
 		Goku goku = new Goku();
 		Gohan gohan = new Gohan();
-		ArrayList<Casillero> camino = new ArrayList<Casillero>();
+		List<Casillero> camino = new ArrayList<Casillero>();
 		
 		casillero1.setObjeto(goku);
 		casillero2.setObjeto(gohan);
@@ -124,7 +128,7 @@ public class TestPrimeraEntrega extends TestCase {
 		Casillero casillero3 = new Casillero(0,2);
 		Casillero casillero4 = new Casillero(0,3);
 		Goku goku = new Goku();
-		ArrayList<Casillero> camino = new ArrayList<Casillero>();
+		List<Casillero> camino = new ArrayList<Casillero>();
 		
 		casillero1.setObjeto(goku);
 		goku.setCasillero(casillero1);
@@ -178,11 +182,36 @@ public class TestPrimeraEntrega extends TestCase {
 		
 		//lo siguiente es teniendo en cuenta que el tablero es de 30x30
 		Assert.assertEquals(freezer.getCasillero().getCoordenada().getX(), 29);
-		Assert.assertEquals(freezer.getCasillero().getCoordenada().getY(), 29);
+		Assert.assertEquals(freezer.getCasillero().getCoordenada().getY(), 0);
 		Assert.assertEquals(majinboo.getCasillero().getCoordenada().getX(), 29);
-		Assert.assertEquals(majinboo.getCasillero().getCoordenada().getY(), 28);
+		Assert.assertEquals(majinboo.getCasillero().getCoordenada().getY(), 1);
 		Assert.assertEquals(cell.getCasillero().getCoordenada().getX(), 29);
-		Assert.assertEquals(cell.getCasillero().getCoordenada().getY(), 27);
+		Assert.assertEquals(cell.getCasillero().getCoordenada().getY(), 2);
+		
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void test09VerificarModificacionEstatusPersonajesLuegoDeCombatir() throws ErrorNoPuedeCambiarEstado, ErrorConsumibleInstantaneo, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial {
+		Casillero casilleroconguerrero = new Casillero(5,5);
+		Casillero casilleroconenemigo = new Casillero(5,8);
+		Goku goku = new Goku();
+		Freezer freezer = new Freezer();
+		
+		goku.setCasillero(casilleroconguerrero);
+		casilleroconguerrero.setObjeto(goku);
+		freezer.setCasillero(casilleroconenemigo);
+		casilleroconenemigo.setObjeto(freezer);
+		
+		goku.agregarKi(20);
+		goku.cambiarAEstado2();
+		
+		Pelea.ataqueBasico(goku, freezer);
+		int vida_freezer = (int) freezer.getVida();
+		Assert.assertEquals(vida_freezer, 360);
+		
+		freezer.agregarKi(20);
+		Pelea.ataqueEspecial(freezer, goku);
+		
 		
 	}
 	
