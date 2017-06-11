@@ -67,7 +67,7 @@ public class TestPrimeraEntrega extends TestCase {
 		} catch (ErrorMovimientoInvalido e){}
 	}
 	
-	public void test03VerificarImposibilidadDosPersonajesEnCasilleroDebeLanzarExcepcion() {
+	public void test03VerificarImposibilidadDosPersonajesEnCasilleroDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado {
 		Casillero casillero = new Casillero(0,0);
 		Goku goku = new Goku();
 		Gohan gohan = new Gohan();
@@ -97,7 +97,7 @@ public class TestPrimeraEntrega extends TestCase {
 		} catch (ErrorMovimientoInvalido e){}
 	}
 	
-	public void test05VerificarTransformacionGokuEnEstadoDos() throws ErrorNoPuedeCambiarEstado {
+	public void test05VerificarTransformacionGokuEnEstadoDos() throws ErrorNoPuedeCambiarEstado, ErrorCasilleroYaOcupado {
 		Casillero casillero = new Casillero(0,0);
 		Goku goku = new Goku();
 		
@@ -109,7 +109,7 @@ public class TestPrimeraEntrega extends TestCase {
 		Assert.assertEquals(goku.getIdEstado(), 2);
 	}
 	
-	public void test06VerificarImposibilidadTransformacionGokuEnEstadoTresDebeLanzarExcepcion() {
+	public void test06VerificarImposibilidadTransformacionGokuEnEstadoTresDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado {
 		Casillero casillero = new Casillero(0,0);
 		Goku goku = new Goku();
 		
@@ -190,8 +190,7 @@ public class TestPrimeraEntrega extends TestCase {
 		
 	}
 	
-	@SuppressWarnings("deprecation")
-	public void test09VerificarModificacionEstatusPersonajesLuegoDeCombatir() throws ErrorNoPuedeCambiarEstado, ErrorConsumibleInstantaneo, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial {
+	public void test09VerificarModificacionEstatusPersonajesLuegoDeCombatir() throws ErrorNoPuedeCambiarEstado, ErrorConsumibleInstantaneo, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial, ErrorCasilleroYaOcupado {
 		Casillero casilleroconguerrero = new Casillero(5,5);
 		Casillero casilleroconenemigo = new Casillero(5,8);
 		Goku goku = new Goku();

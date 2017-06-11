@@ -23,15 +23,9 @@ public class TestCasillero extends TestCase {
 	@Test
 	public void test02VerificarQueEsExtremoIzquierdo() {
 		Casillero casillero = new Casillero(0, 0);
-		Assert.assertEquals(casillero.esExtremo(20,20), true);
+		Assert.assertEquals(casillero.esExtremo("izq",20,20), true);
 	}
-	
-	@Test
-	public void test03VerificarQueEsExtremoDerecho() {
-		Casillero casillero = new Casillero(19, 19);
-		Assert.assertEquals(casillero.esExtremo(20,20), true);
-	}
-	
+
 	@Test
 	public void test04PonerObjetoYVerificarQueEsta() throws ErrorCasilleroYaOcupado, ErrorNoHayObjeto {
 		Casillero casillero = new Casillero(20, 20);

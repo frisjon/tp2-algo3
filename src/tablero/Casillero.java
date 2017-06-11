@@ -21,10 +21,9 @@ public class Casillero {
 		return this.objeto;
 	}
 	
-	public void setObjeto(ObjetoJuego objeto) {
+	public void setObjeto(ObjetoJuego objeto) throws ErrorCasilleroYaOcupado {
 		if (!this.estaLibre() && objeto != null) 
-			//throw new ErrorCasilleroYaOcupado("Casillero ocupado");
-			return;
+			throw new ErrorCasilleroYaOcupado("Casillero ocupado");
 		
 		this.objeto = objeto;
 	}
