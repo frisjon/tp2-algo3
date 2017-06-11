@@ -100,6 +100,10 @@ public abstract class Personaje implements ObjetoJuego {
     public Consumible getConsumible() {
         return this.consumible;
     }
+    
+    public void setConsumible(Consumible _consumible) {
+        this.consumible = _consumible; 
+    }
 
     public void eliminarConsumible() {
         this.consumible = null;
