@@ -3,7 +3,7 @@ package tablero;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class Extremos {
+public final class Extremo {
 	
 	 public static final String izquierda = "izq";
 	 public static final String derecha = "der";

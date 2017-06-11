@@ -22,7 +22,7 @@ public class Casillero {
 	}
 	
 	public void setObjeto(ObjetoJuego objeto) {
-		if (!this.estaLibre())
+		if (!this.estaLibre() && objeto != null) 
 			//throw new ErrorCasilleroYaOcupado("Casillero ocupado");
 			return;
 		
@@ -30,13 +30,13 @@ public class Casillero {
 	}
 	
 	public boolean esExtremo (String tipoDeExtremo, int ancho, int alto){
-		if (tipoDeExtremo.equals(Extremos.izquierda))
+		if (tipoDeExtremo.equals(Extremo.izquierda))
 			return (this.coordenada.getX() == 0);
 		
-		if (tipoDeExtremo.equals(Extremos.derecha))
+		if (tipoDeExtremo.equals(Extremo.derecha))
 			return (this.coordenada.getX() + 1 == ancho);
 				
-		if (tipoDeExtremo.equals(Extremos.arriba)) 
+		if (tipoDeExtremo.equals(Extremo.arriba)) 
 			return (this.coordenada.getY() == 0);
 		
 		// abajo	

@@ -28,7 +28,7 @@ public class Juego {
 	}
 	
 	public void distribuirPersonajesEquipos() {
-		this.organizador.colocarPersonajesEnTablero(this.listajugadores.get(0), this.listajugadores.get(1));
+		this.organizador.colocarPersonajesEnTablero(this.listajugadores);
 		
 	}
 

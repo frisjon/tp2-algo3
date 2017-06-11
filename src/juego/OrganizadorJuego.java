@@ -1,6 +1,8 @@
 package juego;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
 
 import equipos.Equipo;
@@ -26,16 +28,15 @@ public class OrganizadorJuego {
 		this.turno = jugador_que_juega;
 	}
 	
-	public void colocarPersonajesEnTablero(Jugador jugador1, Jugador jugador2) {
-			
+	public void colocarPersonajesEnTablero( Hashtable<String, Jugador> listajugadores) {
+		
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
 		
-		Equipo equipo1 = jugador1.getEquipo(); 
-		Equipo equipo2 = jugador2.getEquipo();
-		
-		listaEquipos.add(equipo1);
-		listaEquipos.add(equipo2);
+		Enumeration<Jugador> jugadores = listajugadores.elements();
+		while (jugadores.hasMoreElements()) {
+			Equipo equipo = ((Jugador) jugadores).getEquipo();
+			listaEquipos.add(equipo);
+		}
 		
 		this.tablero.colocarPersonajes(listaEquipos);
-	}
 }

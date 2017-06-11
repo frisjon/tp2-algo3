@@ -6,7 +6,7 @@ import java.util.Hashtable;
 import personajes.Personaje;
 
 /**
- * Clase abstracta que representa un Equipo.
+ * Clase que representa un Equipo.
  * @author Ramiro
  *
  */

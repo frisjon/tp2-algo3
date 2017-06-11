@@ -49,7 +49,7 @@ public class Tablero {
 	}
 	
 	public void colocarPersonajes(List<Equipo> equipos){
-		String tipoDeExtremo = Extremos.izquierda;
+		String tipoDeExtremo = Extremo.izquierda;
 		
 		for (int j = 0; j < equipos.size(); j++){
 			// recorro equipo por equipo
@@ -64,7 +64,7 @@ public class Tablero {
 				casillero.setObjeto(personaje);
 				this.personajes.add(personaje);
 			}
-			tipoDeExtremo = Extremos.obtenerSiguienteExtremo(tipoDeExtremo);
+			tipoDeExtremo = Extremo.obtenerSiguienteExtremo(tipoDeExtremo);
 		}		
 	}
 	
@@ -73,7 +73,7 @@ public class Tablero {
 		// del personaje
 		Casillero ultimoCasillero = camino.get(camino.size()-1);
 		
-		if (!ultimoCasillero.estaLibre())
+		if (!ultimoCasillero.estaLibre()) //a modificar (tener en cuenta que si hay un consumible el pj se puede posicionar)
 			throw new ErrorCasilleroYaOcupado("Casillero ocupado");
 		
 		if (!ValidadorMovimientoyAtaque.movimientoValido(personaje, camino))
@@ -129,7 +129,5 @@ public class Tablero {
 		// si es necesario esta funcion puede devolver true si es que murio el p2 para avisarle
 		// a OrganizadorJuego. Eso hay que verlo cuando se haga la vista.
 	}
-	
-	
 	
 }

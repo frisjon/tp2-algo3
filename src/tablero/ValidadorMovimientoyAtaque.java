@@ -44,7 +44,7 @@ public final class ValidadorMovimientoyAtaque {
 		// ahora me fijo si me choco con algun personaje
 		
 		for (int i = 0; i < camino.size(); i++){
-			if (!camino.get(i).estaLibre())
+			if (!camino.get(i).estaLibre()) //a modificar (esta libre si tiene un consumible tira false, pero el pj puede pasar arriba de un consumible)
 				return false;	
 		}
 				
