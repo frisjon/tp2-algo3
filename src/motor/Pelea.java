@@ -11,9 +11,6 @@ import motor.ErrorNoSePuedeRealizarAtaqueEspecial;
  *
  */
 public final class Pelea {
-    public Pelea(){
-    }
-    
     /**
      * Funcion que actualiza los personajes luego de una pelea.
      * Esta funcion modificara los atributos de los personajes y de los consumibles si fueron
@@ -24,23 +21,15 @@ public final class Pelea {
      * @param hpSanado
      * @param dmgRealizado
      * @param kiUtilizado
+     * @return True si el personaje debe morir y False en caso contrario.
      */
     private static boolean actualizarPersonajes(Personaje pj1, Personaje pj2, double hpSanado, double dmgRealizado, double kiUtilizado){
-        if (pj1.tieneConsumible()){
-            Consumible consumiblePj1 = pj1.getConsumible();
-            
-            if (consumiblePj1.getCantidadUsosRestantes() == 0){
-                pj1.eliminarConsumible();
-            }
-        }
-        
         pj1.agregarVida(hpSanado);
         pj1.quitarKi(kiUtilizado);
         pj2.quitarVida(dmgRealizado);
         
         if (pj2.getVida() == 0.0){
-            // pj2.morir();
-        	return true;
+            return true;
         }
         
         return false;
@@ -54,8 +43,9 @@ public final class Pelea {
      * @author Thomas
      * @param pj1
      * @param pj2
+     * @throws ErrorConsumibleInstantaneo 
      */
-    public static boolean ataqueBasico(Personaje pj1, Personaje pj2){
+    public static boolean ataqueBasico(Personaje pj1, Personaje pj2) throws ErrorConsumibleInstantaneo{
         double poderPeleaPj1 = pj1.getPoderPelea();
         double poderPeleaPj2 = pj2.getPoderPelea();
         /**
@@ -85,7 +75,15 @@ public final class Pelea {
                 case "Ataque": aumentoConsumible = (poderPeleaPj1 + aumentoPasiva) * (consumiblePj1.getCantidadAtributo());
             }
             
-            consumiblePj1.decrementarUso();
+            try{
+                consumiblePj1.decrementarUso();
+            }
+            catch (ErrorNoHayUsosRestantes e1){
+                pj1.eliminarConsumible();
+            }
+            catch (ErrorConsumibleInstantaneo e2){
+                throw new ErrorConsumibleInstantaneo("El personaje posee un consumible instaneo.");
+            }
         }
         
         //Caso en el cual se aplica un descuento al daño.
@@ -108,8 +106,9 @@ public final class Pelea {
      * @param pj2
      * @throws ErrorNoHayKi
      * @throws ErrorNoSePuedeRealizarAtaqueEspecial
+     * @throws ErrorConsumibleInstantaneo 
      */
-    public static boolean ataqueEspecial(Personaje pj1, Personaje pj2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
+    public static boolean ataqueEspecial(Personaje pj1, Personaje pj2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial, ErrorConsumibleInstantaneo{
         double kiAtaqueEspecial = pj1.getKiNecesario();
         double poderPeleaPj1 = pj1.getPoderPelea();
         double poderPeleaPj2 = pj2.getPoderPelea();
@@ -127,7 +126,7 @@ public final class Pelea {
          * Ej: Goku.
          */
         double aumentoPasiva = poderPeleaPj1 * pj1.getAumentoPasiva();
-        double aumentoAtaqueEspecial = pj1.getAumentoAtaqueEspecial();
+        double aumentoAtaqueEspecial = poderPeleaPj1 * pj1.getAumentoAtaqueEspecial();
         /**
          * Posible descuento realizado por la diferencia de poder.
          * En el caso de que no haya sera 0.
@@ -149,7 +148,15 @@ public final class Pelea {
                 case "Ataque": aumentoConsumible = (poderPeleaPj1 + aumentoPasiva + aumentoAtaqueEspecial) * (consumiblePj1.getCantidadAtributo());
             }
             
-            consumiblePj1.decrementarUso();
+            try{
+                consumiblePj1.decrementarUso();
+            }
+            catch (ErrorNoHayUsosRestantes e1){
+                pj1.eliminarConsumible();
+            }
+            catch (ErrorConsumibleInstantaneo e2){
+                throw new ErrorConsumibleInstantaneo("El personaje posee un consumible instaneo.");
+            }
         }
         
         //Caso en el cual se aplica un descuento al daño.
