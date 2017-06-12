@@ -171,7 +171,7 @@ public class TestSegundaEntrega extends TestCase {
 		Assert.assertEquals(vida_cell, 500);
 		Assert.assertEquals(vida_gohan, 280);
 		
-		cell.quitarVida(80); //lo deja en 420 de vida
+		cell.quitarVida(60); //lo deja en 420 de vida
 		try {
 			Pelea.ataqueEspecial(cell, gohan);
 			Pelea.ataqueEspecial(cell, gohan);
@@ -183,12 +183,13 @@ public class TestSegundaEntrega extends TestCase {
 		} catch (ErrorNoPuedeCambiarEstado e) {}
 		Assert.assertEquals(cell.getIdEstado(), 2);
 		Assert.assertEquals(vida_gohan, 220);
+		Assert.assertEquals(vida_cell, 500);
 		
 		try {cell.cambiarAEstado2();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
 		Assert.assertEquals(cell.getIdEstado(), 2);
 		
-		cell.quitarVida(140);
+		cell.quitarVida(160); //lo deja en 360 de vida a cell
 		//tener en cuenta que ahora cell esta en transformacion 2 y por cada ataque especial saca y absorbe 40
 		for (int i = 0; i < 4; i++) {
 			try {
