@@ -79,4 +79,6 @@ public class Gohan extends Personaje {
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesPersonajes.GOHAN_KI_ATAQUE_ESPECIAL);
     }
+    
+    public void consecuenciasAtaqueEspecial(){}
 }

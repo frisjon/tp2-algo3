@@ -54,4 +54,6 @@ public class MajinBoo extends Personaje {
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesPersonajes.MAJINBOO_KI_ATAQUE_ESPECIAL);
     }
+    
+    public void consecuenciasAtaqueEspecial(){}
 }

@@ -61,4 +61,6 @@ public class Goku extends Personaje {
     	
     	return 0;
     }
+    
+    public void consecuenciasAtaqueEspecial(){}
 }

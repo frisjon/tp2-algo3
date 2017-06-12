@@ -166,6 +166,8 @@ public final class Pelea {
         
         dmg = poderPeleaPj1 + aumentoConsumible + aumentoPasiva + aumentoAtaqueEspecial - descuentoDifPoder;
         
+        pj1.consecuenciasAtaqueEspecial();
+        
         return actualizarPersonajes(pj1, pj2, 0, dmg, kiAtaqueEspecial);
     }
 }

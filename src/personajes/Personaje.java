@@ -140,5 +140,9 @@ public abstract class Personaje implements ObjetoJuego {
      * Devuelve true, si se cumplen las condiciones necesarias para realizar el ataque especial.
      * (Depende del personaje, por eso es un metodo abstracto)
      */
-    public abstract boolean puedeRealizarAtaqueEspecial();       
+    public abstract boolean puedeRealizarAtaqueEspecial();
+    
+    public abstract void consecuenciasAtaqueEspecial();
+    
+    
 }

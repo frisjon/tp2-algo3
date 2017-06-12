@@ -54,4 +54,6 @@ public class Freezer extends Personaje {
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesPersonajes.FREEZER_KI_ATAQUE_ESPECIAL);
     }
+
+    public void consecuenciasAtaqueEspecial(){}
 }

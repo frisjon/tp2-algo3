@@ -49,9 +49,14 @@ public class Cell extends Personaje {
         this.estado.cambiarACellEstado3();
     }
     
-    public void aumentarCantidadAbsorciones() {
-    	this.quitarKi(ConstantesPersonajes.CELL_KI_ATAQUE_ESPECIAL);
+    private void aumentarCantidadAbsorciones() {
     	this.cantidadAbsorciones += 1;
+    }
+    
+    private void aumentarVida() {
+    	this.vida += this.estado.poderPelea;
+    	if (this.vida > 500)
+    		this.vida = 500;
     }
 
     /*
@@ -59,5 +64,10 @@ public class Cell extends Personaje {
      */
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesPersonajes.CELL_KI_ATAQUE_ESPECIAL);
+    }
+    
+    public void consecuenciasAtaqueEspecial(){
+    	this.aumentarCantidadAbsorciones();
+    	this.aumentarVida();
     }
 }
