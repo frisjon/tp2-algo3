@@ -6,6 +6,7 @@
 - poner las clases en sus tipo correspondientes (private, static, final, etc)
 - no poner throws a lo pavote, sólo cuando es posible que entre ahí. Sino usar try y en el catch no poner nada.
 - poner bien los tipos cuando usamos List/Map. No poner siempre ArrayList/HashMap. Ej: en la firma de colocarPersonajesEnTablero va Map. Lo mismo en los constructores.
+- no castear al pedo. Por ejemplo en las pruebas hay cast a int al pedo. Más facil crear double de una, respetando el tipo de dato de la variable que se quiere usar.
 
 
 ### Entregas
