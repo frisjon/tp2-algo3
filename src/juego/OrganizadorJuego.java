@@ -7,6 +7,8 @@ import java.util.List;
 
 import equipos.Equipo;
 import jugadores.Jugador;
+import tablero.ErrorCasilleroYaOcupado;
+import tablero.ErrorNoHayMasExtremos;
 import tablero.Tablero;
 /**
  * Clase que representa al Organizador del Juego, encargado de generar el tablero, ubicar los personajes, los consumibles, etc.
@@ -28,7 +30,7 @@ public class OrganizadorJuego {
 		this.turno = jugador_que_juega;
 	}
 	
-	public void colocarPersonajesEnTablero( Hashtable<String, Jugador> listajugadores) {
+	public void colocarPersonajesEnTablero( Hashtable<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
 		
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
 		
@@ -38,6 +40,10 @@ public class OrganizadorJuego {
 			listaEquipos.add(equipo);
 		}
 		
-		this.tablero.colocarPersonajes(listaEquipos);
+		try {
+			this.tablero.colocarPersonajes(listaEquipos);
+		} catch (ErrorCasilleroYaOcupado e) {
+			
+		}
 	}
 }

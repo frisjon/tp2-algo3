@@ -2,6 +2,8 @@ package juego;
 
 import java.util.Hashtable;
 import jugadores.*;
+import tablero.ErrorCasilleroYaOcupado;
+import tablero.ErrorNoHayMasExtremos;
 
 /**
  * Clase que representa el Juego con sus respectivos jugadores y organizador del juego.
@@ -27,9 +29,8 @@ public class Juego {
 		return this.listajugadores.get(nombre_jugador);
 	}
 	
-	public void distribuirPersonajesEquipos() {
-		this.organizador.colocarPersonajesEnTablero(this.listajugadores);
-		
+	public void distribuirPersonajesEquipos() throws ErrorNoHayMasExtremos {
+		this.organizador.colocarPersonajesEnTablero(this.listajugadores);		
 	}
 
 }
