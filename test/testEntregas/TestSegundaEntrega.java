@@ -219,12 +219,10 @@ public class TestSegundaEntrega extends TestCase {
 		gohan.setCasillero(casilleroconguerrero);
 		
 		majinboo.agregarKi(30);
-		Pelea.ataqueEspecial(majinboo, gohan);
-		Assert.assertEquals(gohan.cantidadTurnosInhabilitado(), 3);
-		
 		try {
-			gohan.agregarKi(30);
-		} catch (ErrorPersonajeInhabilitado e) {}
+			Pelea.ataqueEspecial(majinboo, gohan);
+		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
+		Assert.assertEquals(gohan.getTurnosInutilizados(), 3);
 	}
 	
 	public void test09VerificarCorrectoFuncionamientoDañoGokuEstandoCasiMuerto() {

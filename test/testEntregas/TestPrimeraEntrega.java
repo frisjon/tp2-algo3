@@ -76,17 +76,17 @@ public class TestPrimeraEntrega extends TestCase {
 		} catch (ErrorMovimientoInvalido | ErrorCasilleroYaOcupado e){}
 	}
 	
-	public void test03VerificarImposibilidadDosPersonajesEnCasilleroDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado {
+	public void test03VerificarImposibilidadDosPersonajesEnCasilleroDebeLanzarExcepcion() {
 		Casillero casillero = new Casillero(0,0);
 		Goku goku = new Goku();
 		Gohan gohan = new Gohan();
-		casillero.setObjeto(goku);
-		try {
-			casillero.setObjeto(gohan);
+		try {casillero.setObjeto(goku);
+		} catch (ErrorCasilleroYaOcupado e1) {}
+		try {casillero.setObjeto(gohan);
 		} catch (ErrorCasilleroYaOcupado e) {}
 	 }
 	
-	public void test04VerificarImposibilidadPersonajePasarPorEncimaDeOtroDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado {
+	public void test04VerificarImposibilidadPersonajePasarPorEncimaDeOtroDebeLanzarExcepcion() {
 		Tablero tablero = new Tablero(20,20);
 		Casillero casillero1 = new Casillero(0,0);
 		Casillero casillero2 = new Casillero(0,1);
@@ -95,34 +95,41 @@ public class TestPrimeraEntrega extends TestCase {
 		Gohan gohan = new Gohan();
 		List<Casillero> camino = new ArrayList<Casillero>();
 		
-		casillero1.setObjeto(goku);
-		casillero2.setObjeto(gohan);
+		try {
+			casillero1.setObjeto(goku);
+			casillero2.setObjeto(gohan);
+		} catch (ErrorCasilleroYaOcupado e1) {}
+		
 		goku.setCasillero(casillero1);
 		gohan.setCasillero(casillero2);
 		camino.add(casillero2);
 		camino.add(casillero3);
 		try {
 			tablero.moverPersonaje(goku, camino);
-		} catch (ErrorMovimientoInvalido e){}
+		} catch (ErrorMovimientoInvalido e){} catch (ErrorCasilleroYaOcupado e) {}
 	}
 	
-	public void test05VerificarTransformacionGokuEnEstadoDos() throws ErrorNoPuedeCambiarEstado, ErrorCasilleroYaOcupado {
+	public void test05VerificarTransformacionGokuEnEstadoDos() {
 		Casillero casillero = new Casillero(0,0);
 		Goku goku = new Goku();
 		
-		casillero.setObjeto(goku);
+		try {casillero.setObjeto(goku);
+		} catch (ErrorCasilleroYaOcupado e) {}
 		goku.setCasillero(casillero);
 		goku.agregarKi(20);
 		Assert.assertEquals(goku.getIdEstado(), 1);
-		goku.cambiarAEstado2();
+		try {goku.cambiarAEstado2();
+		} catch (ErrorNoPuedeCambiarEstado e) {}
 		Assert.assertEquals(goku.getIdEstado(), 2);
 	}
 	
-	public void test06VerificarImposibilidadTransformacionGokuEnEstadoTresDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado {
+	public void test06VerificarImposibilidadTransformacionGokuEnEstadoTresDebeLanzarExcepcion() {
 		Casillero casillero = new Casillero(0,0);
 		Goku goku = new Goku();
 		
-		casillero.setObjeto(goku);
+		try {
+			casillero.setObjeto(goku);
+		} catch (ErrorCasilleroYaOcupado e1) {}
 		goku.setCasillero(casillero);
 		goku.agregarKi(20);
 		try {
@@ -130,7 +137,7 @@ public class TestPrimeraEntrega extends TestCase {
 		} catch (ErrorNoPuedeCambiarEstado e) {}
 	}
 	
-	public void test07VerificarMovimientoGokuEnEstadoDos() throws ErrorNoPuedeCambiarEstado, ErrorCasilleroYaOcupado, ErrorMovimientoInvalido, ErrorNoHayObjeto {
+	public void test07VerificarMovimientoGokuEnEstadoDos() {
 		Tablero tablero = new Tablero(20,20);
 		Casillero casillero1 = new Casillero(0,0);
 		Casillero casillero2 = new Casillero(0,1);
@@ -139,15 +146,20 @@ public class TestPrimeraEntrega extends TestCase {
 		Goku goku = new Goku();
 		List<Casillero> camino = new ArrayList<Casillero>();
 		
-		casillero1.setObjeto(goku);
+		try {casillero1.setObjeto(goku);
+		} catch (ErrorCasilleroYaOcupado e) {}
 		goku.setCasillero(casillero1);
 		goku.agregarKi(20);
-		goku.cambiarAEstado2();
+		try {goku.cambiarAEstado2();
+		} catch (ErrorNoPuedeCambiarEstado e) {}
 		camino.add(casillero2);
 		camino.add(casillero3);
 		camino.add(casillero4);
-		tablero.moverPersonaje(goku, camino);
-		Assert.assertEquals(casillero4.getObjeto(), goku);
+		try {
+			tablero.moverPersonaje(goku, camino);
+		} catch (ErrorCasilleroYaOcupado | ErrorMovimientoInvalido e) {}
+		try {Assert.assertEquals(casillero4.getObjeto(), goku);
+		} catch (ErrorNoHayObjeto e) {}
 		Assert.assertEquals(casillero1.estaLibre(), true);
 	}
 	
@@ -196,45 +208,55 @@ public class TestPrimeraEntrega extends TestCase {
 		
 	}
 	
-	public void test09VerificarModificacionEstatusPersonajesLuegoDeCombatir() throws ErrorNoPuedeCambiarEstado, ErrorConsumibleInstantaneo, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial, ErrorCasilleroYaOcupado {
+	public void test09VerificarModificacionEstatusPersonajesLuegoDeCombatir() {
 		Casillero casilleroconguerrero = new Casillero(5,5);
 		Casillero casilleroconenemigo = new Casillero(5,8);
 		Goku goku = new Goku();
 		Freezer freezer = new Freezer();
 		
 		goku.setCasillero(casilleroconguerrero);
-		casilleroconguerrero.setObjeto(goku);
+		try {casilleroconguerrero.setObjeto(goku);
+		} catch (ErrorCasilleroYaOcupado e) {}
 		freezer.setCasillero(casilleroconenemigo);
-		casilleroconenemigo.setObjeto(freezer);
+		try {casilleroconenemigo.setObjeto(freezer);
+		} catch (ErrorCasilleroYaOcupado e) {}
 		
 		goku.agregarKi(20);
-		goku.cambiarAEstado2();
+		try {goku.cambiarAEstado2();
+		} catch (ErrorNoPuedeCambiarEstado e1) {}
 		
-		Pelea.ataqueBasico(goku, freezer);
+		try {Pelea.ataqueBasico(goku, freezer);
+		} catch (ErrorConsumibleInstantaneo e) {}
 		int vida_freezer = (int) freezer.getVida();
 		Assert.assertEquals(vida_freezer, 360);
 		
 		freezer.agregarKi(20);
-		Pelea.ataqueEspecial(freezer, goku);
+		try {
+			Pelea.ataqueEspecial(freezer, goku);
+		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
 		int vida_goku = (int) goku.getVida();
 		Assert.assertEquals(vida_goku, 476);
 		
 	}
 	
-	public void test10VerificarImposibilidadDeAtacarDebidoADistanciaDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado, ErrorNoHayKi, ErrorConsumibleInstantaneo {
+	public void test10VerificarImposibilidadDeAtacarDebidoADistanciaDebeLanzarExcepcion() {
 		Casillero casilleroconguerrero = new Casillero(5,5);
 		Casillero casilleroconenemigo = new Casillero(5,9);
 		Goku goku = new Goku();
 		Freezer freezer = new Freezer();
 		
 		goku.setCasillero(casilleroconguerrero);
-		casilleroconguerrero.setObjeto(goku);
+		try {casilleroconguerrero.setObjeto(goku);
+		} catch (ErrorCasilleroYaOcupado e1) {}
 		freezer.setCasillero(casilleroconenemigo);
-		casilleroconenemigo.setObjeto(freezer);
+		try {casilleroconenemigo.setObjeto(freezer);
+		} catch (ErrorCasilleroYaOcupado e1) {}
 		
 		try {
 			freezer.agregarKi(20);
-			Pelea.ataqueEspecial(freezer, goku);
+			try {
+				Pelea.ataqueEspecial(freezer, goku);
+			} catch (ErrorNoHayKi | ErrorConsumibleInstantaneo e) {}
 		} catch (ErrorNoSePuedeRealizarAtaqueEspecial e) {}
 	}
 	
