@@ -1,6 +1,6 @@
 package juego;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import jugadores.*;
 import tablero.ErrorCasilleroYaOcupado;
 import tablero.ErrorNoHayMasExtremos;
@@ -12,12 +12,12 @@ import tablero.ErrorNoHayMasExtremos;
  */
 
 public class Juego {
-	private Hashtable<String, Jugador> listajugadores; //creo diccionario: {nombre_jugador: JUGADOR}
+	private HashMap<String, Jugador> listajugadores; //creo diccionario: {nombre_jugador: JUGADOR}
 	private OrganizadorJuego organizador;
 	
 	
 	public Juego() {
-		this.listajugadores = new Hashtable<String, Jugador>();
+		this.listajugadores = new HashMap<String, Jugador>();
 		this.organizador = new OrganizadorJuego();
 	}
 	
