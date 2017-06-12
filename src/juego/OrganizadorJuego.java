@@ -2,8 +2,10 @@ package juego;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import equipos.Equipo;
 import jugadores.Jugador;
@@ -30,13 +32,12 @@ public class OrganizadorJuego {
 		this.turno = jugador_que_juega;
 	}
 	
-	public void colocarPersonajesEnTablero( Hashtable<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
+	public void colocarPersonajesEnTablero( HashMap<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
 		
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
 		
-		Enumeration<Jugador> jugadores = listajugadores.elements();
-		while (jugadores.hasMoreElements()) {
-			Equipo equipo = ((Jugador) jugadores).getEquipo();
+		for (Map.Entry<String, Jugador> entry : listajugadores.entrySet()) {
+			Equipo equipo = entry.getValue().getEquipo();
 			listaEquipos.add(equipo);
 		}
 		
