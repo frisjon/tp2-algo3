@@ -13,6 +13,7 @@ public class Freezer extends Personaje {
         this.kiAtaqueEspecial = ConstantesPersonajes.FREEZER_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = ConstantesPersonajes.FREEZER_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = ConstantesPersonajes.FREEZER_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.turnosInutilizados = 0;
     }
 
 
@@ -55,5 +56,5 @@ public class Freezer extends Personaje {
         return this.kiSuficiente(ConstantesPersonajes.FREEZER_KI_ATAQUE_ESPECIAL);
     }
 
-    public void consecuenciasAtaqueEspecial(){}
+    public void consecuenciasAtaqueEspecial(Personaje pj2){}
 }

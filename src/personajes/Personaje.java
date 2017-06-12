@@ -16,6 +16,7 @@ public abstract class Personaje implements ObjetoJuego {
     protected Casillero casillero;
     protected Consumible consumible;
     protected EstadoPersonaje estado;
+    protected int turnosInutilizados;
     
         
     public String getNombre() {
@@ -142,7 +143,13 @@ public abstract class Personaje implements ObjetoJuego {
      */
     public abstract boolean puedeRealizarAtaqueEspecial();
     
-    public abstract void consecuenciasAtaqueEspecial();
+    public abstract void consecuenciasAtaqueEspecial(Personaje pj2);
     
+    public void inutilizar(int cantidadTurnos){
+    	this.turnosInutilizados += cantidadTurnos;
+    }
     
+    public int getTurnosInutilizados(){
+    	return this.turnosInutilizados;
+    }    
 }

@@ -23,6 +23,8 @@ public class Gohan extends Personaje {
         this.vidaInicialAliado1 = 0;
         this.aliado2 = null;
         this.vidaInicialAliado2 = 0;
+        
+        this.turnosInutilizados = 0;
     }
 
     
@@ -80,5 +82,5 @@ public class Gohan extends Personaje {
         return this.kiSuficiente(ConstantesPersonajes.GOHAN_KI_ATAQUE_ESPECIAL);
     }
     
-    public void consecuenciasAtaqueEspecial(){}
+    public void consecuenciasAtaqueEspecial(Personaje pj2){}
 }

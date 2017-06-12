@@ -13,6 +13,7 @@ public class MajinBoo extends Personaje {
         this.kiAtaqueEspecial = ConstantesPersonajes.MAJINBOO_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = ConstantesPersonajes.MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = ConstantesPersonajes.MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.turnosInutilizados = 0;
     }
 
 
@@ -55,5 +56,10 @@ public class MajinBoo extends Personaje {
         return this.kiSuficiente(ConstantesPersonajes.MAJINBOO_KI_ATAQUE_ESPECIAL);
     }
     
-    public void consecuenciasAtaqueEspecial(){}
+    public void consecuenciasAtaqueEspecial(Personaje pj2){
+    	pj2.inutilizar(ConstantesPersonajes.MAJINBOO_TURNOS_QUE_INUTILIZA_OPONENTE);
+    	// falta chequear que un personaje este inutilizado!!!!
+    	// esto se hara en OrganizadorJuego cuando se haga lo de los turnos, para la tercera entrega
+    }
 }
+

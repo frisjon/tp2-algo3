@@ -16,6 +16,7 @@ public class Cell extends Personaje {
         this.cantidadAbsorciones = 0;
         this.aumentoAtaquePasiva = ConstantesPersonajes.CELL_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = ConstantesPersonajes.CELL_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.turnosInutilizados = 0;
     }
 
 
@@ -66,7 +67,7 @@ public class Cell extends Personaje {
         return this.kiSuficiente(ConstantesPersonajes.CELL_KI_ATAQUE_ESPECIAL);
     }
     
-    public void consecuenciasAtaqueEspecial(){
+    public void consecuenciasAtaqueEspecial(Personaje pj2){
     	this.aumentarCantidadAbsorciones();
     	this.aumentarVida();
     }

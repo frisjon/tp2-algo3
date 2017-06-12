@@ -13,6 +13,7 @@ public class Goku extends Personaje {
         this.kiAtaqueEspecial = ConstantesPersonajes.GOKU_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = ConstantesPersonajes.GOKU_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = ConstantesPersonajes.GOKU_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.turnosInutilizados = 0;
     }
 
 
@@ -62,5 +63,5 @@ public class Goku extends Personaje {
     	return 0;
     }
     
-    public void consecuenciasAtaqueEspecial(){}
+    public void consecuenciasAtaqueEspecial(Personaje pj2){}
 }

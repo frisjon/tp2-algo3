@@ -153,6 +153,7 @@ public final class ConstantesPersonajes {
     public static final double MAJINBOO_KI_ATAQUE_ESPECIAL = 30;
     public static final double MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL = 0;
     public static final double MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_PASIVA = 0;
+    public static final int MAJINBOO_TURNOS_QUE_INUTILIZA_OPONENTE = 3;
     public static final String MAJINBOO_NOMBRE = "MajinBoo";
     public static final String MAJINBOO_NOMBRE_ATAQUE_ESPECIAL = "Conviertete En Chocolate";
 

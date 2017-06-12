@@ -19,6 +19,8 @@ public class Piccolo extends Personaje {
         
         this.protegido = null;
         this.vidaInicialProtegido = 0;
+        
+        this.turnosInutilizados = 0;
     }
     
     
@@ -70,5 +72,5 @@ public class Piccolo extends Personaje {
         return this.kiSuficiente(ConstantesPersonajes.PICCOLO_KI_ATAQUE_ESPECIAL);
     }
     
-    public void consecuenciasAtaqueEspecial(){}
+    public void consecuenciasAtaqueEspecial(Personaje pj2){}
 }
