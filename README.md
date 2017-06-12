@@ -1,5 +1,13 @@
 # tp2-algo3
 
+# Cosas que hay que hacer para que esté prolijo / HÁBITOS de la buena programación:
+
+- poner los métodos en sus tipos correspondientes (private, static, etc)
+- poner las clases en sus tipo correspondientes (private, static, final, etc)
+- no poner throws a lo pavote, sólo cuando es posible que entre ahí. Sino usar try y en el catch no poner nada.
+- poner bien los tipos cuando usamos List/Map. No poner siempre ArrayList/HashMap. Ej: en la firma de colocarPersonajesEnTablero va Map. Lo mismo en los constructores.
+
+
 ### Entregas
 
 (en __negrita__ estan las pruebas ya hechas y pasan)
