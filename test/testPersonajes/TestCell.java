@@ -38,7 +38,9 @@ public class TestCell{
     public void test04CambiarCellAEstado2() throws ErrorNoPuedeCambiarEstado {
     	cell.agregarKi(20);
         for (int i=0;i<4;i++)
-        	cell.aumentarCantidadAbsorciones();
+        	// cell.aumentarCantidadAbsorciones();
+        	// aca realizar ataque especial, que es lo mismo que aumentarCantidadAbsorciones pero mas
+        	// prolijo y aparte aumentando vida y restando ki que es lo que se espera
         try {
             cell.cambiarAEstado2();
         } catch (ErrorNoPuedeCambiarEstado e1) {
@@ -57,7 +59,9 @@ public class TestCell{
     public void test06CambiarCellAEstado3() throws ErrorNoPuedeCambiarEstado {
     	cell.agregarKi(40);
         for (int i=0;i<8;i++)
-        	cell.aumentarCantidadAbsorciones();
+        	// cell.aumentarCantidadAbsorciones();
+        	// aca realizar ataque especial, que es lo mismo que aumentarCantidadAbsorciones pero mas
+        	// prolijo y aparte aumentando vida y restando ki que es lo que se espera
         try {
             cell.cambiarAEstado3();
         } catch (ErrorNoPuedeCambiarEstado e1) {
