@@ -24,6 +24,7 @@ import personajes.Piccolo;
 import tablero.Casillero;
 import tablero.ErrorCasilleroYaOcupado;
 import tablero.ErrorMovimientoInvalido;
+import tablero.ErrorNoHayMasExtremos;
 import tablero.ErrorNoHayObjeto;
 import tablero.Tablero;
 
@@ -171,7 +172,11 @@ public class TestPrimeraEntrega extends TestCase {
 		Assert.assertEquals(juego.pedirJugador("Juan"), jugador1);
 		Assert.assertEquals(juego.pedirJugador("Pedro"), jugador2);
 		
-		juego.distribuirPersonajesEquipos();
+		try {
+			juego.distribuirPersonajesEquipos();
+		} catch (ErrorNoHayMasExtremos e) {
+			// se que no me quedo sin extremos ya que son pocos personajes
+		}
 		
 		Assert.assertEquals(goku.getCasillero().getCoordenada().getX(), 0);
 		Assert.assertEquals(goku.getCasillero().getCoordenada().getY(), 0);

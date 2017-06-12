@@ -54,4 +54,11 @@ public class Goku extends Personaje {
     public boolean puedeRealizarAtaqueEspecial() {
         return this.kiSuficiente(ConstantesPersonajes.GOKU_KI_ATAQUE_ESPECIAL);
     }
+    
+    public double getAumentoPasiva() {
+    	if (this.vida < (ConstantesPersonajes.GOKU_CANTIDAD_VIDA_INICIAL * ConstantesPersonajes.GOKU_PORCENTAJE_VIDA_PARA_AUMENTO_ATAQUE_PASIVA))
+    		return this.aumentoAtaquePasiva;
+    	
+    	return 0;
+    }
 }

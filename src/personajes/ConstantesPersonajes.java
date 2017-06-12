@@ -7,6 +7,7 @@ public final class ConstantesPersonajes {
     public static final double GOKU_KI_ATAQUE_ESPECIAL = 20;
     public static final double GOKU_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL = 0.5;
     public static final double GOKU_PORCENTAJE_AUMENTO_ATAQUE_PASIVA = 0.2;
+    public static final double GOKU_PORCENTAJE_VIDA_PARA_AUMENTO_ATAQUE_PASIVA = 0.3;
     public static final String GOKU_NOMBRE = "Goku";
     public static final String GOKU_NOMBRE_ATAQUE_ESPECIAL = "Kamehameha";
 

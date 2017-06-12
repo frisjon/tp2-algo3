@@ -18,6 +18,7 @@ import personajes.Goku;
 import personajes.Piccolo;
 import tablero.Casillero;
 import tablero.ErrorCasilleroYaOcupado;
+import tablero.ErrorNoHayMasExtremos;
 
 public class TestSegundaEntrega extends TestCase {
 	public void test01VerificarGohanNoLlegaASegundaTransformacionDebeLanzarExcepcion() throws ErrorNoPuedeCambiarEstado {
@@ -34,7 +35,11 @@ public class TestSegundaEntrega extends TestCase {
 		Jugador jugador = new Jugador("Juan", equipo);
 		juego.agregarJugador(jugador);
 		
-		juego.distribuirPersonajesEquipos();
+		try {
+			juego.distribuirPersonajesEquipos();
+		} catch (ErrorNoHayMasExtremos e) {
+			// se que no me quedo sin extremos ya que son pocos personajes
+		}
 		
 		gohan.agregarKi(10);
 		gohan.cambiarAEstado2();
@@ -59,7 +64,11 @@ public class TestSegundaEntrega extends TestCase {
 		Jugador jugador = new Jugador("Juan", equipo);
 		juego.agregarJugador(jugador);
 		
-		juego.distribuirPersonajesEquipos();
+		try {
+			juego.distribuirPersonajesEquipos();
+		} catch (ErrorNoHayMasExtremos e) {
+			// se que no me quedo sin extremos ya que son pocos personajes
+		}
 		
 		gohan.agregarKi(30);
 		gohan.setAliado1(goku);
