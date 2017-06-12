@@ -18,6 +18,7 @@ public final class ValidadorMovimientoyAtaque {
 		return diferencia;		
 	}	
 	
+	//FALTA VALIDAR QUE DOS DEL MISMO EQUIPO NO SE PUEDEN ATACAR ENTRE ELLOS
 	public static boolean movimientoValido(Personaje personaje, List<Casillero> camino){
 				
 		double velocidad = personaje.getVelocidad();
