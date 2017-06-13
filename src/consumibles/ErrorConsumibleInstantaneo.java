@@ -6,7 +6,7 @@ package consumibles;
  * @author Thomas
  *
  */
-public class ErrorConsumibleInstantaneo extends Exception{
+public class ErrorConsumibleInstantaneo extends RuntimeException{
     public ErrorConsumibleInstantaneo(String mensaje){
         super(mensaje);
     }

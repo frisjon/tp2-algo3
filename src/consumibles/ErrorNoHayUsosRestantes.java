@@ -6,7 +6,7 @@ package consumibles;
  * @author Thomas
  *
  */
-public class ErrorNoHayUsosRestantes extends Exception{
+public class ErrorNoHayUsosRestantes extends RuntimeException{
     public ErrorNoHayUsosRestantes(String mensaje){
         super(mensaje);
     }

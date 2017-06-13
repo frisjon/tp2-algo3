@@ -1,6 +1,6 @@
 package tablero;
 
-public class ErrorCasilleroYaOcupado extends Exception {
+public class ErrorCasilleroYaOcupado extends RuntimeException {
 	
 	public ErrorCasilleroYaOcupado(String mensaje){
 		super(mensaje);

@@ -1,6 +1,6 @@
 package personajes;
 
-public class ErrorNoPuedeCambiarEstado extends Exception {
+public class ErrorNoPuedeCambiarEstado extends RuntimeException {
     private static String mensaje = "No se puede cambiar de Estado. ";
     
     public ErrorNoPuedeCambiarEstado(String condiciones) {

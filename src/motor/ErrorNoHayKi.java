@@ -1,6 +1,6 @@
 package motor;
 
-public class ErrorNoHayKi extends Exception{
+public class ErrorNoHayKi extends RuntimeException{
     public ErrorNoHayKi(String mensaje){
         super(mensaje);
     }
