@@ -94,7 +94,7 @@ public class TestGohan {
         gohan.cambiarAEstado2();
     }
     
-    @Test
+    @Test (expected=ErrorNoPuedeCambiarEstado.class)
     public void test10CambiarAPiccoloAEstado2YGohanNoPuedeCambiar () throws ErrorNoPuedeCambiarEstado {
         piccolo.agregarKi(20);
         piccolo.cambiarAEstado2();
