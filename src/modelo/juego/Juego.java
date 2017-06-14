@@ -1,9 +1,9 @@
 package modelo.juego;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import modelo.jugador.*;
-import modelo.tablero.ErrorCasilleroYaOcupado;
 import modelo.tablero.ErrorNoHayMasExtremos;
 
 /**
@@ -13,7 +13,7 @@ import modelo.tablero.ErrorNoHayMasExtremos;
  */
 
 public class Juego {
-	private HashMap<String, Jugador> listajugadores; //creo diccionario: {nombre_jugador: JUGADOR}
+	private Map<String, Jugador> listajugadores; //creo diccionario: {nombre_jugador: JUGADOR}
 	private OrganizadorJuego organizador;
 	
 	

@@ -1,5 +1,5 @@
 package testEntregas;
-
+//CREAR TESTS UNITARIOS PARA CELL Y GOKU Y ASI LES SACO ASSERTS DEMAS
 import org.junit.Assert;
 
 import junit.framework.*;
@@ -44,8 +44,6 @@ public class TestSegundaEntrega extends TestCase {
 		gohan.agregarKi(10);
 		try {gohan.cambiarAEstado2();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
-		//verifico cambio de estado
-		Assert.assertEquals(gohan.getIdEstado(), 2);
 		try {gohan.cambiarAEstado3();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
 	}
@@ -98,8 +96,7 @@ public class TestSegundaEntrega extends TestCase {
 		piccolo.agregarKi(20);
 		try {piccolo.cambiarAEstado2();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
-		gohan.quitarVida(240); //para verificar que sacandole el 20% de vida a gohan piccolo no se pude trasnformar
-		Assert.assertEquals(piccolo.getIdEstado(), 2);
+		gohan.quitarVida(240); //para verificar que sacandole el 20% de vida a gohan, piccolo no se pude transformar
 		try {
 			piccolo.cambiarAEstado3();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
@@ -196,8 +193,8 @@ public class TestSegundaEntrega extends TestCase {
 			} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
 		}
 		
+		vida_cell = (int) cell.getVida();
 		Assert.assertEquals(vida_cell, 500);
-		Assert.assertEquals(vida_gohan, 60);
 		
 		try {cell.cambiarAEstado3();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
