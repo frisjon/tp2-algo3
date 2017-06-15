@@ -21,11 +21,15 @@ public class Aplicacion extends Application {
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
         Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);
+        
+        ContenedorMenu contenedorMenu = new ContenedorMenu(stage, escenaJuego);
+        Scene escenaMenu = new Scene(contenedorMenu, 640, 480);
+        
 
         AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
         escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
 
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaMenu);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
 
         // add handler to this:

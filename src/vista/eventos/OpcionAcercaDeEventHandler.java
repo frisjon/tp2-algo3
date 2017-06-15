@@ -10,9 +10,9 @@ public class OpcionAcercaDeEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Acerca de...");
+        alert.setTitle("Acerca de Dragon Algo Ball");
         alert.setHeaderText("Ejemplo de mensaje de alerta");
-        String mensaje = "Desarrollado por RMTR";
+        String mensaje = "Desarrollado por Thodrimarami Companys";
         alert.setContentText(mensaje);
         alert.show();
     }

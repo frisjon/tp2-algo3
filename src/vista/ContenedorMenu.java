@@ -18,39 +18,43 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import vista.eventos.BotonEntrarEventHandler;
 
-public class ContenedorBienvenidos extends VBox {
-
+public class ContenedorMenu extends VBox {
     Stage stage;
 
-    public ContenedorBienvenidos(Stage stage, Scene proximaEscena) {
-
+    public ContenedorMenu(Stage stage, Scene proximaEscena) {
         super();
 
         this.stage = stage;
 
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
-        this.setPadding(new Insets(25));
+        this.setPadding(new Insets(50));
         Image imagen = new Image("file:src/vista/imagenes/dbz-inicio.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
-        Button botonEntrar = new Button();
-        botonEntrar.setText("Entrar");
-        botonEntrar.setPrefSize(200,200);
-        botonEntrar.setFont(Font.font("Tahoma", FontWeight.BOLD, 32));
-        
+        Button botonEquipoGuerreros = new Button();
+        botonEquipoGuerreros.setText("Guerreros Z");
+        Button botonEquipoGuerreros2 = new Button();
+        botonEquipoGuerreros.setText("Guerreros Z");
+        Button botonEquipoEnemigos = new Button();
+        botonEquipoEnemigos.setText("Enemigos de la Tierra");
+        Button botonEquipoEnemigos2 = new Button();
+        botonEquipoEnemigos2.setText("Enemigos de la Tierra");
+
         Label etiqueta = new Label();
-        etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 32));
+        etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 50));
 
-        etiqueta.setText("Bienvenidos al juego de DBZ");
-        etiqueta.setTextFill(Color.RED); // http://www.color-hex.com/
+        etiqueta.setText("Elijan sus equipos:");
+        etiqueta.setAlignment(Pos.TOP_LEFT);
+        etiqueta.setTextFill(Color.BLUE); // http://www.color-hex.com/
         //etiqueta.setPrefSize(350, 80);
-
+        
         BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena);
-        botonEntrar.setOnAction(botonEntrarHandler);
+        botonEquipoGuerreros.setOnAction(botonEntrarHandler);
 
-        this.getChildren().addAll(etiqueta, botonEntrar);
+        this.getChildren().addAll(etiqueta, botonEquipoGuerreros, botonEquipoGuerreros2, botonEquipoEnemigos, botonEquipoEnemigos2);
     }
 
 }
+
