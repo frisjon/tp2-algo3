@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="575.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.vistas.controllers.MenuDeAtaqueController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Pane prefHeight="575.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutY="47.0" prefHeight="31.0" prefWidth="200.0" text="Seleccione con quien desea atacar:">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
+                  <Button layoutX="47.0" layoutY="467.0" mnemonicParsing="false" onAction="#clickBotonTerminarTurno" text="Terminar Turno" />
+                  <Button fx:id="botonPersonaje1" layoutX="51.0" layoutY="84.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje1" prefHeight="25.0" prefWidth="89.0" text="Personaje1" />
+                  <Button fx:id="botonPersonaje2" layoutX="51.0" layoutY="203.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje2" prefHeight="25.0" prefWidth="97.0" text="Personaje2" />
+                  <Button fx:id="botonPersonaje3" layoutX="51.0" layoutY="319.0" mnemonicParsing="false" onAction="#clickBotonAtacarConPersonaje3" prefHeight="25.0" prefWidth="89.0" text="Personaje3" />
+                  <GridPane layoutX="11.0" layoutY="109.0" prefHeight="84.0" prefWidth="200.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Ptos. de vida" />
+                        <Label text="Ataque" GridPane.rowIndex="1" />
+                        <Label text="Dist. de ataque" GridPane.rowIndex="2" />
+                        <Label text="Velocidad" GridPane.rowIndex="3" />
+                        <Label fx:id="ptosDeVidaPersonaje1" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="ataquePersonaje1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="distDeAtaquePersonaje1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="velocidadPersonaje1" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="11.0" layoutY="228.0" prefHeight="84.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Ptos. de vida" />
+                        <Label text="Ataque" GridPane.rowIndex="1" />
+                        <Label text="Dist. de ataque" GridPane.rowIndex="2" />
+                        <Label text="Velocidad" GridPane.rowIndex="3" />
+                        <Label fx:id="ptosDeVidaPersonaje2" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="ataquePersonaje2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="distDeAtaquePersonaje2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="velocidadPersonaje2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <GridPane layoutX="11.0" layoutY="344.0" prefHeight="84.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Ptos. de vida" />
+                        <Label text="Ataque" GridPane.rowIndex="1" />
+                        <Label text="Dist. de ataque" GridPane.rowIndex="2" />
+                        <Label text="Velocidad" GridPane.rowIndex="3" />
+                        <Label fx:id="ptosDeVidaPersonaje3" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="ataquePersonaje3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="distDeAtaquePersonaje3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="velocidadPersonaje3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <Label fx:id="nombreJugador" layoutX="11.0" layoutY="14.0" text="Personaje">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tipoDeAlgoformers" layoutX="103.0" layoutY="14.0" text="Algoformer">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="47.0" layoutY="505.0" mnemonicParsing="false" onAction="#clickBotonVolverAtras" prefHeight="25.0" prefWidth="97.0" text="Volver Atras" />
+               </children>
+            </Pane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

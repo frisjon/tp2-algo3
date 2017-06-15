@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.vistas.controllers.PantallaDeVictoriaController">
+   <children>
+      <ImageView fitHeight="455.0" fitWidth="685.0">
+         <image>
+            <Image url="@../imagenes/ImagenPantallaVictoria.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="44.0" prefHeight="73.0" prefWidth="636.0" text="Felicitaciones!! El ganador es:" textFill="WHITE">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="nombreGanador" alignment="CENTER" layoutX="93.0" layoutY="131.0" prefHeight="172.0" prefWidth="523.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
+      <Button id="botonCerrar" layoutX="313.0" layoutY="371.0" mnemonicParsing="false" onAction="#clickBotonCerrar" text="Cerrar" />
+   </children>
+</Pane>
