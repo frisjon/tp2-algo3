@@ -42,8 +42,6 @@ public class TestPrimeraEntrega extends TestCase {
 		camino.add(casillero3);
 		casillero1.setObjeto(goku);
 		goku.setCasillero(casillero1);
-		Assert.assertEquals(casillero1.getObjeto(), goku);
-		casillero1.setObjeto(goku);
 		tablero.moverPersonaje(goku, camino);
 		Assert.assertEquals(casillero3.getObjeto(), goku);
 		Assert.assertEquals(casillero1.estaLibre(), true);
@@ -109,7 +107,6 @@ public class TestPrimeraEntrega extends TestCase {
 		} catch (ErrorCasilleroYaOcupado e) {}
 		goku.setCasillero(casillero);
 		goku.agregarKi(20);
-		Assert.assertEquals(goku.getIdEstado(), 1);
 		try {goku.cambiarAEstado2();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
 		Assert.assertEquals(goku.getIdEstado(), 2);
@@ -220,7 +217,6 @@ public class TestPrimeraEntrega extends TestCase {
 		try {Pelea.ataqueBasico(goku, freezer);
 		} catch (ErrorConsumibleInstantaneo e) {}
 		int vida_freezer = (int) freezer.getVida();
-		Assert.assertEquals(vida_freezer, 360);
 		
 		freezer.agregarKi(20);
 		try {
@@ -228,7 +224,7 @@ public class TestPrimeraEntrega extends TestCase {
 		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
 		int vida_goku = (int) goku.getVida();
 		Assert.assertEquals(vida_goku, 476);
-		
+		Assert.assertEquals(vida_freezer, 360);
 	}
 	
 	public void test10VerificarImposibilidadDeAtacarDebidoADistanciaDebeLanzarExcepcion() {

@@ -32,7 +32,7 @@ public class OrganizadorJuego {
 		this.turno = jugador_que_juega;
 	}
 	
-	public void colocarPersonajesEnTablero( HashMap<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
+	public void colocarPersonajesEnTablero( Map<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
 		
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
 		
