@@ -3,11 +3,17 @@ package testPersonajes;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import modelo.consumibles.ErrorConsumibleInstantaneo;
+import modelo.pelea.ErrorNoHayKi;
+import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
+import modelo.pelea.Pelea;
 import modelo.personajes.Cell;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
+import modelo.personajes.Gohan;
 
 public class TestCell{
     
@@ -77,8 +83,30 @@ public class TestCell{
     }
 
     @Test
-    public void test08() {
+    public void test08CellHaceDanioAlAtacarConAtaqueEspecial() {
+    	Gohan gohan = new Gohan();
+    	int vida_gohan;
+    	cell.agregarKi(100);
+    	try {
+			Pelea.ataqueEspecial(cell, gohan);
+		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
+		vida_gohan = (int) gohan.getVida();
+		Assert.assertEquals(vida_gohan, 280);
 
+    }
+    
+    @Test
+    public void test09CellRecuperaVidaConAtaqueEspecial() {
+    	Gohan gohan = new Gohan();
+    	int vida_cell;
+    	cell.agregarKi(100);
+    	cell.quitarVida(60); //lo deja en 440 de vida
+    	try {
+			Pelea.ataqueEspecial(cell, gohan);
+		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
+    	
+    	vida_cell = (int) cell.getVida();
+    	Assert.assertEquals(vida_cell, 460);
     }
 }
 

@@ -3,9 +3,13 @@ package testPersonajes;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import modelo.consumibles.ErrorConsumibleInstantaneo;
+import modelo.pelea.Pelea;
+import modelo.personajes.Cell;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.Goku;
 
@@ -64,6 +68,17 @@ public class TestGoku{
     @Test (expected=ErrorNoPuedeCambiarEstado.class)
     public void test07CambiarGokuAEstado3KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
         goku.cambiarAEstado3();
+    }
+    
+    @Test
+    public void test08GokuHaceDanioConAtaqueBasico() {
+    	Cell cell = new Cell();
+    	int vida_cell;
+		
+		try { Pelea.ataqueBasico(goku, cell);
+		} catch (ErrorConsumibleInstantaneo e) {}
+		vida_cell = (int) cell.getVida();
+		Assert.assertEquals(vida_cell, 480);
     }
 }
 

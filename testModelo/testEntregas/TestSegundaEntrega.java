@@ -35,11 +35,7 @@ public class TestSegundaEntrega extends TestCase {
 		Jugador jugador = new Jugador("Juan", equipo);
 		juego.agregarJugador(jugador);
 		
-		try {
-			juego.distribuirPersonajesEquipos();
-		} catch (ErrorNoHayMasExtremos e) {
-			// se que no me quedo sin extremos ya que son pocos personajes
-		}
+		juego.distribuirPersonajesEquipos();
 		
 		gohan.agregarKi(10);
 		try {gohan.cambiarAEstado2();
@@ -48,7 +44,7 @@ public class TestSegundaEntrega extends TestCase {
 		} catch (ErrorNoPuedeCambiarEstado e) {}
 	}
 	
-	public void test02VerificarGohanLlegaASegundaTransformacion()  {
+	public void test02VerificarGohanLlegaASegundaTransformacion() {
 		Juego juego = new Juego();
 		Goku goku = new Goku();
 		Gohan gohan = new Gohan();
@@ -62,11 +58,7 @@ public class TestSegundaEntrega extends TestCase {
 		Jugador jugador = new Jugador("Juan", equipo);
 		juego.agregarJugador(jugador);
 		
-		try {
-			juego.distribuirPersonajesEquipos();
-		} catch (ErrorNoHayMasExtremos e) {
-			// se que no me quedo sin extremos ya que son pocos personajes
-		}
+		juego.distribuirPersonajesEquipos();
 		
 		gohan.agregarKi(30);
 		gohan.setAliado1(goku);
@@ -155,47 +147,23 @@ public class TestSegundaEntrega extends TestCase {
 		try{ casilleroconguerrero.setObjeto(gohan);
 		}catch (ErrorCasilleroYaOcupado e) {}
 		gohan.setCasillero(casilleroconguerrero);
-		int vida_cell;
-		int vida_gohan;
 		
 		cell.agregarKi(100);
-		try {
-			Pelea.ataqueEspecial(cell, gohan);
-		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
-		vida_gohan = (int) gohan.getVida();
-		vida_cell = (int) cell.getVida();
-		Assert.assertEquals(vida_cell, 500);
-		Assert.assertEquals(vida_gohan, 280);
-		
-		cell.quitarVida(60); //lo deja en 420 de vida
-		try {
-			Pelea.ataqueEspecial(cell, gohan);
-			Pelea.ataqueEspecial(cell, gohan);
-			Pelea.ataqueEspecial(cell, gohan);
-		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
-		vida_gohan = (int) gohan.getVida();
-		vida_cell = (int) cell.getVida();
-		try {cell.cambiarAEstado2();
-		} catch (ErrorNoPuedeCambiarEstado e) {}
-		Assert.assertEquals(cell.getIdEstado(), 2);
-		Assert.assertEquals(vida_gohan, 220);
-		Assert.assertEquals(vida_cell, 500);
+		for (int i = 0; i < 4; i++) {
+			try {
+				Pelea.ataqueEspecial(cell, gohan);
+			} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial e) {}
+		}
 		
 		try {cell.cambiarAEstado2();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
 		Assert.assertEquals(cell.getIdEstado(), 2);
-		
-		cell.quitarVida(160); //lo deja en 360 de vida a cell
 		//tener en cuenta que ahora cell esta en transformacion 2 y por cada ataque especial saca y absorbe 40
 		for (int i = 0; i < 4; i++) {
 			try {
 				Pelea.ataqueEspecial(cell, gohan);
-			} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
+			} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial e) {}
 		}
-		
-		vida_cell = (int) cell.getVida();
-		Assert.assertEquals(vida_cell, 500);
-		
 		try {cell.cambiarAEstado3();
 		} catch (ErrorNoPuedeCambiarEstado e) {}
 		Assert.assertEquals(cell.getIdEstado(), 3);
@@ -217,7 +185,7 @@ public class TestSegundaEntrega extends TestCase {
 		majinboo.agregarKi(30);
 		try {
 			Pelea.ataqueEspecial(majinboo, gohan);
-		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
+		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial e) {}
 		Assert.assertEquals(gohan.getTurnosInutilizados(), 3);
 	}
 	
@@ -232,18 +200,9 @@ public class TestSegundaEntrega extends TestCase {
 		try { casilleroconenemigo.setObjeto(cell);
 		} catch (ErrorCasilleroYaOcupado e) {}
 		cell.setCasillero(casilleroconenemigo);
-		int vida_cell;
 		
-		try { Pelea.ataqueBasico(goku, cell);
-		} catch (ErrorConsumibleInstantaneo e) {}
-		vida_cell = (int) cell.getVida();
-		Assert.assertEquals(vida_cell, 480);
-		
-		cell.agregarVida(20); //le recargo la vida a cell
 		goku.quitarVida(410); //le saco a goku mas del 80% de la vida
-		try { Pelea.ataqueBasico(goku, cell);
-		} catch (ErrorConsumibleInstantaneo e) {}
-		vida_cell = (int) cell.getVida();
-		Assert.assertEquals(vida_cell, 476);
+		Pelea.ataqueBasico(goku, cell);
+		Assert.assertEquals(cell.getVida(), 476,0);
 	}
 }

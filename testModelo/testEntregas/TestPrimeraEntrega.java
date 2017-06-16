@@ -181,11 +181,9 @@ public class TestPrimeraEntrega extends TestCase {
 		Assert.assertEquals(juego.pedirJugador("Juan"), jugador1);
 		Assert.assertEquals(juego.pedirJugador("Pedro"), jugador2);
 		
-		try {
-			juego.distribuirPersonajesEquipos();
-		} catch (ErrorNoHayMasExtremos e) {
-			// se que no me quedo sin extremos ya que son pocos personajes
-		}
+		
+		juego.distribuirPersonajesEquipos();
+		
 		//lo siguiente es teniendo en cuenta que el tablero es de 30x30
 		
 		if((goku.getCasillero().getCoordenada().getX() == 29) ||(goku.getCasillero().getCoordenada().getX() == 0)) Assert.assertEquals(true, true);
@@ -214,17 +212,14 @@ public class TestPrimeraEntrega extends TestCase {
 		try {goku.cambiarAEstado2();
 		} catch (ErrorNoPuedeCambiarEstado e1) {}
 		
-		try {Pelea.ataqueBasico(goku, freezer);
-		} catch (ErrorConsumibleInstantaneo e) {}
-		int vida_freezer = (int) freezer.getVida();
+		Pelea.ataqueBasico(goku, freezer);
 		
 		freezer.agregarKi(20);
 		try {
 			Pelea.ataqueEspecial(freezer, goku);
-		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
-		int vida_goku = (int) goku.getVida();
-		Assert.assertEquals(vida_goku, 476);
-		Assert.assertEquals(vida_freezer, 360);
+		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial e) {}
+		Assert.assertEquals(goku.getVida(), 476,0);
+		Assert.assertEquals(freezer.getVida(), 360,0);
 	}
 	
 	public void test10VerificarImposibilidadDeAtacarDebidoADistanciaDebeLanzarExcepcion() {
@@ -244,7 +239,7 @@ public class TestPrimeraEntrega extends TestCase {
 			freezer.agregarKi(20);
 			try {
 				Pelea.ataqueEspecial(freezer, goku);
-			} catch (ErrorNoHayKi | ErrorConsumibleInstantaneo e) {}
+			} catch (ErrorNoHayKi e) {}
 		} catch (ErrorNoSePuedeRealizarAtaqueEspecial e) {}
 	}
 	
