@@ -1,8 +1,8 @@
 package testMotorPelea;
 
 import junit.framework.*;
-import modelo.consumibles.ErrorConsumibleInstantaneo;
 import modelo.consumibles.Esfera;
+import modelo.consumibles.Nube;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.pelea.Pelea;
@@ -12,13 +12,15 @@ public class TestMotorPelea extends TestCase{
     private Gohan gohan1;
     private Freezer freezer1;
     private Esfera esfera;
-    
+    private Nube nube;
+
     @Override
     protected void setUp() throws Exception{
         super.setUp();
         this.gohan1 = new Gohan();
         this.freezer1 = new Freezer();
         this.esfera = new Esfera();
+        this.nube = new Nube();
     }
     
     public void test01PeleaGohanAtacaBasicoAFreezerSinModificadores(){
@@ -63,7 +65,12 @@ public class TestMotorPelea extends TestCase{
         try {
             Pelea.ataqueEspecial(gohan1, freezer1);
             fail("No lanzo la excepcion esperada.");
-        } catch (ErrorNoHayKi e) {}
+        }
+        catch (ErrorNoSePuedeRealizarAtaqueEspecial e1){
+            fail("No se lanzo la excepcion esperada.");
+        }
+        catch (ErrorNoHayKi e2) {}
+        
     }
     
     public void test06PeleaGohanAtacaBasicoAFreezerConEsfera(){
@@ -97,5 +104,27 @@ public class TestMotorPelea extends TestCase{
         assertEquals(gohan1.getKi(), 0.0);
         assertEquals(freezer1.getVida(), 362.5);
         assertEquals(freezer1.getKi(), 0.0);
+    }
+    
+    public void test09PeleaFreezerConEsferaDecrementaUso(){
+        freezer1.setConsumible(esfera);
+        Pelea.ataqueBasico(freezer1, gohan1);
+        
+        assertEquals(freezer1.getConsumible().getCantidadUsosRestantes(), 1);
+    }
+    
+    public void test10PeleaFreezerConEsferaAtaca2VecesEliminaConsumible(){
+        freezer1.setConsumible(esfera);
+        Pelea.ataqueBasico(freezer1, gohan1);
+        Pelea.ataqueBasico(freezer1, gohan1);
+        
+        assertEquals(freezer1.tieneConsumible(), false);
+    }
+    
+    public void test11PeleaFreezerConNubeNoDecrementaUso(){
+        freezer1.setConsumible(nube);
+        Pelea.ataqueBasico(freezer1, gohan1);
+        
+        assertEquals(freezer1.getConsumible().getCantidadUsosRestantes(), 2);
     }
 }

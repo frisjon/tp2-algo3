@@ -18,13 +18,11 @@ public final class Pelea {
      * @author Thomas
      * @param pj1
      * @param pj2
-     * @param hpSanado
      * @param dmgRealizado
      * @param kiUtilizado
      * @return True si el personaje debe morir y False en caso contrario.
      */
-    private static boolean actualizarPersonajes(Personaje pj1, Personaje pj2, double hpSanado, double dmgRealizado, double kiUtilizado){
-        pj1.agregarVida(hpSanado);
+    private static boolean actualizarPersonajes(Personaje pj1, Personaje pj2, double dmgRealizado, double kiUtilizado){
         pj1.quitarKi(kiUtilizado);
         pj2.quitarVida(dmgRealizado);
         
@@ -71,18 +69,13 @@ public final class Pelea {
         if (pj1.tieneConsumible()){
             Consumible consumiblePj1 = pj1.getConsumible();
             
-            switch (consumiblePj1.getAtributo()){
-                case "Ataque": aumentoConsumible = (poderPeleaPj1 + aumentoPasiva) * (consumiblePj1.getCantidadAtributo());
-            }
-            
-            try{
+            if (consumiblePj1.getAtributo() == "Ataque"){
+                aumentoConsumible = (poderPeleaPj1 + aumentoPasiva) * (consumiblePj1.getCantidadAtributo());
                 consumiblePj1.decrementarUso();
-            }
-            catch (ErrorNoHayUsosRestantes e1){
-                pj1.eliminarConsumible();
-            }
-            catch (ErrorConsumibleInstantaneo e2){
-                throw new ErrorConsumibleInstantaneo("El personaje posee un consumible instaneo.");
+                //Si no quedan usos se elimina el consumible.
+                if (consumiblePj1.getCantidadUsosRestantes() == 0){
+                    pj1.eliminarConsumible();
+                }
             }
         }
         
@@ -93,7 +86,7 @@ public final class Pelea {
         
         dmg = poderPeleaPj1 + aumentoConsumible + aumentoPasiva - descuentoDifPoder;
         
-        return actualizarPersonajes(pj1, pj2, 0, dmg, 0);
+        return actualizarPersonajes(pj1, pj2, dmg, 0);
     }
     
     /**
@@ -108,7 +101,7 @@ public final class Pelea {
      * @throws ErrorNoSePuedeRealizarAtaqueEspecial
      * @throws ErrorConsumibleInstantaneo 
      */
-    public static boolean ataqueEspecial(Personaje pj1, Personaje pj2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial, ErrorConsumibleInstantaneo{
+    public static boolean ataqueEspecial(Personaje pj1, Personaje pj2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
         double kiAtaqueEspecial = pj1.getKiNecesario();
         double poderPeleaPj1 = pj1.getPoderPelea();
         double poderPeleaPj2 = pj2.getPoderPelea();
@@ -144,18 +137,13 @@ public final class Pelea {
         if (pj1.tieneConsumible()){
             Consumible consumiblePj1 = pj1.getConsumible();
             
-            switch (consumiblePj1.getAtributo()){
-                case "Ataque": aumentoConsumible = (poderPeleaPj1 + aumentoPasiva + aumentoAtaqueEspecial) * (consumiblePj1.getCantidadAtributo());
-            }
-            
-            try{
+            if (consumiblePj1.getAtributo() == "Ataque"){
+                aumentoConsumible = (poderPeleaPj1 + aumentoPasiva + aumentoAtaqueEspecial) * (consumiblePj1.getCantidadAtributo());
                 consumiblePj1.decrementarUso();
-            }
-            catch (ErrorNoHayUsosRestantes e1){
-                pj1.eliminarConsumible();
-            }
-            catch (ErrorConsumibleInstantaneo e2){
-                throw new ErrorConsumibleInstantaneo("El personaje posee un consumible instaneo.");
+                //Si no quedan usos se elimina el consumible.
+                if (consumiblePj1.getCantidadUsosRestantes() == 0){
+                    pj1.eliminarConsumible();
+                }
             }
         }
         
@@ -168,6 +156,6 @@ public final class Pelea {
         
         pj1.consecuenciasAtaqueEspecial(pj2);
         
-        return actualizarPersonajes(pj1, pj2, 0, dmg, kiAtaqueEspecial);
+        return actualizarPersonajes(pj1, pj2, dmg, kiAtaqueEspecial);
     }
 }
