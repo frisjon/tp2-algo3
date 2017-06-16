@@ -42,28 +42,21 @@ public class TestPiccolo{
     @Test
     public void test04CambiarPiccoloAEstado2() {
     	piccolo.agregarKi(20);
-        try {
-            piccolo.cambiarAEstado2();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+    	piccolo.cambiarAEstado2();
+    
         assertEquals(2, piccolo.getIdEstado());
     }
 
     @Test (expected=ErrorNoPuedeCambiarEstado.class)
-    public void test05CambiarPiccoloAEstado2KiInsuficienteLanzaExcepcion() throws ErrorNoPuedeCambiarEstado {
+    public void test05CambiarPiccoloAEstado2KiInsuficienteLanzaExcepcion() {
         piccolo.agregarKi(19);
         piccolo.cambiarAEstado2();
     }
 
     @Test
-    public void test06CambiarPiccoloAEstado3() throws ErrorNoPuedeCambiarEstado {
+    public void test06CambiarPiccoloAEstado3() {
     	gohan.quitarVida(241);
-        try {
-            piccolo.cambiarAEstado3();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+        piccolo.cambiarAEstado3();
         assertEquals(3, piccolo.getIdEstado());
     }
 

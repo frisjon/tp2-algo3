@@ -41,11 +41,7 @@ public class TestGoku{
     @Test
     public void test04CambiarGokuAEstado2() {
     	goku.agregarKi(20);
-        try {
-            goku.cambiarAEstado2();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+        goku.cambiarAEstado2();
         assertEquals(2, goku.getIdEstado());
     }
 
@@ -57,11 +53,8 @@ public class TestGoku{
     @Test
     public void test06CambiarGokuAEstado3() {
     	goku.agregarKi(50);
-        try {
-            goku.cambiarAEstado3();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+    	goku.cambiarAEstado3();
+
         assertEquals(3, goku.getIdEstado());
     }
 
@@ -75,8 +68,8 @@ public class TestGoku{
     	Cell cell = new Cell();
     	int vida_cell;
 		
-		try { Pelea.ataqueBasico(goku, cell);
-		} catch (ErrorConsumibleInstantaneo e) {}
+		Pelea.ataqueBasico(goku, cell);
+
 		vida_cell = (int) cell.getVida();
 		Assert.assertEquals(vida_cell, 480);
     }

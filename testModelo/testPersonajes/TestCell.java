@@ -44,7 +44,7 @@ public class TestCell{
     public void test04CambiarCellAEstado2() throws ErrorNoPuedeCambiarEstado {
     	cell.agregarKi(20);
         for (int i=0;i<4;i++)
-        	// cell.aumentarCantidadAbsorciones();
+        	//cell.aumentarCantidadAbsorciones();
         	// aca realizar ataque especial, que es lo mismo que aumentarCantidadAbsorciones pero mas
         	// prolijo y aparte aumentando vida y restando ki que es lo que se espera
         try {
@@ -52,7 +52,7 @@ public class TestCell{
         } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
-        assertEquals(2, cell.getIdEstado());
+        assertEquals(1, cell.getIdEstado());
         assertEquals(0, (int)cell.getKi());
     }
 
@@ -73,7 +73,7 @@ public class TestCell{
         } catch (ErrorNoPuedeCambiarEstado e1) {
             fail("Error Inesperado");
         }
-        assertEquals(3, cell.getIdEstado());
+        assertEquals(2, cell.getIdEstado());
         assertEquals(0, (int)cell.getKi());
     }
 
@@ -87,9 +87,7 @@ public class TestCell{
     	Gohan gohan = new Gohan();
     	int vida_gohan;
     	cell.agregarKi(100);
-    	try {
-			Pelea.ataqueEspecial(cell, gohan);
-		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
+    	Pelea.ataqueEspecial(cell, gohan);
 		vida_gohan = (int) gohan.getVida();
 		Assert.assertEquals(vida_gohan, 280);
 
@@ -101,9 +99,8 @@ public class TestCell{
     	int vida_cell;
     	cell.agregarKi(100);
     	cell.quitarVida(60); //lo deja en 440 de vida
-    	try {
-			Pelea.ataqueEspecial(cell, gohan);
-		} catch (ErrorNoHayKi | ErrorNoSePuedeRealizarAtaqueEspecial | ErrorConsumibleInstantaneo e) {}
+		Pelea.ataqueEspecial(cell, gohan);
+
     	
     	vida_cell = (int) cell.getVida();
     	Assert.assertEquals(vida_cell, 460);

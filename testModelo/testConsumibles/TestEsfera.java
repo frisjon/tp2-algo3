@@ -62,7 +62,5 @@ public class TestEsfera extends TestCase {
         catch (ErrorConsumibleInstantaneo e1){
             fail("Se lanzo la excepcion equivocada.");
         }
-        catch (ErrorNoHayUsosRestantes e2){
-        }
     }
 }

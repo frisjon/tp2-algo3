@@ -46,11 +46,8 @@ public class TestGohan {
     @Test
     public void test04CambiarGohanAEstado2() {
         gohan.agregarKi(10);
-        try {
-            gohan.cambiarAEstado2();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+        gohan.cambiarAEstado2();
+  
         assertEquals(2, gohan.getIdEstado());
     }
 
@@ -65,11 +62,8 @@ public class TestGohan {
     	gohan.agregarKi(30);
     	goku.quitarVida(351);
     	piccolo.quitarVida(351);
-        try {
-            gohan.cambiarAEstado3();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+    	gohan.cambiarAEstado3();
+
         assertEquals(3, gohan.getIdEstado());
     }
 

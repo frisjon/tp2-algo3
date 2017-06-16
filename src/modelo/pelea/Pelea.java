@@ -45,7 +45,7 @@ public final class Pelea {
      * @param pj2
      * @throws ErrorConsumibleInstantaneo 
      */
-    public static boolean ataqueBasico(Personaje pj1, Personaje pj2) throws ErrorConsumibleInstantaneo{
+    public static boolean ataqueBasico(Personaje pj1, Personaje pj2) {
         double poderPeleaPj1 = pj1.getPoderPelea();
         double poderPeleaPj2 = pj2.getPoderPelea();
         /**

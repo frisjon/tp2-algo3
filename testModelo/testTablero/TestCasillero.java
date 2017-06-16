@@ -25,7 +25,7 @@ public class TestCasillero extends TestCase {
 	}
 
 	@Test
-	public void test04PonerObjetoYVerificarQueEsta() throws ErrorCasilleroYaOcupado, ErrorNoHayObjeto {
+	public void test04PonerObjetoYVerificarQueEsta() {
 		Casillero casillero = new Casillero(20, 20);
 		Esfera esfera = new Esfera();
 		casillero.setObjeto(esfera);

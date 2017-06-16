@@ -37,11 +37,8 @@ public class TestFreezer{
     @Test
     public void test04CambiarFreezerAEstado2() {
     	freezer.agregarKi(20);
-        try {
-            freezer.cambiarAEstado2();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+    	freezer.cambiarAEstado2();
+
         assertEquals(2, freezer.getIdEstado());
     }
 
@@ -53,11 +50,8 @@ public class TestFreezer{
     @Test
     public void test06CambiarFreezerAEstado3() {
     	freezer.agregarKi(50);
-        try {
-            freezer.cambiarAEstado3();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+        freezer.cambiarAEstado3();
+
         assertEquals(3, freezer.getIdEstado());
     }
 

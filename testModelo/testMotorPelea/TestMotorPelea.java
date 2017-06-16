@@ -22,12 +22,8 @@ public class TestMotorPelea extends TestCase{
     }
     
     public void test01PeleaGohanAtacaBasicoAFreezerSinModificadores(){
-        try {
-            Pelea.ataqueBasico(gohan1, freezer1);
-        } catch (ErrorConsumibleInstantaneo e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Pelea.ataqueBasico(gohan1, freezer1);
+        
         assertEquals(gohan1.getVida(), 300.0);
         assertEquals(gohan1.getKi(), 0.0);
         assertEquals(freezer1.getVida(), 388.0);
@@ -35,12 +31,8 @@ public class TestMotorPelea extends TestCase{
     }
     
     public void test02PeleaFreezerAtacaBasicoAGohanSinModificadores(){
-        try {
-            Pelea.ataqueBasico(freezer1, gohan1);
-        } catch (ErrorConsumibleInstantaneo e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Pelea.ataqueBasico(freezer1, gohan1);
+
         assertEquals(freezer1.getVida(), 400.0);
         assertEquals(freezer1.getKi(), 0.0);
         assertEquals(gohan1.getVida(), 280.0);
@@ -49,18 +41,8 @@ public class TestMotorPelea extends TestCase{
     
     public void test03PeleaGohanAtacaEspecialAFreezerSinModificadores(){
         gohan1.agregarKi(20.0);
-        try {
-            Pelea.ataqueEspecial(gohan1, freezer1);
-        } catch (ErrorNoHayKi e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ErrorNoSePuedeRealizarAtaqueEspecial e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ErrorConsumibleInstantaneo e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+
+        Pelea.ataqueEspecial(gohan1, freezer1);
         assertEquals(gohan1.getVida(), 300.0);
         assertEquals(gohan1.getKi(), 10.0);
         assertEquals(freezer1.getVida(), 385.0);
@@ -69,18 +51,8 @@ public class TestMotorPelea extends TestCase{
     
     public void test04PeleaFreezerAtacaEspecialAGohanSinModificadores(){
         freezer1.agregarKi(20.0);
-        try {
-            Pelea.ataqueEspecial(freezer1, gohan1);
-        } catch (ErrorNoHayKi e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ErrorNoSePuedeRealizarAtaqueEspecial e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ErrorConsumibleInstantaneo e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Pelea.ataqueEspecial(freezer1, gohan1);
+
         assertEquals(freezer1.getVida(), 400.0);
         assertEquals(freezer1.getKi(), 0.0);
         assertEquals(gohan1.getVida(), 270.0);
@@ -91,22 +63,13 @@ public class TestMotorPelea extends TestCase{
         try {
             Pelea.ataqueEspecial(gohan1, freezer1);
             fail("No lanzo la excepcion esperada.");
-        } catch (ErrorNoHayKi e) {
-        } catch (ErrorNoSePuedeRealizarAtaqueEspecial e) {
-            fail("No lanzo la excepcion correcta.");
-        } catch (ErrorConsumibleInstantaneo e) {
-            fail("No lanzo la excepcion correcta.");
-        }
+        } catch (ErrorNoHayKi e) {}
     }
     
     public void test06PeleaGohanAtacaBasicoAFreezerConEsfera(){
         gohan1.setConsumible(esfera);
-        try {
-            Pelea.ataqueBasico(gohan1, freezer1);
-        } catch (ErrorConsumibleInstantaneo e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Pelea.ataqueBasico(gohan1, freezer1);
+      
         assertEquals(gohan1.getVida(), 300.0);
         assertEquals(gohan1.getKi(), 0.0);
         assertEquals(freezer1.getVida(), 385.0);
@@ -116,18 +79,8 @@ public class TestMotorPelea extends TestCase{
     public void test07PeleaFreezerAtacaEspecialAGohanConEsfera(){
         freezer1.setConsumible(esfera);
         freezer1.agregarKi(20.0);
-        try {
-            Pelea.ataqueEspecial(freezer1, gohan1);
-        } catch (ErrorNoHayKi e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ErrorNoSePuedeRealizarAtaqueEspecial e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ErrorConsumibleInstantaneo e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Pelea.ataqueEspecial(freezer1, gohan1);
+      
         assertEquals(freezer1.getVida(), 400.0);
         assertEquals(freezer1.getKi(), 0.0);
         assertEquals(gohan1.getVida(), 262.5);
@@ -136,24 +89,10 @@ public class TestMotorPelea extends TestCase{
     
     public void test08PeleaGohanSSJAtacaEspecialAFreezer(){
         gohan1.agregarKi(20.0);
-        try {
-            gohan1.cambiarAEstado2();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        try {
-            Pelea.ataqueEspecial(gohan1, freezer1);
-        } catch (ErrorNoHayKi e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ErrorNoSePuedeRealizarAtaqueEspecial e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ErrorConsumibleInstantaneo e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        gohan1.cambiarAEstado2();
+       
+        Pelea.ataqueEspecial(gohan1, freezer1);
+     
         assertEquals(gohan1.getVida(), 300.0);
         assertEquals(gohan1.getKi(), 0.0);
         assertEquals(freezer1.getVida(), 362.5);

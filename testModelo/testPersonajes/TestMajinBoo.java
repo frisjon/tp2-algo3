@@ -38,11 +38,7 @@ public class TestMajinBoo{
     @Test
     public void test04CambiarMajinBooAEstado2() {
     	majinboo.agregarKi(20);
-        try {
-            majinboo.cambiarAEstado2();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+    	majinboo.cambiarAEstado2();
         assertEquals(2, majinboo.getIdEstado());
     }
 
@@ -54,11 +50,8 @@ public class TestMajinBoo{
     @Test
     public void test06CambiarMajinBooAEstado3() {
     	majinboo.agregarKi(50);
-        try {
-            majinboo.cambiarAEstado3();
-        } catch (ErrorNoPuedeCambiarEstado e1) {
-            fail("Error Inesperado");
-        }
+    	majinboo.cambiarAEstado3();
+
         assertEquals(3, majinboo.getIdEstado());
     }
 
