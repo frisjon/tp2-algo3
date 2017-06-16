@@ -41,10 +41,7 @@ public class OrganizadorJuego {
 			listaEquipos.add(equipo);
 		}
 		
-		try {
-			this.tablero.colocarPersonajes(listaEquipos);
-		} catch (ErrorCasilleroYaOcupado e) {
-			
-		}
+		this.tablero.colocarPersonajes(listaEquipos);
+		
 	}
 }

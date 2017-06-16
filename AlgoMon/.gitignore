@@ -1,0 +1,11 @@
+*.class
+*.swp
+*.iml
+
+/.idea/
+/out/**
+/out/
+
+/build/
+/libs/
+/bin/
