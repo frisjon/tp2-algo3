@@ -7,7 +7,6 @@ import modelo.equipo.Equipo;
 import modelo.equipo.PosibleEquipo;
 import modelo.juego.Juego;
 import modelo.jugador.Jugador;
-import vista.contenedores.ContenedorEleccionAlgomon;
 import vista.contenedores.Escena;
 import vista.contenedores.ContenedorNombrarJugadores;
 import vista.contenedores.ContenedorPelea;
