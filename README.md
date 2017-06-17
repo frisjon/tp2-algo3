@@ -1,6 +1,6 @@
 # tp2-algo3
 
-# Cosas que hay que hacer para que esté prolijo / HÁBITOS de la buena programación:
+# Cosas que hay que hacer para que esté prolijo:
 
 - poner los métodos en sus tipos correspondientes (private, static, etc)
 - poner las clases en sus tipo correspondientes (private, static, final, etc)
