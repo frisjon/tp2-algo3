@@ -14,7 +14,7 @@ public class AlertaHandler implements EventHandler<WindowEvent>{
     public void handle(WindowEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmacion de salida");
-        alert.setHeaderText("Â¿Esta seguro que desea abandonar el juego?");
+        alert.setHeaderText("¿Esta seguro que desea abandonar el juego?");
 
         ButtonType aceptar = new ButtonType("Aceptar");
         ButtonType cancelar = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
