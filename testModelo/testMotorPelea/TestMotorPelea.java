@@ -3,6 +3,7 @@ package testMotorPelea;
 import junit.framework.*;
 import modelo.consumibles.Esfera;
 import modelo.consumibles.Nube;
+import modelo.equipo.PosibleEquipo;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.pelea.Pelea;
@@ -17,8 +18,8 @@ public class TestMotorPelea extends TestCase{
     @Override
     protected void setUp() throws Exception{
         super.setUp();
-        this.gohan1 = new Gohan();
-        this.freezer1 = new Freezer();
+        this.gohan1 = new Gohan(PosibleEquipo.guerreros);
+        this.freezer1 = new Freezer(PosibleEquipo.enemigos);
         this.esfera = new Esfera();
         this.nube = new Nube();
     }
@@ -110,7 +111,7 @@ public class TestMotorPelea extends TestCase{
         freezer1.setObjeto(esfera);
         Pelea.ataqueBasico(freezer1, gohan1);
         
-        assertEquals(freezer1.getObjetos().getCantidadUsosRestantes(), 1);
+        assertEquals(freezer1.getObjetos().get(0).getCantidadUsosRestantes(), 1);
     }
     
     public void test10PeleaFreezerConEsferaAtaca2VecesEliminaConsumible(){
@@ -125,6 +126,6 @@ public class TestMotorPelea extends TestCase{
         freezer1.setObjeto(nube);
         Pelea.ataqueBasico(freezer1, gohan1);
         
-        assertEquals(freezer1.getObjetos().getCantidadUsosRestantes(), 2);
+        assertEquals(freezer1.getObjetos().get(0).getCantidadUsosRestantes(), 2);
     }
 }

@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
+import modelo.equipo.PosibleEquipo;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.MajinBoo;
 
@@ -16,7 +17,7 @@ public class TestMajinBoo{
 
     @Before
     public void setUp() {
-        majinboo = new MajinBoo();
+        majinboo = new MajinBoo(PosibleEquipo.enemigos);
     }
 
     @Test

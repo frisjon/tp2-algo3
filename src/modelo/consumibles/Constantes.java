@@ -19,7 +19,7 @@ public final class Constantes {
      */
     public static final double SEMILLA_CANTIDAD_ATRIBUTO = 100.0;
     public static final Boolean SEMILLA_INSTANTANEO = true;
-    public static final int SEMILLA_CANTIDAD_USOS_RESTANTES = 0;
+    public static final int SEMILLA_CANTIDAD_TURNOS_RESTANTES = 0;
     
     
     /**
@@ -33,6 +33,7 @@ public final class Constantes {
     public static final double ESFERA_CANTIDAD_ATRIBUTO = 0.25;
     public static final Boolean ESFERA_INSTANTANEO = false;
     public static final int ESFERA_CANTIDAD_USOS_RESTANTES = 2;
+   // public static final int ESFERA_CANTIDAD_TURNOS_RESTANTES = 999;
     
     
     /**
@@ -45,6 +46,6 @@ public final class Constantes {
      */
     public static final double NUBE_CANTIDAD_ATRIBUTO = 2.0;
     public static final Boolean NUBE_INSTANTANEO = false;
-    public static final int NUBE_CANTIDAD_USOS_RESTANTES = 2;
+    public static final int NUBE_CANTIDAD_TURNOS_RESTANTES = 2;
     
 }

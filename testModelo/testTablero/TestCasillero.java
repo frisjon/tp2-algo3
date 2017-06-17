@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import junit.framework.*;
 import modelo.consumibles.Esfera;
+import modelo.equipo.PosibleEquipo;
 import modelo.personajes.Gohan;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
@@ -44,7 +45,7 @@ public class TestCasillero extends TestCase {
 	@Test
 	public void test06AlPonerUnObjetoEnCasilleroOcupadoDebeLanzarExcepcion() throws ErrorCasilleroYaOcupado {
 		Casillero casillero = new Casillero(20, 20);
-		Personaje gohan = new Gohan();
+		Personaje gohan = new Gohan(PosibleEquipo.guerreros);
 		Esfera esfera = new Esfera();
 		casillero.setObjeto(gohan);
 		try {

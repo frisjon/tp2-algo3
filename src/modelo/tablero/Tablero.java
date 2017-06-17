@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 import modelo.consumibles.Consumible;
+import modelo.consumibles.ErrorNoHayTurnosDeDuracion;
+import modelo.consumibles.ErrorNoTieneCantidadUsos;
 import modelo.consumibles.Esfera;
 import modelo.consumibles.Nube;
 import modelo.consumibles.Semilla;
@@ -19,9 +21,7 @@ public class Tablero {
 	private int ancho;
 	private int alto;
 	private List<Casillero> casilleros;
-	//private List<Personaje> personajes;
-	//private List<Consumible> consumibles;
-	private List<ObjetoJuego> objetos; // personaje = consumible = polimorfismo nivel 99
+	private List<ObjetoJuego> objetos; // personaje = consumible = polimorfismo
 			
 	private void crearCasilleros(){
 		for (int i = 0; i < this.ancho; i++){
@@ -36,8 +36,6 @@ public class Tablero {
 		this.alto = alto;
 		this.ancho = ancho;
 		this.casilleros = new ArrayList<Casillero>();
-		//this.personajes = new ArrayList<Personaje>();
-		//this.consumibles = new ArrayList<Consumible>();
 		this.objetos = new ArrayList<ObjetoJuego>();
 				
 		this.crearCasilleros();
@@ -88,8 +86,12 @@ public class Tablero {
 		for (int i = 0; i < camino.size(); i++){
 			if (!camino.get(i).estaLibre()){
 				ObjetoJuego objeto = camino.get(i).getObjeto();
-				if (objeto.sePuedeObtener())
-					personaje.obtenerObjeto(objeto);					
+				if (objeto.sePuedeObtener()){
+					personaje.obtenerObjeto(objeto);
+					this.objetos.remove(objeto);
+					Casillero casillero = objeto.getCasillero();
+					casillero.setObjeto(null);
+				}
 			}				
 		}
 		
@@ -104,7 +106,7 @@ public class Tablero {
 			throw new ErrorAtaqueInvalido("Ataque invalido");
 		 
 		this._ataqueBasico(p1, p2);
-		this.eliminarConsumiblesVacios(p1);
+		this.eliminarConsumiblesSinUsos(p1);
 	}	
 	
 	private void _ataqueBasico(Personaje p1, Personaje p2){
@@ -124,7 +126,7 @@ public class Tablero {
 			throw new ErrorAtaqueInvalido("Ataque invalido");
 		 
 		this._ataqueEspecial(p1, p2);
-		this.eliminarConsumiblesVacios(p1);
+		this.eliminarConsumiblesSinUsos(p1);
 	}
 	
 	private void _ataqueEspecial(Personaje p1, Personaje p2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
@@ -188,28 +190,77 @@ public class Tablero {
 		casillero.setObjeto(consumible);
 	}
 	
-	private void eliminarConsumiblesVacios(Personaje p1){
+	private void eliminarConsumiblesSinUsos(Personaje p1){
 		List<ObjetoJuego> objetosAEliminar = new ArrayList<ObjetoJuego>();
 			
 		for (int i = 0; i < p1.getObjetos().size(); i++){
 			ObjetoJuego objeto = p1.getObjetos().get(i);
 			
-			if (objeto.getCantidadUsosRestantes() == 0)
-				objetosAEliminar.add(objeto);
-        		// no puedo eliminar un objeto si está donde estoy iterando, por eso uso esta
-        		// lista auxiliar   			
+			try {		
+				if (objeto.getCantidadUsosRestantes() == 0){
+					objetosAEliminar.add(objeto);
+        			// no puedo eliminar un objeto si está donde estoy iterando, por eso uso esta
+        			// lista auxiliar
+				}
+			} catch(ErrorNoTieneCantidadUsos e){
+				continue;
+			}
 		}
 		
 		for (int i = 0; i < objetosAEliminar.size(); i++){
         	ObjetoJuego objeto = objetosAEliminar.get(i);
-        	Casillero casillero = objeto.getCasillero();
-           	p1.eliminarObjeto(objeto);           	
-           	this.objetos.remove(objeto);
-           	casillero.setObjeto(null);
-        }  
-		
+        	p1.eliminarObjeto(objeto);          	
+        }  		
 	}
-
+	
+	public void restarTurnoRestanteConsumibles(){
+		for (int i = 0; i < this.objetos.size(); i++){
+			ObjetoJuego objeto = this.objetos.get(i);
+			if (objeto.tieneObjeto()){
+				for (int j = 0; j < objeto.getObjetos().size(); j++){
+					ObjetoJuego obj = objeto.getObjetos().get(j);
+					try {
+						obj.decrementarTurno();
+					} catch (ErrorNoHayTurnosDeDuracion e) {
+						continue;
+					}
+				}				
+			}
+		}  	
+	}
+	
+	public void eliminarConsumiblesSinTurnosRestantes(){
+		ArrayList<ArrayList<ObjetoJuego>> objetosAEliminar = new ArrayList<ArrayList<ObjetoJuego>>();
+					
+		for (int i = 0; i < this.objetos.size(); i++){
+			ObjetoJuego objeto = this.objetos.get(i);
+			if (objeto.tieneObjeto()){
+				for (int j = 0; j < objeto.getObjetos().size(); j++){
+					ObjetoJuego obj = objeto.getObjetos().get(j);
+					try {
+						if (obj.getCantidadTurnosRestantes() == 0){
+							ArrayList<ObjetoJuego> personajeYconsumible = new ArrayList<ObjetoJuego>();
+							personajeYconsumible.add(objeto); // el personaje dueño del consumible
+							personajeYconsumible.add(obj);
+							objetosAEliminar.add(personajeYconsumible);
+							// no puedo eliminar un objeto si está donde estoy iterando, por eso uso esta
+							// lista auxiliar
+						}
+					} catch (ErrorNoHayTurnosDeDuracion e){
+						continue;
+					}
+				}
+			}			
+		}
+		
+		for (int i = 0; i < objetosAEliminar.size(); i++){
+			ArrayList<ObjetoJuego> personajeYconsumible = objetosAEliminar.get(i); 
+						
+        	ObjetoJuego objeto = personajeYconsumible.get(0);
+        	objeto.eliminarObjeto(personajeYconsumible.get(1));        	
+        }  	
+	}
+	
     public int getAlto() {
         return this.alto;
     }

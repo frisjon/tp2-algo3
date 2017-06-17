@@ -16,15 +16,9 @@ public class AplicacionPrincipal extends Application{
 
     @Override
     public void start(Stage stagePrincipal) throws Exception {
-        //AudioClip musicaDeFondo = new AudioClip("file:src/vista/sonidos/Pokemonentrada.mp3");
-        //musicaDeFondo.setCycleCount(5);
-        //musicaDeFondo.play();
-        
-
         stagePrincipal.setTitle("Dragon Ball Z");
         stagePrincipal.getIcons().add(new Image("file:src/vista/imagenes/dbz-inicio.jpg"));
 
-        //ContenedorBienvenida contenedorBienvenidos = new ContenedorBienvenida(stagePrincipal, musicaDeFondo);
         ContenedorBienvenida contenedorBienvenidos = new ContenedorBienvenida(stagePrincipal);
         Escena escenaBienvenidos = new Escena(contenedorBienvenidos, stagePrincipal);
        

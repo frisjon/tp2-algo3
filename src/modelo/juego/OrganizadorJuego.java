@@ -36,6 +36,10 @@ public class OrganizadorJuego {
 	
 	public void empezarSiguienteTurno(){
 		this.turno++;
+		
+		this.tablero.eliminarConsumiblesSinTurnosRestantes();
+		this.tablero.restarTurnoRestanteConsumibles();		
+		
 		if (this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 0 || 
 				this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 1 )
 			tablero.crearConsumible();

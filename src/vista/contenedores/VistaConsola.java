@@ -33,7 +33,7 @@ class VistaConsola extends HBox implements Observer {
         Label etiqueta = new Label();
         etiqueta.setText(consola.getMensaje());
         etiqueta.setTextFill(Color.WHITE);
-        etiqueta.setFont(Font.font("Pokemon GB", FontWeight.BOLD, 12));
+        etiqueta.setFont(Font.font("Dragon Ball Z", FontWeight.BOLD, 12));
 
         getChildren().set(0, etiqueta);
     }

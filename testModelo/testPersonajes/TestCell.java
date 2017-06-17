@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import modelo.consumibles.ErrorConsumibleInstantaneo;
+import modelo.equipo.PosibleEquipo;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.pelea.Pelea;
@@ -21,7 +22,7 @@ public class TestCell{
 
     @Before
     public void setUp() {
-        cell = new Cell();
+        cell = new Cell(PosibleEquipo.enemigos);
     }
 
     @Test
@@ -84,7 +85,7 @@ public class TestCell{
 
     @Test
     public void test08CellHaceDanioAlAtacarConAtaqueEspecial() {
-    	Gohan gohan = new Gohan();
+    	Gohan gohan = new Gohan(PosibleEquipo.guerreros);
     	int vida_gohan;
     	cell.agregarKi(100);
     	Pelea.ataqueEspecial(cell, gohan);
@@ -95,7 +96,7 @@ public class TestCell{
     
     @Test
     public void test09CellRecuperaVidaConAtaqueEspecial() {
-    	Gohan gohan = new Gohan();
+    	Gohan gohan = new Gohan(PosibleEquipo.guerreros);
     	int vida_cell;
     	cell.agregarKi(100);
     	cell.quitarVida(60); //lo deja en 440 de vida

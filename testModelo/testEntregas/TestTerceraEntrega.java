@@ -8,27 +8,26 @@ import junit.framework.TestCase;
 import modelo.consumibles.Esfera;
 import modelo.consumibles.Nube;
 import modelo.consumibles.Semilla;
+import modelo.equipo.PosibleEquipo;
 import modelo.pelea.Pelea;
 import modelo.personajes.Cell;
 import modelo.personajes.Gohan;
-import modelo.personajes.Goku;
-import modelo.personajes.Piccolo;
 import modelo.tablero.Casillero;
 import modelo.tablero.Tablero;
 
 public class TestTerceraEntrega extends TestCase {
-	 private Gohan gohan;
-	 private Tablero tablero;
-	 private Casillero casillero1;
-	 private Casillero casillero2;
+	private Gohan gohan;
+	private Tablero tablero;
+	private Casillero casillero1;
+	private Casillero casillero2;
 	
 	public void setUp() {
-		Tablero tablero = new Tablero(20, 20);
-		Gohan gohan = new Gohan();
-		Casillero casillero1 = new Casillero(0,1);
+		tablero = new Tablero(20, 20);
+		gohan = new Gohan(PosibleEquipo.guerreros);
+		casillero1 = new Casillero(0,1);
 		gohan.setCasillero(casillero1);
 		casillero1.setObjeto(gohan);
-		Casillero casillero2 = new Casillero(0,2);
+		casillero2 = new Casillero(0,2);
     }
 	
 	public void test01VerificarDesaparicionConsumibleAlPosicionarPersonajeSobreEl() {
@@ -43,7 +42,7 @@ public class TestTerceraEntrega extends TestCase {
 		tablero.moverPersonaje(gohan, camino);
 		
 		Assert.assertEquals(gohan.tieneObjeto(), true);
-		Assert.assertEquals(casillero3.estaLibre(), true);	
+		Assert.assertEquals(esfera.getCasillero(), true);	
 		
 	}
 	
@@ -55,7 +54,7 @@ public class TestTerceraEntrega extends TestCase {
 		esfera.setCasillero(casillero3);
 		casillero3.setObjeto(esfera);
 		
-		Cell cell = new Cell();
+		Cell cell = new Cell(PosibleEquipo.enemigos);
 		Casillero casillero4 = new Casillero(0,4);
 		cell.setCasillero(casillero4);
 		casillero4.setObjeto(cell);
@@ -70,7 +69,7 @@ public class TestTerceraEntrega extends TestCase {
 		Assert.assertEquals(cell.getVida(), 484,25);
 	}
 	
-	public void test02VerificarCorrectaAplicacionDeConsumibleNube() {
+	public void test03VerificarCorrectaAplicacionDeConsumibleNube() {
 		Nube nube = new Nube();
 		Casillero casillero3 = new Casillero(0,3);
 		nube.setCasillero(casillero3);
@@ -100,7 +99,7 @@ public class TestTerceraEntrega extends TestCase {
 	}
 	
 	//tomo supuesto que no se usa cuando uno quiere sino que cuando se agarra se activa
-	public void test02VerificarCorrectaAplicacionDeConsumibleSemilla() {
+	public void test04VerificarCorrectaAplicacionDeConsumibleSemilla() {
 		Semilla semilla = new Semilla();
 		Casillero casillero3 = new Casillero(0,3);
 		semilla.setCasillero(casillero3);

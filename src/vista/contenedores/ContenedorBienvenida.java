@@ -1,6 +1,6 @@
 package vista.contenedores;
 
-import controlador.handlers.BotonEntrarEventHandler;
+import controlador.handlers.BotonJugarEventHandler;
 import controlador.handlers.BotonReglasEventHandler;
 import controlador.handlers.BotonSalirEventHandler;
 import javafx.geometry.Insets;
@@ -20,12 +20,12 @@ public class ContenedorBienvenida extends VBox{
     //public ContenedorBienvenida(Stage primaryStage, AudioClip musicaDeFondo) {
 	public ContenedorBienvenida(Stage primaryStage) {
         super();
-        this.setAlignment(Pos.CENTER_LEFT);
+        this.setAlignment(Pos.TOP_LEFT);
         this.setSpacing(70);
         primaryStage.setFullScreen(true);
 
         Label titulo = new Label("Dragon Ball Z");
-        titulo.setFont(Font.font("",FontWeight.BOLD, 76));
+        titulo.setFont(Font.font("",FontWeight.NORMAL, 76));
         titulo.setTextFill(Color.RED);
         
 
@@ -38,21 +38,21 @@ public class ContenedorBienvenida extends VBox{
         Button botonEntrar = new Button();
         botonEntrar.setMinSize(260, 100);
         botonEntrar.setText("Jugar");
-        botonEntrar.setTextFill(Color.web("#f9dbbd"));
-        botonEntrar.setFont(Font.font("Cooper Black", FontWeight.BOLD,40));
-        botonEntrar.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
+        botonEntrar.setTextFill(Color.GRAY);
+        botonEntrar.setFont(Font.font("Cooper Black", FontWeight.NORMAL,40));
+        botonEntrar.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
 
       
        // BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(primaryStage,musicaDeFondo);
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(primaryStage);
+        BotonJugarEventHandler botonEntrarHandler = new BotonJugarEventHandler(primaryStage);
         botonEntrar.setOnAction(botonEntrarHandler);
 
         Button botonReglas = new Button();
         botonReglas.setMinSize(200, 60);
         botonReglas.setText("Reglas del juego");
-        botonReglas.setTextFill(Color.web("#f9dbbd"));
-        botonReglas.setFont(Font.font("Cooper Black", 20));
-        botonReglas.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
+        botonReglas.setTextFill(Color.GRAY);
+        botonReglas.setFont(Font.font("Cooper Black", 30));
+        botonReglas.setStyle("-fx-base: #b6e7c9; -fx-border-color: rgb(249,219,189)");
 
         BotonReglasEventHandler botonReglasHandler = new BotonReglasEventHandler();
         botonReglas.setOnAction(botonReglasHandler);
@@ -60,9 +60,9 @@ public class ContenedorBienvenida extends VBox{
         Button botonSalir = new Button();
         botonSalir.setMinSize(200, 60);
         botonSalir.setText("Salir");
-        botonSalir.setTextFill(Color.web("#f9dbbd"));
+        botonSalir.setTextFill(Color.GRAY);
         botonSalir.setFont(Font.font("Cooper Black", 20));
-        botonSalir.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
+        botonSalir.setStyle("-fx-base: #b6e7c9; -fx-border-color: rgb(249,219,189)");
 
         BotonSalirEventHandler botonSalirHandler = new BotonSalirEventHandler();
         botonSalir.setOnAction(botonSalirHandler);
@@ -74,6 +74,6 @@ public class ContenedorBienvenida extends VBox{
         //this.getChildren().addAll(titulo, botonEntrar,contenedorVolumen, botonReglas, botonSalir);
         this.getChildren().addAll(titulo, botonEntrar, botonReglas, botonSalir);
         this.setPadding(new Insets(30, 0, 30, 220));
-        this.setSpacing(20);
+        this.setSpacing(50);
     }
 }
