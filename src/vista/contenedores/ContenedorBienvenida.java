@@ -26,22 +26,20 @@ public class ContenedorBienvenida extends VBox{
 
         Label titulo = new Label("Dragon Ball Z");
         titulo.setFont(Font.font("",FontWeight.BOLD, 76));
-        titulo.setTextFill(Color.web("#f9dbbd"));
+        titulo.setTextFill(Color.RED);
         
 
         Image imagen = new Image("file:src/vista/imagenes/dbz-inicio.jpg");
 
-        BackgroundImage imagenDeFondo =
-                new BackgroundImage(imagen, BackgroundRepeat.REPEAT,
-                        BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,
-                        BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo =new BackgroundImage(imagen, BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,
+        BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
         Button botonEntrar = new Button();
         botonEntrar.setMinSize(260, 100);
         botonEntrar.setText("Jugar");
         botonEntrar.setTextFill(Color.web("#f9dbbd"));
-        botonEntrar.setFont(Font.font("Lucida Console", FontWeight.BOLD,40));
+        botonEntrar.setFont(Font.font("Cooper Black", FontWeight.BOLD,40));
         botonEntrar.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
 
       
@@ -53,7 +51,7 @@ public class ContenedorBienvenida extends VBox{
         botonReglas.setMinSize(200, 60);
         botonReglas.setText("Reglas del juego");
         botonReglas.setTextFill(Color.web("#f9dbbd"));
-        botonReglas.setFont(Font.font("Lucida Console", 20));
+        botonReglas.setFont(Font.font("Cooper Black", 20));
         botonReglas.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
 
         BotonReglasEventHandler botonReglasHandler = new BotonReglasEventHandler();
@@ -63,7 +61,7 @@ public class ContenedorBienvenida extends VBox{
         botonSalir.setMinSize(200, 60);
         botonSalir.setText("Salir");
         botonSalir.setTextFill(Color.web("#f9dbbd"));
-        botonSalir.setFont(Font.font("Lucida Console", 20));
+        botonSalir.setFont(Font.font("Cooper Black", 20));
         botonSalir.setStyle("-fx-base: #394867; -fx-border-color: rgb(249,219,189)");
 
         BotonSalirEventHandler botonSalirHandler = new BotonSalirEventHandler();

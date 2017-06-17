@@ -3,6 +3,7 @@ package modelo.equipo;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.List;
 
 import modelo.personajes.Goku;
 import modelo.personajes.Gohan;
@@ -30,8 +31,8 @@ public class Equipo {
 	/**
 	 *Se pasan los personajes del diccionario a una lista para que despues puedan ser distribuidos por Tablero.
 	 */
-	public ArrayList<Personaje> pedirListaPersonajes() {
-		 ArrayList<Personaje> personajes_enlistados = new ArrayList<Personaje>();
+	public List<Personaje> pedirListaPersonajes() {
+		 List<Personaje> personajes_enlistados = new ArrayList<Personaje>();
 		 Enumeration<Personaje> personajes = this.listapersonajes.elements();
 		 while(personajes.hasMoreElements()) {
 			 personajes_enlistados.add(personajes.nextElement());

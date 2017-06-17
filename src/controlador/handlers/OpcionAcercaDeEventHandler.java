@@ -11,7 +11,7 @@ public class OpcionAcercaDeEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Acerca de Dragon Algo Ball");
-        alert.setHeaderText("Ejemplo de mensaje de alerta");
+        alert.setHeaderText("Alerta");
         String mensaje = "Desarrollado por Thodrimarami Companys";
         alert.setContentText(mensaje);
         alert.show();
