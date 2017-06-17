@@ -11,13 +11,13 @@ import vista.contenedores.Escena;
 import vista.contenedores.ContenedorJuego;
 import vista.contenedores.ContenedorNombrarJugadores;
 
-public class BotonEntrarEventHandler extends BotonHandler {
+public class BotonJugarEventHandler extends BotonHandler {
 
     //private final AudioClip musicaDeFondo;
     private Stage stage;
     private ContenedorNombrarJugadores contenedorNombres;
 
-    public BotonEntrarEventHandler(Stage stage) {
+    public BotonJugarEventHandler(Stage stage) {
         this.stage = stage;
         this.contenedorNombres = new ContenedorNombrarJugadores();
         //this.musicaDeFondo = musicaDeFondo;
@@ -32,7 +32,7 @@ public class BotonEntrarEventHandler extends BotonHandler {
     		contenedorNombres.mostrar();
         }
     	
-    	if (contenedorNombres.jugadoresFueronIngresados()) { //esto evita que se empiece la eleccion si no se puso aceptar
+    	if (contenedorNombres.jugadoresFueronIngresados()) { 
             String nombreJugador1 = contenedorNombres.getNombreJugador1();
             String nombreJugador2 = contenedorNombres.getNombreJugador2();
             

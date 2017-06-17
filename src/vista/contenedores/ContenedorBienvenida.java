@@ -1,6 +1,6 @@
 package vista.contenedores;
 
-import controlador.handlers.BotonEntrarEventHandler;
+import controlador.handlers.BotonJugarEventHandler;
 import controlador.handlers.BotonReglasEventHandler;
 import controlador.handlers.BotonSalirEventHandler;
 import javafx.geometry.Insets;
@@ -44,7 +44,7 @@ public class ContenedorBienvenida extends VBox{
 
       
        // BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(primaryStage,musicaDeFondo);
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(primaryStage);
+        BotonJugarEventHandler botonEntrarHandler = new BotonJugarEventHandler(primaryStage);
         botonEntrar.setOnAction(botonEntrarHandler);
 
         Button botonReglas = new Button();

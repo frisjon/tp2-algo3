@@ -115,7 +115,7 @@ public class TestMotorPelea extends TestCase{
     }
     
     public void test10PeleaFreezerConEsferaAtaca2VecesEliminaConsumible(){
-        freezer1.setObjeto(esfera)
+        freezer1.setObjeto(esfera);
         Pelea.ataqueBasico(freezer1, gohan1);
         Pelea.ataqueBasico(freezer1, gohan1);
         
