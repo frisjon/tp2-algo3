@@ -25,30 +25,29 @@ public class ContenedorTablero extends BorderPane {
     private final int IMAGEN_ANCHO = 50;
     private final int IMAGEN_ALTO = 50;
     
-    //el tablero sabe donde estan los personajes
+    // el tablero sabe donde estan los personajes
     private Tablero tablero;
     
-    //representacion del tablero
+    // representacion del tablero
     private GridPane grid;
+    
+    //private RepresentacionJugador representacionJugador;
     private List<RepresentacionJugador> representacionJugadores;
     
-    public ContenedorTablero(Tablero _tablero, Jugador jugador1, Jugador jugador2) {
+    public ContenedorTablero(Tablero _tablero, List<RepresentacionJugador> _representacionJugadores) {
         super();
         
         this.tablero = _tablero;
+        this.representacionJugadores = _representacionJugadores;
         
-        //inicializa el grid
+        // inicializa el grid
         this.iniciarTableroDeJuego();
-        
-        this.representacionJugadores = new ArrayList<RepresentacionJugador>();
-        this.representacionJugadores.add(new RepresentacionJugador(jugador1));
-        this.representacionJugadores.add(new RepresentacionJugador(jugador2));
         
         this.actualizarTablero();
     }
     
     public void iniciarTableroDeJuego() {
-        //Configuracion del grid pane (tablero)
+        // Configuracion del grid pane (tablero)
         this.grid = new GridPane();
         this.grid.setPadding(new Insets(10,10,10,10));
         this.grid.setVgap(0);
@@ -56,7 +55,10 @@ public class ContenedorTablero extends BorderPane {
         
         Image pasto = new Image("file:src/vista/imagenes/grass.jpg",this.IMAGEN_ANCHO,this.IMAGEN_ALTO,false,false);
         
-        // coloca imagenes
+        // coloca imagenes de pasto
+        // GridPane no acepta solo Image, por algun motivo. 
+        // Cada celda de GridPane tiene un ImageView que tiene una referencia al Image del pasto.
+        // Si no se coloca nada en el grid, no va a aparecer despues en la imagen, por eso pongo pasto.
         for (int i=0;i<this.tablero.getAlto();i++){
             for (int j=0;j<this.tablero.getAncho();j++){
                 ImageView iv = new ImageView();
@@ -65,29 +67,32 @@ public class ContenedorTablero extends BorderPane {
             }
         }
         
+        // Coloca al GridPane en el centro de esta clase
         this.setCenter(this.grid);
     }
     
-    //modifica la posicion del personaje en el grid.
-    //por ahora no hacer nada, porque los personajes no se pueden mover por ahora.
+    // modifica la posicion del personaje en el grid.
+    // por ahora no hacer nada, porque los personajes no se pueden mover por ahora.
     public void actualizarRepresentacionPersonaje(RepresentacionPersonaje personaje) {
-        //personajeImagen.setOpacity(1.00);
-        
+        // coordenada del personaje
         Coordenada coordenada = personaje.getCasillero().getCoordenada();
-        //this.grid.getChildren().remove(personajeImagen);
+        
+        // se borra a la imagen que existe en el grid
+        // como no se mueven los personajes, esto no lo probe. puede tirar error. nose.
+        //this.grid.getChildren().remove(personaje.getImagen());
+        
+        // se coloca a la imagen en el grid
         this.grid.add(personaje.getImagen(), coordenada.getX(), coordenada.getY());
-        this.setCenter(this.grid);
     }
     
-    //por ahora solo actualiza las posiciones de cada personaje.
-    //falta que tambien lo haga para los consumibles.
-    //puede que la forma en la que esta, no sea bueno despues. Lo dejo asi para que se vea algo.
-    //(me refiero a que si tal vez esta mal usar ImageView en vez de botonoes, por ejemplo)
+    // por ahora solo actualiza las posiciones de cada personaje.
+    // falta que tambien lo haga para los consumibles.
+    // puede que la forma en la que esta, no sea bueno despues. Lo dejo asi para que se vea algo.
+    // (me refiero a que si tal vez esta mal usar ImageView en vez de botonoes, por ejemplo)
     public void actualizarTablero() {
         
-        //Image img = new Image("file:src/vista/imagenes/goku.png",this.IMAGEN_ANCHO,this.IMAGEN_ALTO,false,false);
-        
-        for (RepresentacionJugador jugador: representacionJugadores) {
+        // por cada personaje del jugador actual
+        for (RepresentacionJugador jugador: this.representacionJugadores) {
             for (RepresentacionPersonaje personaje: jugador.getRepresentacionesDePersonajes()) {
                 this.actualizarRepresentacionPersonaje(personaje);
             }

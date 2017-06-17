@@ -11,7 +11,6 @@ public class RepresentacionJugador {
     private Jugador jugador;
     private List<RepresentacionPersonaje> representacionPersonajes;
     
-    
     public RepresentacionJugador(Jugador _jugador) {
         this.jugador = _jugador;
         

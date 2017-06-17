@@ -1,6 +1,7 @@
 package vista.contenedores;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,6 +30,7 @@ import modelo.personajes.Personaje;
 import modelo.tablero.Coordenada;
 import modelo.tablero.Tablero;
 import vista.BarraDeMenu;
+import vista.RepresentacionJugador;
 import modelo.equipo.Equipo;
 
 
@@ -37,22 +39,34 @@ public class ContenedorJuego extends BorderPane {
     private Stage stage;
     private Juego juego;
     private OrganizadorJuego organizador;
+    
     private VistaConsola panelConsola;
     private Consola consola;
+    
+    // puede que esto no sea necesario
     private ContenedorTablero contenedorTablero;
     private ContenedorOpcionesJuego contenedorOpcionesJuego;
-    private Jugador jugador1, jugador2;
-    private Jugador jugadorDeTurno;
+    //private Jugador jugador1, jugador2;
+    //private Jugador jugadorDeTurno;
+    
+    private List<RepresentacionJugador> representacionJugadores;
+    
+    private RepresentacionJugador representacionJugadorDeTurno;
     
     //private AudioClip musicaDeFondo;
     
     public ContenedorJuego(Stage stage, Jugador jugador1, Jugador jugador2) {
         super();
         
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
+        //this.jugador1 = jugador1;
+        //this.jugador2 = jugador2;
+        //this.jugadorDeTurno = jugador1;
         
-        this.jugadorDeTurno = jugador1;
+        this.representacionJugadores = new ArrayList<RepresentacionJugador>();
+        this.representacionJugadores.add(new RepresentacionJugador(jugador1));
+        this.representacionJugadores.add(new RepresentacionJugador(jugador2));
+        
+        this.representacionJugadorDeTurno = this.representacionJugadores.get(0);
         
         //Inicializamos la musica de fondo
         //this.musicaDeFondo = new AudioClip("file:src/vista/sonidos/.mp3");
@@ -76,12 +90,8 @@ public class ContenedorJuego extends BorderPane {
         this.juego.distribuirPersonajesEquipos();
         
         //Esta clase (ContenedorJuego) maneja lo de los turnos (la parte de la vista)
-        //Por lo tanto debe tener una referencia al organizadorJuego (que maneja los turnos en el modelo)
+        //Por lo tanto debe tener una referencia al organizadorJuego (que maneja los turnos, en el modelo)
         this.organizador = this.juego.getOrganizadorJuego();
-        
-        //Referencia al tablero. Lo necesita ContenedorTablero.
-        //Para saber en donde esta cada personaje
-        Tablero tablero = this.organizador.getTablero();
         
         //Menu (top)
         BarraDeMenu menu = new BarraDeMenu(stage);
@@ -92,14 +102,18 @@ public class ContenedorJuego extends BorderPane {
         this.panelConsola = new VistaConsola(this.consola);
         this.setBottom(panelConsola);
         
+        //Referencia al tablero. Lo necesita ContenedorTablero.
+        //Para saber en donde esta cada personaje.
+        Tablero tablero = this.organizador.getTablero();
+        
         //Centro (center) (esto es lo que se va a ver como un tablero. aca van los personajes y consumibles, etc)
-        ContenedorTablero contendorTablero = new ContenedorTablero(tablero, jugador1, jugador2); 
+        ContenedorTablero contendorTablero = new ContenedorTablero(tablero, this.representacionJugadores); 
         this.contenedorTablero = contendorTablero;
         this.setCenter(contendorTablero);
         
-        //Panel de Opciones (left) (aca van las opciones del juego. Seleccionar personaje, mover, atacar)
-        //(utilizar consumibler no deberia ser opcion porque 2 de 3 consumibles son instantaneos y por ultimo, las esferas no se pueden consumir)
-        ContenedorOpcionesJuego contenedorOpcionesJuego = new ContenedorOpcionesJuego(this.jugadorDeTurno);
+        //Panel de Opciones (left) (aca van las opciones del juego. Seleccionar personaje, mover, atacar, stats de los personajes (del jugador de turno), opcion para cancelar)
+        //(utilizar consumible no deberia ser opcion porque 2 de 3 consumibles son instantaneos y por ultimo, las esferas no se pueden consumir, solo se tienen y ya)
+        ContenedorOpcionesJuego contenedorOpcionesJuego = new ContenedorOpcionesJuego(this.representacionJugadorDeTurno);
         this.contenedorOpcionesJuego = contenedorOpcionesJuego;
         this.setLeft(contenedorOpcionesJuego);
     }

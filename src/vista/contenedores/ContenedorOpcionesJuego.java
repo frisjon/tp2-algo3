@@ -10,6 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import modelo.jugador.Jugador;
 import modelo.tablero.Tablero;
+import vista.BotonMenu;
+import vista.RepresentacionJugador;
 
 public class ContenedorOpcionesJuego extends VBox {
     
@@ -21,33 +23,23 @@ public class ContenedorOpcionesJuego extends VBox {
     //InformacionParaJugador informacionParaJugador
     //Partida partida, ContenedorPelea contenedor, Jugador jugador
     
-    public ContenedorOpcionesJuego(Jugador jugadorDeTurno) {
+    public ContenedorOpcionesJuego(RepresentacionJugador representacionJugadorDeTurno) {
         super();
         
         this.setPadding(new Insets(130, 50,0,50));
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
 
-        /*botonAtacar = new BotonMenuAtacar(partida,jugador,contenedor);
-        BotonMenuEventHandler botonMenuAtacarEventHandler = new BotonMenuEventHandler(botonAtacar);
-        botonAtacar.setOnAction(botonMenuAtacarEventHandler);
-        botonAtacar.setMaxWidth(175);
-
-        botonUsarConsumible = new BotonMenuUsarConsumible(partida,jugador,contenedor);
-        BotonMenuEventHandler botonUsarElementoEventHandler = new BotonMenuEventHandler(botonUsarConsumible);
-        botonUsarConsumible.setOnAction(botonUsarElementoEventHandler);
-        botonUsarConsumible.setMaxWidth(175);
-
-        botonSeleccionarPersonaje = new BotonMenuSeleccionarPersonaje(partida,jugador,contenedor);
-        BotonMenuEventHandler botonSeleccionarPersonajeEventHandler = new BotonMenuEventHandler(botonSeleccionarPersonaje);
-        botonSeleccionarPersonaje.setOnAction(botonSeleccionarPersonajeEventHandler);        
-        botonSeleccionarPersonaje.setMaxWidth(175);
+        //boton que abre el menu de atacar
+        botonAtacar = new BotonMenu(new BotonMenuEventHandler(botonAtacar));
+        
+        botonUsarConsumible = new BotonMenu(new BotonMenuEventHandler(botonUsarConsumible));
+        botonSeleccionarPersonaje = new BotonMenu(new BotonMenuEventHandler(botonSeleccionarPersonaje));
 
         this.getChildren().addAll(botonAtacar,botonUsarConsumible,botonSeleccionarPersonaje);
         this.setAlignment(Pos.CENTER);
-        this.bloquear(jugador != partida.jugadorActual());
+        /*this.bloquear(jugador != partida.jugadorActual());
          */
-        
     }
     
     public Jugador getJugador(){
