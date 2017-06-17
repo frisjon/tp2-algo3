@@ -16,6 +16,26 @@ public class Nube extends Consumible{
         this.atributo = Constantes.NUBE_ATRIBUTO;
         this.cantidadAtributo = Constantes.NUBE_CANTIDAD_ATRIBUTO;
         this.instantaneo = Constantes.NUBE_INSTANTANEO;
-        this.cantidadUsosRestantes = Constantes.NUBE_CANTIDAD_USOS_RESTANTES;
+        this.cantidadTurnosRestantes = Constantes.NUBE_CANTIDAD_TURNOS_RESTANTES;
+    }
+    
+    public int getCantidadUsosRestantes() throws ErrorNoTieneCantidadUsos{
+        throw new ErrorNoTieneCantidadUsos("Nube no posee cantidad usos");
+    }
+    
+    public int getCantidadTurnosRestantes(){
+        return this.cantidadTurnosRestantes;
+    }
+    
+    public void decrementarTurno() throws ErrorNoHayUsosRestantes{
+    	if (this.cantidadTurnosRestantes == 0)
+            throw new ErrorNoHayTurnosDisponibles("El consumible no tiene mas turnos.");
+       
+    	
+    	this.cantidadTurnosRestantes -= 1;   	
+    }
+    
+    public void decrementarUso() throws ErrorNoTieneCantidadUsos {
+    	throw new ErrorNoTieneCantidadUsos("Nube no posee cantidad usos");
     }
 }

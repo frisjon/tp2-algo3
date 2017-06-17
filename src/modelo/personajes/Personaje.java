@@ -3,9 +3,7 @@ package modelo.personajes;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.consumibles.Consumible;
 import modelo.tablero.Casillero;
-import modelo.tablero.ErrorNoHayObjeto;
 import modelo.tablero.ObjetoJuego;
 
 public abstract class Personaje implements ObjetoJuego {
@@ -199,6 +197,13 @@ public abstract class Personaje implements ObjetoJuego {
     public double getCantidadAtributo() throws ErrorNoCompatibilidad {
     	throw new ErrorNoCompatibilidad("Método no compatible");
     }
-
+    
+    public void decrementarTurno() throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+    
+    public int getCantidadTurnosRestantes() throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
 	
 }

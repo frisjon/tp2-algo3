@@ -1,7 +1,8 @@
 package modelo.consumibles;
 
-import modelo.consumibles.ErrorConsumibleInstantaneo;
-import modelo.consumibles.ErrorNoHayUsosRestantes;
+import java.util.List;
+
+import modelo.personajes.ErrorNoCompatibilidad;
 import modelo.tablero.Casillero;
 import modelo.tablero.ObjetoJuego;
 
@@ -24,6 +25,7 @@ public abstract class Consumible implements ObjetoJuego {
      */
     protected boolean instantaneo;
     protected int cantidadUsosRestantes;
+    protected int cantidadTurnosRestantes;
     protected Casillero casillero;
     
     
@@ -43,31 +45,8 @@ public abstract class Consumible implements ObjetoJuego {
         return this.instantaneo;
     }
     
-    public int getCantidadUsosRestantes(){
-        return this.cantidadUsosRestantes;
-    }
-
     public Casillero getCasillero(){
         return this.casillero;
-    }
-    
-    /**
-     * Decrementa la cantidad de usos restantes del consumible por 1 uso.
-     * Si el consumible es instanteo lanzara una excepcion.
-     * Si el consumible no tiene usos restantes lanzara una excepcion.
-     * @throws ErrorConsumibleInstantaneo
-     * @throws ErrorNoHayUsosRestantes
-     */
-    public void decrementarUso() throws ErrorConsumibleInstantaneo, ErrorNoHayUsosRestantes{
-        if (this.instantaneo){
-            throw new ErrorConsumibleInstantaneo("El consumible es instantaneo.");
-        }
-        
-        if (this.cantidadUsosRestantes == 0){
-            throw new ErrorNoHayUsosRestantes("El consumible no tiene mas turnos.");
-        }
-
-        this.cantidadUsosRestantes -= 1;
     }
     
     public void setCasillero(Casillero casillero){
@@ -80,5 +59,17 @@ public abstract class Consumible implements ObjetoJuego {
     
     public boolean sePuedeObtener(){
     	return true;
+    }
+    
+    public boolean tieneObjeto(){
+    	return false;
+    }
+    
+    public List<ObjetoJuego> getObjetos() throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+    
+    public void eliminarObjeto(ObjetoJuego objeto) throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
     }
 }

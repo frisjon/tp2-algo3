@@ -1,6 +1,5 @@
 package modelo.pelea;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import modelo.consumibles.*;
@@ -76,7 +75,11 @@ public final class Pelea {
         	ObjetoJuego objeto = objetosPj1.get(i);
             if (objeto.getAtributo() == "Ataque"){
             	aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva) * (objeto.getCantidadAtributo());
-            	objeto.decrementarUso();
+            	try {
+            		objeto.decrementarUso();
+            	} catch (ErrorNoTieneCantidadUsos e){
+            		continue;
+            	}
             }
         }
         
@@ -141,7 +144,11 @@ public final class Pelea {
         	ObjetoJuego objeto = objetosPj1.get(i);
             if (objeto.getAtributo() == "Ataque"){
             	aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva + aumentoAtaqueEspecial) * (objeto.getCantidadAtributo());
-            	objeto.decrementarUso();
+            	try {
+            		objeto.decrementarUso();
+            	} catch (ErrorNoTieneCantidadUsos e){
+            		continue;
+            	}
             }
         }
         
