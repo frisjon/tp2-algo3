@@ -14,8 +14,9 @@ import modelo.tablero.ErrorNoHayMasExtremos;
 
 public class Juego {
 	private Map<String, Jugador> listajugadores; //creo diccionario: {nombre_jugador: JUGADOR}
+	// diccionario o lista? igualmente vimos que no es una buena practica que la variable se llame
+	// segun que tipo de dato es
 	private OrganizadorJuego organizador;
-	
 	
 	public Juego() {
 		this.listajugadores = new HashMap<String, Jugador>();

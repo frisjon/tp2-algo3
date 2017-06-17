@@ -1,7 +1,11 @@
 package modelo.personajes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelo.consumibles.Consumible;
 import modelo.tablero.Casillero;
+import modelo.tablero.ErrorNoHayObjeto;
 import modelo.tablero.ObjetoJuego;
 
 public abstract class Personaje implements ObjetoJuego {
@@ -14,10 +18,21 @@ public abstract class Personaje implements ObjetoJuego {
     protected String nombre;
     protected String ataqueEspecial;
     protected Casillero casillero;
-    protected Consumible consumible;
+    protected List<ObjetoJuego> objetos; // para que sea mas generico, no hay que limitarlo a una cosa
+    									 // por si el dia de mañana quiero meter otra cosa
     protected EstadoPersonaje estado;
     protected int turnosInutilizados;
+    protected String nombreEquipo;
     
+    public Personaje(String nombreEquipo){
+    	this.nombreEquipo = nombreEquipo;
+    	this.objetos = new ArrayList<ObjetoJuego>();
+    	this.turnosInutilizados = 0;    	
+    }
+    
+    public String getNombreEquipo(){
+    	return this.nombreEquipo;    	
+    }
         
     public String getNombre() {
         return this.nombre;
@@ -93,21 +108,21 @@ public abstract class Personaje implements ObjetoJuego {
         return this.estado.getIdEstado();
     }
     
-    public boolean tieneConsumible() {
-        if (this.consumible == null) return false;
+    public boolean tieneObjeto() {
+        if (this.objetos.size() == 0) return false;
         return true;
     }
 
-    public Consumible getConsumible() {
-        return this.consumible;
+    public List<ObjetoJuego> getObjetos() {
+        return this.objetos;
     }
     
-    public void setConsumible(Consumible _consumible) {
-        this.consumible = _consumible; 
+    public void setObjeto(ObjetoJuego objeto) {
+        this.objetos.add(objeto); 
     }
 
-    public void eliminarConsumible() {
-        this.consumible = null;
+    public void eliminarObjeto(ObjetoJuego objeto) {
+        this.objetos.remove(objeto);
     }
     
     public double getAumentoPasiva() {
@@ -151,5 +166,35 @@ public abstract class Personaje implements ObjetoJuego {
     
     public int getTurnosInutilizados(){
     	return this.turnosInutilizados;
-    }    
+    }
+    
+    public boolean sePuedePasar(){
+    	return false;
+    }
+    
+    public boolean sePuedeObtener(){
+    	return false;
+    }
+    
+    public void obtenerObjeto(ObjetoJuego objeto){
+    	this.objetos.add(objeto);
+    }
+    
+    public String getAtributo() throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+    
+    public void decrementarUso() throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+    
+    public int getCantidadUsosRestantes() throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+    
+    public double getCantidadAtributo() throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+
+	
 }

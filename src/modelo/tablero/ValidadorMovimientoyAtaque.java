@@ -44,14 +44,17 @@ public final class ValidadorMovimientoyAtaque {
 		// ahora me fijo si me choco con algun personaje
 		
 		for (int i = 0; i < camino.size(); i++){
-			if (!camino.get(i).estaLibre()) //a modificar (esta libre si tiene un consumible tira false, pero el pj puede pasar arriba de un consumible)
+			if (!camino.get(i).sePuedePasar())
 				return false;	
 		}
-				
+		
 		return true;
 	}
 	
 	public static boolean ataqueValido(Personaje p1, Personaje p2){
+		if (p1.getNombreEquipo().equals(p2.getNombreEquipo()))
+			return false;	
+		
 		double distanciaAtaque = p1.getDistanciaAtaque();
 		
 		int x = p1.getCasillero().getCoordenada().getX();

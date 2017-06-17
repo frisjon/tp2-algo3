@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.equipo.Equipo;
+
 public class Cell extends Personaje {
 	
     public static final double CELL_CANTIDAD_KI_INICIAL = 0;
@@ -33,7 +35,8 @@ public class Cell extends Personaje {
     
     private int cantidadAbsorciones;
     
-    public Cell() {
+    public Cell(String nombreEquipo) {
+    	super(nombreEquipo);
         this.estado = new EstadoPersonaje();
         this.estado.cambiarACellEstado1();
 
@@ -45,7 +48,7 @@ public class Cell extends Personaje {
         this.cantidadAbsorciones = 0;
         this.aumentoAtaquePasiva = CELL_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = CELL_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
-        this.turnosInutilizados = 0;
+        
     }
 
 

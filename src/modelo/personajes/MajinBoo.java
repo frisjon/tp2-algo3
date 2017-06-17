@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.equipo.Equipo;
+
 public class MajinBoo extends Personaje {
 
     public static final double MAJINBOO_CANTIDAD_KI_INICIAL = 0;
@@ -29,7 +31,8 @@ public class MajinBoo extends Personaje {
     public static final double MAJINBOO_ESTADO_3_COSTO = 50;
     public static final int MAJINBOO_ESTADO_3_ID = 3;
     
-    public MajinBoo() {
+    public MajinBoo(String nombreEquipo) {
+    	super(nombreEquipo);
         this.estado = new EstadoPersonaje();
         this.estado.cambiarAMajinBooEstado1();
 
@@ -40,7 +43,8 @@ public class MajinBoo extends Personaje {
         this.kiAtaqueEspecial = MAJINBOO_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
-        this.turnosInutilizados = 0;
+ 
+        
     }
 
 

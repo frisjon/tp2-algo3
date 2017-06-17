@@ -10,8 +10,15 @@ public class Casillero {
 		this.coordenada = new Coordenada(x,y);
 	}
 	
-	public boolean estaLibre(){ 
-		return this.objeto == null;
+	public boolean estaLibre(){
+		return this.objeto == null; 
+	}
+	
+	public boolean sePuedePasar(){
+		if (this.estaLibre())
+			return true;
+		
+		return this.objeto.sePuedePasar(); 
 	}
 	
 	public ObjetoJuego getObjeto() throws ErrorNoHayObjeto {

@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.equipo.Equipo;
+
 public class Piccolo extends Personaje {
 	
     public static final double PICCOLO_CANTIDAD_KI_INICIAL = 0;
@@ -34,7 +36,8 @@ public class Piccolo extends Personaje {
     private Personaje protegido;
     private double vidaInicialProtegido;
     
-    public Piccolo() {
+    public Piccolo(String nombreEquipo) {
+    	super(nombreEquipo);
         this.estado = new EstadoPersonaje();
         this.estado.cambiarAPiccoloEstado1();
 
@@ -48,8 +51,6 @@ public class Piccolo extends Personaje {
         
         this.protegido = null;
         this.vidaInicialProtegido = 0;
-        
-        this.turnosInutilizados = 0;
     }
     
     

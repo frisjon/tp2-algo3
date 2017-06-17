@@ -20,16 +20,29 @@ import modelo.tablero.Tablero;
 
 
 public class OrganizadorJuego {
+	private final int TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE = 4;
 	private Tablero tablero;
-	private Jugador turno;
-	final int FILAS = 30, COLUMNAS = 30;
+	private int turno; // esta bueno para mostrarlo por consola
+	private final int FILAS = 30, COLUMNAS = 30;
 	
 	public OrganizadorJuego() {
+		this.turno = 0;
 		this.tablero = new Tablero(FILAS, COLUMNAS);
 	}
 	
-	public void siguienteTurno(Jugador jugador_que_juega) {
-		this.turno = jugador_que_juega;
+	public int getTurno(){
+		return this.turno;
+	}
+	
+	public void empezarSiguienteTurno(){
+		this.turno++;
+		if (this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 0 || 
+				this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 1 )
+			tablero.crearConsumible();
+			// el or con 1 es para que sea "justo" y aparezca un consumible en el
+			// turno del otro jugador tambien
+		
+		// capaz que aca haya que hacer alguna interaccion con el controlador		
 	}
 	
 	public void colocarPersonajesEnTablero( Map<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{

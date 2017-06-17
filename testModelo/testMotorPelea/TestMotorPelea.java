@@ -74,7 +74,7 @@ public class TestMotorPelea extends TestCase{
     }
     
     public void test06PeleaGohanAtacaBasicoAFreezerConEsfera(){
-        gohan1.setConsumible(esfera);
+        gohan1.setObjeto(esfera);
         Pelea.ataqueBasico(gohan1, freezer1);
       
         assertEquals(gohan1.getVida(), 300.0);
@@ -84,7 +84,7 @@ public class TestMotorPelea extends TestCase{
     }
     
     public void test07PeleaFreezerAtacaEspecialAGohanConEsfera(){
-        freezer1.setConsumible(esfera);
+        freezer1.setObjeto(esfera);
         freezer1.agregarKi(20.0);
         Pelea.ataqueEspecial(freezer1, gohan1);
       
@@ -107,24 +107,24 @@ public class TestMotorPelea extends TestCase{
     }
     
     public void test09PeleaFreezerConEsferaDecrementaUso(){
-        freezer1.setConsumible(esfera);
+        freezer1.setObjeto(esfera);
         Pelea.ataqueBasico(freezer1, gohan1);
         
-        assertEquals(freezer1.getConsumible().getCantidadUsosRestantes(), 1);
+        assertEquals(freezer1.getObjetos().getCantidadUsosRestantes(), 1);
     }
     
     public void test10PeleaFreezerConEsferaAtaca2VecesEliminaConsumible(){
-        freezer1.setConsumible(esfera);
+        freezer1.setObjeto(esfera);
         Pelea.ataqueBasico(freezer1, gohan1);
         Pelea.ataqueBasico(freezer1, gohan1);
         
-        assertEquals(freezer1.tieneConsumible(), false);
+        assertEquals(freezer1.tieneObjeto(), false);
     }
     
     public void test11PeleaFreezerConNubeNoDecrementaUso(){
-        freezer1.setConsumible(nube);
+        freezer1.setObjeto(nube);
         Pelea.ataqueBasico(freezer1, gohan1);
         
-        assertEquals(freezer1.getConsumible().getCantidadUsosRestantes(), 2);
+        assertEquals(freezer1.getObjetos().getCantidadUsosRestantes(), 2);
     }
 }

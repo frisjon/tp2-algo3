@@ -1,9 +1,13 @@
 package modelo.pelea;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import modelo.consumibles.*;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.personajes.*;
+import modelo.tablero.ObjetoJuego;
 
 /**
  * Clase que se encargara de desarollar una pelea entre dos personajes.
@@ -66,16 +70,13 @@ public final class Pelea {
          */
         double descuentoDifPoder = 0;
         
-        if (pj1.tieneConsumible()){
-            Consumible consumiblePj1 = pj1.getConsumible();
-            
-            if (consumiblePj1.getAtributo() == "Ataque"){
-                aumentoConsumible = (poderPeleaPj1 + aumentoPasiva) * (consumiblePj1.getCantidadAtributo());
-                consumiblePj1.decrementarUso();
-                //Si no quedan usos se elimina el consumible.
-                if (consumiblePj1.getCantidadUsosRestantes() == 0){
-                    pj1.eliminarConsumible();
-                }
+        List<ObjetoJuego> objetosPj1 = pj1.getObjetos();
+      
+        for (int i = 0; i < objetosPj1.size(); i++){
+        	ObjetoJuego objeto = objetosPj1.get(i);
+            if (objeto.getAtributo() == "Ataque"){
+            	aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva) * (objeto.getCantidadAtributo());
+            	objeto.decrementarUso();
             }
         }
         
@@ -134,16 +135,13 @@ public final class Pelea {
             throw new ErrorNoSePuedeRealizarAtaqueEspecial("El personaje no cumple con los requisitos necesarios.");
         }
         
-        if (pj1.tieneConsumible()){
-            Consumible consumiblePj1 = pj1.getConsumible();
-            
-            if (consumiblePj1.getAtributo() == "Ataque"){
-                aumentoConsumible = (poderPeleaPj1 + aumentoPasiva + aumentoAtaqueEspecial) * (consumiblePj1.getCantidadAtributo());
-                consumiblePj1.decrementarUso();
-                //Si no quedan usos se elimina el consumible.
-                if (consumiblePj1.getCantidadUsosRestantes() == 0){
-                    pj1.eliminarConsumible();
-                }
+        List<ObjetoJuego> objetosPj1 = pj1.getObjetos();
+        
+        for (int i = 0; i < objetosPj1.size(); i++){
+        	ObjetoJuego objeto = objetosPj1.get(i);
+            if (objeto.getAtributo() == "Ataque"){
+            	aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva + aumentoAtaqueEspecial) * (objeto.getCantidadAtributo());
+            	objeto.decrementarUso();
             }
         }
         

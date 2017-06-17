@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.equipo.Equipo;
+
 public class Goku extends Personaje {
 
     public static final double GOKU_CANTIDAD_KI_INICIAL = 0;
@@ -29,7 +31,8 @@ public class Goku extends Personaje {
     public static final double GOKU_ESTADO_3_COSTO = 50;
     public static final int GOKU_ESTADO_3_ID = 3;
     
-    public Goku() {
+    public Goku(String nombreEquipo) {
+    	super(nombreEquipo);
         this.estado = new EstadoPersonaje();
         this.estado.cambiarAGokuEstado1();
 
@@ -40,7 +43,7 @@ public class Goku extends Personaje {
         this.kiAtaqueEspecial = GOKU_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = GOKU_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = GOKU_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
-        this.turnosInutilizados = 0;
+        
     }
 
 

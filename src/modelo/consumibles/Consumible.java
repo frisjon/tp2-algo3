@@ -73,4 +73,12 @@ public abstract class Consumible implements ObjetoJuego {
     public void setCasillero(Casillero casillero){
     	this.casillero = casillero;
     }
+    
+    public boolean sePuedePasar(){
+    	return true;
+    }
+    
+    public boolean sePuedeObtener(){
+    	return true;
+    }
 }

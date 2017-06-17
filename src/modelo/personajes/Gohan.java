@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.equipo.Equipo;
+
 public class Gohan extends Personaje {
 
     public static final double GOHAN_CANTIDAD_KI_INICIAL = 0;
@@ -37,7 +39,8 @@ public class Gohan extends Personaje {
     private double vidaInicialAliado1;
     private double vidaInicialAliado2;
     
-    public Gohan() {
+    public Gohan(String nombreEquipo) {
+    	super(nombreEquipo);
         this.estado = new EstadoPersonaje();
         this.estado.cambiarAGohanEstado1();
 
@@ -54,7 +57,7 @@ public class Gohan extends Personaje {
         this.aliado2 = null;
         this.vidaInicialAliado2 = 0;
         
-        this.turnosInutilizados = 0;
+        
     }
 
     

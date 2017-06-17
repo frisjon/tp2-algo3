@@ -6,6 +6,8 @@ import java.util.List;
 import org.junit.Assert;
 import junit.framework.TestCase;
 import modelo.consumibles.Esfera;
+import modelo.consumibles.Nube;
+import modelo.consumibles.Semilla;
 import modelo.pelea.Pelea;
 import modelo.personajes.Cell;
 import modelo.personajes.Gohan;
@@ -40,12 +42,12 @@ public class TestTerceraEntrega extends TestCase {
 		camino.add(casillero3);
 		tablero.moverPersonaje(gohan, camino);
 		
-		Assert.assertEquals(gohan.tieneConsumible(), true);
-		Assert.assertEquals(casillero3.tieneConsumible(), false);	
+		Assert.assertEquals(gohan.tieneObjeto(), true);
+		Assert.assertEquals(casillero3.estaLibre(), true);	
 		
 	}
 	
-	//tomar supuesto o que al aumetnar el daño se toma que el poder pelea es mayor (para comparar con contrincante) o se toma supuesto que no aumenta poder pelea(tomo este caso)
+	//tomar supuesto o que al aumetnar el daï¿½o se toma que el poder pelea es mayor (para comparar con contrincante) o se toma supuesto que no aumenta poder pelea(tomo este caso)
 	//en este caso si tomo 2do supuesto se le reduciria el ataque en un 20% y luego se aumentaria en un 25% por el efecto de la esfera, qeudando un ataque de 15,75
 	public void test02VerificarCorrectaAplicacionDeConsumibleEsfera() {
 		Esfera esfera = new Esfera();

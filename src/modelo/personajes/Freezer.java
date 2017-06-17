@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.equipo.Equipo;
+
 public class Freezer extends Personaje {
 
     public static final double FREEZER_CANTIDAD_KI_INICIAL = 0;
@@ -28,7 +30,8 @@ public class Freezer extends Personaje {
     public static final double FREEZER_ESTADO_3_COSTO = 50;
     public static final int FREEZER_ESTADO_3_ID = 3;
     
-    public Freezer() {
+    public Freezer(String nombreEquipo) {
+    	super(nombreEquipo);
         this.estado = new EstadoPersonaje();
         this.estado.cambiarAFreezerEstado1();
 
@@ -39,7 +42,7 @@ public class Freezer extends Personaje {
         this.kiAtaqueEspecial = FREEZER_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = FREEZER_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = FREEZER_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
-        this.turnosInutilizados = 0;
+        
     }
 
 
