@@ -1,8 +1,0 @@
-language: java
-script: ant integracion-continua
-jdk:
-  - oraclejdk8
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
