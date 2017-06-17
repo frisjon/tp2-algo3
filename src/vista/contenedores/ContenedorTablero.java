@@ -75,7 +75,7 @@ public class ContenedorTablero extends BorderPane {
         
         Coordenada coordenada = personaje.getCasillero().getCoordenada();
         //this.grid.getChildren().remove(personajeImagen);
-        this.grid.add(personaje.getImagen(), coordenada.getY(), coordenada.getX());
+        this.grid.add(personaje.getImagen(), coordenada.getX(), coordenada.getY());
         this.setCenter(this.grid);
     }
     

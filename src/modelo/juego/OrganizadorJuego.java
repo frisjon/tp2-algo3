@@ -23,7 +23,7 @@ public class OrganizadorJuego {
 	private final int TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE = 4;
 	private Tablero tablero;
 	private int turno; // esta bueno para mostrarlo por consola
-	private final int FILAS = 30, COLUMNAS = 30;
+	private final int FILAS = 15, COLUMNAS = 15;
 	
 	public OrganizadorJuego() {
 		this.turno = 0;
