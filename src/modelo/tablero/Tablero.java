@@ -209,5 +209,13 @@ public class Tablero {
         }  
 		
 	}
+
+    public int getAlto() {
+        return this.alto;
+    }
+    
+    public int getAncho() {
+        return this.ancho;
+    }
 	
 }

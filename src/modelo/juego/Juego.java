@@ -35,4 +35,9 @@ public class Juego {
 		this.organizador.colocarPersonajesEnTablero(this.listajugadores);		
 	}
 
+	//Devuelve el OrganizadorJuego
+    public OrganizadorJuego getOrganizadorJuego() {
+        return this.organizador;
+    }
+
 }

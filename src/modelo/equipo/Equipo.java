@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import modelo.personajes.Goku;
+import modelo.personajes.Gohan;
+import modelo.personajes.Piccolo;
+import modelo.personajes.Cell;
+import modelo.personajes.Freezer;
+import modelo.personajes.MajinBoo;
 import modelo.personajes.Personaje;
 
 /**
@@ -56,4 +62,18 @@ public class Equipo {
 	public String getNombre() {
 		return this.nombre;
 	}
+
+	//Agrega a la instantcia de equipo, los personajes del equipo Guerreros
+    public void asignarEquipoGuerreros() {
+        this.agregarPersonaje(new Goku("Guerreros"));
+        this.agregarPersonaje(new Gohan("Guerreros"));
+        this.agregarPersonaje(new Piccolo("Guerreros"));
+    }
+
+    //Agrega a la instantcia de equipo, los personajes del equipo Enemigos
+    public void asignarEquipoEnemigos() {
+        this.agregarPersonaje(new Cell("Enemigos"));
+        this.agregarPersonaje(new Freezer("Enemigos"));
+        this.agregarPersonaje(new MajinBoo("Enemigos"));
+    }
 }

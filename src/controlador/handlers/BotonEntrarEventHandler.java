@@ -8,8 +8,8 @@ import modelo.equipo.PosibleEquipo;
 import modelo.juego.Juego;
 import modelo.jugador.Jugador;
 import vista.contenedores.Escena;
+import vista.contenedores.ContenedorJuego;
 import vista.contenedores.ContenedorNombrarJugadores;
-import vista.contenedores.ContenedorPelea;
 
 public class BotonEntrarEventHandler extends BotonHandler {
 
@@ -37,7 +37,11 @@ public class BotonEntrarEventHandler extends BotonHandler {
             String nombreJugador2 = contenedorNombres.getNombreJugador2();
             
             Equipo guerreros = new Equipo(PosibleEquipo.guerreros);
-        	Equipo enemigos = new Equipo(PosibleEquipo.enemigos);   	
+        	Equipo enemigos = new Equipo(PosibleEquipo.enemigos);
+        	
+        	//se asignan personajes a los equipos
+        	guerreros.asignarEquipoGuerreros();
+        	enemigos.asignarEquipoEnemigos();
         	
     		Jugador jugadorGuerreros = new Jugador(nombreJugador1, guerreros);
     		Jugador jugadorEnemigos = new Jugador(nombreJugador2, enemigos);
@@ -46,13 +50,10 @@ public class BotonEntrarEventHandler extends BotonHandler {
             juego.agregarJugador(jugadorGuerreros);
             juego.agregarJugador(jugadorEnemigos);
             
-            // ver de referencia ContenedorPelea que sería el sinónimo de ese tp a la parte jugable
-            // para más parecido a lo nuestro ver el tp transformers, aunque el código es peor
-            ContenedorJuego contenedorJuego = new ContenedorJuego(stage, nombreJugador1, nombreJugador2);
+            //Se crea un contenedorJuego con jugadores (no los nombres)
+            ContenedorJuego contenedorJuego = new ContenedorJuego(stage, jugadorGuerreros, jugadorEnemigos);
             Escena escenaEleccion = new Escena(contenedorJuego, stage);
             contenedorJuego.inicializarJuego(juego);
-            // ahora hay que crear un contenedorJuego y ahí meter el tablero y todas las demás boludeces
-            // después de eso hay que unirlo con OrganizadorJuego para que se pueda empezar a "jugar"
 
             stage.setFullScreenExitHint("");
             boolean enPantallaCompletaAntesDeCambiarEscena = stage.isFullScreen();

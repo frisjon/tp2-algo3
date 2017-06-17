@@ -2,7 +2,6 @@ package vista.contenedores;
 
 import java.util.ArrayList;
 
-import controlador.handlers.BotonPasarTurnoEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -42,7 +41,6 @@ public class ContenedorJuego extends BorderPane {
     private Consola consola;
     private ContenedorTablero contenedorTablero;
     private ContenedorOpcionesJuego contenedorOpcionesJuego;
-    private String nombreJugador1, nombreJugador2;
     private Jugador jugador1, jugador2;
     private Jugador jugadorDeTurno;
     
@@ -53,30 +51,27 @@ public class ContenedorJuego extends BorderPane {
         this.jugador2 = jugador2;
         
         this.jugadorDeTurno = jugador1;
-    }
-    
-    public ContenedorJuego(Stage stage, String nombreJugador1, String nombreJugador2) {
-        super();
-        
-        this.stage = stage;
-        this.nombreJugador1 = nombreJugador1;
-        this.nombreJugador2 = nombreJugador2;
         
         //Fondo
-        /*Image fondo = new Image("file:src/vista/imagenes/fondo-dbz.jpg");
+        Image fondo = new Image("file:src/vista/imagenes/fondo-dbz.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondo, 
                                                             BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, 
                                                             BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));*/
+        this.setBackground(new Background(imagenDeFondo));
     }
 
     public void inicializarJuego(Juego juego) {
         this.juego = juego;
         
+        //Inicializo a los personajes en el tablero
         this.juego.distribuirPersonajesEquipos();
         
+        //Esta clase (ContenedorJuego) maneja lo de los turnos (la parte de la vista)
+        //Por lo tanto debe tener una referencia al organizadorJuego (que maneja los turnos en el modelo)
         this.organizador = this.juego.getOrganizadorJuego();
         
+        //Referencia al tablero. Lo necesita ContenedorTablero.
+        //Para saber en donde esta cada personaje
         Tablero tablero = this.organizador.getTablero();
         
         //Menu (top)
@@ -88,13 +83,13 @@ public class ContenedorJuego extends BorderPane {
         this.panelConsola = new VistaConsola(this.consola);
         this.setBottom(panelConsola);
         
-        //Centro (center)
+        //Centro (center) (esto es lo que se va a ver como un tablero. aca van los personajes y consumibles, etc)
         ContenedorTablero contendorTablero = new ContenedorTablero(tablero, jugador1.getEquipo(), jugador2.getEquipo()); 
         this.contenedorTablero = contendorTablero;
-        //this.setAlignment(contendorTablero, Pos.TOP_LEFT);
         this.setCenter(contendorTablero);
         
-        //Panel de Opciones (left)
+        //Panel de Opciones (left) (aca van las opciones del juego. Seleccionar personaje, mover, atacar)
+        //(utilizar consumibler no deberia ser opcion porque 2 de 3 consumibles son instantaneos y por ultimo, las esferas no se pueden consumir)
         ContenedorOpcionesJuego contenedorOpcionesJuego = new ContenedorOpcionesJuego(this.jugadorDeTurno);
         this.contenedorOpcionesJuego = contenedorOpcionesJuego;
         this.setLeft(contenedorOpcionesJuego);

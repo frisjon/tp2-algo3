@@ -23,7 +23,10 @@ public class ContenedorTablero extends BorderPane {
     private final int IMAGEN_ANCHO = 30;
     private final int IMAGEN_ALTO = 30;
     
+    //el tablero sabe donde estan los personajes
     private Tablero tablero;
+    
+    //muestra al tablero
     private GridPane grid;
     private List<Equipo> equipos;
     
@@ -31,7 +34,10 @@ public class ContenedorTablero extends BorderPane {
         super();
         
         this.tablero = _tablero;
+        
+        //inicializa el grid
         this.iniciarTableroDeJuego();
+        
         this.equipos = new ArrayList<Equipo>();
         this.equipos.add(equipo1);
         this.equipos.add(equipo2);
@@ -60,7 +66,8 @@ public class ContenedorTablero extends BorderPane {
         this.setCenter(this.grid);
     }
     
-    // pasa por todo el tablero, y modifica las posiciones (de personajes)
+    //modifica la posicion del personaje en el grid.
+    //por ahora no hacer nada, porque los personajes no se pueden mover por ahora.
     public void actualizarPosicionDePersonaje(Personaje personaje, ImageView personajeImagen) {
         //personajeImagen.setOpacity(1.00);
         
@@ -70,20 +77,20 @@ public class ContenedorTablero extends BorderPane {
         this.setCenter(this.grid);
     }
     
+    //por ahora solo actualiza las posiciones de cada personaje.
+    //falta que tambien lo haga para los consumibles.
+    //puede que la forma en la que esta, no sea bueno despues. Lo dejo asi para que se vea algo.
+    //(me refiero a que si tal vez esta mal usar ImageView en vez de botonoes, por ejemplo)
     public void actualizarTablero() {
+        
+        Image img = new Image("file:src/vista/imagenes/goku.png",this.IMAGEN_ANCHO,this.IMAGEN_ALTO,false,false);
+        
         for (Equipo e: equipos) {
             for (Personaje p: e.pedirListaPersonajes()) {
                 ImageView iv = new ImageView();
-                //Image img = new Image("file:src/vista/imagenes/goku.png",this.IMAGEN_ANCHO,this.IMAGEN_ALTO,false,false);
-                iv.setImage(this.getPersonajeImagen(p));
+                iv.setImage(img);
                 this.actualizarPosicionDePersonaje(p, iv);
             }
         }
     }
-    
-    public final Image getPersonajeImagen(Personaje personaje) {
-        
-        return null;
-    }
-    
 }

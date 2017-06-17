@@ -57,4 +57,9 @@ public class OrganizadorJuego {
 		this.tablero.colocarPersonajes(listaEquipos);
 		
 	}
+
+	//Devuelve el tablero
+    public Tablero getTablero() {
+        return this.tablero;
+    }
 }
