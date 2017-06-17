@@ -47,8 +47,8 @@ public class ContenedorNombrarJugadores {
         window.setHeight(600);
         window.centerOnScreen();
 
-        Label labelParaJugador1 = crearLabelParaVentanaNombrarJugadores("Ingresar Nombre Jugador 1");
-        Label labelParaJugador2 = crearLabelParaVentanaNombrarJugadores("Ingresar Nombre Jugador 2");
+        Label labelParaJugador1 = crearLabelParaVentanaNombrarJugadores("Ingresar jugador equipo Guerreros ");
+        Label labelParaJugador2 = crearLabelParaVentanaNombrarJugadores("Ingresar jugador equipo Enemigos");
         labelParaJugador1.setTextFill(Color.BLUE);
         labelParaJugador2.setTextFill(Color.BLUE);
         labelParaJugador1.alignmentProperty();
