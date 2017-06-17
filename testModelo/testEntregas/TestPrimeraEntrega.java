@@ -8,6 +8,7 @@ import org.junit.Assert;
 import junit.framework.*;
 import modelo.consumibles.ErrorConsumibleInstantaneo;
 import modelo.equipo.Equipo;
+import modelo.equipo.PosibleEquipo;
 import modelo.juego.Juego;
 import modelo.jugador.Jugador;
 import modelo.pelea.ErrorNoHayKi;
@@ -35,7 +36,7 @@ public class TestPrimeraEntrega extends TestCase {
 		Casillero casillero1 = new Casillero(0,0);
 		Casillero casillero2 = new Casillero(0,1);
 		Casillero casillero3 = new Casillero(0,2);
-		Goku goku = new Goku();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
 		List<Casillero> camino = new ArrayList<Casillero>();
 		
 		camino.add(casillero2);
@@ -53,7 +54,7 @@ public class TestPrimeraEntrega extends TestCase {
 		Casillero casillero2 = new Casillero(0,1);
 		Casillero casillero3 = new Casillero(0,2);
 		Casillero casillero4 = new Casillero(0,3);
-		Goku goku = new Goku();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
 		List<Casillero> camino = new ArrayList<Casillero>();
 		
 		camino.add(casillero2);
@@ -67,8 +68,8 @@ public class TestPrimeraEntrega extends TestCase {
 	
 	public void test03VerificarImposibilidadDosPersonajesEnCasilleroDebeLanzarExcepcion() {
 		Casillero casillero = new Casillero(0,0);
-		Goku goku = new Goku();
-		Gohan gohan = new Gohan();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
+		Gohan gohan = new Gohan(PosibleEquipo.guerreros);
 		casillero.setObjeto(goku);
 		try {casillero.setObjeto(gohan);
 		} catch (ErrorCasilleroYaOcupado e) {}
@@ -79,8 +80,8 @@ public class TestPrimeraEntrega extends TestCase {
 		Casillero casillero1 = new Casillero(0,0);
 		Casillero casillero2 = new Casillero(0,1);
 		Casillero casillero3 = new Casillero(0,2);
-		Goku goku = new Goku();
-		Gohan gohan = new Gohan();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
+		Gohan gohan = new Gohan(PosibleEquipo.guerreros);
 		List<Casillero> camino = new ArrayList<Casillero>();
 		
 		casillero1.setObjeto(goku);
@@ -96,7 +97,7 @@ public class TestPrimeraEntrega extends TestCase {
 	
 	public void test05VerificarTransformacionGokuEnEstadoDos() {
 		Casillero casillero = new Casillero(0,0);
-		Goku goku = new Goku();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
 		
 		casillero.setObjeto(goku);
 		goku.setCasillero(casillero);
@@ -108,7 +109,7 @@ public class TestPrimeraEntrega extends TestCase {
 	
 	public void test06VerificarImposibilidadTransformacionGokuEnEstadoTresDebeLanzarExcepcion() {
 		Casillero casillero = new Casillero(0,0);
-		Goku goku = new Goku();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
 		
 		casillero.setObjeto(goku);
 		goku.setCasillero(casillero);
@@ -124,7 +125,7 @@ public class TestPrimeraEntrega extends TestCase {
 		Casillero casillero2 = new Casillero(0,1);
 		Casillero casillero3 = new Casillero(0,2);
 		Casillero casillero4 = new Casillero(0,3);
-		Goku goku = new Goku();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
 		List<Casillero> camino = new ArrayList<Casillero>();
 		
 		casillero1.setObjeto(goku);
@@ -142,19 +143,19 @@ public class TestPrimeraEntrega extends TestCase {
 	
 	public void test08CrearJuegoConJugadoresYPersonajesRepartidosEnTablero() {
 		Juego juego = new Juego();
-		Goku goku = new Goku();
-		Gohan gohan = new Gohan();
-		Piccolo piccolo = new Piccolo();
-		Freezer freezer = new Freezer();
-		MajinBoo majinboo = new MajinBoo();
-		Cell cell = new Cell();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
+		Gohan gohan = new Gohan(PosibleEquipo.guerreros);
+		Piccolo piccolo = new Piccolo(PosibleEquipo.guerreros);
+		Freezer freezer = new Freezer(PosibleEquipo.enemigos);
+		MajinBoo majinboo = new MajinBoo(PosibleEquipo.enemigos);
+		Cell cell = new Cell(PosibleEquipo.enemigos);
 		
-		Equipo equipo1 = new Equipo("Guerreros Z");
+		Equipo equipo1 = new Equipo(PosibleEquipo.guerreros);
 		equipo1.agregarPersonaje(goku);
 		equipo1.agregarPersonaje(gohan);
 		equipo1.agregarPersonaje(piccolo);
 		
-		Equipo equipo2 = new Equipo("Enemigos de la Tierra");
+		Equipo equipo2 = new Equipo(PosibleEquipo.enemigos);
 		equipo2.agregarPersonaje(freezer);
 		equipo2.agregarPersonaje(majinboo);
 		equipo2.agregarPersonaje(cell);
@@ -186,8 +187,8 @@ public class TestPrimeraEntrega extends TestCase {
 	public void test09VerificarModificacionEstatusPersonajesLuegoDeCombatir() {
 		Casillero casilleroconguerrero = new Casillero(5,5);
 		Casillero casilleroconenemigo = new Casillero(5,8);
-		Goku goku = new Goku();
-		Freezer freezer = new Freezer();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
+		Freezer freezer = new Freezer(PosibleEquipo.enemigos);
 		
 		goku.setCasillero(casilleroconguerrero);
 		casilleroconguerrero.setObjeto(goku);
@@ -209,8 +210,8 @@ public class TestPrimeraEntrega extends TestCase {
 	public void test10VerificarImposibilidadDeAtacarDebidoADistanciaDebeLanzarExcepcion() {
 		Casillero casilleroconguerrero = new Casillero(5,5);
 		Casillero casilleroconenemigo = new Casillero(5,9);
-		Goku goku = new Goku();
-		Freezer freezer = new Freezer();
+		Goku goku = new Goku(PosibleEquipo.guerreros);
+		Freezer freezer = new Freezer(PosibleEquipo.enemigos);
 		
 		goku.setCasillero(casilleroconguerrero);
 		casilleroconguerrero.setObjeto(goku);

@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import modelo.consumibles.ErrorConsumibleInstantaneo;
+import modelo.equipo.PosibleEquipo;
 import modelo.pelea.Pelea;
 import modelo.personajes.Cell;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
@@ -19,7 +20,7 @@ public class TestGoku{
 
     @Before
     public void setUp() {
-        goku = new Goku();
+        goku = new Goku(PosibleEquipo.guerreros);
     }
 
     @Test
@@ -65,7 +66,7 @@ public class TestGoku{
     
     @Test
     public void test08GokuHaceDanioConAtaqueBasico() {
-    	Cell cell = new Cell();
+    	Cell cell = new Cell(PosibleEquipo.enemigos);
     	int vida_cell;
 		
 		Pelea.ataqueBasico(goku, cell);

@@ -1,11 +1,11 @@
 package testPersonajes;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import modelo.equipo.PosibleEquipo;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.Gohan;
 import modelo.personajes.Goku;
@@ -19,9 +19,9 @@ public class TestGohan {
 
     @Before
     public void setUp() {
-        gohan = new Gohan();
-        goku = new Goku();
-        piccolo = new Piccolo();
+        gohan = new Gohan(PosibleEquipo.guerreros);
+        goku = new Goku(PosibleEquipo.guerreros);
+        piccolo = new Piccolo(PosibleEquipo.guerreros);
         
         gohan.setAliado1(goku);
         gohan.setAliado2(piccolo);

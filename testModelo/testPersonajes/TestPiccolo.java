@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
+import modelo.equipo.PosibleEquipo;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.Gohan;
 import modelo.personajes.Piccolo;
@@ -17,8 +18,8 @@ public class TestPiccolo{
 
     @Before
     public void setUp() {
-        piccolo = new Piccolo();
-        gohan = new Gohan();
+        piccolo = new Piccolo(PosibleEquipo.guerreros);
+        gohan = new Gohan(PosibleEquipo.guerreros);
         
         piccolo.setProtegido(gohan);
     }

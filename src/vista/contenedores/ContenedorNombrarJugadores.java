@@ -41,7 +41,7 @@ public class ContenedorNombrarJugadores {
     public void mostrar() {
         Stage window = new Stage();
         
-        window.initModality(Modality.APPLICATION_MODAL);
+       
         window.setTitle("Nombre Jugadores");
         window.setWidth(1000);
         window.setHeight(600);
@@ -49,10 +49,13 @@ public class ContenedorNombrarJugadores {
 
         Label labelParaJugador1 = crearLabelParaVentanaNombrarJugadores("Ingresar Nombre Jugador 1");
         Label labelParaJugador2 = crearLabelParaVentanaNombrarJugadores("Ingresar Nombre Jugador 2");
+        labelParaJugador1.setTextFill(Color.BLUE);
+        labelParaJugador2.setTextFill(Color.BLUE);
+        labelParaJugador1.alignmentProperty();
 
-        Button aceptar = new Button("Aceptar");
-        aceptar.setTextFill(Color.DARKRED);
-        aceptar.setFont(Font.font("Lucida Console", 40));
+        Button aceptar = new Button("A jugar!");
+        aceptar.setTextFill(Color.CHOCOLATE);
+        aceptar.setFont(Font.font("Rockwell", 40));
         aceptar.setStyle("-fx-base: rgb(249,219,189)");
         aceptar.setMinSize(180, 40);
 
@@ -103,7 +106,7 @@ public class ContenedorNombrarJugadores {
         Label labelParaJugador = new Label();
         labelParaJugador.setText(texto);
         labelParaJugador.setStyle("-fx-border-color:red; -fx-background-color: white; -fx-stroke: black;");
-        labelParaJugador.setFont(Font.font("Lucida Console", 30));
+        labelParaJugador.setFont(Font.font("Rockwell", 30));
         return labelParaJugador;
 
     }
