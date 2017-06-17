@@ -44,6 +44,8 @@ public class ContenedorJuego extends BorderPane {
     private Jugador jugador1, jugador2;
     private Jugador jugadorDeTurno;
     
+    //private AudioClip musicaDeFondo;
+    
     public ContenedorJuego(Stage stage, Jugador jugador1, Jugador jugador2) {
         super();
         
@@ -52,16 +54,23 @@ public class ContenedorJuego extends BorderPane {
         
         this.jugadorDeTurno = jugador1;
         
+        //Inicializamos la musica de fondo
+        //this.musicaDeFondo = new AudioClip("file:src/vista/sonidos/.mp3");
+        //this.musicaDeFondo.setCycleCount(5);
+        
         //Fondo
+        /*
         Image fondo = new Image("file:src/vista/imagenes/fondo-dbz.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondo, 
                                                             BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, 
                                                             BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));
+        this.setBackground(new Background(imagenDeFondo));*/
     }
 
     public void inicializarJuego(Juego juego) {
         this.juego = juego;
+        
+        //this.musicaDeFondo.play();
         
         //Inicializo a los personajes en el tablero
         this.juego.distribuirPersonajesEquipos();
@@ -84,7 +93,7 @@ public class ContenedorJuego extends BorderPane {
         this.setBottom(panelConsola);
         
         //Centro (center) (esto es lo que se va a ver como un tablero. aca van los personajes y consumibles, etc)
-        ContenedorTablero contendorTablero = new ContenedorTablero(tablero, jugador1.getEquipo(), jugador2.getEquipo()); 
+        ContenedorTablero contendorTablero = new ContenedorTablero(tablero, jugador1, jugador2); 
         this.contenedorTablero = contendorTablero;
         this.setCenter(contendorTablero);
         

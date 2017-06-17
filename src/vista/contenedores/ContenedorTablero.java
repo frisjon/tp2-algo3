@@ -17,20 +17,22 @@ import modelo.jugador.Jugador;
 import modelo.personajes.Personaje;
 import modelo.tablero.Coordenada;
 import modelo.tablero.Tablero;
+import vista.RepresentacionJugador;
+import vista.RepresentacionPersonaje;
 
 public class ContenedorTablero extends BorderPane {
     
-    private final int IMAGEN_ANCHO = 30;
-    private final int IMAGEN_ALTO = 30;
+    private final int IMAGEN_ANCHO = 50;
+    private final int IMAGEN_ALTO = 50;
     
     //el tablero sabe donde estan los personajes
     private Tablero tablero;
     
-    //muestra al tablero
+    //representacion del tablero
     private GridPane grid;
-    private List<Equipo> equipos;
+    private List<RepresentacionJugador> representacionJugadores;
     
-    public ContenedorTablero(Tablero _tablero, Equipo equipo1, Equipo equipo2) {
+    public ContenedorTablero(Tablero _tablero, Jugador jugador1, Jugador jugador2) {
         super();
         
         this.tablero = _tablero;
@@ -38,9 +40,9 @@ public class ContenedorTablero extends BorderPane {
         //inicializa el grid
         this.iniciarTableroDeJuego();
         
-        this.equipos = new ArrayList<Equipo>();
-        this.equipos.add(equipo1);
-        this.equipos.add(equipo2);
+        this.representacionJugadores = new ArrayList<RepresentacionJugador>();
+        this.representacionJugadores.add(new RepresentacionJugador(jugador1));
+        this.representacionJugadores.add(new RepresentacionJugador(jugador2));
         
         this.actualizarTablero();
     }
@@ -68,12 +70,12 @@ public class ContenedorTablero extends BorderPane {
     
     //modifica la posicion del personaje en el grid.
     //por ahora no hacer nada, porque los personajes no se pueden mover por ahora.
-    public void actualizarPosicionDePersonaje(Personaje personaje, ImageView personajeImagen) {
+    public void actualizarRepresentacionPersonaje(RepresentacionPersonaje personaje) {
         //personajeImagen.setOpacity(1.00);
         
         Coordenada coordenada = personaje.getCasillero().getCoordenada();
         //this.grid.getChildren().remove(personajeImagen);
-        this.grid.add(personajeImagen, coordenada.getY(), coordenada.getX());
+        this.grid.add(personaje.getImagen(), coordenada.getY(), coordenada.getX());
         this.setCenter(this.grid);
     }
     
@@ -83,13 +85,11 @@ public class ContenedorTablero extends BorderPane {
     //(me refiero a que si tal vez esta mal usar ImageView en vez de botonoes, por ejemplo)
     public void actualizarTablero() {
         
-        Image img = new Image("file:src/vista/imagenes/goku.png",this.IMAGEN_ANCHO,this.IMAGEN_ALTO,false,false);
+        //Image img = new Image("file:src/vista/imagenes/goku.png",this.IMAGEN_ANCHO,this.IMAGEN_ALTO,false,false);
         
-        for (Equipo e: equipos) {
-            for (Personaje p: e.pedirListaPersonajes()) {
-                ImageView iv = new ImageView();
-                iv.setImage(img);
-                this.actualizarPosicionDePersonaje(p, iv);
+        for (RepresentacionJugador jugador: representacionJugadores) {
+            for (RepresentacionPersonaje personaje: jugador.getRepresentacionesDePersonajes()) {
+                this.actualizarRepresentacionPersonaje(personaje);
             }
         }
     }
