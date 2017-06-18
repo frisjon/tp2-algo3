@@ -50,4 +50,8 @@ public class RepresentacionPersonaje {
         this.ivImagen.setImage(this.imagenEstado3);
     }
 
+    public Personaje getPersonaje() {
+        return this.personaje;
+    }
+
 }
