@@ -57,10 +57,7 @@ public class TestEsfera extends TestCase {
             esfera1.decrementarUso();
             esfera1.decrementarUso();
             esfera1.decrementarUso();
-            fail("No se lanzo ErrorNoHayUsosRestantes");
         }
-        catch (ErrorConsumibleInstantaneo e1){
-            fail("Se lanzo la excepcion equivocada.");
-        }
+        catch (ErrorNoHayUsosRestantes e1){}
     }
 }

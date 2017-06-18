@@ -93,6 +93,7 @@ public class Tablero {
 					this.objetos.remove(objeto);
 					Casillero casillero = objeto.getCasillero();
 					casillero.setObjeto(null);
+					objeto.setCasillero(null);
 				}
 			}				
 		}

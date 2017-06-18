@@ -23,8 +23,8 @@ public class TestNube extends TestCase {
         assertEquals(nube1.getCantidadAtributo(), 2.0);
     }
     
-    public void test03NubeCantidadUsosRestantesEs2(){
-        assertEquals(nube1.getCantidadUsosRestantes(), 2);
+    public void test03NubeCantidadTurnosRestantesEs2(){
+        assertEquals(nube1.getCantidadTurnosRestantes(), 2);
     }
     
     public void test04NubeInstantaneoEsFalse(){
@@ -33,8 +33,8 @@ public class TestNube extends TestCase {
     
     public void test05NubeDecrementarTurnoCantidadUso(){
         try {
-            nube1.decrementarUso();
-            if ((nube1.getCantidadUsosRestantes() != 1) || (nube2.getCantidadUsosRestantes() != 2)){
+            nube1.decrementarTurno();
+            if ((nube1.getCantidadTurnosRestantes() != 1) || (nube2.getCantidadTurnosRestantes() != 2)){
                 fail("No se actualizo la cantida de usos.");
             }
                 
@@ -52,17 +52,13 @@ public class TestNube extends TestCase {
         assertEquals(nube1.getNombre(), "Nube voladora");
     }
 
-    public void test07NubeDecrementarUso3VecesExcepcion(){
+    public void test07NubeDecrementarTurno3VecesExcepcion(){
         try{
-            nube1.decrementarUso();
-            nube1.decrementarUso();
-            nube1.decrementarUso();
-            fail("No se lanzo ErrorNoHayUsosRestantes");
+            nube1.decrementarTurno();
+            nube1.decrementarTurno();
+            nube1.decrementarTurno();
         }
-        catch (ErrorConsumibleInstantaneo e1){
-            fail("Se lanzo la excepcion equivocada.");
-        }
-        catch (ErrorNoHayUsosRestantes e2){
-        }
+        catch (ErrorNoHayTurnosDisponibles e1){}
+
     }
 }

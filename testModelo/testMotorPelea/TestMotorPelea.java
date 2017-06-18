@@ -114,18 +114,11 @@ public class TestMotorPelea extends TestCase{
         assertEquals(freezer1.getObjetos().get(0).getCantidadUsosRestantes(), 1);
     }
     
-    public void test10PeleaFreezerConEsferaAtaca2VecesEliminaConsumible(){
-        freezer1.setObjeto(esfera);
-        Pelea.ataqueBasico(freezer1, gohan1);
-        Pelea.ataqueBasico(freezer1, gohan1);
-        
-        assertEquals(freezer1.tieneObjeto(), false);
-    }
     
-    public void test11PeleaFreezerConNubeNoDecrementaUso(){
+    public void test10PeleaFreezerConNubeNoDecrementaTurno(){
         freezer1.setObjeto(nube);
         Pelea.ataqueBasico(freezer1, gohan1);
         
-        assertEquals(freezer1.getObjetos().get(0).getCantidadUsosRestantes(), 2);
+        assertEquals(freezer1.getObjetos().get(0).getCantidadTurnosRestantes(), 2);
     }
 }
