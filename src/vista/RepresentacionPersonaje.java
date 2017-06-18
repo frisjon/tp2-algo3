@@ -38,6 +38,10 @@ public class RepresentacionPersonaje {
         return this.ivImagen;
     }
     
+    public Personaje getPersonaje(){
+        return this.personaje;
+    }
+    
     public void cambiarAEstado1() {
         this.ivImagen.setImage(this.imagenEstado1);
     }
