@@ -270,5 +270,17 @@ public class Tablero {
     public int getAncho() {
         return this.ancho;
     }
+
 	
+    public List<Consumible> getConsumibles() {
+        List<Consumible> consumibles = new ArrayList<Consumible>();
+        
+        for (Casillero c: this.casilleros) {
+            if (!c.estaLibre() && c.getObjeto() instanceof Consumible){
+                consumibles.add((Consumible) c.getObjeto());
+            }
+        }
+        return consumibles;
+    }
+    
 }

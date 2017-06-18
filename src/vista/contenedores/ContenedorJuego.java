@@ -30,7 +30,11 @@ import modelo.personajes.Personaje;
 import modelo.tablero.Coordenada;
 import modelo.tablero.Tablero;
 import vista.BarraDeMenu;
+import vista.CreadorRepresentacionConsumible;
+import vista.CreadorRepresentacionPersonaje;
+import vista.RepresentacionConsumible;
 import vista.RepresentacionJugador;
+import modelo.consumibles.Consumible;
 import modelo.equipo.Equipo;
 
 
@@ -46,8 +50,11 @@ public class ContenedorJuego extends BorderPane {
     // puede que esto no sea necesario
     private ContenedorTablero contenedorTablero;
     private ContenedorOpcionesJuego contenedorOpcionesJuego;
+    
     //private Jugador jugador1, jugador2;
     //private Jugador jugadorDeTurno;
+    
+    private List<RepresentacionConsumible> consumibles;
     
     private List<RepresentacionJugador> representacionJugadores;
     
@@ -58,9 +65,7 @@ public class ContenedorJuego extends BorderPane {
     public ContenedorJuego(Stage stage, Jugador jugador1, Jugador jugador2) {
         super();
         
-        //this.jugador1 = jugador1;
-        //this.jugador2 = jugador2;
-        //this.jugadorDeTurno = jugador1;
+        this.consumibles = new ArrayList<RepresentacionConsumible>();
         
         this.representacionJugadores = new ArrayList<RepresentacionJugador>();
         this.representacionJugadores.add(new RepresentacionJugador(jugador1));
@@ -106,8 +111,17 @@ public class ContenedorJuego extends BorderPane {
         //Para saber en donde esta cada personaje.
         Tablero tablero = this.organizador.getTablero();
         
+        this.siguienteTurno();
+        
+        CreadorRepresentacionConsumible crc = new CreadorRepresentacionConsumible(); 
+        
+        //
+        for (Consumible consumible: tablero.getConsumibles()) {
+            consumibles.add(crc.crearRepresentacionDe(consumible));
+        }
+        
         //Centro (center) (esto es lo que se va a ver como un tablero. aca van los personajes y consumibles, etc)
-        ContenedorTablero contendorTablero = new ContenedorTablero(tablero, this.representacionJugadores); 
+        ContenedorTablero contendorTablero = new ContenedorTablero(tablero, this.representacionJugadores, this.consumibles); 
         this.contenedorTablero = contendorTablero;
         this.setCenter(contendorTablero);
         
@@ -116,5 +130,14 @@ public class ContenedorJuego extends BorderPane {
         ContenedorOpcionesJuego contenedorOpcionesJuego = new ContenedorOpcionesJuego(this.representacionJugadorDeTurno);
         this.contenedorOpcionesJuego = contenedorOpcionesJuego;
         this.setLeft(contenedorOpcionesJuego);
+    }
+    
+    public void mostrarConsola(String mensaje){
+        this.consola.agregarMensaje(mensaje);
+    }
+    
+    public void siguienteTurno() {
+        this.organizador.empezarSiguienteTurno();
+        this.mostrarConsola(Integer.toString(this.organizador.getTurno()));
     }
 }

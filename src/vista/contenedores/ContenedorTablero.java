@@ -2,21 +2,14 @@ package vista.contenedores;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import modelo.equipo.Equipo;
-import modelo.jugador.Jugador;
-import modelo.personajes.Personaje;
 import modelo.tablero.Coordenada;
 import modelo.tablero.Tablero;
+import vista.RepresentacionConsumible;
 import vista.RepresentacionJugador;
 import vista.RepresentacionPersonaje;
 
@@ -32,13 +25,15 @@ public class ContenedorTablero extends BorderPane {
     private GridPane grid;
     
     //private RepresentacionJugador representacionJugador;
-    private List<RepresentacionJugador> representacionJugadores;
+    private List<RepresentacionJugador> jugadores;
+    private List<RepresentacionConsumible> consumibles;
     
-    public ContenedorTablero(Tablero _tablero, List<RepresentacionJugador> _representacionJugadores) {
+    public ContenedorTablero(Tablero _tablero, List<RepresentacionJugador> _jugadores, List<RepresentacionConsumible> _consumibles) {
         super();
         
         this.tablero = _tablero;
-        this.representacionJugadores = _representacionJugadores;
+        this.jugadores = _jugadores;
+        this.consumibles = _consumibles;
         
         // inicializa el grid
         this.iniciarTableroDeJuego();
@@ -59,8 +54,8 @@ public class ContenedorTablero extends BorderPane {
         // GridPane no acepta solo Image, por algun motivo. 
         // Cada celda de GridPane tiene un ImageView que tiene una referencia al Image del pasto.
         // Si no se coloca nada en el grid, no va a aparecer despues en la imagen, por eso pongo pasto.
-        for (int i=0;i<this.tablero.getAlto();i++){
-            for (int j=0;j<this.tablero.getAncho();j++){
+        for (int i = 0; i < this.tablero.getAlto(); i++) {
+            for (int j = 0; j < this.tablero.getAncho(); j++) {
                 ImageView iv = new ImageView();
                 iv.setImage(pasto);
                 this.grid.add(iv, i, j);
@@ -85,6 +80,12 @@ public class ContenedorTablero extends BorderPane {
         this.grid.add(personaje.getImagen(), coordenada.getX(), coordenada.getY());
     }
     
+    public void actualizarRepresentacionConsumible(RepresentacionConsumible consumible) {
+        Coordenada coordenada = consumible.getCasillero().getCoordenada();
+        //this.grid.getChildren().remove(personaje.getImagen());
+        this.grid.add(consumible.getImagen(), coordenada.getX(), coordenada.getY());
+    }
+    
     // por ahora solo actualiza las posiciones de cada personaje.
     // falta que tambien lo haga para los consumibles.
     // puede que la forma en la que esta, no sea bueno despues. Lo dejo asi para que se vea algo.
@@ -92,10 +93,14 @@ public class ContenedorTablero extends BorderPane {
     public void actualizarTablero() {
         
         // por cada personaje del jugador actual
-        for (RepresentacionJugador jugador: this.representacionJugadores) {
+        for (RepresentacionJugador jugador: this.jugadores) {
             for (RepresentacionPersonaje personaje: jugador.getRepresentacionesDePersonajes()) {
                 this.actualizarRepresentacionPersonaje(personaje);
             }
+        }
+        
+        for (RepresentacionConsumible consumible: this.consumibles) {
+            this.actualizarRepresentacionConsumible(consumible);
         }
     }
 }

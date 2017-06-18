@@ -3,6 +3,7 @@ package modelo.consumibles;
 import java.util.List;
 
 import modelo.personajes.ErrorNoCompatibilidad;
+import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
 import modelo.tablero.ObjetoJuego;
 
@@ -71,5 +72,9 @@ public abstract class Consumible implements ObjetoJuego {
     
     public void eliminarObjeto(ObjetoJuego objeto) throws ErrorNoCompatibilidad {
     	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+    
+    public boolean equals(Consumible consumible){
+        return this.getClass().equals(consumible.getClass());
     }
 }
