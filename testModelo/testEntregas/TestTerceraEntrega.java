@@ -42,7 +42,8 @@ public class TestTerceraEntrega extends TestCase {
 		tablero.moverPersonaje(gohan, camino);
 		
 		Assert.assertEquals(gohan.tieneObjeto(), true);
-		Assert.assertEquals(esfera.getCasillero(), null);
+		//Assert.assertEquals(esfera.getCasillero(), null);
+		Assert.assertEquals(casillero3.getObjeto(), gohan); // no esta mas la esfera
 		
 	}
 	
