@@ -46,7 +46,8 @@ public class Gohan extends Personaje {
 
         this.ki = GOHAN_CANTIDAD_KI_INICIAL;
         this.nombre = GOHAN_NOMBRE;
-        this.vida = GOHAN_CANTIDAD_VIDA_INICIAL;
+        this.vidaInicial = GOHAN_CANTIDAD_VIDA_INICIAL;
+        this.vida = this.vidaInicial;
         this.ataqueEspecial = GOHAN_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = GOHAN_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = GOHAN_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;

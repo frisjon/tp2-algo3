@@ -21,6 +21,12 @@ public final class ValidadorMovimientoyAtaque {
 	public static boolean movimientoValido(Personaje personaje, List<Casillero> camino){
 				
 		double velocidad = personaje.getVelocidad();
+		for (int i = 0; i < personaje.getObjetos().size(); i++){
+			ObjetoJuego objeto = personaje.getObjetos().get(i);
+			if (objeto.getAtributo().equals("Velocidad"))
+				velocidad += (velocidad * objeto.getCantidadAtributo());			
+		}
+		
 		int x = personaje.getCasillero().getCoordenada().getX();
 		int y = personaje.getCasillero().getCoordenada().getY();
 		

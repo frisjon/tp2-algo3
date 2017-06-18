@@ -88,6 +88,8 @@ public class Tablero {
 				ObjetoJuego objeto = camino.get(i).getObjeto();
 				if (objeto.sePuedeObtener()){
 					personaje.obtenerObjeto(objeto);
+					if (objeto.getAtributo().equals("HP"))
+						personaje.agregarVida(objeto.getCantidadAtributo());					
 					this.objetos.remove(objeto);
 					Casillero casillero = objeto.getCasillero();
 					casillero.setObjeto(null);

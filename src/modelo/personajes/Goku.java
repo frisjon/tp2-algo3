@@ -38,7 +38,8 @@ public class Goku extends Personaje {
 
         this.ki = GOKU_CANTIDAD_KI_INICIAL;
         this.nombre = GOKU_NOMBRE;
-        this.vida = GOKU_CANTIDAD_VIDA_INICIAL;
+        this.vidaInicial = GOKU_CANTIDAD_VIDA_INICIAL;
+        this.vida = this.vidaInicial;
         this.ataqueEspecial = GOKU_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = GOKU_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = GOKU_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;

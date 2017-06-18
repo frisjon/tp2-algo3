@@ -9,7 +9,8 @@ import modelo.tablero.ObjetoJuego;
 public abstract class Personaje implements ObjetoJuego {
 
     protected double ki;
-    protected double vida;    
+    protected double vida;
+    protected double vidaInicial;
     protected double kiAtaqueEspecial;
     protected double aumentoAtaqueEspecial;
     protected double aumentoAtaquePasiva;
@@ -60,6 +61,8 @@ public abstract class Personaje implements ObjetoJuego {
     {
         if (_vida < 0) return;
         this.vida += _vida;
+        if (this.vida > this.vidaInicial)
+        	this.vida = this.vidaInicial;
     }
     
     public void quitarVida(double _vida)

@@ -33,7 +33,7 @@ public final class Constantes {
     public static final double ESFERA_CANTIDAD_ATRIBUTO = 0.25;
     public static final Boolean ESFERA_INSTANTANEO = false;
     public static final int ESFERA_CANTIDAD_USOS_RESTANTES = 2;
-   // public static final int ESFERA_CANTIDAD_TURNOS_RESTANTES = 999;
+   
     
     
     /**

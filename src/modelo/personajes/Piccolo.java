@@ -43,7 +43,8 @@ public class Piccolo extends Personaje {
 
         this.ki = PICCOLO_CANTIDAD_KI_INICIAL;
         this.nombre = PICCOLO_NOMBRE;
-        this.vida = PICCOLO_CANTIDAD_VIDA_INICIAL;
+        this.vidaInicial = PICCOLO_CANTIDAD_VIDA_INICIAL;
+        this.vida = this.vidaInicial;
         this.ataqueEspecial = PICCOLO_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = PICCOLO_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = PICCOLO_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;

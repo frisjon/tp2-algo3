@@ -37,7 +37,8 @@ public class Freezer extends Personaje {
 
         this.ki = FREEZER_CANTIDAD_KI_INICIAL;
         this.nombre = FREEZER_NOMBRE;
-        this.vida = FREEZER_CANTIDAD_VIDA_INICIAL;
+        this.vidaInicial = FREEZER_CANTIDAD_VIDA_INICIAL;
+        this.vida = this.vidaInicial;
         this.ataqueEspecial = FREEZER_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = FREEZER_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = FREEZER_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;

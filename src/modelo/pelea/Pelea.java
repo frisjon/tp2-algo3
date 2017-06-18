@@ -73,7 +73,7 @@ public final class Pelea {
       
         for (int i = 0; i < objetosPj1.size(); i++){
         	ObjetoJuego objeto = objetosPj1.get(i);
-            if (objeto.getAtributo() == "Ataque"){
+            if (objeto.getAtributo().equals("Ataque")){
             	aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva) * (objeto.getCantidadAtributo());
             	try {
             		objeto.decrementarUso();

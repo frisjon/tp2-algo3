@@ -1,7 +1,5 @@
 package modelo.personajes;
 
-import modelo.equipo.Equipo;
-
 public class Cell extends Personaje {
 	
     public static final double CELL_CANTIDAD_KI_INICIAL = 0;
@@ -42,7 +40,8 @@ public class Cell extends Personaje {
 
         this.ki = CELL_CANTIDAD_KI_INICIAL;
         this.nombre = CELL_NOMBRE;
-        this.vida = CELL_CANTIDAD_VIDA_INICIAL;
+        this.vidaInicial = CELL_CANTIDAD_VIDA_INICIAL;
+        this.vida = this.vidaInicial;
         this.ataqueEspecial = CELL_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = CELL_KI_ATAQUE_ESPECIAL;
         this.cantidadAbsorciones = 0;
@@ -88,8 +87,8 @@ public class Cell extends Personaje {
     
     private void aumentarVida() {
     	this.vida += this.estado.poderPelea;
-    	if (this.vida > 500)
-    		this.vida = 500;
+    	if (this.vida > this.vidaInicial)
+    		this.vida = this.vidaInicial;
     }
 
     /*

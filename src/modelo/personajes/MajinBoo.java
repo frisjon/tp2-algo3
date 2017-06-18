@@ -38,7 +38,8 @@ public class MajinBoo extends Personaje {
 
         this.ki = MAJINBOO_CANTIDAD_KI_INICIAL;
         this.nombre = MAJINBOO_NOMBRE;
-        this.vida = MAJINBOO_CANTIDAD_VIDA_INICIAL;
+        this.vidaInicial = MAJINBOO_CANTIDAD_VIDA_INICIAL;
+        this.vida = this.vidaInicial;
         this.ataqueEspecial = MAJINBOO_NOMBRE_ATAQUE_ESPECIAL;
         this.kiAtaqueEspecial = MAJINBOO_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
