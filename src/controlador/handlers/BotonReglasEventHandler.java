@@ -22,23 +22,20 @@ public class BotonReglasEventHandler extends BotonHandler {
         super.handle(event);
         this.alerta.setTitle("Reglas del juego:");
         this.alerta.setHeaderText("REGLAS DEL JUEGO:");
-       /* this.alerta.setContentText(
-        "Cada jugador deberï¿½ elegir un equipo. El quipo Guerreros Z contendrï¿½ a Goku, Piccolo y Gohan, mientras que " +
-        "el equipo Enemigos de la Tierra contrendrï¿½ a Freezer, MajinBoo y Cell.\n\n" +
-        "Por cada turno el jugador correspondiente podrï¿½ realizar una acciï¿½n de ataque y una acciï¿½n de movilidad, no " + 
+        this.alerta.setContentText(
+        "Cada jugador debera elegir un equipo. El equipo Guerreros Z contendra a Goku, Piccolo y Gohan, mientras que " +
+        "el equipo Enemigos de la Tierra contrendra a Freezer, MajinBoo y Cell.\n\n" +
+        "Por cada turno el jugador correspondiente podra realizar una accion de ataque y una accion de movilidad, no " + 
         "necesariamente del mismo personaje. Tanto el movimiento como el ataque hacia un personaje del contrincante " +
-        "deberï¿½ respetar los atributos impuestos por el personaje en cuestiï¿½n. El ki, cuyo aumento serï¿½ de 5 por turno, " +
-        "permitirï¿½ a la gran mayorï¿½a de los personajes tanto realizar su ataque especial como cambiar de modo (transformarse) " +
+        "debera respetar los atributos impuestos por el personaje en cuestion. El ki, cuyo aumento sera de 5 por turno, " +
+        "permitira a la gran mayorïa de los personajes tanto realizar su ataque especial como cambiar de modo (transformarse) " +
         "-tener en cuenta que otros personajes necesitan de otras cosas para poder transformarse y en el caso de Goku su poder " +
-        "de ataque aumentarï¿½ al tener menos del 30% de vida-. Y serï¿½ que al atacar a un enemigo de mayor poder de pelea " +
-        "el daï¿½o se reduce un 20%. \n\n" +
-        "Tambiï¿½n habrï¿½ en el tablero varios consumibles distribuidos aleatoriamente, que pueden llegar a ser: una esfera del  " +
-        "dragï¿½n, una semilla del hermitaï¿½o y una nube voladora. Cada uno con una ventaja diferente. \n\n" +
-        "El juego finalizarï¿½ cuando uno de los dos jugadores elimine a los personajes del oponente o cuando uno obtenga las 7 " +
-        "esferas del dragï¿½n.");*/
-        
-        this.alerta.setContentText("prueba prueba prueba");
-        // lo de arriba no anda por todos los tildes que tiene
+        "de ataque aumentara al tener menos del 30% de vida-. Y sera que al atacar a un enemigo de mayor poder de pelea " +
+        "el danio se reduce un 20%. \n\n" +
+        "Tambien habra en el tablero varios consumibles distribuidos aleatoriamente, que pueden llegar a ser: una esfera del  " +
+        "dragon, una semilla del hermitanio y una nube voladora. Cada uno con una ventaja diferente. \n\n" +
+        "El juego finalizara cuando uno de los dos jugadores elimine a los personajes del oponente o cuando uno obtenga las 7 " +
+        "esferas del dragon.");
         
         alerta.setResizable(false);
         Image imagen = new Image("file:src/vista/imagenes/DBZ.png", 50, 50, true, true);

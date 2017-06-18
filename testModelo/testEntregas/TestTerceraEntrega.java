@@ -33,8 +33,8 @@ public class TestTerceraEntrega extends TestCase {
 	public void test01VerificarDesaparicionConsumibleAlPosicionarPersonajeSobreEl() {
 		Esfera esfera = new Esfera();
 		Casillero casillero3 = new Casillero(0,3);
-		esfera.setCasillero(casillero2);
-		casillero2.setObjeto(esfera);
+		esfera.setCasillero(casillero3);
+		casillero3.setObjeto(esfera);
 		
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
@@ -42,7 +42,8 @@ public class TestTerceraEntrega extends TestCase {
 		tablero.moverPersonaje(gohan, camino);
 		
 		Assert.assertEquals(gohan.tieneObjeto(), true);
-		Assert.assertEquals(esfera.getCasillero(), true);	
+		//Assert.assertEquals(esfera.getCasillero(), null);
+		Assert.assertEquals(casillero3.getObjeto(), gohan); // no esta mas la esfera
 		
 	}
 	

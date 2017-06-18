@@ -21,24 +21,19 @@ public class TestSemilla extends TestCase {
         assertEquals(nuevaSemilla.getCantidadAtributo(), 100.0);
     }
     
-    public void test03SemillaCantidadUsosRestantesEs0(){
-        assertEquals(nuevaSemilla.getCantidadUsosRestantes(), 0);
+    public void test03SemillaCantidadTurnosRestantesEs0(){
+        assertEquals(nuevaSemilla.getCantidadTurnosRestantes(), 0);
     }
     
     public void test04SemillaInstantaneoEsTrue(){
         assertTrue(nuevaSemilla.getInstantaneo());
     }
     
-    public void test05SemillaDecrementarTurnoLanzaExcepcion(){
+    public void test05SemillaDecrementarUsoLanzaExcepcion(){
         try {
             nuevaSemilla.decrementarUso();
-            fail("No lanzo ErrorConsumibleInstantaneo");
-        }
-        catch (ErrorConsumibleInstantaneo e1){
-        }
-        catch (ErrorNoHayUsosRestantes e2){
-            fail("Lanzo la excepcion equivocada.");
-        }
+        }catch (ErrorNoTieneCantidadUsos e1){}
+  
     }
     
     public void test06SemillaNombre(){
