@@ -93,7 +93,9 @@ public class Tablero {
 					this.objetos.remove(objeto);
 					Casillero casillero = objeto.getCasillero();
 					casillero.setObjeto(null);
-					objeto.setCasillero(null);
+					// objeto.setCasillero(null);
+					// no es necesario, si ningun casillero lo tiene entonces el controlador
+					// hara que desaparezca del mapa
 				}
 			}				
 		}
