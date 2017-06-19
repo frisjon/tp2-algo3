@@ -59,6 +59,7 @@ public class ContenedorJuego extends BorderPane {
     private List<RepresentacionJugador> representacionJugadores;
     
     private RepresentacionJugador representacionJugadorDeTurno;
+    private RepresentacionJugador representacionJugadorEsperando;
     
     //private AudioClip musicaDeFondo;
     
@@ -72,6 +73,7 @@ public class ContenedorJuego extends BorderPane {
         this.representacionJugadores.add(new RepresentacionJugador(jugador2));
         
         this.representacionJugadorDeTurno = this.representacionJugadores.get(0);
+        this.representacionJugadorEsperando = this.representacionJugadores.get(1);
         
         //Inicializamos la musica de fondo
         //this.musicaDeFondo = new AudioClip("file:src/vista/sonidos/.mp3");
@@ -93,10 +95,12 @@ public class ContenedorJuego extends BorderPane {
         
         //Inicializo a los personajes en el tablero
         this.juego.distribuirPersonajesEquipos();
+        this.juego.inicializarJuegoAdjudicandoPrimerTurno();
         
         //Esta clase (ContenedorJuego) maneja lo de los turnos (la parte de la vista)
         //Por lo tanto debe tener una referencia al organizadorJuego (que maneja los turnos, en el modelo)
         this.organizador = this.juego.getOrganizadorJuego();
+        
         
         //Menu (top)
         BarraDeMenu menu = new BarraDeMenu(stage);

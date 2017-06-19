@@ -5,3 +5,6 @@
 /Esfera.class
 /Nube.class
 /Semilla.class
+/ErrorNoHayTurnosDeDuracion.class
+/ErrorNoHayTurnosDisponibles.class
+/ErrorNoTieneCantidadUsos.class

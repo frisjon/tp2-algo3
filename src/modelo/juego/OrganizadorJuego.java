@@ -9,6 +9,7 @@ import java.util.Map;
 
 import modelo.equipo.Equipo;
 import modelo.jugador.Jugador;
+import modelo.pelea.Pelea;
 import modelo.tablero.ErrorCasilleroYaOcupado;
 import modelo.tablero.ErrorNoHayMasExtremos;
 import modelo.tablero.Tablero;
@@ -24,6 +25,8 @@ public class OrganizadorJuego {
 	private Tablero tablero;
 	private int turno; // esta bueno para mostrarlo por consola
 	private final int FILAS = 15, COLUMNAS = 15;
+	private Jugador jugadorActual;
+	private Jugador jugadorSiguiente;
 	
 	public OrganizadorJuego() {
 		this.turno = 0;
@@ -32,6 +35,26 @@ public class OrganizadorJuego {
 	
 	public int getTurno(){
 		return this.turno;
+	}
+	
+	//al ser un diccionario no se sabe cual va a ser el ultimo jugador en iterar, y ese va a ser el primero que juegue
+	public void otorgarPrimerTurno( Map<String, Jugador> listajugadores) {
+		for (Map.Entry<String, Jugador> entry : listajugadores.entrySet()) {
+			this.jugadorActual = entry.getValue();
+		}
+		
+		for (Map.Entry<String, Jugador> entry : listajugadores.entrySet()) {
+			if (this.jugadorActual == entry.getValue()) continue;
+			this.jugadorSiguiente = entry.getValue();
+		}
+	}
+	
+	public Jugador getJugadorActual() {
+		return this.jugadorActual;
+	}
+	
+	public Jugador getJugadorSiguiente() {
+		return this.jugadorSiguiente;
 	}
 	
 	public void empezarSiguienteTurno(){
@@ -43,6 +66,9 @@ public class OrganizadorJuego {
 		if (this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 0 || 
 				this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 1 )
 			tablero.crearConsumible();
+		Jugador jugadoraux = this.jugadorSiguiente;
+		this.jugadorSiguiente = this.jugadorActual;
+		this.jugadorActual = jugadoraux;
 			// el or con 1 es para que sea "justo" y aparezca un consumible en el
 			// turno del otro jugador tambien
 		
