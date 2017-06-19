@@ -62,9 +62,7 @@ public class ContenedorMover extends VBox {
         HBox sides = new HBox();
         top.getChildren().addAll(left, right);
         
-        this.getChildren().add(top);
-        this.getChildren().add(sides);
-        this.getChildren().add(bottom);
+        this.getChildren().addAll(top, sides, bottom);;
     }
 
 }

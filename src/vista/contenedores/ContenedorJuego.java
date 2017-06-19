@@ -35,6 +35,7 @@ import vista.CreadorRepresentacionConsumible;
 import vista.CreadorRepresentacionPersonaje;
 import vista.RepresentacionConsumible;
 import vista.RepresentacionJugador;
+import vista.RepresentacionPersonaje;
 import modelo.consumibles.Consumible;
 import modelo.equipo.Equipo;
 
@@ -61,6 +62,7 @@ public class ContenedorJuego extends BorderPane {
     
     private RepresentacionJugador representacionJugadorDeTurno;
     private RepresentacionJugador representacionJugadorEsperando;
+    private ContenedorMover contenedorMover;
     
     //private AudioClip musicaDeFondo;
     
@@ -116,7 +118,7 @@ public class ContenedorJuego extends BorderPane {
         //Para saber en donde esta cada personaje.
         Tablero tablero = this.organizador.getTablero();
         
-        this.siguienteTurno();
+        //this.siguienteTurno();
         
         CreadorRepresentacionConsumible crc = new CreadorRepresentacionConsumible(); 
         
@@ -136,6 +138,7 @@ public class ContenedorJuego extends BorderPane {
         ContenedorAtaque contenedorAtaque = new ContenedorAtaque(this.representacionJugadorEsperando, goku);
         //this.contenedorOpcionesJuego = contenedorOpcionesJuego;
         this.setLeft(contenedorAtaque);
+        
     }
     
     public void mostrarConsola(String mensaje){
@@ -145,5 +148,9 @@ public class ContenedorJuego extends BorderPane {
     public void siguienteTurno() {
         this.organizador.empezarSiguienteTurno();
         this.mostrarConsola(Integer.toString(this.organizador.getTurno()));
+    }
+
+    public void actualizarRepresentacionPersonaje(RepresentacionPersonaje personaje) {
+        this.contenedorTablero.actualizarRepresentacionPersonaje(personaje);
     }
 }
