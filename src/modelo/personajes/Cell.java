@@ -10,6 +10,8 @@ public class Cell extends Personaje {
     public static final String CELL_NOMBRE = "Cell";
     public static final String CELL_NOMBRE_ATAQUE_ESPECIAL = "Absorber";
     public static final String CELL_MENSAJE_ABSORCIONES_INSUFICIENTES = "Cantidad de absorciones insuficientes.";
+    public static final String CELL_NOMBRE_PRIMERA_TRANSFORMACION = "Semi-perfecto";
+    public static final String CELL_NOMBRE_SEGUNDA_TRANSFORMACION = "Perfecto";
 
     public static final double CELL_ESTADO_1_PODER_DE_PELEA = 20;
     public static final double CELL_ESTADO_1_DISTANCIA_DE_ATAQUE = 3;
@@ -47,6 +49,8 @@ public class Cell extends Personaje {
         this.cantidadAbsorciones = 0;
         this.aumentoAtaquePasiva = CELL_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = CELL_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.nombrePrimeraTransformacion = CELL_NOMBRE_PRIMERA_TRANSFORMACION;
+        this.nombreSegundaTransformacion = CELL_NOMBRE_SEGUNDA_TRANSFORMACION;
         
     }
 

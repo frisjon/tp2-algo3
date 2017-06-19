@@ -1,5 +1,5 @@
 package vista.contenedores;
-
+//CONVERTIR BOTONES HANDLER DE MOV EN UNO SOLO PASANDO POR PARAMETRO EL OFFSET
 import controlador.handlers.BotonAbajoDerechaEventHandler;
 import controlador.handlers.BotonAbajoEventHandler;
 import controlador.handlers.BotonAbajoIzquierdaEventHandler;

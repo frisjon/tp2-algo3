@@ -12,6 +12,8 @@ public class Goku extends Personaje {
     public static final double GOKU_PORCENTAJE_VIDA_PARA_AUMENTO_ATAQUE_PASIVA = 0.3;
     public static final String GOKU_NOMBRE = "Goku";
     public static final String GOKU_NOMBRE_ATAQUE_ESPECIAL = "Kamehameha";
+    public static final String GOKU_NOMBRE_PRIMERA_TRANSFORMACION = "Kaio-Ken";
+    public static final String GOKU_NOMBRE_SEGUNDA_TRANSFORMACION = "Super Sayajin";
 
     public static final double GOKU_ESTADO_1_PODER_DE_PELEA = 20;
     public static final double GOKU_ESTADO_1_DISTANCIA_DE_ATAQUE = 2;
@@ -44,6 +46,8 @@ public class Goku extends Personaje {
         this.kiAtaqueEspecial = GOKU_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = GOKU_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = GOKU_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.nombrePrimeraTransformacion = GOKU_NOMBRE_PRIMERA_TRANSFORMACION;
+        this.nombreSegundaTransformacion = GOKU_NOMBRE_SEGUNDA_TRANSFORMACION;
         
     }
 

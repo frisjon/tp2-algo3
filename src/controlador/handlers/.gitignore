@@ -25,3 +25,8 @@
 /BotonOpcionMoverEventHandler.class
 /BotonSeleccionMoverEventHandler.class
 /BotonSeleccionAtacarEventHandler.class
+/BotonAbajoDerechaEventHandler.class
+/BotonAbajoIzquierdaEventHandler.class
+/BotonArribaDerechaEventHandler.class
+/BotonArribaIzquierdaEventHandler.class
+/BotonTransformacionEventHandler.class

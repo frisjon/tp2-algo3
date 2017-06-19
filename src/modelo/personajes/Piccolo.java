@@ -14,6 +14,8 @@ public class Piccolo extends Personaje {
     public static final String PICCOLO_NOMBRE_ATAQUE_ESPECIAL = "Makankosappo";
     public static final String PICCOLO_MENSAJE_PROTEGIDO_SANO = "Protegido sano.";
     public static final String PICCOLO_MENSAJE_PROTEGIDO_INVALIDO = "Protegido Invalido";
+    public static final String PICCOLO_NOMBRE_PRIMERA_TRANSFORMACION = "Fortalecido";
+    public static final String PICCOLO_NOMBRE_SEGUNDA_TRANSFORMACION = "Protector";
 
     public static final double PICCOLO_ESTADO_1_PODER_DE_PELEA = 20;
     public static final double PICCOLO_ESTADO_1_DISTANCIA_DE_ATAQUE = 2;
@@ -49,6 +51,8 @@ public class Piccolo extends Personaje {
         this.kiAtaqueEspecial = PICCOLO_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = PICCOLO_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = PICCOLO_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.nombrePrimeraTransformacion = PICCOLO_NOMBRE_PRIMERA_TRANSFORMACION;
+        this.nombreSegundaTransformacion = PICCOLO_NOMBRE_SEGUNDA_TRANSFORMACION;
         
         this.protegido = null;
         this.vidaInicialProtegido = 0;

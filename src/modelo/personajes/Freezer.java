@@ -11,6 +11,8 @@ public class Freezer extends Personaje {
     public static final double FREEZER_PORCENTAJE_AUMENTO_ATAQUE_PASIVA = 0;
     public static final String FREEZER_NOMBRE = "Freezer";
     public static final String FREEZER_NOMBRE_ATAQUE_ESPECIAL = "Rayo Mortal";
+    public static final String FREEZER_NOMBRE_PRIMERA_TRANSFORMACION = "Segunda forma";
+    public static final String FREEZER_NOMBRE_SEGUNDA_TRANSFORMACION = "Definitivo";
 
     public static final double FREEZER_ESTADO_1_PODER_DE_PELEA = 20;
     public static final double FREEZER_ESTADO_1_DISTANCIA_DE_ATAQUE = 2;
@@ -43,6 +45,8 @@ public class Freezer extends Personaje {
         this.kiAtaqueEspecial = FREEZER_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = FREEZER_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = FREEZER_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.nombrePrimeraTransformacion = FREEZER_NOMBRE_PRIMERA_TRANSFORMACION;
+        this.nombreSegundaTransformacion = FREEZER_NOMBRE_SEGUNDA_TRANSFORMACION;
         
     }
 

@@ -12,6 +12,8 @@ public class MajinBoo extends Personaje {
     public static final int MAJINBOO_TURNOS_QUE_INUTILIZA_OPONENTE = 3;
     public static final String MAJINBOO_NOMBRE = "MajinBoo";
     public static final String MAJINBOO_NOMBRE_ATAQUE_ESPECIAL = "Conviertete En Chocolate";
+    public static final String MAJINBOO_NOMBRE_PRIMERA_TRANSFORMACION = "Boo Malo";
+    public static final String MAJINBOO_NOMBRE_SEGUNDA_TRANSFORMACION = "Boo Original";
 
     public static final double MAJINBOO_ESTADO_1_PODER_DE_PELEA = 30;
     public static final double MAJINBOO_ESTADO_1_DISTANCIA_DE_ATAQUE = 2;
@@ -44,6 +46,8 @@ public class MajinBoo extends Personaje {
         this.kiAtaqueEspecial = MAJINBOO_KI_ATAQUE_ESPECIAL;
         this.aumentoAtaquePasiva = MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_PASIVA;
         this.aumentoAtaqueEspecial = MAJINBOO_PORCENTAJE_AUMENTO_ATAQUE_ESPECIAL;
+        this.nombrePrimeraTransformacion = MAJINBOO_NOMBRE_PRIMERA_TRANSFORMACION;
+        this.nombreSegundaTransformacion = MAJINBOO_NOMBRE_SEGUNDA_TRANSFORMACION;
  
         
     }

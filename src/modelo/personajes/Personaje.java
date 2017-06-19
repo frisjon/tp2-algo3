@@ -22,6 +22,8 @@ public abstract class Personaje implements ObjetoJuego {
     protected EstadoPersonaje estado;
     protected int turnosInutilizados;
     protected String nombreEquipo;
+    protected String nombrePrimeraTransformacion;
+    protected String nombreSegundaTransformacion;
     
     public Personaje(String nombreEquipo){
     	this.nombreEquipo = nombreEquipo;
@@ -207,6 +209,14 @@ public abstract class Personaje implements ObjetoJuego {
     
     public int getCantidadTurnosRestantes() throws ErrorNoCompatibilidad {
     	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+    
+    public String getNombrePrimeraTransformacion() {
+    	return this.nombrePrimeraTransformacion;
+    }
+    
+    public String getNombreSegundaTransformacion() {
+    	return this.nombreSegundaTransformacion;
     }
 	
 }
