@@ -39,7 +39,7 @@ public class ContenedorAtaque extends VBox {
         this.pj3contrincante = personajesDeJugadorEsperando.get(2).getPersonaje();
         
         Button botonAtacarBasicoContrincante1 = new Button();
-        botonAtacarBasicoContrincante1.setText("Ataque Basico a "+ pj1contrincante.getNombre());
+        botonAtacarBasicoContrincante1.setText("Ataque simple a "+ pj1contrincante.getNombre());
         botonAtacarBasicoContrincante1.setTextFill(Color.GRAY);
         botonAtacarBasicoContrincante1.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonAtacarBasicoContrincante1.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
@@ -49,7 +49,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarBasicoContrincante1.setOnAction(botonAtacarBasicoContrincante1Handler);
         
         Button botonAtacarEspecialContrincante1 = new Button();
-        botonAtacarEspecialContrincante1.setText("Ataque Especial a "+ pj1contrincante.getNombre());
+        botonAtacarEspecialContrincante1.setText(personajeAtacante.getAtaqueEspecial()+" a "+ pj1contrincante.getNombre());
         botonAtacarEspecialContrincante1.setTextFill(Color.GRAY);
         botonAtacarEspecialContrincante1.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonAtacarEspecialContrincante1.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
@@ -59,7 +59,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarEspecialContrincante1.setOnAction(botonAtacarEspecialContrincante1Handler);
 		
         Button botonAtacarBasicoContrincante2 = new Button();
-        botonAtacarBasicoContrincante2.setText("Ataque Basico a "+ pj2contrincante.getNombre());
+        botonAtacarBasicoContrincante2.setText("Ataque simple a "+ pj2contrincante.getNombre());
         botonAtacarBasicoContrincante2.setTextFill(Color.GRAY);
         botonAtacarBasicoContrincante2.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonAtacarBasicoContrincante2.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
@@ -69,7 +69,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarBasicoContrincante2.setOnAction(botonAtacarBasicoContrincante2Handler);
         
         Button botonAtacarEspecialContrincante2 = new Button();
-        botonAtacarEspecialContrincante2.setText("Ataque Especial a "+ pj2contrincante.getNombre());
+        botonAtacarEspecialContrincante2.setText(personajeAtacante.getAtaqueEspecial()+" a "+ pj2contrincante.getNombre());
         botonAtacarEspecialContrincante2.setTextFill(Color.GRAY);
         botonAtacarEspecialContrincante2.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonAtacarEspecialContrincante2.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
@@ -79,7 +79,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarEspecialContrincante2.setOnAction(botonAtacarEspecialContrincante2Handler);
         
         Button botonAtacarBasicoContrincante3 = new Button();
-        botonAtacarBasicoContrincante3.setText("Ataque Basico a "+ pj3contrincante.getNombre());
+        botonAtacarBasicoContrincante3.setText("Ataque simple a "+ pj3contrincante.getNombre());
         botonAtacarBasicoContrincante3.setTextFill(Color.GRAY);
         botonAtacarBasicoContrincante3.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonAtacarBasicoContrincante3.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
@@ -89,7 +89,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarBasicoContrincante3.setOnAction(botonAtacarBasicoContrincante3Handler);
         
         Button  botonAtacarEspecialContrincante3 = new Button();
-        botonAtacarEspecialContrincante3.setText("Ataque Especial a "+ pj3contrincante.getNombre());
+        botonAtacarEspecialContrincante3.setText(personajeAtacante.getAtaqueEspecial()+" a "+ pj3contrincante.getNombre());
         botonAtacarEspecialContrincante3.setTextFill(Color.GRAY);
         botonAtacarEspecialContrincante3.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonAtacarEspecialContrincante3.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");

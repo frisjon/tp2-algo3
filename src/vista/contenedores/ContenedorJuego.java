@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import modelo.juego.Juego;
 import modelo.juego.OrganizadorJuego;
 import modelo.jugador.Jugador;
+import modelo.personajes.Goku;
 import modelo.personajes.Personaje;
 import modelo.tablero.Coordenada;
 import modelo.tablero.Tablero;
@@ -131,9 +132,10 @@ public class ContenedorJuego extends BorderPane {
         
         //Panel de Opciones (left) (aca van las opciones del juego. Seleccionar personaje, mover, atacar, stats de los personajes (del jugador de turno), opcion para cancelar)
         //(utilizar consumible no deberia ser opcion porque 2 de 3 consumibles son instantaneos y por ultimo, las esferas no se pueden consumir, solo se tienen y ya)
-        ContenedorOpcionesJuego contenedorOpcionesJuego = new ContenedorOpcionesJuego(this.representacionJugadorDeTurno);
-        this.contenedorOpcionesJuego = contenedorOpcionesJuego;
-        this.setLeft(contenedorOpcionesJuego);
+        Personaje goku = new Goku("Guerreros Z");
+        ContenedorAtaque contenedorAtaque = new ContenedorAtaque(this.representacionJugadorEsperando, goku);
+        //this.contenedorOpcionesJuego = contenedorOpcionesJuego;
+        this.setLeft(contenedorAtaque);
     }
     
     public void mostrarConsola(String mensaje){
