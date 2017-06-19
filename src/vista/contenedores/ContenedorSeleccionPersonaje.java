@@ -4,6 +4,8 @@ import java.util.List;
 
 import controlador.handlers.BotonHandler;
 import controlador.handlers.BotonMenuEventHandler;
+import controlador.handlers.BotonSeleccionAtacarEventHandler;
+import controlador.handlers.BotonSeleccionMoverEventHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -25,28 +27,27 @@ import vista.RepresentacionJugador;
 import vista.RepresentacionPersonaje;
 
 public class ContenedorSeleccionPersonaje extends VBox {
+    private ContenedorJuego contenedorJuego;
     private RepresentacionJugador jugadorTurno;
     private List<RepresentacionPersonaje> personajesDeTurno;
     private Personaje pj1;
     private Personaje pj2;
     private Personaje pj3;
-    private BotonHandler handler;
+    private String modo;
 
-    public ContenedorSeleccionPersonaje(RepresentacionJugador representacionJugadorDeTurno, BotonHandler _handler) {
+    public ContenedorSeleccionPersonaje(ContenedorJuego _contenedorJuego, String _modo) {
         super();
 
         this.setPadding(new Insets(0, 50,0,50));
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
-        this.jugadorTurno = representacionJugadorDeTurno;
-        this.personajesDeTurno = representacionJugadorDeTurno.getRepresentacionesDePersonajes();
+        this.modo = _modo;
+        this.contenedorJuego = _contenedorJuego;
+        this.jugadorTurno = contenedorJuego.getRepresentacionJugador();
+        this.personajesDeTurno = jugadorTurno.getRepresentacionesDePersonajes();
         this.pj1 = personajesDeTurno.get(0).getPersonaje();
         this.pj2 = personajesDeTurno.get(1).getPersonaje();
         this.pj3 = personajesDeTurno.get(2).getPersonaje();
-        /**
-         * Handler que se va a ultizar al apretar un boton. Va a varias entre Mover y Atacar.
-         */
-        this.handler = _handler;
         
         Button botonSeleccionarPersonaje1 = new Button();
         botonSeleccionarPersonaje1.setText(pj1.getNombre());
@@ -89,6 +90,17 @@ public class ContenedorSeleccionPersonaje extends VBox {
         atributosPj3.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         atributosPj3.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         atributosPj3.setMinSize(75.0, 75.0);
+        
+        if (modo == "mover"){
+            botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(0)));
+            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1)));
+            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(2)));
+        } else {
+
+            botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj1));
+            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj2));
+            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj3));
+        }
         
         this.getChildren().addAll(botonSeleccionarPersonaje1, atributosPj1, botonSeleccionarPersonaje2, atributosPj2, botonSeleccionarPersonaje3,
                 atributosPj3);

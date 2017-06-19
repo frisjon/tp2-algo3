@@ -62,7 +62,7 @@ public class ContenedorJuego extends BorderPane {
     
     private RepresentacionJugador representacionJugadorDeTurno;
     private RepresentacionJugador representacionJugadorEsperando;
-    private ContenedorMover contenedorMover;
+    private Tablero tablero;
     
     //private AudioClip musicaDeFondo;
     
@@ -116,7 +116,7 @@ public class ContenedorJuego extends BorderPane {
         
         //Referencia al tablero. Lo necesita ContenedorTablero.
         //Para saber en donde esta cada personaje.
-        Tablero tablero = this.organizador.getTablero();
+        this.tablero = this.organizador.getTablero();
         
         //this.siguienteTurno();
         
@@ -134,11 +134,21 @@ public class ContenedorJuego extends BorderPane {
         
         //Panel de Opciones (left) (aca van las opciones del juego. Seleccionar personaje, mover, atacar, stats de los personajes (del jugador de turno), opcion para cancelar)
         //(utilizar consumible no deberia ser opcion porque 2 de 3 consumibles son instantaneos y por ultimo, las esferas no se pueden consumir, solo se tienen y ya)
-        Personaje goku = new Goku("Guerreros Z");
-        ContenedorAtaque contenedorAtaque = new ContenedorAtaque(this.representacionJugadorEsperando, goku);
-        //this.contenedorOpcionesJuego = contenedorOpcionesJuego;
-        this.setLeft(contenedorAtaque);
+        this.contenedorOpcionesJuego = new ContenedorOpcionesJuego(this);
+        this.setLeft(contenedorOpcionesJuego);
         
+    }
+    
+    public RepresentacionJugador getRepresentacionJugador(){
+        return this.representacionJugadorDeTurno;
+    }
+    
+    public RepresentacionJugador getRepresentacionJugadorEsperando(){
+        return this.representacionJugadorEsperando;
+    }
+    
+    public Tablero getTablero(){
+        return this.tablero;
     }
     
     public void mostrarConsola(String mensaje){

@@ -1,6 +1,7 @@
 package vista.contenedores;
 
 import controlador.handlers.BotonAbajoDerechaEventHandler;
+import controlador.handlers.BotonAbajoEventHandler;
 import controlador.handlers.BotonAbajoIzquierdaEventHandler;
 import controlador.handlers.BotonArribaDerechaEventHandler;
 import controlador.handlers.BotonArribaEventHandler;
@@ -42,7 +43,7 @@ public class ContenedorMover extends VBox {
         
         Button down = new Button();
         down.setText("S");
-        down.setOnAction(new BotonAbajoDerechaEventHandler(contenedorJuego, tablero, personaje));
+        down.setOnAction(new BotonAbajoEventHandler(contenedorJuego, tablero, personaje));
         
         Button right = new Button();
         right.setText("D");
