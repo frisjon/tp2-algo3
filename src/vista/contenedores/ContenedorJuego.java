@@ -62,6 +62,7 @@ public class ContenedorJuego extends BorderPane {
     
     private RepresentacionJugador representacionJugadorDeTurno;
     private RepresentacionJugador representacionJugadorEsperando;
+    private RepresentacionJugador auxiliar;
     private Tablero tablero;
     
     //private AudioClip musicaDeFondo;
@@ -77,6 +78,7 @@ public class ContenedorJuego extends BorderPane {
         
         this.representacionJugadorDeTurno = this.representacionJugadores.get(0);
         this.representacionJugadorEsperando = this.representacionJugadores.get(1);
+
         
         //Inicializamos la musica de fondo
         //this.musicaDeFondo = new AudioClip("file:src/vista/sonidos/.mp3");
@@ -157,6 +159,12 @@ public class ContenedorJuego extends BorderPane {
     
     public void siguienteTurno() {
         this.organizador.empezarSiguienteTurno();
+        this.auxiliar = this.representacionJugadorDeTurno;
+        this.representacionJugadorDeTurno = this.representacionJugadorEsperando;
+        this.representacionJugadorEsperando = this.auxiliar;
+        this.setLeft(null);
+        this.contenedorOpcionesJuego = new ContenedorOpcionesJuego(this);
+        this.setLeft(contenedorOpcionesJuego);
         this.mostrarConsola(Integer.toString(this.organizador.getTurno()));
     }
 

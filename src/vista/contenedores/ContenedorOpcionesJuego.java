@@ -1,22 +1,15 @@
 package vista.contenedores;
 
-import controlador.handlers.BotonMenuEventHandler;
 import controlador.handlers.BotonOpcionAtacarEventHandler;
 import controlador.handlers.BotonOpcionMoverEventHandler;
-import controlador.handlers.BotonSalirEventHandler;
+import controlador.handlers.BotonPasarTurnoEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import modelo.jugador.Jugador;
-import modelo.tablero.Tablero;
-import vista.BotonMenu;
-import vista.RepresentacionJugador;
 
 public class ContenedorOpcionesJuego extends VBox {
     
@@ -37,18 +30,28 @@ public class ContenedorOpcionesJuego extends VBox {
         Button botonAtacar = new Button();
         botonAtacar.setText("Atacar");
         botonAtacar.setTextFill(Color.GRAY);
-        botonAtacar.setFont(Font.font("Cooper Black", FontWeight.NORMAL,10));
+        botonAtacar.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonAtacar.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonAtacar.setOnAction(new BotonOpcionAtacarEventHandler(this.contenedorJuego));
+        botonAtacar.setMinSize(100.0, 50.0);
         
         Button botonMover = new Button();
         botonMover.setText("Mover");
         botonMover.setTextFill(Color.GRAY);
-        botonMover.setFont(Font.font("Cooper Black", FontWeight.NORMAL,10));
+        botonMover.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonMover.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonMover.setOnAction(new BotonOpcionMoverEventHandler(this.contenedorJuego));
+        botonMover.setMinSize(100.0, 50.0);
         
-        this.getChildren().addAll(botonAtacar, botonMover);
+        Button botonPasarTurno = new Button();
+        botonPasarTurno.setText("Pasar Turno");
+        botonPasarTurno.setTextFill(Color.GRAY);
+        botonPasarTurno.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
+        botonPasarTurno.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
+        botonPasarTurno.setOnAction(new BotonPasarTurnoEventHandler(this.contenedorJuego));
+        botonPasarTurno.setMinSize(100.0, 50.0);
+        
+        this.getChildren().addAll(botonAtacar, botonMover, botonPasarTurno);
     }
 
     public void bloquearBotonera(boolean bloqueo) {
