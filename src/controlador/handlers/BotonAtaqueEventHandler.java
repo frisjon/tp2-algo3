@@ -15,7 +15,7 @@ public class BotonAtaqueEventHandler extends BotonHandler {
 		this.defensor = pj_defensor;
 		this.tipoDeAtaque = ataque;
 	}
-	//falta agregar el tema de las expceciones
+	//ver lo de las excepciones
 	@Override
     public void handle(ActionEvent event) {
 		super.handle(event);

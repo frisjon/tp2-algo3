@@ -6,6 +6,7 @@ import controlador.handlers.BotonHandler;
 import controlador.handlers.BotonMenuEventHandler;
 import controlador.handlers.BotonSeleccionAtacarEventHandler;
 import controlador.handlers.BotonSeleccionMoverEventHandler;
+import controlador.handlers.BotonSeleccionTransformarEventHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -95,11 +96,15 @@ public class ContenedorSeleccionPersonaje extends VBox {
             botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(0)));
             botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1)));
             botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(2)));
-        } else {
+        } if (modo == "atacar") {
 
             botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj1));
             botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj2));
             botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj3));
+        } else {
+        	botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(0),this.pj1));
+            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1),this.pj2));
+            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(2),this.pj3));
         }
         
         this.getChildren().addAll(botonSeleccionarPersonaje1, atributosPj1, botonSeleccionarPersonaje2, atributosPj2, botonSeleccionarPersonaje3,

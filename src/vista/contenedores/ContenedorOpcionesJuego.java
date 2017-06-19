@@ -2,6 +2,7 @@ package vista.contenedores;
 
 import controlador.handlers.BotonOpcionAtacarEventHandler;
 import controlador.handlers.BotonOpcionMoverEventHandler;
+import controlador.handlers.BotonOpcionTransformarEventHandler;
 import controlador.handlers.BotonPasarTurnoEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -43,6 +44,15 @@ public class ContenedorOpcionesJuego extends VBox {
         botonMover.setOnAction(new BotonOpcionMoverEventHandler(this.contenedorJuego));
         botonMover.setMinSize(100.0, 50.0);
         
+        Button botonTransformar = new Button();
+        botonTransformar.setText("Transformar");
+        botonTransformar.setTextFill(Color.GRAY);
+        botonTransformar.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
+        botonTransformar.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
+        botonTransformar.setOnAction(new BotonOpcionTransformarEventHandler(this.contenedorJuego));
+        botonTransformar.setMinSize(100.0, 50.0);
+        
+        
         Button botonPasarTurno = new Button();
         botonPasarTurno.setText("Pasar Turno");
         botonPasarTurno.setTextFill(Color.GRAY);
@@ -51,7 +61,7 @@ public class ContenedorOpcionesJuego extends VBox {
         botonPasarTurno.setOnAction(new BotonPasarTurnoEventHandler(this.contenedorJuego));
         botonPasarTurno.setMinSize(100.0, 50.0);
         
-        this.getChildren().addAll(botonAtacar, botonMover, botonPasarTurno);
+        this.getChildren().addAll(botonAtacar, botonMover,botonTransformar, botonPasarTurno);
     }
 
     public void bloquearBotonera(boolean bloqueo) {

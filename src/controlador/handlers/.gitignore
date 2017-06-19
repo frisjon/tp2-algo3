@@ -30,3 +30,6 @@
 /BotonArribaDerechaEventHandler.class
 /BotonArribaIzquierdaEventHandler.class
 /BotonTransformacionEventHandler.class
+/BotonPasarTurnoEventHandler.class
+/BotonOpcionTransformarEventHandler.class
+/BotonSeleccionTransformarEventHandler.class
