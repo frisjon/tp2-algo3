@@ -14,13 +14,13 @@ import modelo.tablero.Tablero;
 import vista.RepresentacionPersonaje;
 import vista.contenedores.ContenedorJuego;
 
-public class BotonIzquierdaEventHandler extends BotonHandler {
+public class BotonAbajoDerechaEventHandler extends BotonHandler {
 
     private ContenedorJuego contenedorJuego;
     private Tablero tablero;
     private RepresentacionPersonaje personaje;
 
-    public BotonIzquierdaEventHandler(ContenedorJuego _contenedorJuego, Tablero _tablero, RepresentacionPersonaje _personaje) {
+    public BotonAbajoDerechaEventHandler(ContenedorJuego _contenedorJuego, Tablero _tablero, RepresentacionPersonaje _personaje) {
         this.contenedorJuego = _contenedorJuego;
         this.tablero = _tablero;
         this.personaje = _personaje;
@@ -34,7 +34,7 @@ public class BotonIzquierdaEventHandler extends BotonHandler {
 
         Casillero pos = this.personaje.getPersonaje().getCasillero();
         Coordenada coord = pos.getCoordenada();
-        Casillero movimiento = new Casillero(coord.getX()-1, coord.getY());
+        Casillero movimiento = new Casillero(coord.getX()+1, coord.getY()+1);
 
         camino.add(movimiento);
 
@@ -46,7 +46,7 @@ public class BotonIzquierdaEventHandler extends BotonHandler {
             return;
         }
         this.contenedorJuego.actualizarRepresentacionPersonaje(this.personaje);
-        this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" se mueve a la izquierda");
+        this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" se mueve abajo");
     }
 
 }

@@ -3,6 +3,7 @@ package vista.contenedores;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.Insets;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +14,7 @@ import vista.RepresentacionConsumible;
 import vista.RepresentacionJugador;
 import vista.RepresentacionPersonaje;
 
-public class ContenedorTablero extends BorderPane {
+public class ContenedorTablero extends ScrollPane {
     
     private final int IMAGEN_ANCHO = 50;
     private final int IMAGEN_ALTO = 50;
@@ -63,7 +64,7 @@ public class ContenedorTablero extends BorderPane {
         }
         
         // Coloca al GridPane en el centro de esta clase
-        this.setCenter(this.grid);
+        this.setContent(this.grid);
     }
     
     // modifica la posicion del personaje en el grid.
@@ -74,7 +75,7 @@ public class ContenedorTablero extends BorderPane {
         
         // se borra a la imagen que existe en el grid
         // como no se mueven los personajes, esto no lo probe. puede tirar error. nose.
-        //this.grid.getChildren().remove(personaje.getImagen());
+        this.grid.getChildren().remove(personaje.getImagen());
         
         // se coloca a la imagen en el grid
         this.grid.add(personaje.getImagen(), coordenada.getX(), coordenada.getY());

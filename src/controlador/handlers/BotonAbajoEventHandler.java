@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
 import modelo.tablero.Coordenada;
+import modelo.tablero.ErrorCasilleroYaOcupado;
+import modelo.tablero.ErrorMovimientoInvalido;
 import modelo.tablero.Tablero;
 import vista.RepresentacionPersonaje;
 import vista.contenedores.ContenedorJuego;
@@ -36,9 +38,14 @@ public class BotonAbajoEventHandler extends BotonHandler {
 
         camino.add(movimiento);
 
-        this.tablero.moverPersonaje(this.personaje.getPersonaje(), camino);
+        try {
+            this.tablero.moverPersonaje(this.personaje.getPersonaje(), camino);
+        } catch (ErrorMovimientoInvalido e) {
+            return;
+        } catch (ErrorCasilleroYaOcupado e) {
+            return;
+        }
         this.contenedorJuego.actualizarRepresentacionPersonaje(this.personaje);
-        //this.contenedorJuego.actualizarTablero();
         this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" se mueve abajo");
     }
 

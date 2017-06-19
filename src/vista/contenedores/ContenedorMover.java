@@ -1,40 +1,70 @@
 package vista.contenedores;
 
+import controlador.handlers.BotonAbajoDerechaEventHandler;
+import controlador.handlers.BotonAbajoIzquierdaEventHandler;
+import controlador.handlers.BotonArribaDerechaEventHandler;
+import controlador.handlers.BotonArribaEventHandler;
+import controlador.handlers.BotonArribaIzquierdaEventHandler;
+import controlador.handlers.BotonDerechaEventHandler;
+import controlador.handlers.BotonIzquierdaEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import modelo.tablero.Tablero;
 import vista.RepresentacionPersonaje;
-import controlador.handlers.*;
 
 public class ContenedorMover extends VBox {
     
     public ContenedorMover(ContenedorJuego contenedorJuego, Tablero tablero, RepresentacionPersonaje personaje) {
         
-        this.setAlignment(Pos.CENTER);
+        //this.setAlignment(Pos.CENTER);
+
+        Button upRight = new Button();
+        upRight.setText("E");
+        upRight.setOnAction(new BotonArribaDerechaEventHandler(contenedorJuego, tablero, personaje));
+        
+        Button upLeft = new Button();
+        upLeft.setText("Q");
+        upLeft.setOnAction(new BotonArribaIzquierdaEventHandler(contenedorJuego, tablero, personaje));
+        
+        Button downRight = new Button();
+        downRight.setText("C");
+        downRight.setOnAction(new BotonAbajoDerechaEventHandler(contenedorJuego, tablero, personaje));
+
+        Button downLeft = new Button();
+        downLeft.setText("Z");
+        downLeft.setOnAction(new BotonAbajoIzquierdaEventHandler(contenedorJuego, tablero, personaje));
         
         Button up = new Button();
-        up.setText("up");
+        up.setText("W");
         up.setOnAction(new BotonArribaEventHandler(contenedorJuego, tablero, personaje));
-                
+        
         Button down = new Button();
-        down.setText("down");
-        down.setOnAction(new BotonAbajoEventHandler(contenedorJuego, tablero, personaje));
+        down.setText("S");
+        down.setOnAction(new BotonAbajoDerechaEventHandler(contenedorJuego, tablero, personaje));
         
         Button right = new Button();
-        right.setText(">");
+        right.setText("D");
         right.setOnAction(new BotonDerechaEventHandler(contenedorJuego, tablero, personaje));
         
         Button left = new Button();
-        left.setText("<");
+        left.setText("A");
         left.setOnAction(new BotonIzquierdaEventHandler(contenedorJuego, tablero, personaje));
         
-        HBox costados = new HBox();
-        costados.getChildren().addAll(left, right);
         
-        this.getChildren().addAll(up,costados,down);
+        HBox top = new HBox();
+        top.getChildren().addAll(upLeft, up, upRight);
+        
+        HBox bottom = new HBox();
+        top.getChildren().addAll(downLeft, down, downRight);
+        
+        HBox sides = new HBox();
+        top.getChildren().addAll(left, right);
+        
+        this.getChildren().add(top);
+        this.getChildren().add(sides);
+        this.getChildren().add(bottom);
     }
 
 }
