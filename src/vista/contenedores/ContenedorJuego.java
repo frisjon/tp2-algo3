@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import modelo.juego.Juego;
 import modelo.juego.OrganizadorJuego;
 import modelo.jugador.Jugador;
+import modelo.personajes.Goku;
 import modelo.personajes.Personaje;
 import modelo.tablero.Coordenada;
 import modelo.tablero.Tablero;
@@ -59,6 +60,7 @@ public class ContenedorJuego extends BorderPane {
     private List<RepresentacionJugador> representacionJugadores;
     
     private RepresentacionJugador representacionJugadorDeTurno;
+    private RepresentacionJugador representacionJugadorEsperando;
     
     //private AudioClip musicaDeFondo;
     
@@ -72,6 +74,7 @@ public class ContenedorJuego extends BorderPane {
         this.representacionJugadores.add(new RepresentacionJugador(jugador2));
         
         this.representacionJugadorDeTurno = this.representacionJugadores.get(0);
+        this.representacionJugadorEsperando = this.representacionJugadores.get(1);
         
         //Inicializamos la musica de fondo
         //this.musicaDeFondo = new AudioClip("file:src/vista/sonidos/.mp3");
@@ -93,10 +96,12 @@ public class ContenedorJuego extends BorderPane {
         
         //Inicializo a los personajes en el tablero
         this.juego.distribuirPersonajesEquipos();
+        this.juego.inicializarJuegoAdjudicandoPrimerTurno();
         
         //Esta clase (ContenedorJuego) maneja lo de los turnos (la parte de la vista)
         //Por lo tanto debe tener una referencia al organizadorJuego (que maneja los turnos, en el modelo)
         this.organizador = this.juego.getOrganizadorJuego();
+        
         
         //Menu (top)
         BarraDeMenu menu = new BarraDeMenu(stage);
@@ -127,9 +132,10 @@ public class ContenedorJuego extends BorderPane {
         
         //Panel de Opciones (left) (aca van las opciones del juego. Seleccionar personaje, mover, atacar, stats de los personajes (del jugador de turno), opcion para cancelar)
         //(utilizar consumible no deberia ser opcion porque 2 de 3 consumibles son instantaneos y por ultimo, las esferas no se pueden consumir, solo se tienen y ya)
-        ContenedorOpcionesJuego contenedorOpcionesJuego = new ContenedorOpcionesJuego(this.representacionJugadorDeTurno);
-        this.contenedorOpcionesJuego = contenedorOpcionesJuego;
-        this.setLeft(contenedorOpcionesJuego);
+        Personaje goku = new Goku("Guerreros Z");
+        ContenedorAtaque contenedorAtaque = new ContenedorAtaque(this.representacionJugadorEsperando, goku);
+        //this.contenedorOpcionesJuego = contenedorOpcionesJuego;
+        this.setLeft(contenedorAtaque);
     }
     
     public void mostrarConsola(String mensaje){

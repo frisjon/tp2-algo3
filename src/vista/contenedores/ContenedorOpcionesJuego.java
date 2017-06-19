@@ -1,6 +1,7 @@
 package vista.contenedores;
 
 import controlador.handlers.BotonMenuEventHandler;
+import controlador.handlers.BotonSalirEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

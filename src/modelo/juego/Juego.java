@@ -34,6 +34,10 @@ public class Juego {
 	public void distribuirPersonajesEquipos() throws ErrorNoHayMasExtremos {
 		this.organizador.colocarPersonajesEnTablero(this.listajugadores);		
 	}
+	
+	public void inicializarJuegoAdjudicandoPrimerTurno() {
+		this.organizador.otorgarPrimerTurno(listajugadores);
+	}
 
 	//Devuelve el OrganizadorJuego
     public OrganizadorJuego getOrganizadorJuego() {
