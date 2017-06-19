@@ -11,25 +11,25 @@ import controlador.handlers.*;
 
 public class ContenedorMover extends VBox {
     
-    public ContenedorMover(Stage stage, Tablero tablero, RepresentacionPersonaje personaje) {
+    public ContenedorMover(ContenedorJuego contenedorJuego, Tablero tablero, RepresentacionPersonaje personaje) {
         
         this.setAlignment(Pos.CENTER);
         
         Button up = new Button();
         up.setText("up");
-        up.setOnAction(new BotonArribaEventHandler(stage, tablero, personaje));
+        up.setOnAction(new BotonArribaEventHandler(contenedorJuego, tablero, personaje));
                 
         Button down = new Button();
         down.setText("down");
-        down.setOnAction(new BotonAbajoEventHandler(stage, tablero, personaje));
+        down.setOnAction(new BotonAbajoEventHandler(contenedorJuego, tablero, personaje));
         
         Button right = new Button();
         right.setText(">");
-        right.setOnAction(new BotonDerechaEventHandler(stage, tablero, personaje));
+        right.setOnAction(new BotonDerechaEventHandler(contenedorJuego, tablero, personaje));
         
         Button left = new Button();
         left.setText("<");
-        left.setOnAction(new BotonIzquierdaEventHandler(stage, tablero, personaje));
+        left.setOnAction(new BotonIzquierdaEventHandler(contenedorJuego, tablero, personaje));
         
         HBox costados = new HBox();
         costados.getChildren().addAll(left, right);

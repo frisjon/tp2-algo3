@@ -10,15 +10,16 @@ import modelo.tablero.Casillero;
 import modelo.tablero.Coordenada;
 import modelo.tablero.Tablero;
 import vista.RepresentacionPersonaje;
+import vista.contenedores.ContenedorJuego;
 
 public class BotonIzquierdaEventHandler extends BotonHandler {
 
-    private Stage stage;
+    private ContenedorJuego contenedorJuego;
     private Tablero tablero;
     private RepresentacionPersonaje personaje;
 
-    public BotonIzquierdaEventHandler(Stage _stage, Tablero _tablero, RepresentacionPersonaje _personaje) {
-        this.stage = _stage;
+    public BotonIzquierdaEventHandler(ContenedorJuego _contenedorJuego, Tablero _tablero, RepresentacionPersonaje _personaje) {
+        this.contenedorJuego = _contenedorJuego;
         this.tablero = _tablero;
         this.personaje = _personaje;
     }
@@ -29,16 +30,16 @@ public class BotonIzquierdaEventHandler extends BotonHandler {
 
         List<Casillero> camino = new ArrayList<Casillero>();
 
-        Personaje _personaje = this.personaje.getPersonaje();
-
-        Casillero pos = personaje.getCasillero();
+        Casillero pos = this.personaje.getPersonaje().getCasillero();
         Coordenada coord = pos.getCoordenada();
         Casillero movimiento = new Casillero(coord.getX()-1, coord.getY());
 
         camino.add(movimiento);
 
-        this.tablero.moverPersonaje(_personaje, camino);
-
+        this.tablero.moverPersonaje(this.personaje.getPersonaje(), camino);
+        this.contenedorJuego.actualizarRepresentacionPersonaje(this.personaje);
+        ////this.contenedorJuego.actualizarTablero();
+        this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" se mueve abajo");
     }
 
 }
