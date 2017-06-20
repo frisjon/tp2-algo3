@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Separator;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
@@ -52,6 +53,8 @@ public class ContenedorJuego extends BorderPane {
     // puede que esto no sea necesario
     private ContenedorTablero contenedorTablero;
     private ContenedorOpcionesJuego contenedorOpcionesJuego;
+    private ContenedorEstadisticas contenedorEstadisticas;
+    private VBox vbox;
     
     //private Jugador jugador1, jugador2;
     //private Jugador jugadorDeTurno;
@@ -136,9 +139,15 @@ public class ContenedorJuego extends BorderPane {
         
         //Panel de Opciones (left) (aca van las opciones del juego. Seleccionar personaje, mover, atacar, stats de los personajes (del jugador de turno), opcion para cancelar)
         //(utilizar consumible no deberia ser opcion porque 2 de 3 consumibles son instantaneos y por ultimo, las esferas no se pueden consumir, solo se tienen y ya)
+        this.crearPanelIzquierdo();
+    }
+    
+    private void crearPanelIzquierdo(){
+        this.vbox = new VBox();
         this.contenedorOpcionesJuego = new ContenedorOpcionesJuego(this);
-        this.setLeft(contenedorOpcionesJuego);
-        
+        this.contenedorEstadisticas = new ContenedorEstadisticas(this);
+        this.vbox.getChildren().addAll(this.contenedorOpcionesJuego, new Separator(), this.contenedorEstadisticas);
+        this.setLeft(this.vbox);
     }
     
     public RepresentacionJugador getRepresentacionJugador(){

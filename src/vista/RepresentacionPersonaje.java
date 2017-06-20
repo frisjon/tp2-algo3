@@ -10,6 +10,10 @@ public class RepresentacionPersonaje {
     
     private Personaje personaje;
     private ImageView ivImagen;
+    /**
+     * Imagen utilizada para las estadisticas.
+     */
+    private ImageView ivImagenEst;
     private Image imagenEstado1;
     private Image imagenEstado2;
     private Image imagenEstado3;
@@ -26,7 +30,9 @@ public class RepresentacionPersonaje {
         //this.sonidoAtaqueEspecial = _sonidoAtaqueEspecial;
 
         this.ivImagen = new ImageView();
+        this.ivImagenEst = new ImageView();
         this.ivImagen.setImage(this.imagenEstado1);
+        this.ivImagenEst.setImage(this.imagenEstado1);
     }
 
     public Casillero getCasillero() {
@@ -38,20 +44,27 @@ public class RepresentacionPersonaje {
         return this.ivImagen;
     }
     
+    public ImageView getImagenEst(){
+        return this.ivImagenEst;
+    }
+    
     public Personaje getPersonaje(){
         return this.personaje;
     }
     
     public void cambiarAEstado1() {
         this.ivImagen.setImage(this.imagenEstado1);
+        this.ivImagenEst.setImage(this.imagenEstado1);
     }
     
     public void cambiarAEstado2() {
         this.ivImagen.setImage(this.imagenEstado2);
+        this.ivImagenEst.setImage(this.imagenEstado2);
     }
     
     public void cambiarAEstado3() {
         this.ivImagen.setImage(this.imagenEstado3);
+        this.ivImagenEst.setImage(this.imagenEstado3);
     }
 
 }

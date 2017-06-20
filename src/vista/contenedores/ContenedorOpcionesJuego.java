@@ -24,7 +24,7 @@ public class ContenedorOpcionesJuego extends VBox {
         // usar lo que esta en AlgoM para poder hacer que se mueva y ataque, la idea es la misma
 
         this.contenedorJuego = _contenedorJuego;
-        this.setPadding(new Insets(130, 50,0,50));
+        this.setPadding(new Insets(10, 10,10,10));
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
         
