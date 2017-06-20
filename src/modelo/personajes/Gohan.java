@@ -16,7 +16,7 @@ public class Gohan extends Personaje {
     public static final String GOHAN_MENSAJE_ALIADOS_SANOS = "Aliados sanos.";
     public static final String GOHAN_MENSAJE_ALIADO_INVALIDO = "Aliado Invalido";
     public static final String GOHAN_NOMBRE_PRIMERA_TRANSFORMACION = "Super Sayajin fase 1";
-    public static final String GOHAN_NOMBRE_SEGUNDA_TRANSFORMACION = "Supero Sayajin fase 2";
+    public static final String GOHAN_NOMBRE_SEGUNDA_TRANSFORMACION = "Super Sayajin fase 2";
 
     public static final double GOHAN_ESTADO_1_PODER_DE_PELEA = 15;
     public static final double GOHAN_ESTADO_1_DISTANCIA_DE_ATAQUE = 2;

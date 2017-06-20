@@ -22,6 +22,6 @@ public class BotonSeleccionTransformarEventHandler extends BotonHandler{
     public void handle(ActionEvent event){
         super.handle(event);
         this.contenedorJuego.setRight(null);
-        this.contenedorJuego.setRight(new ContenedorTransformaciones(this.representacionPersonaje,  this.personaje));
+        this.contenedorJuego.setRight(new ContenedorTransformaciones(this.contenedorJuego, this.representacionPersonaje,  this.personaje));
     }
 }

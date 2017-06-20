@@ -21,6 +21,6 @@ public class BotonSeleccionAtacarEventHandler extends BotonHandler{
     public void handle(ActionEvent event){
         super.handle(event);
         this.contenedorJuego.setRight(null);
-        this.contenedorJuego.setRight(new ContenedorAtaque(this.jugadorEsperando, this.atacante));
+        this.contenedorJuego.setRight(new ContenedorAtaque(this.contenedorJuego, this.jugadorEsperando, this.atacante));
     }
 }

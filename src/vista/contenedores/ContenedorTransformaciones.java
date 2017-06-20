@@ -14,7 +14,7 @@ import vista.RepresentacionPersonaje;
 
 public class ContenedorTransformaciones extends VBox{
 	//supuesto de q no se puede volver a transformar en estado 1 (no conlleva ninguna ventaja)
-	public ContenedorTransformaciones(RepresentacionPersonaje representacionPersonaje,Personaje personaje_a_convertir) {
+	public ContenedorTransformaciones(ContenedorJuego contenedorJuego, RepresentacionPersonaje representacionPersonaje,Personaje personaje_a_convertir) {
 		super();
 		this.setPadding(new Insets(0, 50,0,50));
 		this.setSpacing(15);
@@ -27,7 +27,7 @@ public class ContenedorTransformaciones extends VBox{
 		botonTransformarEnEstado2.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
 		botonTransformarEnEstado2.setMinSize(100.0, 50.0);
 		
-		BotonTransformacionEventHandler botonTransformarEnEstado2Handler = new BotonTransformacionEventHandler(representacionPersonaje, personaje_a_convertir, "Transformacion 1");
+		BotonTransformacionEventHandler botonTransformarEnEstado2Handler = new BotonTransformacionEventHandler(contenedorJuego, representacionPersonaje, personaje_a_convertir, "Transformacion 1");
 		botonTransformarEnEstado2.setOnAction(botonTransformarEnEstado2Handler);
 		
 		Button botonTransformarEnEstado3 = new Button();
@@ -37,17 +37,10 @@ public class ContenedorTransformaciones extends VBox{
 		botonTransformarEnEstado3.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
 		botonTransformarEnEstado3.setMinSize(100.0, 50.0);
 		
-		BotonTransformacionEventHandler botonTransformarEnEstado3Handler = new BotonTransformacionEventHandler(representacionPersonaje, personaje_a_convertir, "Transformar 2");
+		BotonTransformacionEventHandler botonTransformarEnEstado3Handler = new BotonTransformacionEventHandler(contenedorJuego, representacionPersonaje, personaje_a_convertir, "Transformar 2");
 		botonTransformarEnEstado3.setOnAction(botonTransformarEnEstado3Handler);
-		
-		Button botonVolver = new Button();
-	    botonVolver.setText("Volver a seleccion de personaje");
-	    botonVolver.setTextFill(Color.GRAY);
-	    botonVolver.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
-	    botonVolver.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
-	    botonVolver.setMinSize(100.0, 50.0);
         
-		this.getChildren().addAll(botonTransformarEnEstado2, botonTransformarEnEstado3, botonVolver);
+		this.getChildren().addAll(botonTransformarEnEstado2, botonTransformarEnEstado3);
 	    this.setAlignment(Pos.CENTER);
 	}
 }
