@@ -31,8 +31,8 @@ public class ContenedorBienvenida extends VBox{
         BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         
-        ImageView imagent = new ImageView();
-        imagent.setImage(new Image("file:src/vista/imagenes/Titulo_inicio.png"));
+        ImageView imagen_titulo = new ImageView();
+        imagen_titulo.setImage(new Image("file:src/vista/imagenes/Titulo_inicio.png"));
 
         Button botonEntrar = new Button();
         botonEntrar.setMinSize(260, 100);
@@ -77,7 +77,7 @@ public class ContenedorBienvenida extends VBox{
         //contenedorVolumen.setPadding(new Insets(30, 0, 30, 0));
 
         //this.getChildren().addAll(titulo, botonEntrar,contenedorVolumen, botonReglas, botonSalir);
-        this.getChildren().addAll(imagent, botonEntrar, botonReglas, botonSalir);
+        this.getChildren().addAll(imagen_titulo, botonEntrar, botonReglas, botonSalir);
         this.setPadding(new Insets(30, 0, 30, 220));
         this.setSpacing(50);
     }

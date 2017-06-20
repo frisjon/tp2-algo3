@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -28,7 +29,11 @@ public class ContenedorNombrarJugadores {
     public ContenedorNombrarJugadores(){
 
         nombreJugador1 = new TextField("Jugador 1");
+        nombreJugador1.setMinSize(50, 40);
+        nombreJugador1.setMaxWidth(250);
         nombreJugador2 = new TextField("Jugador 2");
+        nombreJugador2.setMinSize(50, 40);
+        nombreJugador2.setMaxWidth(250);
         nombresIngresados = false;
 
     }
@@ -46,12 +51,12 @@ public class ContenedorNombrarJugadores {
         window.setWidth(1000);
         window.setHeight(600);
         window.centerOnScreen();
-
-        Label labelParaJugador1 = crearLabelParaVentanaNombrarJugadores("Ingresar jugador equipo Guerreros ");
-        Label labelParaJugador2 = crearLabelParaVentanaNombrarJugadores("Ingresar jugador equipo Enemigos");
-        labelParaJugador1.setTextFill(Color.BLUE);
-        labelParaJugador2.setTextFill(Color.BLUE);
-        labelParaJugador1.alignmentProperty();
+        
+        ImageView imagen_ingreso_nombre_jugador1 = new ImageView();
+        imagen_ingreso_nombre_jugador1.setImage(new Image("file:src/vista/imagenes/jugador1ingresarnombre.png"));
+        
+        ImageView imagen_ingreso_nombre_jugador2 = new ImageView();
+        imagen_ingreso_nombre_jugador2.setImage(new Image("file:src/vista/imagenes/jugador2ingresarnombre.png"));
 
         Button aceptar = new Button("A jugar!");
         aceptar.setTextFill(Color.CHOCOLATE);
@@ -71,15 +76,14 @@ public class ContenedorNombrarJugadores {
         aceptar.setOnAction(aceptarHandler);
         
         ArrayList<Node> lista = new ArrayList<Node>();
-        lista.add(labelParaJugador1);
+        lista.add(imagen_ingreso_nombre_jugador1);
         lista.add(nombreJugador1);
-        lista.add(labelParaJugador2);
+        lista.add(imagen_ingreso_nombre_jugador2);
         lista.add(nombreJugador2);
         lista.add(aceptar);
         
 		VBox contenedor = crearContenedorVentanaNombrarJugadores(lista);
         VBox.setMargin(aceptar,new Insets(0,0,10,0));
-        VBox.setMargin(labelParaJugador1,new Insets(10,0,0,0));
 
         Scene scene = new Scene(contenedor);
         window.setScene(scene);
@@ -92,7 +96,7 @@ public class ContenedorNombrarJugadores {
         contenedor.getChildren().addAll(lista);
         contenedor.setAlignment(Pos.CENTER);
         
-        Image imagen = new Image("file:src/vista/imagenes/fondo-dbz.png");
+        Image imagen = new Image("file:src/vista/imagenes/imageneleccionnombre.jpg");
         BackgroundSize tamano = new BackgroundSize(1000, 600, true, true, true, true);
         BackgroundImage imagenDeFondo = 
         		new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, 
@@ -101,15 +105,6 @@ public class ContenedorNombrarJugadores {
         contenedor.setBackground(new Background(imagenDeFondo)); 
 		return contenedor;
 	}
-
-	public Label crearLabelParaVentanaNombrarJugadores(String texto) {
-        Label labelParaJugador = new Label();
-        labelParaJugador.setText(texto);
-        labelParaJugador.setStyle("-fx-border-color:red; -fx-background-color: white; -fx-stroke: black;");
-        labelParaJugador.setFont(Font.font("Rockwell", 30));
-        return labelParaJugador;
-
-    }
     
     public String getNombreJugador1 (){
         return nombreJugador1.getText();
