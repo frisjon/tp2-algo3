@@ -1,17 +1,16 @@
 package modelo.juego;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
+import modelo.consumibles.Consumible;
 import modelo.equipo.Equipo;
 import modelo.jugador.Jugador;
-import modelo.pelea.Pelea;
-import modelo.tablero.ErrorCasilleroYaOcupado;
+import modelo.personajes.Personaje;
+import modelo.tablero.ErrorAtaqueInvalido;
 import modelo.tablero.ErrorNoHayMasExtremos;
+import modelo.tablero.ObjetoJuego;
 import modelo.tablero.Tablero;
 /**
  * Clase que representa al Organizador del Juego, encargado de generar el tablero, ubicar los personajes, los consumibles, etc.
@@ -57,22 +56,28 @@ public class OrganizadorJuego {
 		return this.jugadorSiguiente;
 	}
 	
-	public void empezarSiguienteTurno(){
+	public ObjetoJuego empezarSiguienteTurno(){
 		this.turno++;
 		
 		this.tablero.eliminarConsumiblesSinTurnosRestantes();
-		this.tablero.restarTurnoRestanteConsumibles();		
+		this.tablero.restarTurnoRestanteConsumibles();	
+		
+		Consumible consumible = null;
 		
 		if (this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 0 || 
 				this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 1 )
-			tablero.crearConsumible();
-		Jugador jugadoraux = this.jugadorSiguiente;
-		this.jugadorSiguiente = this.jugadorActual;
-		this.jugadorActual = jugadoraux;
+			consumible = tablero.crearConsumible();
 			// el or con 1 es para que sea "justo" y aparezca un consumible en el
 			// turno del otro jugador tambien
 		
-		// capaz que aca haya que hacer alguna interaccion con el controlador		
+		
+		Jugador jugadorAux = this.jugadorSiguiente;
+		this.jugadorSiguiente = this.jugadorActual;
+		this.jugadorActual = jugadorAux;
+					
+		return consumible;
+		// si se creo lo devuelve, sino devuelve null
+		// esto es para que se pueda visualizar		
 	}
 	
 	public void colocarPersonajesEnTablero( Map<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
@@ -84,12 +89,46 @@ public class OrganizadorJuego {
 			listaEquipos.add(equipo);
 		}
 		
-		this.tablero.colocarPersonajes(listaEquipos);
-		
+		this.tablero.colocarPersonajes(listaEquipos);		
 	}
 
 	//Devuelve el tablero
     public Tablero getTablero() {
         return this.tablero;
     }
+    
+    public boolean ataque(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido {
+    	// devuelve true si el personaje atacado muere
+    	 boolean resultadoPelea = this.tablero.ataqueBasico(p1,p2);
+    	 if (resultadoPelea)
+    		 this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
+    	 	// murio el p2, lo saco del equipo enemigo
+    	 
+    	 return resultadoPelea;   	 
+    } 
+    
+    public boolean ataqueEspecial(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido {
+    	// devuelve true si el personaje atacado muere
+    	boolean resultadoPelea = this.tablero.ataqueEspecial(p1,p2);
+    	if (resultadoPelea)
+    		this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
+   	 		// murio el p2, lo saco del equipo enemigo
+    	
+    	return resultadoPelea;
+    }     
+    
+    public boolean finalizarTurno(){
+    	// devuelve true si el jugador que estaba en el turno en cuestión ganó la partida
+    	if (jugadorSiguiente.getEquipo().cantidadPersonajes() == 0)
+    		return true;
+    	
+    	
+    	
+    	
+    	// no se si es necesario hacer algo más al finalizar el turno
+    	
+    	return false;    	
+    }
+    
+    
 }

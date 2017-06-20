@@ -82,11 +82,11 @@ public class Tablero {
 		if (!ValidadorMovimientoyAtaque.movimientoValido(personaje, camino))
 			throw new ErrorMovimientoInvalido("Movimiento invalido");
 		
-		int x = ultimoCasillero.getCoordenada().getX();
-		int y = ultimoCasillero.getCoordenada().getY();
-		
-		if (x < 0 || this.ancho <= x || y < 0 || this.alto <= y)
-		    throw new ErrorMovimientoInvalido("Movimiento invalido");
+		//int x = ultimoCasillero.getCoordenada().getX();
+		//int y = ultimoCasillero.getCoordenada().getY();
+		//if (x < 0 || this.ancho <= x || y < 0 || this.alto <= y)
+		   // throw new ErrorMovimientoInvalido("Movimiento invalido");
+		// no existen coordenadas menores a 0
 		
 		//camino valido, entonces el personaje puede recojer los consumibles / objetos
 		for (int i = 0; i < camino.size(); i++){
@@ -99,9 +99,7 @@ public class Tablero {
 					this.objetos.remove(objeto);
 					Casillero casillero = objeto.getCasillero();
 					casillero.setObjeto(null);
-					// objeto.setCasillero(null);
-					// no es necesario, si ningun casillero lo tiene entonces el controlador
-					// hara que desaparezca del mapa
+					objeto.setCasillero(null);					
 				}
 			}				
 		}
@@ -112,44 +110,54 @@ public class Tablero {
 		casilleroViejo.setObjeto(null);		
 	}	
 	
-	public void ataqueBasico(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido{
+	public boolean ataqueBasico(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido{
 		if (!ValidadorMovimientoyAtaque.ataqueValido(p1, p2))
 			throw new ErrorAtaqueInvalido("Ataque invalido");
 		 
-		this._ataqueBasico(p1, p2);
+		boolean resultadoPelea = this._ataqueBasico(p1, p2);
 		this.eliminarConsumiblesSinUsos(p1);
+		return resultadoPelea;
 	}	
 	
-	private void _ataqueBasico(Personaje p1, Personaje p2){
-		if (Pelea.ataqueBasico(p1, p2)){
+	private boolean _ataqueBasico(Personaje p1, Personaje p2){
+		boolean resultadoPelea = Pelea.ataqueBasico(p1, p2);
+		
+		if (resultadoPelea){
 			// murio el p2, lo saco del tablero
 			Casillero casilleroP2 = p2.getCasillero();
 			casilleroP2.setObjeto(null);
-			this.objetos.remove(p2);
-			// si quieren tambien se puede remover p2 del equipo en donde pertenece, no lo veo necesario
+			p2.setCasillero(null); // no creo que se necesario pero lo pongo por las dudas
+			// el recolector de basura deberia sacarlo ya que no hay más referencias p2,
+			// pero capaz en la vista / controlador si siga habiendo alguna (no deberia, no es necesario)
+			this.objetos.remove(p2);			
 		}
-		// si es necesario esta funcion puede devolver true si es que murio el p2 para avisarle
-		// a OrganizadorJuego. Eso hay que verlo cuando se haga la vista.
+		
+		return resultadoPelea;
 	}
 	
-	public void ataqueEspecial(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
+	public boolean ataqueEspecial(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
 		if (!ValidadorMovimientoyAtaque.ataqueValido(p1, p2))
 			throw new ErrorAtaqueInvalido("Ataque invalido");
-		 
-		this._ataqueEspecial(p1, p2);
+		
+		boolean resultadoPelea = this._ataqueEspecial(p1, p2);
 		this.eliminarConsumiblesSinUsos(p1);
+		return resultadoPelea;
 	}
 	
-	private void _ataqueEspecial(Personaje p1, Personaje p2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
-		if (Pelea.ataqueEspecial(p1, p2)){
+	private boolean _ataqueEspecial(Personaje p1, Personaje p2) throws ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial{
+		boolean resultadoPelea = Pelea.ataqueEspecial(p1, p2); 
+		
+		if (resultadoPelea){
 			// murio el p2, lo saco del tablero
 			Casillero casilleroP2 = p2.getCasillero();
 			casilleroP2.setObjeto(null);
-			this.objetos.remove(p2);	
-			// si quieren tambien se puede remover p2 del equipo en donde pertenece, no lo veo necesario
+			p2.setCasillero(null); // no creo que se necesario pero lo pongo por las dudas
+			// el recolector de basura deberia sacarlo ya que no hay más referencias p2,
+			// pero capaz en la vista / controlador si siga habiendo alguna (no deberia, no es necesario)
+			this.objetos.remove(p2);		
 		} 
-		// si es necesario esta funcion puede devolver true si es que murio el p2 para avisarle
-		// a OrganizadorJuego. Eso hay que verlo cuando se haga la vista.
+		
+		return resultadoPelea;
 	}
 	
 	private Consumible crearConsumibleAleatorio(int random){
@@ -190,7 +198,7 @@ public class Tablero {
 		return casillero;
 	}
 	
-	public void crearConsumible(){
+	public Consumible crearConsumible(){
 		Random rand = new Random();
 		int n = rand.nextInt(100);
 		//entre 0 y 100
@@ -199,6 +207,7 @@ public class Tablero {
 		Casillero casillero = this.buscarCasilleroLibreAleatorio();
 		consumible.setCasillero(casillero);	
 		casillero.setObjeto(consumible);
+		return consumible;
 	}
 	
 	private void eliminarConsumiblesSinUsos(Personaje p1){
@@ -281,7 +290,7 @@ public class Tablero {
     }
 
 	
-    public List<Consumible> getConsumibles() {
+   /* public List<Consumible> getConsumibles() {
         List<Consumible> consumibles = new ArrayList<Consumible>();
         
         for (Casillero c: this.casilleros) {
@@ -290,6 +299,6 @@ public class Tablero {
             }
         }
         return consumibles;
-    }
+    }*/
     
 }

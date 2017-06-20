@@ -13,28 +13,28 @@ import modelo.tablero.ErrorNoHayMasExtremos;
  */
 
 public class Juego {
-	private Map<String, Jugador> listajugadores; //creo diccionario: {nombre_jugador: JUGADOR}
+	private Map<String, Jugador> listaJugadores; //creo diccionario: {nombre_jugador: JUGADOR}
 	private OrganizadorJuego organizador;
 	
 	public Juego() {
-		this.listajugadores = new HashMap<String, Jugador>();
+		this.listaJugadores = new HashMap<String, Jugador>();
 		this.organizador = new OrganizadorJuego();
 	}
 	
 	public void agregarJugador(Jugador jugador_nuevo) {
-		this.listajugadores.put(jugador_nuevo.getNombre(), jugador_nuevo);
+		this.listaJugadores.put(jugador_nuevo.getNombre(), jugador_nuevo);
 	}
 	
 	public Jugador pedirJugador(String nombre_jugador) {
-		return this.listajugadores.get(nombre_jugador);
+		return this.listaJugadores.get(nombre_jugador);
 	}
 	
 	public void distribuirPersonajesEquipos() throws ErrorNoHayMasExtremos {
-		this.organizador.colocarPersonajesEnTablero(this.listajugadores);		
+		this.organizador.colocarPersonajesEnTablero(this.listaJugadores);		
 	}
 	
 	public void inicializarJuegoAdjudicandoPrimerTurno() {
-		this.organizador.otorgarPrimerTurno(listajugadores);
+		this.organizador.otorgarPrimerTurno(listaJugadores);
 	}
 
 	//Devuelve el OrganizadorJuego

@@ -20,11 +20,11 @@ import modelo.personajes.Personaje;
  */
 
 public class Equipo {
-	private Hashtable<String, Personaje> listapersonajes; //cree diccionario: {nombre_personaje: PERSONAJE}
+	private Hashtable<String, Personaje> listaPersonajes; //cree diccionario: {nombre_personaje: PERSONAJE}
 	private String nombre;
 	
 	public Equipo(String nombre_equipo) {
-		this.listapersonajes = new Hashtable<String, Personaje>();
+		this.listaPersonajes = new Hashtable<String, Personaje>();
 		this.nombre = nombre_equipo;
 	}
 	
@@ -33,7 +33,7 @@ public class Equipo {
 	 */
 	public List<Personaje> pedirListaPersonajes() {
 		 List<Personaje> personajes_enlistados = new ArrayList<Personaje>();
-		 Enumeration<Personaje> personajes = this.listapersonajes.elements();
+		 Enumeration<Personaje> personajes = this.listaPersonajes.elements();
 		 while(personajes.hasMoreElements()) {
 			 personajes_enlistados.add(personajes.nextElement());
 		 }
@@ -41,7 +41,17 @@ public class Equipo {
 	}
 	
 	public void agregarPersonaje(Personaje personaje_nuevo) {
-		this.listapersonajes.put(personaje_nuevo.getNombre(),personaje_nuevo);
+		this.listaPersonajes.put(personaje_nuevo.getNombre(),personaje_nuevo);
+	}
+	
+	public void eliminarPersonaje(Personaje personaje){
+		this.listaPersonajes.remove(personaje.getNombre());
+		// use getNombre y no getNombrexTransformacion porque como se cargaron al princpio del
+		// juego en el diccionario, se cargaron con su nombre original
+	}
+	
+	public int cantidadPersonajes(){
+		return this.listaPersonajes.size();
 	}
 	
 	/**
@@ -49,7 +59,7 @@ public class Equipo {
 	 */
 	
 	public boolean tienePersonaje(Personaje personaje) {
-		return this.listapersonajes.containsKey(personaje.getNombre());
+		return this.listaPersonajes.containsKey(personaje.getNombre());
 	}
 	
 	/**
@@ -57,7 +67,7 @@ public class Equipo {
 	 */
 	
 	public Personaje devolverPersonaje(String nombre_personaje) {
-		return this.listapersonajes.get(nombre_personaje);
+		return this.listaPersonajes.get(nombre_personaje);
 	}
 	
 	public String getNombre() {
