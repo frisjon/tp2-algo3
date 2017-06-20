@@ -24,7 +24,7 @@ public class OrganizadorJuego {
 	private final int TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE = 4;
 	private Tablero tablero;
 	private int turno; // esta bueno para mostrarlo por consola
-	private final int FILAS = 15, COLUMNAS = 15;
+	private final int FILAS = 10, COLUMNAS = 10;
 	private Jugador jugadorActual;
 	private Jugador jugadorSiguiente;
 	
