@@ -1,15 +1,12 @@
 package vista.contenedores;
-//CONVERTIR BOTONES HANDLER DE MOV EN UNO SOLO PASANDO POR PARAMETRO EL OFFSET
-import controlador.handlers.BotonAbajoDerechaEventHandler;
-import controlador.handlers.BotonAbajoEventHandler;
-import controlador.handlers.BotonAbajoIzquierdaEventHandler;
-import controlador.handlers.BotonArribaDerechaEventHandler;
-import controlador.handlers.BotonArribaEventHandler;
-import controlador.handlers.BotonArribaIzquierdaEventHandler;
-import controlador.handlers.BotonDerechaEventHandler;
-import controlador.handlers.BotonIzquierdaEventHandler;
+import controlador.handlers.BotonMovimientoEventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.tablero.Tablero;
@@ -19,51 +16,58 @@ public class ContenedorMover extends VBox {
     
     public ContenedorMover(ContenedorJuego contenedorJuego, Tablero tablero, RepresentacionPersonaje personaje) {
         
-        //this.setAlignment(Pos.CENTER);
-
-        Button upRight = new Button();
-        upRight.setText("E");
-        upRight.setOnAction(new BotonArribaDerechaEventHandler(contenedorJuego, tablero, personaje));
+        this.setPadding(new Insets(130, 50,50,50));
+        this.setSpacing(15);
+        this.setAlignment(Pos.CENTER);
         
-        Button upLeft = new Button();
-        upLeft.setText("Q");
-        upLeft.setOnAction(new BotonArribaIzquierdaEventHandler(contenedorJuego, tablero, personaje));
+        int ancho = 10, btnAncho = 20, btnAlto = 20;
+        boolean preserveRatio = true, smooth=false;
         
-        Button downRight = new Button();
-        downRight.setText("C");
-        downRight.setOnAction(new BotonAbajoDerechaEventHandler(contenedorJuego, tablero, personaje));
-
-        Button downLeft = new Button();
-        downLeft.setText("Z");
-        downLeft.setOnAction(new BotonAbajoIzquierdaEventHandler(contenedorJuego, tablero, personaje));
+        ImageView imUp = new ImageView(new Image("file:src/vista/imagenes/up.png", ancho, ancho, preserveRatio, smooth));
+        Button up = new Button("", imUp);
+        up.setOnAction(new BotonMovimientoEventHandler(contenedorJuego, tablero, personaje, "w"));
         
-        Button up = new Button();
-        up.setText("W");
-        up.setOnAction(new BotonArribaEventHandler(contenedorJuego, tablero, personaje));
+        ImageView imDown = new ImageView(new Image("file:src/vista/imagenes/down.png", ancho, ancho, preserveRatio, smooth));
+        Button down = new Button("", imDown);
+        down.setOnAction(new BotonMovimientoEventHandler(contenedorJuego, tablero, personaje, "s"));
         
-        Button down = new Button();
-        down.setText("S");
-        down.setOnAction(new BotonAbajoEventHandler(contenedorJuego, tablero, personaje));
+        ImageView imRight = new ImageView(new Image("file:src/vista/imagenes/right.png", ancho, ancho, preserveRatio, smooth));
+        Button right = new Button("", imRight);
+        right.setOnAction(new BotonMovimientoEventHandler(contenedorJuego, tablero, personaje, "d"));
         
-        Button right = new Button();
-        right.setText("D");
-        right.setOnAction(new BotonDerechaEventHandler(contenedorJuego, tablero, personaje));
+        ImageView imLeft = new ImageView(new Image("file:src/vista/imagenes/left.png", ancho, ancho, preserveRatio, smooth));
+        Button left = new Button("", imLeft);
+        left.setOnAction(new BotonMovimientoEventHandler(contenedorJuego, tablero, personaje, "a"));
         
-        Button left = new Button();
-        left.setText("A");
-        left.setOnAction(new BotonIzquierdaEventHandler(contenedorJuego, tablero, personaje));
+        ImageView imUpRight = new ImageView(new Image("file:src/vista/imagenes/upRight.png", ancho, ancho, preserveRatio, smooth));
+        Button upRight = new Button("", imUpRight);
+        upRight.setOnAction(new BotonMovimientoEventHandler(contenedorJuego, tablero, personaje, "e"));
         
+        ImageView imUpLeft = new ImageView(new Image("file:src/vista/imagenes/upLeft.png", ancho, ancho, preserveRatio, smooth));
+        Button upLeft = new Button("", imUpLeft);
+        upLeft.setOnAction(new BotonMovimientoEventHandler(contenedorJuego, tablero, personaje, "q"));
+        
+        ImageView imDownRight = new ImageView(new Image("file:src/vista/imagenes/downRight.png", ancho, ancho, preserveRatio, smooth));
+        Button downRight = new Button("", imDownRight);
+        downRight.setOnAction(new BotonMovimientoEventHandler(contenedorJuego, tablero, personaje, "c"));
+        
+        ImageView imDownLeft = new ImageView(new Image("file:src/vista/imagenes/downLeft.png", ancho, ancho, preserveRatio, smooth));
+        Button downLeft = new Button("", imDownLeft);
+        downLeft.setOnAction(new BotonMovimientoEventHandler(contenedorJuego, tablero, personaje, "z"));
+        
+        Button none = new Button();
+        none.setMinSize(btnAncho, btnAlto);
         
         HBox top = new HBox();
         top.getChildren().addAll(upLeft, up, upRight);
         
         HBox bottom = new HBox();
-        top.getChildren().addAll(downLeft, down, downRight);
+        bottom.getChildren().addAll(downLeft, down, downRight);
         
         HBox sides = new HBox();
-        top.getChildren().addAll(left, right);
+        sides.getChildren().addAll(left, none, right);
         
-        this.getChildren().addAll(top, sides, bottom);;
+        this.getChildren().addAll(top, sides, bottom);
     }
 
 }
