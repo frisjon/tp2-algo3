@@ -143,6 +143,7 @@ public class ContenedorJuego extends BorderPane {
     }
     
     private void crearPanelIzquierdo(){
+        this.setLeft(null);
         this.vbox = new VBox();
         this.contenedorOpcionesJuego = new ContenedorOpcionesJuego(this);
         this.contenedorEstadisticas = new ContenedorEstadisticas(this);
@@ -171,9 +172,7 @@ public class ContenedorJuego extends BorderPane {
         this.auxiliar = this.representacionJugadorDeTurno;
         this.representacionJugadorDeTurno = this.representacionJugadorEsperando;
         this.representacionJugadorEsperando = this.auxiliar;
-        this.setLeft(null);
-        this.contenedorOpcionesJuego = new ContenedorOpcionesJuego(this);
-        this.setLeft(contenedorOpcionesJuego);
+        this.crearPanelIzquierdo();
         this.mostrarConsola(Integer.toString(this.organizador.getTurno()));
     }
 
