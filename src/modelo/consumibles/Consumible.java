@@ -72,8 +72,4 @@ public abstract class Consumible implements ObjetoJuego {
     public void eliminarObjeto(ObjetoJuego objeto) throws ErrorNoCompatibilidad {
     	throw new ErrorNoCompatibilidad("Método no compatible");
     }
-    
-   /*public boolean equals(Consumible consumible){
-        return this.getClass().equals(consumible.getClass());
-    } horrible*/
 }

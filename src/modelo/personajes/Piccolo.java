@@ -1,7 +1,5 @@
 package modelo.personajes;
 
-import modelo.equipo.Equipo;
-
 public class Piccolo extends Personaje {
 	
     public static final double PICCOLO_CANTIDAD_KI_INICIAL = 0;

@@ -1,7 +1,5 @@
 package modelo.personajes;
 
-import modelo.equipo.Equipo;
-
 public class Freezer extends Personaje {
 
     public static final double FREEZER_CANTIDAD_KI_INICIAL = 0;

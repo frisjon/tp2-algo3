@@ -1,7 +1,5 @@
 package modelo.personajes;
 
-import modelo.equipo.Equipo;
-
 public class MajinBoo extends Personaje {
 
     public static final double MAJINBOO_CANTIDAD_KI_INICIAL = 0;
