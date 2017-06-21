@@ -176,7 +176,7 @@ public class OrganizadorJuego {
         x = fin.getCoordenada().getX();
         y = fin.getCoordenada().getY();
 
-        if (x < 0 || this.COLUMNAS <= x || y < 0 || this.FILAS <= y)
+        if (x < 0 || COLUMNAS <= x || y < 0 || FILAS <= y)
             throw new ErrorMovimientoInvalido("Movimiento invalido");
 
         return fin;

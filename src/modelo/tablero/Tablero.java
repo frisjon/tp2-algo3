@@ -84,12 +84,6 @@ public class Tablero {
 		if (!ValidadorMovimientoyAtaque.movimientoValido(personaje, camino))
 			throw new ErrorMovimientoInvalido("Movimiento invalido");
 		
-		//int x = ultimoCasillero.getCoordenada().getX();
-		//int y = ultimoCasillero.getCoordenada().getY();
-		//if (x < 0 || this.ancho <= x || y < 0 || this.alto <= y)
-		   // throw new ErrorMovimientoInvalido("Movimiento invalido");
-		// no existen coordenadas menores a 0
-		
 		//camino valido, entonces el personaje puede recojer los consumibles / objetos
 		for (int i = 0; i < camino.size(); i++){
 			if (!camino.get(i).estaLibre()){

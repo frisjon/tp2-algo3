@@ -40,11 +40,12 @@ public final class ValidadorMovimientoyAtaque {
 		diferenciaX = diferencia(x, xDestino);
 		diferenciaY = diferencia(y, yDestino);
 		
-		int diferenciaTotal = diferenciaX + diferenciaY;
-		// hice que no se pueda mover en diagonal, sino seria muy 'rapido' cada movimiento
-		// despues le preguntamos a Carlos que onda
+		/* int diferenciaTotal = diferenciaX + diferenciaY;
+				
+		if (diferenciaTotal > velocidad) 
+			return false; esto es si no se puede mover en diagonal */
 		
-		if (diferenciaTotal > velocidad) // si se quiso ir mas lejos de lo que la velocidad lo permite
+		if (diferenciaX > velocidad || diferenciaY > velocidad) // si se quiso ir mas lejos de lo que la velocidad lo permite
 			return false;
 		
 		// ahora me fijo si me choco con algun personaje
