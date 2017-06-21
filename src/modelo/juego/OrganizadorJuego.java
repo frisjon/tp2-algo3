@@ -23,9 +23,8 @@ import modelo.tablero.Tablero;
  *
  */
 
-
 public class OrganizadorJuego {
-	private final int TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE = 4;
+	private static final int TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE = 4;
 	private Tablero tablero;
 	private int turno; // esta bueno para mostrarlo por consola
 	private static final int FILAS = 10, COLUMNAS = 10;
@@ -78,8 +77,8 @@ public class OrganizadorJuego {
 		
 		Consumible consumible = null;
 		
-		if (this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 0 || 
-				this.turno % this.TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 1 )
+		if (this.turno % TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 0 || 
+				this.turno % TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE == 1 )
 			consumible = this.tablero.crearConsumible();
 			// el or con 1 es para que sea "justo" y aparezca un consumible en el
 			// turno del otro jugador tambien
@@ -94,16 +93,16 @@ public class OrganizadorJuego {
 		// esto es para que se pueda visualizar		
 	}
 	
-	public void colocarPersonajesEnTablero( Map<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
-		
+	public List<Equipo> colocarPersonajesEnTablero(Map<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
-		
+				
 		for (Map.Entry<String, Jugador> entry : listajugadores.entrySet()) {
 			Equipo equipo = entry.getValue().getEquipo();
 			listaEquipos.add(equipo);
 		}
 		
-		this.tablero.colocarPersonajes(listaEquipos);		
+		this.tablero.colocarPersonajes(listaEquipos);
+		return listaEquipos;		
 	}
 
 	//Devuelve el tablero
