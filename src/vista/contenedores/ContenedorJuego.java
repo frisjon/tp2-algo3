@@ -128,7 +128,7 @@ public class ContenedorJuego extends BorderPane {
         
         //Referencia al tablero. Lo necesita ContenedorTablero.
         //Para saber en donde esta cada personaje.
-        this.tablero = this.organizador.getTablero();
+        //this.tablero = this.organizador.getTablero();
         
         //this.siguienteTurno();
         /*
@@ -139,7 +139,7 @@ public class ContenedorJuego extends BorderPane {
         }*/
         
         //Centro (center) (esto es lo que se va a ver como un tablero. aca van los personajes y consumibles, etc)
-        ContenedorTablero contendorTablero = new ContenedorTablero(tablero, this.representacionJugadores, this.consumibles); 
+        ContenedorTablero contendorTablero = new ContenedorTablero(this.organizador.getAlto(), this.organizador.getAncho(), this.representacionJugadores, this.consumibles); 
         this.contenedorTablero = contendorTablero;
         this.setCenter(contendorTablero);
         

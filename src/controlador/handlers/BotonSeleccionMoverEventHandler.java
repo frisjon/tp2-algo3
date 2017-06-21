@@ -18,6 +18,6 @@ public class BotonSeleccionMoverEventHandler extends BotonHandler{
     public void handle(ActionEvent event){
         super.handle(event);
         this.contenedorJuego.setRight(null);
-        this.contenedorJuego.setRight(new ContenedorMover(contenedorJuego, contenedorJuego.getTablero(), personaje));
+        this.contenedorJuego.setRight(new ContenedorMover(contenedorJuego, personaje));
     }
 }

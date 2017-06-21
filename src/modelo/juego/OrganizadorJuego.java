@@ -181,6 +181,12 @@ public class OrganizadorJuego {
 
         return fin;
     }
+
+    public int getAlto() {
+        return this.tablero.getAlto();
+    }
     
-    
+    public int getAncho() {
+        return this.tablero.getAncho();
+    }
 }

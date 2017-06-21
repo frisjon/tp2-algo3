@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import modelo.tablero.Tablero;
 import vista.RepresentacionPersonaje;
 
 public class ContenedorMover extends VBox {
@@ -17,7 +16,7 @@ public class ContenedorMover extends VBox {
     private final boolean preserveRatio = true, smooth = false;
     private final int ancho = 15;
     
-    public ContenedorMover(ContenedorJuego contenedorJuego, Tablero tablero, RepresentacionPersonaje personaje) {
+    public ContenedorMover(ContenedorJuego contenedorJuego, RepresentacionPersonaje personaje) {
         
         this.setPadding(new Insets(130, 50, 50, 50));
         this.setSpacing(15);
