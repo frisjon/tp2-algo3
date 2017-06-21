@@ -61,6 +61,7 @@ public class ContenedorJuego extends BorderPane {
     //private Jugador jugador1, jugador2;
     //private Jugador jugadorDeTurno;
     
+    private CreadorRepresentacionConsumible crc;
     private List<RepresentacionConsumible> consumibles;
     
     private List<RepresentacionJugador> representacionJugadores;
@@ -78,6 +79,7 @@ public class ContenedorJuego extends BorderPane {
         super();
         
         this.consumibles = new ArrayList<RepresentacionConsumible>();
+        this.crc = new CreadorRepresentacionConsumible();
         
         this.representacionJugadores = new ArrayList<RepresentacionJugador>();
         this.representacionJugadores.add(new RepresentacionJugador(jugador1));
@@ -186,7 +188,13 @@ public class ContenedorJuego extends BorderPane {
         //necesario para que el jugador no haga movimientos infinitos. Se aplica tambien a ataques y (creo que tambien) transformaciones 
         this.setRight(null);
         
-        this.organizador.empezarSiguienteTurno();
+        Consumible nuevoConsumible = this.organizador.empezarSiguienteTurno();
+        if (nuevoConsumible != null){
+            RepresentacionConsumible nuevaRepConsumible = this.crc.crearRepresentacionDe(nuevoConsumible);
+            this.consumibles.add(nuevaRepConsumible);
+            this.contenedorTablero.actualizarRepresentacionConsumible(nuevaRepConsumible);
+        }
+        
         this.auxiliar = this.representacionJugadorDeTurno;
         this.representacionJugadorDeTurno = this.representacionJugadorEsperando;
         this.representacionJugadorEsperando = this.auxiliar;

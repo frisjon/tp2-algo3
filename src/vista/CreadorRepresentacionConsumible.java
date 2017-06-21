@@ -16,13 +16,13 @@ public class CreadorRepresentacionConsumible {
     
     public RepresentacionConsumible crearRepresentacionDe(Consumible consumible) {
         
-        if (consumible.equals(new Nube()))
+        if (consumible.getNombre() == "Nube voladora")
             return new RepresentacionConsumible(consumible,imagenNube);
         
-        if (consumible.equals(new Semilla()))
+        if (consumible.getNombre() == "Semilla del ermitaño" )
             return new RepresentacionConsumible(consumible,imagenSemilla);
         
-        if (consumible.equals(new Esfera()))
+        if (consumible.getNombre() == "Esfera del dragon")
             return new RepresentacionConsumible(consumible,imagenEsfera);
         
         return null;
