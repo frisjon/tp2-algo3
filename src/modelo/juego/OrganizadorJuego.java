@@ -60,7 +60,7 @@ public class OrganizadorJuego {
 		return this.jugadorSiguiente;
 	}
 	
-	public ObjetoJuego empezarSiguienteTurno(){
+	public Consumible empezarSiguienteTurno(){
 		this.turno++;
 		
 		this.tablero.eliminarConsumiblesSinTurnosRestantes();
