@@ -9,6 +9,7 @@ import modelo.equipo.Equipo;
 import modelo.jugador.Jugador;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
+import modelo.tablero.Coordenada;
 import modelo.tablero.ErrorAtaqueInvalido;
 import modelo.tablero.ErrorCasilleroYaOcupado;
 import modelo.tablero.ErrorMovimientoInvalido;
@@ -133,7 +134,7 @@ public class OrganizadorJuego {
     
     public void moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
     	// si no se puede mover levanta la excepcion correspondiente
-    	int cantidadEsferasConseguidas = this.tablero.moverPersonaje(personaje, camino);    			
+    	int cantidadEsferasConseguidas = this.tablero.moverPersonaje(personaje, camino);
     	this.jugadorActual.getEquipo().sumarEsferasObtenidas(cantidadEsferasConseguidas);
     	// se puede devolver lo que sea necesario! yo no pense en nada ya que la nueva posicion
     	// ya la sabes (es donde te moviste), en el caso de que la excepcion no se levanto
@@ -152,5 +153,31 @@ public class OrganizadorJuego {
     	return false;    	
     }
     
-    
+
+    public Casillero getCasilleroEn(Casillero pos, String direccion) {
+        
+        Coordenada coordenada = pos.getCoordenada();
+        int x = coordenada.getX();
+        int y = coordenada.getY();
+        Casillero fin = null;
+        
+        switch (direccion) {
+            case "arribaIzquierda": fin = new Casillero(x-1, y-1); break;
+            case "arriba":          fin = new Casillero(x, y-1); break;
+            case "arribaDerecha":   fin = new Casillero(x+1, y-1); break;
+            case "abajoIzquierda":  fin = new Casillero(x-1, y+1); break;
+            case "abajo":           fin = new Casillero(x, y+1); break;
+            case "abajoDerecha":    fin = new Casillero(x+1, y+1); break;
+            case "izquierda":       fin = new Casillero(x-1, y); break;
+            case "derecha":         fin = new Casillero(x+1, y); break;
+        }
+        
+        x = fin.getCoordenada().getX();
+        y = fin.getCoordenada().getY();
+        
+        if (x < 0 || this.COLUMNAS <= x || y < 0 || this.FILAS <= y)
+            throw new ErrorMovimientoInvalido("Movimiento invalido");
+        
+        return fin;
+    }
 }

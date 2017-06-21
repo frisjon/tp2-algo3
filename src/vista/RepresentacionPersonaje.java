@@ -19,6 +19,9 @@ public class RepresentacionPersonaje {
     private Image imagenEstado3;
     //private AudioClip sonidoAtaqueEspecial;
     
+    private double movimientosTotales;
+    private double movimientosRestantes;
+    
     //public RepresentacionPersonaje(Personaje _personaje, Image _imagenEstado1, Image _imagenEstado2, Image _imagenEstado3, AudioClip _sonidoAtaqueEspecial)
     public RepresentacionPersonaje(Personaje _personaje, Image _imagenEstado1, Image _imagenEstado2, Image _imagenEstado3) {
         
@@ -33,6 +36,9 @@ public class RepresentacionPersonaje {
         this.ivImagenEst = new ImageView();
         this.ivImagen.setImage(this.imagenEstado1);
         this.ivImagenEst.setImage(this.imagenEstado1);
+        
+        this.movimientosTotales = this.personaje.getVelocidad();
+        this.movimientosRestantes = this.personaje.getVelocidad();
     }
 
     public Casillero getCasillero() {
@@ -65,6 +71,18 @@ public class RepresentacionPersonaje {
     public void cambiarAEstado3() {
         this.ivImagen.setImage(this.imagenEstado3);
         this.ivImagenEst.setImage(this.imagenEstado3);
+    }
+    
+    public double getMovimientosRestantes() {
+        return this.movimientosRestantes;
+    }
+
+    public void decrementarMovimientosRestantes() {
+        this.movimientosRestantes -= 1;
+    }
+    
+    public void reestablecerMovimientosRestantes() {
+        this.movimientosRestantes = this.movimientosTotales;
     }
 
 }

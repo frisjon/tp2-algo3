@@ -17,7 +17,6 @@ public class RepresentacionJugador {
         this.representacionPersonajes = new ArrayList<RepresentacionPersonaje>();
         
         CreadorRepresentacionPersonaje creador = new CreadorRepresentacionPersonaje();
-        
         for (Personaje p: this.jugador.getEquipo().pedirListaPersonajes()) {
             this.representacionPersonajes.add(creador.crearRepresentacionDe(p));
         }
@@ -25,5 +24,9 @@ public class RepresentacionJugador {
 
     public List<RepresentacionPersonaje> getRepresentacionesDePersonajes() {
         return this.representacionPersonajes;
+    }
+    
+    public String getNombreJugador() {
+        return this.jugador.getNombre();
     }
 }

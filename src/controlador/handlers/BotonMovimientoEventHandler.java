@@ -5,23 +5,19 @@ import java.util.List;
 
 import javafx.event.ActionEvent;
 import modelo.tablero.Casillero;
-import modelo.tablero.Coordenada;
 import modelo.tablero.ErrorCasilleroYaOcupado;
 import modelo.tablero.ErrorMovimientoInvalido;
-import modelo.tablero.Tablero;
 import vista.RepresentacionPersonaje;
 import vista.contenedores.ContenedorJuego;
 
 public class BotonMovimientoEventHandler extends BotonHandler {
     
     private ContenedorJuego contenedorJuego;
-    private Tablero tablero;
     private RepresentacionPersonaje personaje;
     private String direccion;
 
-    public BotonMovimientoEventHandler(ContenedorJuego _contenedorJuego, Tablero _tablero, RepresentacionPersonaje _personaje, String _direccion) {
+    public BotonMovimientoEventHandler(ContenedorJuego _contenedorJuego, RepresentacionPersonaje _personaje, String _direccion) {
         this.contenedorJuego = _contenedorJuego;
-        this.tablero = _tablero;
         this.personaje = _personaje;
         this.direccion = _direccion;
     }
@@ -33,24 +29,15 @@ public class BotonMovimientoEventHandler extends BotonHandler {
         List<Casillero> camino = new ArrayList<Casillero>();
 
         Casillero pos = this.personaje.getPersonaje().getCasillero();
-        Coordenada coord = pos.getCoordenada();
-        Casillero movimiento = null;
+        //Casillero destino = this.tablero.getCasilleroEn(pos, this.direccion);
+        Casillero destino = this.contenedorJuego.getCasilleroEn(pos, this.direccion);
         
-        switch (this.direccion) {
-            case "q": movimiento = new Casillero(coord.getX()-1, coord.getY()-1); break;
-            case "w": movimiento = new Casillero(coord.getX(), coord.getY()-1); break;
-            case "e": movimiento = new Casillero(coord.getX()+1, coord.getY()-1); break;
-            case "a": movimiento = new Casillero(coord.getX()-1, coord.getY()); break;
-            case "s": movimiento = new Casillero(coord.getX(), coord.getY()+1); break;
-            case "d": movimiento = new Casillero(coord.getX()+1, coord.getY()); break;
-            case "z": movimiento = new Casillero(coord.getX()-1, coord.getY()+1); break;
-            case "c": movimiento = new Casillero(coord.getX()+1, coord.getY()+1); break;
-        }
-
-        camino.add(movimiento);
+        camino.add(destino);
 
         try {
-            this.tablero.moverPersonaje(this.personaje.getPersonaje(), camino);
+            //trata de mover al personaje en el tablero
+            //  this.tablero.moverPersonaje(this.personaje.getPersonaje(), camino);
+            this.contenedorJuego.moverPersonaje(this.personaje.getPersonaje(), camino);
         } catch (ErrorMovimientoInvalido e) {
             this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" no se puede mover en esa direccion. Fin del mapa.");
             return;
@@ -58,7 +45,18 @@ public class BotonMovimientoEventHandler extends BotonHandler {
             this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" no se puede mover en esa direccion. Casillero ocupado");
             return;
         }
+        
+        this.personaje.decrementarMovimientosRestantes();
+        
+        if (0 < this.personaje.getMovimientosRestantes()) {
+            //el personaje puede seguir moviendose
+            this.contenedorJuego.continuarMovimiento(this.personaje);
+        } else {
+            //fin del turno. no mas movimientos restantes.
+            this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" se mueve.");
+            this.contenedorJuego.siguienteTurno();
+        }
+        
         this.contenedorJuego.actualizarRepresentacionPersonaje(this.personaje);
-        this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" se mueve.");
     }
 }

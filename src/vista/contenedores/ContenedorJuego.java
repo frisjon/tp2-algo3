@@ -3,6 +3,7 @@ package vista.contenedores;
 import java.util.ArrayList;
 import java.util.List;
 
+import controlador.handlers.BotonSeleccionMoverEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -29,6 +30,7 @@ import modelo.juego.OrganizadorJuego;
 import modelo.jugador.Jugador;
 import modelo.personajes.Goku;
 import modelo.personajes.Personaje;
+import modelo.tablero.Casillero;
 import modelo.tablero.Coordenada;
 import modelo.tablero.Tablero;
 import vista.BarraDeMenu;
@@ -88,12 +90,11 @@ public class ContenedorJuego extends BorderPane {
         //this.musicaDeFondo.setCycleCount(5);
         
         //Fondo
-        /*
-        Image fondo = new Image("file:src/vista/imagenes/fondo-dbz.jpg");
+        Image fondo = new Image("file:src/vista/imagenes/arena.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondo, 
                                                             BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, 
                                                             BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));*/
+        this.setBackground(new Background(imagenDeFondo));
     }
 
     public void inicializarJuego(Juego juego) {
@@ -124,13 +125,12 @@ public class ContenedorJuego extends BorderPane {
         this.tablero = this.organizador.getTablero();
         
         //this.siguienteTurno();
-        
-        CreadorRepresentacionConsumible crc = new CreadorRepresentacionConsumible(); 
-        
+        /*
+        CreadorRepresentacionConsumible crc = new CreadorRepresentacionConsumible();
         //
         for (Consumible consumible: tablero.getConsumibles()) {
             consumibles.add(crc.crearRepresentacionDe(consumible));
-        }
+        }*/
         
         //Centro (center) (esto es lo que se va a ver como un tablero. aca van los personajes y consumibles, etc)
         ContenedorTablero contendorTablero = new ContenedorTablero(tablero, this.representacionJugadores, this.consumibles); 
@@ -168,15 +168,40 @@ public class ContenedorJuego extends BorderPane {
     }
     
     public void siguienteTurno() {
+        
+        //Reestablece la cantidad de movimientos de cada personaje
+        for (RepresentacionJugador jugador: representacionJugadores) {
+            for (RepresentacionPersonaje personaje: jugador.getRepresentacionesDePersonajes())
+                personaje.reestablecerMovimientosRestantes();
+        }
+        
+        //necesario para que el jugador no haga movimientos infinitos. Se aplica tambien a ataques y (creo que tambien) transformaciones 
+        this.setRight(null);
+        
         this.organizador.empezarSiguienteTurno();
         this.auxiliar = this.representacionJugadorDeTurno;
         this.representacionJugadorDeTurno = this.representacionJugadorEsperando;
         this.representacionJugadorEsperando = this.auxiliar;
         this.crearPanelIzquierdo();
-        this.mostrarConsola(Integer.toString(this.organizador.getTurno()));
+        this.mostrarConsola("Turno: " + Integer.toString(this.organizador.getTurno()) + ". Mueve " + this.representacionJugadorDeTurno.getNombreJugador());
     }
 
     public void actualizarRepresentacionPersonaje(RepresentacionPersonaje personaje) {
         this.contenedorTablero.actualizarRepresentacionPersonaje(personaje);
+    }
+    
+    public void continuarMovimiento(RepresentacionPersonaje personaje) {
+        //trigger del evento para seguir moviendo al personaje
+        new BotonSeleccionMoverEventHandler(this, personaje);
+    }
+
+    public void moverPersonaje(Personaje personaje, List<Casillero> camino) {
+        //el organizador le debe decir al tablero que mueva al personaje
+        this.organizador.moverPersonaje(personaje, camino);
+    }
+    
+
+    public Casillero getCasilleroEn(Casillero pos, String direccion) {
+        return this.organizador.getCasilleroEn(pos, direccion);
     }
 }
