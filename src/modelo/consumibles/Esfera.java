@@ -13,7 +13,7 @@ import modelo.consumibles.Consumible;
 public class Esfera extends Consumible{
     public Esfera(){
         this.nombre = Constantes.ESFERA_NOMBRE;
-        this.atributo = Constantes.ESFERA_ATRIBUTO;
+        //this.atributo = Constantes.ESFERA_ATRIBUTO;
         this.cantidadAtributo = Constantes.ESFERA_CANTIDAD_ATRIBUTO;
         this.instantaneo = Constantes.ESFERA_INSTANTANEO;
         this.cantidadUsosRestantes = Constantes.ESFERA_CANTIDAD_USOS_RESTANTES;
@@ -39,4 +39,22 @@ public class Esfera extends Consumible{
 
         this.cantidadUsosRestantes -= 1;
     }
+    
+    public int sumarACantidadEsferas(){
+    	return 1;
+    }
+    
+    public double getCantidadAtributoHP(){
+    	return 0;
+    }
+    
+    public double getCantidadAtributoVelocidad(){
+    	return 1;
+    }
+    
+    public double getCantidadAtributoAtaque(){
+    	return this.cantidadAtributo;
+    }
+    
+    
 }

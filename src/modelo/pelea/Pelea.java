@@ -73,13 +73,12 @@ public final class Pelea {
       
         for (int i = 0; i < objetosPj1.size(); i++){
         	ObjetoJuego objeto = objetosPj1.get(i);
-            if (objeto.getAtributo().equals("Ataque")){
-            	aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva) * (objeto.getCantidadAtributo());
-            	try {
-            		objeto.decrementarUso();
-            	} catch (ErrorNoTieneCantidadUsos e){
-            		continue;
-            	}
+            //if (objeto.getAtributo().equals("Ataque")){
+            aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva) * (objeto.getCantidadAtributoAtaque());
+            try {
+            	objeto.decrementarUso();
+            } catch (ErrorNoTieneCantidadUsos e){
+            	continue;
             }
         }
         
@@ -142,13 +141,12 @@ public final class Pelea {
         
         for (int i = 0; i < objetosPj1.size(); i++){
         	ObjetoJuego objeto = objetosPj1.get(i);
-            if (objeto.getAtributo() == "Ataque"){
-            	aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva + aumentoAtaqueEspecial) * (objeto.getCantidadAtributo());
-            	try {
-            		objeto.decrementarUso();
-            	} catch (ErrorNoTieneCantidadUsos e){
-            		continue;
-            	}
+            //if (objeto.getAtributo() == "Ataque"){
+            aumentoConsumible = aumentoConsumible + (poderPeleaPj1 + aumentoPasiva + aumentoAtaqueEspecial) * (objeto.getCantidadAtributoAtaque());
+            try {
+            	objeto.decrementarUso();
+            } catch (ErrorNoTieneCantidadUsos e){
+            	continue;
             }
         }
         

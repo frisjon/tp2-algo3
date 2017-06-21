@@ -13,7 +13,7 @@ import modelo.consumibles.Consumible;
 public class Nube extends Consumible{
     public Nube(){
         this.nombre = Constantes.NUBE_NOMBRE;
-        this.atributo = Constantes.NUBE_ATRIBUTO;
+        //this.atributo = Constantes.NUBE_ATRIBUTO;
         this.cantidadAtributo = Constantes.NUBE_CANTIDAD_ATRIBUTO;
         this.instantaneo = Constantes.NUBE_INSTANTANEO;
         this.cantidadTurnosRestantes = Constantes.NUBE_CANTIDAD_TURNOS_RESTANTES;
@@ -37,5 +37,21 @@ public class Nube extends Consumible{
     
     public void decrementarUso() throws ErrorNoTieneCantidadUsos {
     	throw new ErrorNoTieneCantidadUsos("Nube no posee cantidad usos");
+    }
+    
+    public int sumarACantidadEsferas(){
+    	return 0;
+    }
+    
+    public double getCantidadAtributoHP(){
+    	return 0;
+    }
+    
+    public double getCantidadAtributoVelocidad(){
+    	return this.cantidadAtributo;
+    }
+    
+    public double getCantidadAtributoAtaque(){
+    	return 0;
     }
 }

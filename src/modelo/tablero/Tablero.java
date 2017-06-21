@@ -71,10 +71,12 @@ public class Tablero {
 		}		
 	}
 	
-	public void moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido{
+	public int moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido{
 		// camino tiene que tener la lista de casilleros del movimiento deseado, salvo el casillero actual
 		// del personaje
+		// devuelve cantidad de esferas obtenidas en el movimiento
 		Casillero ultimoCasillero = camino.get(camino.size()-1);
+		int cantidadEsferasConseguidas = 0;
 		
 		if (!ultimoCasillero.sePuedePasar())
 			throw new ErrorCasilleroYaOcupado("Casillero ocupado");
@@ -94,8 +96,10 @@ public class Tablero {
 				ObjetoJuego objeto = camino.get(i).getObjeto();
 				if (objeto.sePuedeObtener()){
 					personaje.obtenerObjeto(objeto);
-					if (objeto.getAtributo().equals("HP"))
-						personaje.agregarVida(objeto.getCantidadAtributo());					
+					// if (objeto.getAtributo().equals("HP")) 
+					personaje.agregarVida(objeto.getCantidadAtributoHP());
+					// no pregunto de que tipo es, ya sabe lo que tiene que sumar
+					cantidadEsferasConseguidas += objeto.sumarACantidadEsferas();
 					this.objetos.remove(objeto);
 					Casillero casillero = objeto.getCasillero();
 					casillero.setObjeto(null);
@@ -107,7 +111,8 @@ public class Tablero {
 		ultimoCasillero.setObjeto(personaje);
 		Casillero casilleroViejo = personaje.getCasillero();
 		personaje.setCasillero(ultimoCasillero);
-		casilleroViejo.setObjeto(null);		
+		casilleroViejo.setObjeto(null);	
+		return cantidadEsferasConseguidas;
 	}	
 	
 	public boolean ataqueBasico(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido{

@@ -13,7 +13,7 @@ public final class Constantes {
      * Constantes de la clase Semilla.
      */
     public static final String SEMILLA_NOMBRE = "Semilla del ermitaño";
-    public static final String SEMILLA_ATRIBUTO = "HP";
+    //public static final String SEMILLA_ATRIBUTO = "HP";
     /**
      * En este caso el atributo es un incremento neto, es decir, se suma.
      */
@@ -26,7 +26,7 @@ public final class Constantes {
      * Constantes de la clase Esfera.
      */
     public static final String ESFERA_NOMBRE = "Esfera del dragon";
-    public static final String ESFERA_ATRIBUTO = "Ataque";
+   // public static final String ESFERA_ATRIBUTO = "Ataque";
     /**
      * En este caso el atributo es un incremento es porcentual.
      */
@@ -40,7 +40,7 @@ public final class Constantes {
      * Constantes de la clase Nube.
      */
     public static final String NUBE_NOMBRE = "Nube voladora";
-    public static final String NUBE_ATRIBUTO = "Velocidad";
+    //public static final String NUBE_ATRIBUTO = "Velocidad";
     /**
      * En este caso el atributo es un incremento por un cociente.
      */

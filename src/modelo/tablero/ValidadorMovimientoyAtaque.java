@@ -23,8 +23,8 @@ public final class ValidadorMovimientoyAtaque {
 		double velocidad = personaje.getVelocidad();
 		for (int i = 0; i < personaje.getObjetos().size(); i++){
 			ObjetoJuego objeto = personaje.getObjetos().get(i);
-			if (objeto.getAtributo().equals("Velocidad"))
-				velocidad += (velocidad * objeto.getCantidadAtributo());			
+			//if (objeto.getAtributo().equals("Velocidad"))
+			velocidad += (velocidad * objeto.getCantidadAtributoVelocidad());			
 		}
 		
 		int x = personaje.getCasillero().getCoordenada().getX();

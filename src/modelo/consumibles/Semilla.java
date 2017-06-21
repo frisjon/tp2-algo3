@@ -13,7 +13,7 @@ import modelo.consumibles.Consumible;
 public class Semilla extends Consumible{
     public Semilla(){
         this.nombre = Constantes.SEMILLA_NOMBRE;
-        this.atributo = Constantes.SEMILLA_ATRIBUTO;
+        //this.atributo = Constantes.SEMILLA_ATRIBUTO;
         this.cantidadAtributo = Constantes.SEMILLA_CANTIDAD_ATRIBUTO;
         this.instantaneo = Constantes.SEMILLA_INSTANTANEO;
         this.cantidadTurnosRestantes = Constantes.SEMILLA_CANTIDAD_TURNOS_RESTANTES;
@@ -37,5 +37,21 @@ public class Semilla extends Consumible{
     
     public void decrementarUso() throws ErrorNoTieneCantidadUsos {
     	throw new ErrorNoTieneCantidadUsos("Semilla no posee cantidad usos");
+    }
+    
+    public int sumarACantidadEsferas(){
+    	return 0;
+    }
+    
+    public double getCantidadAtributoHP(){
+    	return this.cantidadAtributo;
+    }
+    
+    public double getCantidadAtributoVelocidad(){
+    	return 1;
+    }
+    
+    public double getCantidadAtributoAtaque(){
+    	return 0;
     }
 }

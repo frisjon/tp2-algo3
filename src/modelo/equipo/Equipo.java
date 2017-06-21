@@ -22,10 +22,12 @@ import modelo.personajes.Personaje;
 public class Equipo {
 	private Hashtable<String, Personaje> listaPersonajes; //cree diccionario: {nombre_personaje: PERSONAJE}
 	private String nombre;
+	private int cantidadEsferas;
 	
 	public Equipo(String nombre_equipo) {
 		this.listaPersonajes = new Hashtable<String, Personaje>();
 		this.nombre = nombre_equipo;
+		this.cantidadEsferas = 0;
 	}
 	
 	/**
@@ -86,5 +88,13 @@ public class Equipo {
         this.agregarPersonaje(new Cell("Enemigos"));
         this.agregarPersonaje(new Freezer("Enemigos"));
         this.agregarPersonaje(new MajinBoo("Enemigos"));
+    }
+    
+    public void sumarEsferasObtenidas(int cantidadEsferas){
+    	this.cantidadEsferas += cantidadEsferas;
+    }
+    
+    public int getCantidadEsferas(){
+    	return this.cantidadEsferas;
     }
 }

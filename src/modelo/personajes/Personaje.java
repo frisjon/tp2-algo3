@@ -211,6 +211,22 @@ public abstract class Personaje implements ObjetoJuego {
     	throw new ErrorNoCompatibilidad("Método no compatible");
     }
     
+    public double getCantidadAtributoHP() throws ErrorNoCompatibilidad {
+    	throw new ErrorNoCompatibilidad("Método no compatible");
+    }
+    
+	public double getCantidadAtributoVelocidad() throws ErrorNoCompatibilidad {
+		throw new ErrorNoCompatibilidad("Método no compatible");
+	}
+	
+	public double getCantidadAtributoAtaque() throws ErrorNoCompatibilidad {
+		throw new ErrorNoCompatibilidad("Método no compatible");
+	}
+	
+	public int sumarACantidadEsferas() throws ErrorNoCompatibilidad {
+		throw new ErrorNoCompatibilidad("Método no compatible");
+	}
+    
     public String getNombrePrimeraTransformacion() {
     	return this.nombrePrimeraTransformacion;
     }

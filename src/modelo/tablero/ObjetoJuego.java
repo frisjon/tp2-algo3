@@ -14,8 +14,11 @@ public interface ObjetoJuego {
 	public void decrementarTurno();
 	public int getCantidadUsosRestantes();
 	public int getCantidadTurnosRestantes();
-	public double getCantidadAtributo();
+	public double getCantidadAtributoHP();
+	public double getCantidadAtributoVelocidad();
+	public double getCantidadAtributoAtaque();
 	public boolean tieneObjeto();
 	public List<ObjetoJuego> getObjetos();
 	public void eliminarObjeto(ObjetoJuego objeto);
+	public int sumarACantidadEsferas();
  }
