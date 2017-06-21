@@ -208,7 +208,6 @@ public class ContenedorJuego extends BorderPane {
         //el organizador le debe decir al tablero que mueva al personaje
         this.organizador.moverPersonaje(personaje, camino);
     }
-    
 
     public Casillero getCasilleroEn(Casillero pos, String direccion) {
         return this.organizador.getCasilleroEn(pos, direccion);
