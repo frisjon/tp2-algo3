@@ -7,6 +7,8 @@ import java.util.Map;
 import modelo.consumibles.Consumible;
 import modelo.equipo.Equipo;
 import modelo.jugador.Jugador;
+import modelo.pelea.ErrorNoHayKi;
+import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
 import modelo.tablero.ErrorAtaqueInvalido;
@@ -60,7 +62,7 @@ public class OrganizadorJuego {
 		return this.jugadorSiguiente;
 	}
 	
-	public ObjetoJuego empezarSiguienteTurno(){
+	public Consumible empezarSiguienteTurno(){
 		this.turno++;
 		
 		this.tablero.eliminarConsumiblesSinTurnosRestantes();
@@ -120,7 +122,7 @@ public class OrganizadorJuego {
     	 return resultadoPelea;   	 
     } 
     
-    public boolean ataqueEspecial(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido {
+    public boolean ataqueEspecial(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial {
     	// devuelve true si el personaje atacado muere
     	// si el ataque no es válido devuelve una excepcion
     	boolean resultadoPelea = this.tablero.ataqueEspecial(p1,p2);
@@ -131,12 +133,13 @@ public class OrganizadorJuego {
     	return resultadoPelea;
     }
     
-    public void moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
+    public List<ObjetoJuego> moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
+    	// devuelve los objetos que fueron recodigos por el personaje que realizó el movimiento
     	// si no se puede mover levanta la excepcion correspondiente
-    	int cantidadEsferasConseguidas = this.tablero.moverPersonaje(personaje, camino);    			
-    	this.jugadorActual.getEquipo().sumarEsferasObtenidas(cantidadEsferasConseguidas);
-    	// se puede devolver lo que sea necesario! yo no pense en nada ya que la nueva posicion
-    	// ya la sabes (es donde te moviste), en el caso de que la excepcion no se levanto
+    	List<ObjetoJuego> objetosRecogidos = this.tablero.moverPersonaje(personaje, camino, this.jugadorActual.getEquipo());    			
+    	return objetosRecogidos;  // si se agarro una esfera mostrar en la consola la cantidad de esferas
+    	// del equipo! Queda muy bien. Para fijarse eso no preguntar por instancias de esfera,
+    	// se puede hacer por ej con el metodo sumarACantidadEsferas.
     }    
     
     public boolean finalizarTurno(){

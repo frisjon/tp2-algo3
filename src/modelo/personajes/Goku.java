@@ -1,7 +1,5 @@
 package modelo.personajes;
 
-import modelo.equipo.Equipo;
-
 public class Goku extends Personaje {
 
     public static final double GOKU_CANTIDAD_KI_INICIAL = 0;

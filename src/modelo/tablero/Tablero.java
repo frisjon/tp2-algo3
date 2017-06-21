@@ -71,12 +71,12 @@ public class Tablero {
 		}		
 	}
 	
-	public int moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido{
+	public List<ObjetoJuego> moverPersonaje(Personaje personaje, List<Casillero> camino, Equipo equipo) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido{
 		// camino tiene que tener la lista de casilleros del movimiento deseado, salvo el casillero actual
 		// del personaje
-		// devuelve cantidad de esferas obtenidas en el movimiento
+		// devuelve los objetos que fueron recodigos por el personaje que realizó el movimiento
 		Casillero ultimoCasillero = camino.get(camino.size()-1);
-		int cantidadEsferasConseguidas = 0;
+		List<ObjetoJuego> objetosRecogidos = new ArrayList<ObjetoJuego>();
 		
 		if (!ultimoCasillero.sePuedePasar())
 			throw new ErrorCasilleroYaOcupado("Casillero ocupado");
@@ -96,10 +96,10 @@ public class Tablero {
 				ObjetoJuego objeto = camino.get(i).getObjeto();
 				if (objeto.sePuedeObtener()){
 					personaje.obtenerObjeto(objeto);
+					objetosRecogidos.add(objeto);
 					// if (objeto.getAtributo().equals("HP")) 
 					personaje.agregarVida(objeto.getCantidadAtributoHP());
-					// no pregunto de que tipo es, ya sabe lo que tiene que sumar
-					cantidadEsferasConseguidas += objeto.sumarACantidadEsferas();
+					equipo.sumarEsferasObtenidas(objeto.sumarACantidadEsferas());
 					this.objetos.remove(objeto);
 					Casillero casillero = objeto.getCasillero();
 					casillero.setObjeto(null);
@@ -112,7 +112,7 @@ public class Tablero {
 		Casillero casilleroViejo = personaje.getCasillero();
 		personaje.setCasillero(ultimoCasillero);
 		casilleroViejo.setObjeto(null);	
-		return cantidadEsferasConseguidas;
+		return objetosRecogidos;
 	}	
 	
 	public boolean ataqueBasico(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido{
@@ -132,7 +132,7 @@ public class Tablero {
 			Casillero casilleroP2 = p2.getCasillero();
 			casilleroP2.setObjeto(null);
 			p2.setCasillero(null); // no creo que se necesario pero lo pongo por las dudas
-			// el recolector de basura deberia sacarlo ya que no hay más referencias p2,
+			// el recolector de basura deberia sacarlo ya que no hay más referencias a p2,
 			// pero capaz en la vista / controlador si siga habiendo alguna (no deberia, no es necesario)
 			this.objetos.remove(p2);			
 		}
@@ -157,7 +157,7 @@ public class Tablero {
 			Casillero casilleroP2 = p2.getCasillero();
 			casilleroP2.setObjeto(null);
 			p2.setCasillero(null); // no creo que se necesario pero lo pongo por las dudas
-			// el recolector de basura deberia sacarlo ya que no hay más referencias p2,
+			// el recolector de basura deberia sacarlo ya que no hay más referencias a p2,
 			// pero capaz en la vista / controlador si siga habiendo alguna (no deberia, no es necesario)
 			this.objetos.remove(p2);		
 		} 
@@ -283,7 +283,9 @@ public class Tablero {
 						
         	ObjetoJuego objeto = personajeYconsumible.get(0);
         	objeto.eliminarObjeto(personajeYconsumible.get(1));        	
-        }  	
+        }
+		
+		
 	}
 	
     public int getAlto() {
@@ -293,17 +295,18 @@ public class Tablero {
     public int getAncho() {
         return this.ancho;
     }
-
 	
-   /* public List<Consumible> getConsumibles() {
-        List<Consumible> consumibles = new ArrayList<Consumible>();
+    public List<ObjetoJuego> getObjetosQueSePuedenObtener() { // es lo mismo que poner consumibles
+    														  // pero así queda más genérico
+        List<ObjetoJuego> objetosQueSePuedenObtener = new ArrayList<ObjetoJuego>();
         
-        for (Casillero c: this.casilleros) {
-            if (!c.estaLibre() && c.getObjeto() instanceof Consumible){
-                consumibles.add((Consumible) c.getObjeto());
-            }
+        for (int i = 0; i < this.objetos.size(); i++){
+        	ObjetoJuego objeto = this.objetos.get(i); 
+        	if (objeto.sePuedeObtener())
+        		objetosQueSePuedenObtener.add(objeto);        	
         }
-        return consumibles;
-    }*/
+        
+        return objetosQueSePuedenObtener;
+    } // no creo que se utilice esto, no es necesario
     
 }
