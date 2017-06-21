@@ -69,6 +69,8 @@ public class ContenedorJuego extends BorderPane {
     private RepresentacionJugador representacionJugadorEsperando;
     private RepresentacionJugador auxiliar;
     private Tablero tablero;
+	private int accionesRestantes;
+    public static final int  CANT_ACCIONES_POR_TURNO = 2;
     
     //private AudioClip musicaDeFondo;
     
@@ -83,6 +85,8 @@ public class ContenedorJuego extends BorderPane {
         
         this.representacionJugadorDeTurno = this.representacionJugadores.get(0);
         this.representacionJugadorEsperando = this.representacionJugadores.get(1);
+        
+        this.accionesRestantes = CANT_ACCIONES_POR_TURNO;
 
         
         //Inicializamos la musica de fondo
@@ -163,6 +167,10 @@ public class ContenedorJuego extends BorderPane {
         return this.tablero;
     }
     
+    public OrganizadorJuego getOrganizadorJuego() {
+    	return this.organizador;
+    }
+    
     public void mostrarConsola(String mensaje){
         this.consola.agregarMensaje(mensaje);
     }
@@ -183,6 +191,7 @@ public class ContenedorJuego extends BorderPane {
         this.representacionJugadorDeTurno = this.representacionJugadorEsperando;
         this.representacionJugadorEsperando = this.auxiliar;
         this.crearPanelIzquierdo();
+        this.accionesRestantes = CANT_ACCIONES_POR_TURNO;
         this.mostrarConsola("Turno: " + Integer.toString(this.organizador.getTurno()) + ". Mueve " + this.representacionJugadorDeTurno.getNombreJugador());
     }
 
@@ -203,5 +212,17 @@ public class ContenedorJuego extends BorderPane {
 
     public Casillero getCasilleroEn(Casillero pos, String direccion) {
         return this.organizador.getCasilleroEn(pos, direccion);
+    }
+    
+    public int getCantidadAccionesRestantesDelTurno() {
+    	return this.accionesRestantes;
+    }
+    
+    public void decrementarAccionDeTurno() {
+    	this.accionesRestantes--;
+    }
+    
+    public void eliminarPersonajeDelJuego(RepresentacionPersonaje personaje) {
+    	this.contenedorTablero.removerRepresentacionPersonaje(personaje);
     }
 }

@@ -67,6 +67,10 @@ public class ContenedorTablero extends ScrollPane {
         this.setContent(this.grid);
     }
     
+    public void removerRepresentacionPersonaje(RepresentacionPersonaje personaje) {
+    	this.grid.getChildren().remove(personaje.getImagen());
+    }
+    
     // modifica la posicion del personaje en el grid.
     // por ahora no hacer nada, porque los personajes no se pueden mover por ahora.
     public void actualizarRepresentacionPersonaje(RepresentacionPersonaje personaje) {
@@ -75,7 +79,7 @@ public class ContenedorTablero extends ScrollPane {
         
         // se borra a la imagen que existe en el grid
         // como no se mueven los personajes, esto no lo probe. puede tirar error. nose.
-        this.grid.getChildren().remove(personaje.getImagen());
+        this.removerRepresentacionPersonaje(personaje);
         
         // se coloca a la imagen en el grid
         this.grid.add(personaje.getImagen(), coordenada.getX(), coordenada.getY());

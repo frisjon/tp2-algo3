@@ -26,15 +26,17 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 			try{
 				this.personaje.cambiarAEstado2();
 				this.representacionPersonaje.cambiarAEstado2();
+				this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + "ha realizado la transformacion a " + personaje.getNombrePrimeraTransformacion());
 			} catch (ErrorNoPuedeCambiarEstado e1) {
-				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion " + personaje.getNombrePrimeraTransformacion());
+				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion a " + personaje.getNombrePrimeraTransformacion());
 			}
 		} else {
 			try{
 				this.personaje.cambiarAEstado3();
 				this.representacionPersonaje.cambiarAEstado3();
+				this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + "ha realizado la transformacion a " + personaje.getNombreSegundaTransformacion());
 			} catch (ErrorNoPuedeCambiarEstado e2) {
-				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion " + personaje.getNombreSegundaTransformacion());
+				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion a " + personaje.getNombreSegundaTransformacion());
 			}
 		}
 	}

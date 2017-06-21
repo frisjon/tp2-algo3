@@ -49,6 +49,7 @@ public class ContenedorSeleccionPersonaje extends VBox {
         this.pj1 = personajesDeTurno.get(0).getPersonaje();
         this.pj2 = personajesDeTurno.get(1).getPersonaje();
         this.pj3 = personajesDeTurno.get(2).getPersonaje();
+        List<RepresentacionPersonaje>  representacionPersonajesEsperando = contenedorJuego.getRepresentacionJugadorEsperando().getRepresentacionesDePersonajes();
         
         Button botonSeleccionarPersonaje1 = new Button();
         botonSeleccionarPersonaje1.setText(pj1.getNombre());
@@ -97,9 +98,9 @@ public class ContenedorSeleccionPersonaje extends VBox {
             botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1)));
             botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(2)));
         } else if (modo == "atacar") {
-            botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj1));
-            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj2));
-            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, this.pj3));
+            botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(0), this.pj1));
+            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(1), this.pj2));
+            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(2), this.pj3));
         } else {
         	botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(0),this.pj1));
             botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1),this.pj2));

@@ -98,10 +98,8 @@ public class ContenedorNombrarJugadores {
         
         Image imagen = new Image("file:src/vista/imagenes/imageneleccionnombre.jpg");
         BackgroundSize tamano = new BackgroundSize(1000, 600, true, true, true, true);
-        BackgroundImage imagenDeFondo = 
-        		new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, 
-        				BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-        				tamano);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+        tamano);
         contenedor.setBackground(new Background(imagenDeFondo)); 
 		return contenedor;
 	}
