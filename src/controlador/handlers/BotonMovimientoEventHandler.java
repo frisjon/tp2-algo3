@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.ActionEvent;
+import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
 import modelo.tablero.ErrorCasilleroYaOcupado;
 import modelo.tablero.ErrorMovimientoInvalido;
@@ -27,22 +28,28 @@ public class BotonMovimientoEventHandler extends BotonHandler {
         super.handle(event);
 
         List<Casillero> camino = new ArrayList<Casillero>();
+        
+        Personaje personaje = this.personaje.getPersonaje(); 
 
-        Casillero pos = this.personaje.getPersonaje().getCasillero();
-        //Casillero destino = this.tablero.getCasilleroEn(pos, this.direccion);
-        Casillero destino = this.contenedorJuego.getCasilleroEn(pos, this.direccion);
+        Casillero pos = personaje.getCasillero();
+        Casillero destino = null;
+        
+        try {
+            destino = this.contenedorJuego.getCasilleroEn(pos, this.direccion);
+        } catch (ErrorMovimientoInvalido e) {
+            this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion.");
+            return;
+        }
         
         camino.add(destino);
 
         try {
-            //trata de mover al personaje en el tablero
-            //  this.tablero.moverPersonaje(this.personaje.getPersonaje(), camino);
-            this.contenedorJuego.moverPersonaje(this.personaje.getPersonaje(), camino);
+            this.contenedorJuego.moverPersonaje(personaje, camino);
         } catch (ErrorMovimientoInvalido e) {
-            this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" no se puede mover en esa direccion. Fin del mapa.");
+            this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion.");
             return;
         } catch (ErrorCasilleroYaOcupado e) {
-            this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" no se puede mover en esa direccion. Casillero ocupado");
+            this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Casillero ocupado");
             return;
         }
         
@@ -53,7 +60,7 @@ public class BotonMovimientoEventHandler extends BotonHandler {
             this.contenedorJuego.continuarMovimiento(this.personaje);
         } else {
             //fin del turno. no mas movimientos restantes.
-            this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" se mueve.");
+            this.contenedorJuego.mostrarConsola(personaje.getNombre()+" se mueve.");
             this.contenedorJuego.desactivarBotonMover();
             this.contenedorJuego.setRight(null);
         }
