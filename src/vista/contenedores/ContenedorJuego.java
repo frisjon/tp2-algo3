@@ -157,6 +157,18 @@ public class ContenedorJuego extends BorderPane {
         this.setLeft(this.vbox);
     }
     
+    private void actualizarRepresentacionConsumibles(){
+        for(RepresentacionConsumible repCons: this.consumibles){
+            //Caso en el cual el consumible ya fue eliminado del tablero pero debe actualizarse
+            //la vista.
+            if (repCons.getCasillero() == null){
+                this.contenedorTablero.removerRepresentacionConsumible(repCons);
+            }
+        }
+        
+        this.consumibles.removeIf(cons -> cons.getCasillero() == null);
+    }
+    
     public RepresentacionJugador getRepresentacionJugador(){
         return this.representacionJugadorDeTurno;
     }
@@ -215,6 +227,7 @@ public class ContenedorJuego extends BorderPane {
     public void moverPersonaje(Personaje personaje, List<Casillero> camino) {
         //el organizador le debe decir al tablero que mueva al personaje
         this.organizador.moverPersonaje(personaje, camino);
+        this.actualizarRepresentacionConsumibles();
     }
 
     public Casillero getCasilleroEn(Casillero pos, String direccion) {
