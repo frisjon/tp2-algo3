@@ -32,6 +32,7 @@ import modelo.personajes.Goku;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
 import modelo.tablero.Coordenada;
+import modelo.tablero.ErrorMovimientoInvalido;
 import modelo.tablero.Tablero;
 import vista.BarraDeMenu;
 import vista.CreadorRepresentacionConsumible;
