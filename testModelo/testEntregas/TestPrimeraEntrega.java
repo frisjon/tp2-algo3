@@ -43,7 +43,7 @@ public class TestPrimeraEntrega extends TestCase {
 		camino.add(casillero3);
 		casillero1.setObjeto(goku);
 		goku.setCasillero(casillero1);
-		tablero.moverPersonaje(goku, camino);
+		tablero.moverPersonaje(goku, camino, new Equipo(PosibleEquipo.guerreros));
 		Assert.assertEquals(casillero3.getObjeto(), goku);
 		Assert.assertEquals(casillero1.estaLibre(), true);
 	}
@@ -62,7 +62,7 @@ public class TestPrimeraEntrega extends TestCase {
 		camino.add(casillero4);
 		casillero1.setObjeto(goku);
 		goku.setCasillero(casillero1);
-		try {tablero.moverPersonaje(goku, camino);
+		try {tablero.moverPersonaje(goku, camino,new Equipo(PosibleEquipo.guerreros));
 		} catch (ErrorMovimientoInvalido e){}
 	}
 	
@@ -91,7 +91,7 @@ public class TestPrimeraEntrega extends TestCase {
 		gohan.setCasillero(casillero2);
 		camino.add(casillero2);
 		camino.add(casillero3);
-		try {tablero.moverPersonaje(goku, camino);
+		try {tablero.moverPersonaje(goku, camino, new Equipo(PosibleEquipo.guerreros));
 		} catch (ErrorMovimientoInvalido e){} catch (ErrorCasilleroYaOcupado e) {}
 	}
 	
@@ -136,7 +136,7 @@ public class TestPrimeraEntrega extends TestCase {
 		camino.add(casillero2);
 		camino.add(casillero3);
 		camino.add(casillero4);
-		tablero.moverPersonaje(goku, camino);
+		tablero.moverPersonaje(goku, camino, new Equipo(PosibleEquipo.guerreros));
 		Assert.assertEquals(casillero4.getObjeto(), goku);
 		Assert.assertEquals(casillero1.estaLibre(), true);
 	}

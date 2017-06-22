@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import controlador.handlers.ErrorPersonajeMuerto;
 import modelo.consumibles.Consumible;
 import modelo.equipo.Equipo;
 import modelo.jugador.Jugador;

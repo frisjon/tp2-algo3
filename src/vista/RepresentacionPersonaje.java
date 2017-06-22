@@ -84,5 +84,13 @@ public class RepresentacionPersonaje {
     public void reestablecerMovimientosRestantes() {
         this.movimientosRestantes = this.movimientosTotales;
     }
+    
+    public void actualizarMovimientosTotales() {
+    	this.movimientosTotales = this.personaje.getVelocidad();
+    }
+    
+    public void eliminarImagen() {
+    	this.ivImagen.setImage(null);
+    }
 
 }

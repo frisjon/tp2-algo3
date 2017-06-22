@@ -101,9 +101,9 @@ public class ContenedorSeleccionPersonaje extends VBox {
             botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1)));
             botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(2)));
         } else if (modo == "atacar") {
-            botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(2), this.pj1));
-            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(0), this.pj2));
-            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(1), this.pj3));
+            botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(0), this.pj1));
+            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(1), this.pj2));
+            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(2), this.pj3));
         } else {
         	botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(0),this.pj1));
             botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1),this.pj2));

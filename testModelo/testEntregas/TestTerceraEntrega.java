@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 import modelo.consumibles.Esfera;
 import modelo.consumibles.Nube;
 import modelo.consumibles.Semilla;
+import modelo.equipo.Equipo;
 import modelo.equipo.PosibleEquipo;
 import modelo.pelea.Pelea;
 import modelo.personajes.Cell;
@@ -39,7 +40,7 @@ public class TestTerceraEntrega extends TestCase {
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
 		camino.add(casillero3);
-		tablero.moverPersonaje(gohan, camino);
+		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
 		
 		Assert.assertEquals(gohan.tieneObjeto(), true);
 		//Assert.assertEquals(esfera.getCasillero(), null);
@@ -64,7 +65,7 @@ public class TestTerceraEntrega extends TestCase {
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
 		camino.add(casillero3);
-		tablero.moverPersonaje(gohan, camino);
+		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
 		
 		Pelea.ataqueBasico(gohan,cell);
 		Assert.assertEquals(cell.getVida(), 484,25);
@@ -84,7 +85,7 @@ public class TestTerceraEntrega extends TestCase {
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
 		camino.add(casillero3);
-		tablero.moverPersonaje(gohan, camino);
+		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
 		
 		camino = new ArrayList<Casillero>();
 		camino.add(casillero4);
@@ -92,7 +93,7 @@ public class TestTerceraEntrega extends TestCase {
 		camino.add(casillero6);
 		camino.add(casillero7);
 		
-		tablero.moverPersonaje(gohan, camino);
+		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
 		
 		Assert.assertEquals(casillero7.getObjeto(), gohan);
 		Assert.assertEquals(casillero3.estaLibre(), true);
@@ -110,7 +111,7 @@ public class TestTerceraEntrega extends TestCase {
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
 		camino.add(casillero3);
-		tablero.moverPersonaje(gohan, camino);
+		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
 		
 		Assert.assertEquals(gohan.getVida(), 300,0);
 	}

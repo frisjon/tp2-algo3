@@ -236,6 +236,7 @@ public class ContenedorJuego extends BorderPane {
     
     public void eliminarPersonajeDelJuego(RepresentacionPersonaje personaje) {
     	this.contenedorTablero.removerRepresentacionPersonaje(personaje);
+    	personaje.eliminarImagen();
     }
     
     public void desactivarBotonMover() {

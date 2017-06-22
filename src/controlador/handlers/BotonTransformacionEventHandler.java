@@ -1,6 +1,5 @@
 package controlador.handlers;
-
-
+//TOMO COMO SUPUESTO
 import javafx.event.ActionEvent;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.Personaje;
@@ -13,7 +12,7 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 	private RepresentacionPersonaje representacionPersonaje;
 	private String transformacion;
 	private ContenedorJuego contenedorjuego;
-	//nose como dsesactivarlo mas que pasandolo por parametro
+
 	
 	public BotonTransformacionEventHandler(ContenedorJuego contenedorJuego, RepresentacionPersonaje representacion_pj, Personaje personaje_a_transformar, String tipoDeTransformacion) {
 		this.personaje = personaje_a_transformar;
@@ -51,5 +50,8 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion a " + personaje.getNombreSegundaTransformacion());
 			}
 		}
+		
+		this.representacionPersonaje.actualizarMovimientosTotales();
+		this.representacionPersonaje.reestablecerMovimientosRestantes();
 	}
 }
