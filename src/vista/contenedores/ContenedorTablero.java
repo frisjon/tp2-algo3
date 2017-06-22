@@ -61,6 +61,10 @@ public class ContenedorTablero extends ScrollPane {
         }
     }
     
+    public void removerRepresentacionConsumible(RepresentacionConsumible consumible){
+        this.grid.getChildren().remove(consumible.getImagen());
+    }
+    
     public void removerRepresentacionPersonaje(RepresentacionPersonaje personaje) {
     	this.grid.getChildren().remove(personaje.getImagen());
     }
