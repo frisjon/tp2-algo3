@@ -114,9 +114,10 @@ public class OrganizadorJuego {
     public boolean ataque(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido {
     	// devuelve true si el personaje atacado muere
     	// si el ataque no es válido devuelve una excepcion
-    	 boolean resultadoPelea = this.tablero.ataqueBasico(p1,p2);
-    	 if (resultadoPelea)
-    		 this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
+    	if(p2.getVida() == 0.0) throw new ErrorPersonajeMuerto();
+    	boolean resultadoPelea = this.tablero.ataqueBasico(p1,p2);
+    	if (resultadoPelea)
+    		this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
     	 	// murio el p2, lo saco del equipo enemigo
     	 
     	 return resultadoPelea;   	 
@@ -125,6 +126,7 @@ public class OrganizadorJuego {
     public boolean ataqueEspecial(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial {
     	// devuelve true si el personaje atacado muere
     	// si el ataque no es válido devuelve una excepcion
+    	if(p2.getVida() == 0.0) throw new ErrorPersonajeMuerto();
     	boolean resultadoPelea = this.tablero.ataqueEspecial(p1,p2);
     	if (resultadoPelea)
     		this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);

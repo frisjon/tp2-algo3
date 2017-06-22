@@ -54,7 +54,8 @@ public class BotonMovimientoEventHandler extends BotonHandler {
         } else {
             //fin del turno. no mas movimientos restantes.
             this.contenedorJuego.mostrarConsola(this.personaje.getPersonaje().getNombre()+" se mueve.");
-            this.contenedorJuego.siguienteTurno();
+            this.contenedorJuego.desactivarBotonMover();
+            this.contenedorJuego.setRight(null);
         }
         
         this.contenedorJuego.actualizarRepresentacionPersonaje(this.personaje);

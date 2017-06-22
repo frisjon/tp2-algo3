@@ -15,6 +15,8 @@ import javafx.scene.text.FontWeight;
 public class ContenedorOpcionesJuego extends VBox {
     
     private ContenedorJuego contenedorJuego;
+    private Button botonAtacar;
+    private Button botonMover;
     
     //InformacionParaJugador informacionParaJugador
     //Partida partida, ContenedorPelea contenedor, Jugador jugador
@@ -28,21 +30,21 @@ public class ContenedorOpcionesJuego extends VBox {
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
         
-        Button botonAtacar = new Button();
-        botonAtacar.setText("Atacar");
-        botonAtacar.setTextFill(Color.GRAY);
-        botonAtacar.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
-        botonAtacar.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
-        botonAtacar.setOnAction(new BotonOpcionAtacarEventHandler(this.contenedorJuego));
-        botonAtacar.setMinSize(100.0, 50.0);
+        this.botonAtacar = new Button();
+        this.botonAtacar.setText("Atacar");
+        this.botonAtacar.setTextFill(Color.GRAY);
+        this.botonAtacar.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
+        this.botonAtacar.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
+        this.botonAtacar.setOnAction(new BotonOpcionAtacarEventHandler(this.contenedorJuego));
+        this.botonAtacar.setMinSize(100.0, 50.0);
         
-        Button botonMover = new Button();
-        botonMover.setText("Mover");
-        botonMover.setTextFill(Color.GRAY);
-        botonMover.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
-        botonMover.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
-        botonMover.setOnAction(new BotonOpcionMoverEventHandler(this.contenedorJuego));
-        botonMover.setMinSize(100.0, 50.0);
+        this.botonMover = new Button();
+        this.botonMover.setText("Mover");
+        this.botonMover.setTextFill(Color.GRAY);
+        this.botonMover.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
+        this.botonMover.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
+        this.botonMover.setOnAction(new BotonOpcionMoverEventHandler(this.contenedorJuego));
+        this.botonMover.setMinSize(100.0, 50.0);
         
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
@@ -63,7 +65,23 @@ public class ContenedorOpcionesJuego extends VBox {
         
         this.getChildren().addAll(botonAtacar, botonMover,botonTransformar, botonPasarTurno);
     }
-
+    
+    public void deshabilitarBotonAtaque() {
+    	this.botonAtacar.setDisable(true);
+    	
+    }
+    
+    public void deshabilitarBotonMover() {
+    	this.botonMover.setDisable(true);
+    	
+    }
+    
+	public void reestablecerBotones() {
+		this.botonAtacar.setDisable(false);
+		this.botonMover.setDisable(false);
+		
+	}
+    
     public void bloquearBotonera(boolean bloqueo) {
         //this.getBotonera().bloquear(bloqueo);       
     }
@@ -71,6 +89,7 @@ public class ContenedorOpcionesJuego extends VBox {
     public void actualizar(){
         //informacionParaJugador.actualizar();
     }
+
 
     /*public void bloquear(boolean bloqueo) {
         this.botonAtacar.setDisable(bloqueo);

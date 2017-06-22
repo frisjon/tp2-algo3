@@ -70,8 +70,6 @@ public class ContenedorJuego extends BorderPane {
     private RepresentacionJugador representacionJugadorEsperando;
     private RepresentacionJugador auxiliar;
     private Tablero tablero;
-	private int accionesRestantes;
-    public static final int  CANT_ACCIONES_POR_TURNO = 2;
     
     //private AudioClip musicaDeFondo;
     
@@ -88,8 +86,6 @@ public class ContenedorJuego extends BorderPane {
         this.representacionJugadorDeTurno = this.representacionJugadores.get(0);
         this.representacionJugadorEsperando = this.representacionJugadores.get(1);
         
-        this.accionesRestantes = CANT_ACCIONES_POR_TURNO;
-
         
         //Inicializamos la musica de fondo
         //this.musicaDeFondo = new AudioClip("file:src/vista/sonidos/.mp3");
@@ -187,6 +183,7 @@ public class ContenedorJuego extends BorderPane {
         
         //necesario para que el jugador no haga movimientos infinitos. Se aplica tambien a ataques y (creo que tambien) transformaciones 
         this.setRight(null);
+        this.contenedorOpcionesJuego.reestablecerBotones();
         
         Consumible nuevoConsumible = this.organizador.empezarSiguienteTurno();
         if (nuevoConsumible != null){
@@ -199,7 +196,6 @@ public class ContenedorJuego extends BorderPane {
         this.representacionJugadorDeTurno = this.representacionJugadorEsperando;
         this.representacionJugadorEsperando = this.auxiliar;
         this.crearPanelIzquierdo();
-        this.accionesRestantes = CANT_ACCIONES_POR_TURNO;
         this.mostrarConsola("Turno: " + Integer.toString(this.organizador.getTurno()) + ". Mueve " + this.representacionJugadorDeTurno.getNombreJugador());
     }
 
@@ -221,15 +217,20 @@ public class ContenedorJuego extends BorderPane {
         return this.organizador.getCasilleroEn(pos, direccion);
     }
     
-    public int getCantidadAccionesRestantesDelTurno() {
-    	return this.accionesRestantes;
-    }
-    
-    public void decrementarAccionDeTurno() {
-    	this.accionesRestantes--;
+    public void desactivarBotonAtaque() {
+    	this.contenedorOpcionesJuego.deshabilitarBotonAtaque();
     }
     
     public void eliminarPersonajeDelJuego(RepresentacionPersonaje personaje) {
     	this.contenedorTablero.removerRepresentacionPersonaje(personaje);
     }
+    
+    public void desactivarBotonMover() {
+    	this.contenedorOpcionesJuego.deshabilitarBotonMover();
+    }
+    
+    public void resetearPanelEstadisitcas () {
+    	this.crearPanelIzquierdo();
+    }
+    
 }

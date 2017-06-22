@@ -1,5 +1,6 @@
 package controlador.handlers;
 
+
 import javafx.event.ActionEvent;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.Personaje;
@@ -12,6 +13,7 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 	private RepresentacionPersonaje representacionPersonaje;
 	private String transformacion;
 	private ContenedorJuego contenedorjuego;
+	//nose como dsesactivarlo mas que pasandolo por parametro
 	
 	public BotonTransformacionEventHandler(ContenedorJuego contenedorJuego, RepresentacionPersonaje representacion_pj, Personaje personaje_a_transformar, String tipoDeTransformacion) {
 		this.personaje = personaje_a_transformar;
@@ -24,16 +26,26 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 		super.handle(event);
 		if(this.transformacion == "Transformacion 1") {
 			try{
+				if(personaje.getIdEstado() == 2) {
+					this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + " ya se encuentra en estado " + personaje.getNombrePrimeraTransformacion());
+					return;
+				}
 				this.personaje.cambiarAEstado2();
 				this.representacionPersonaje.cambiarAEstado2();
+				this.contenedorjuego.resetearPanelEstadisitcas();
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + "ha realizado la transformacion a " + personaje.getNombrePrimeraTransformacion());
 			} catch (ErrorNoPuedeCambiarEstado e1) {
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion a " + personaje.getNombrePrimeraTransformacion());
 			}
 		} else {
 			try{
+				if(personaje.getIdEstado() == 3) {
+					this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + " ya se encuentra en estado " + personaje.getNombreSegundaTransformacion());
+					return;
+				}
 				this.personaje.cambiarAEstado3();
 				this.representacionPersonaje.cambiarAEstado3();
+				this.contenedorjuego.resetearPanelEstadisitcas();
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + "ha realizado la transformacion a " + personaje.getNombreSegundaTransformacion());
 			} catch (ErrorNoPuedeCambiarEstado e2) {
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion a " + personaje.getNombreSegundaTransformacion());

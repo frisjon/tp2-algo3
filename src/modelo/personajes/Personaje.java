@@ -71,6 +71,7 @@ public abstract class Personaje implements ObjetoJuego {
     {
         if (_vida < 0) return;
         this.vida -= _vida;
+        if(this.vida < 0) this.vida = 0.0;
     }
     
     public String getAtaqueEspecial() {

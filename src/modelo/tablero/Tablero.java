@@ -112,7 +112,6 @@ public class Tablero {
 	public boolean ataqueBasico(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido{
 		if (!ValidadorMovimientoyAtaque.ataqueValido(p1, p2))
 			throw new ErrorAtaqueInvalido("Ataque invalido");
-		 
 		boolean resultadoPelea = this._ataqueBasico(p1, p2);
 		this.eliminarConsumiblesSinUsos(p1);
 		return resultadoPelea;

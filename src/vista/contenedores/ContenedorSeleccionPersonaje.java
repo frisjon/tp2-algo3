@@ -57,6 +57,7 @@ public class ContenedorSeleccionPersonaje extends VBox {
         botonSeleccionarPersonaje1.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonSeleccionarPersonaje1.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonSeleccionarPersonaje1.setMinSize(100.0, 50.0);
+        _deshabilitarBotonPersonajeMuerto(pj1, botonSeleccionarPersonaje1); //desactiva el boton si el pj murio
         
         Label atributosPj1 = new Label();
         atributosPj1.setText("Vida: " + String.valueOf(pj1.getVida()) + "\n" + "Ataque : " + String.valueOf(pj1.getPoderPelea()) + "\n" + 
@@ -71,6 +72,7 @@ public class ContenedorSeleccionPersonaje extends VBox {
         botonSeleccionarPersonaje2.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonSeleccionarPersonaje2.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonSeleccionarPersonaje2.setMinSize(100.0, 50.0);
+        _deshabilitarBotonPersonajeMuerto(pj2, botonSeleccionarPersonaje2); 
         
         Label atributosPj2 = new Label();
         atributosPj2.setText("Vida: " + String.valueOf(pj2.getVida()) + "\n" + "Ataque : " + String.valueOf(pj2.getPoderPelea()) + "\n" + 
@@ -85,6 +87,7 @@ public class ContenedorSeleccionPersonaje extends VBox {
         botonSeleccionarPersonaje3.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
         botonSeleccionarPersonaje3.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonSeleccionarPersonaje3.setMinSize(100.0, 50.0);
+        _deshabilitarBotonPersonajeMuerto(pj3, botonSeleccionarPersonaje3); 
         
         Label atributosPj3 = new Label();
         atributosPj3.setText("Vida: " + String.valueOf(pj3.getVida()) + "\n" + "Ataque : " + String.valueOf(pj3.getPoderPelea()) + "\n" + 
@@ -98,9 +101,9 @@ public class ContenedorSeleccionPersonaje extends VBox {
             botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1)));
             botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionMoverEventHandler(this.contenedorJuego, this.personajesDeTurno.get(2)));
         } else if (modo == "atacar") {
-            botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(0), this.pj1));
-            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(1), this.pj2));
-            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(2), this.pj3));
+            botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(2), this.pj1));
+            botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(0), this.pj2));
+            botonSeleccionarPersonaje3.setOnAction(new BotonSeleccionAtacarEventHandler(this.contenedorJuego, representacionPersonajesEsperando.get(1), this.pj3));
         } else {
         	botonSeleccionarPersonaje1.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(0),this.pj1));
             botonSeleccionarPersonaje2.setOnAction(new BotonSeleccionTransformarEventHandler(this.contenedorJuego, this.personajesDeTurno.get(1),this.pj2));
@@ -110,5 +113,11 @@ public class ContenedorSeleccionPersonaje extends VBox {
         this.getChildren().addAll(botonSeleccionarPersonaje1, atributosPj1, botonSeleccionarPersonaje2, atributosPj2, botonSeleccionarPersonaje3,
                 atributosPj3);
         this.setAlignment(Pos.CENTER);
+    }
+    
+    private void _deshabilitarBotonPersonajeMuerto(Personaje personaje, Button botonpersonaje) {
+    	if(personaje.getVida() == 0.0) {
+    		botonpersonaje.setDisable(true);
+    	}
     }
 }

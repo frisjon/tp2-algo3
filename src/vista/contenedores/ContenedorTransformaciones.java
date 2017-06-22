@@ -1,6 +1,5 @@
 package vista.contenedores;
 
-import controlador.handlers.BotonAtaqueEventHandler;
 import controlador.handlers.BotonTransformacionEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
