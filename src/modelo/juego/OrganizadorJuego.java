@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import controlador.handlers.ErrorPersonajeMuerto;
 import modelo.consumibles.Consumible;
 import modelo.equipo.Equipo;
 import modelo.jugador.Jugador;
@@ -163,23 +164,22 @@ public class OrganizadorJuego {
         int x = coordenada.getX();
         int y = coordenada.getY();
         Casillero fin = null;
-
+        
         switch (direccion) {
-            case "arribaIzquierda": fin = new Casillero(x-1, y-1); break;
-            case "arriba":          fin = new Casillero(x  , y-1); break;
-            case "arribaDerecha":   fin = new Casillero(x+1, y-1); break;
-            case "abajoIzquierda":  fin = new Casillero(x-1, y+1); break;
-            case "abajo":           fin = new Casillero(x  , y+1); break;
-            case "abajoDerecha":    fin = new Casillero(x+1, y+1); break;
-            case "izquierda":       fin = new Casillero(x-1, y  ); break;
-            case "derecha":         fin = new Casillero(x+1, y  ); break;
+            case "arribaIzquierda": fin = this.tablero.getCasilleroEn(x-1, y-1); break;
+            case "arriba":          fin = this.tablero.getCasilleroEn(x  , y-1); break;
+            case "arribaDerecha":   fin = this.tablero.getCasilleroEn(x+1, y-1); break;
+            case "abajoIzquierda":  fin = this.tablero.getCasilleroEn(x-1, y+1); break;
+            case "abajo":           fin = this.tablero.getCasilleroEn(x  , y+1); break;
+            case "abajoDerecha":    fin = this.tablero.getCasilleroEn(x+1, y+1); break;
+            case "izquierda":       fin = this.tablero.getCasilleroEn(x-1, y);   break;
+            case "derecha":         fin = this.tablero.getCasilleroEn(x+1, y);   break;
         }
 
-        x = fin.getCoordenada().getX();
-        y = fin.getCoordenada().getY();
+        //x = fin.getCoordenada().getX();
+        //y = fin.getCoordenada().getY();
 
-        if (x < 0 || COLUMNAS <= x || y < 0 || FILAS <= y)
-            throw new ErrorMovimientoInvalido("Movimiento invalido");
+        //if (x < 0 || COLUMNAS <= x || y < 0 || FILAS <= y) throw new ErrorMovimientoInvalido("Movimiento invalido");
 
         return fin;
     }
