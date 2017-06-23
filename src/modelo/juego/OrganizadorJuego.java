@@ -117,7 +117,8 @@ public class OrganizadorJuego {
     	if(p2.getVida() == 0.0) throw new ErrorPersonajeMuerto();
     	boolean resultadoPelea = this.tablero.ataqueBasico(p1,p2);
     	if (resultadoPelea)
-    		this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
+    		//this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
+    		this.jugadorSiguiente.getEquipo().matarPersonaje();
     	 	// murio el p2, lo saco del equipo enemigo
     	 
     	 return resultadoPelea;   	 
@@ -129,7 +130,8 @@ public class OrganizadorJuego {
     	if(p2.getVida() == 0.0) throw new ErrorPersonajeMuerto();
     	boolean resultadoPelea = this.tablero.ataqueEspecial(p1,p2);
     	if (resultadoPelea)
-    		this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
+    		//this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
+    		this.jugadorSiguiente.getEquipo().matarPersonaje();
    	 		// murio el p2, lo saco del equipo enemigo
     	
     	return resultadoPelea;
@@ -150,7 +152,8 @@ public class OrganizadorJuego {
     
     public boolean finalizarTurno(){
     	// devuelve true si el jugador que estaba en el turno en cuestión ganó la partida
-    	if (this.jugadorSiguiente.getEquipo().cantidadPersonajes() == 0)
+    	if (this.jugadorSiguiente.getEquipo().getCantidadPersonajesIniciales() 
+    			== this.jugadorSiguiente.getEquipo().getCantidadPersonajesMuertos())
     		return true;
     	
     	if (this.jugadorActual.getEquipo().getCantidadEsferas() >= 7)

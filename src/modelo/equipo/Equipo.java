@@ -23,11 +23,15 @@ public class Equipo {
 	private Hashtable<String, Personaje> listaPersonajes; //cree diccionario: {nombre_personaje: PERSONAJE}
 	private String nombre;
 	private int cantidadEsferas;
+	private int cantidadPersonajesInicial;
+	private int cantidadPersonajesMuertos;
 	
 	public Equipo(String nombre_equipo) {
 		this.listaPersonajes = new Hashtable<String, Personaje>();
 		this.nombre = nombre_equipo;
 		this.cantidadEsferas = 0;
+		this.cantidadPersonajesInicial = 0;
+		this.cantidadPersonajesMuertos = 0;
 	}
 	
 	/**
@@ -44,16 +48,26 @@ public class Equipo {
 	
 	public void agregarPersonaje(Personaje personaje_nuevo) {
 		this.listaPersonajes.put(personaje_nuevo.getNombre(),personaje_nuevo);
+		this.cantidadPersonajesInicial++;
 	}
 	
-	public void eliminarPersonaje(Personaje personaje){
-		this.listaPersonajes.remove(personaje.getNombre());
+	public void matarPersonaje(){
+		this.cantidadPersonajesMuertos++;		
+		//this.listaPersonajes.remove(personaje.getNombre());
 		// use getNombre y no getNombrexTransformacion porque como se cargaron al princpio del
 		// juego en el diccionario, se cargaron con su nombre original
 	}
 	
 	public int cantidadPersonajes(){
 		return this.listaPersonajes.size();
+	}
+	
+	public int getCantidadPersonajesIniciales(){
+		return this.cantidadPersonajesInicial;
+	}
+	
+	public int getCantidadPersonajesMuertos(){
+		return this.cantidadPersonajesMuertos;
 	}
 	
 	/**
