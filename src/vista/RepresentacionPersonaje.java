@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
+import modelo.tablero.ObjetoJuego;
 
 public class RepresentacionPersonaje {
     
@@ -86,7 +87,12 @@ public class RepresentacionPersonaje {
     }
     
     public void actualizarMovimientosTotales() {
-    	this.movimientosTotales = this.personaje.getVelocidad();
+        this.movimientosTotales = this.personaje.getVelocidad();
+
+        for (int i = 0; i < personaje.getObjetos().size(); i++){
+            ObjetoJuego objeto = personaje.getObjetos().get(i);
+            this.movimientosTotales = this.movimientosTotales * objeto.getCantidadAtributoVelocidad();           
+        }
     }
     
     public void eliminarImagen() {

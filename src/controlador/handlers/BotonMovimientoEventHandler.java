@@ -53,6 +53,7 @@ public class BotonMovimientoEventHandler extends BotonHandler {
             return;
         }
         
+        this.personaje.actualizarMovimientosTotales();
         this.personaje.decrementarMovimientosRestantes();
         
         if (0 < this.personaje.getMovimientosRestantes()) {
