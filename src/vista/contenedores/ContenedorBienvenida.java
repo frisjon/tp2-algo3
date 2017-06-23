@@ -22,7 +22,7 @@ public class ContenedorBienvenida extends VBox{
 	public ContenedorBienvenida(Stage primaryStage) {
         super();
         this.setAlignment(Pos.TOP_CENTER);
-        this.setSpacing(100);
+        this.setSpacing(50);
         primaryStage.setFullScreen(true);
         
         Image imagen = new Image("file:src/vista/imagenes/imagen_inicio.jpg");
@@ -78,7 +78,6 @@ public class ContenedorBienvenida extends VBox{
 
         //this.getChildren().addAll(titulo, botonEntrar,contenedorVolumen, botonReglas, botonSalir);
         this.getChildren().addAll(imagen_titulo, botonEntrar, botonReglas, botonSalir);
-        this.setPadding(new Insets(30, 0, 30, 220));
         this.setSpacing(50);
     }
 }

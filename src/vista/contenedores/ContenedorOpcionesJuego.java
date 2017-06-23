@@ -42,7 +42,7 @@ public class ContenedorOpcionesJuego extends VBox {
         this.botonMover.setText("Mover");
         this.botonMover.setTextFill(Color.GRAY);
         this.botonMover.setFont(Font.font("Cooper Black", FontWeight.NORMAL,15));
-        this.botonMover.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
+        this.botonMover.setStyle("-fx-base: #b6e7c9; -fx-border-color: rgb(249,219,189)");
         this.botonMover.setOnAction(new BotonOpcionMoverEventHandler(this.contenedorJuego));
         this.botonMover.setMinSize(100.0, 50.0);
         

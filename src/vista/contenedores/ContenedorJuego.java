@@ -6,6 +6,7 @@ import java.util.List;
 import controlador.handlers.BotonSeleccionMoverEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.effect.DropShadow;
@@ -98,6 +99,7 @@ public class ContenedorJuego extends BorderPane {
                                                             BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, 
                                                             BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
+        this.stage = stage;
     }
 
     public void inicializarJuego(Juego juego) {
@@ -189,6 +191,18 @@ public class ContenedorJuego extends BorderPane {
     }
     
     public void siguienteTurno() {
+    	
+    	if(organizador.finalizarTurno()) {
+    		//musicaDeFondo.stop();
+    		ContenedorFinalJuego contenedorFinal = new ContenedorFinalJuego(this.stage, organizador.getJugadorActual());
+    		Scene scene = new Scene(contenedorFinal);
+    		boolean enPantallaCompletaAntesDeCambiarEscena = this.stage.isFullScreen();
+            this.stage.hide();
+            this.stage.setScene(scene);
+            this.stage.setFullScreen(enPantallaCompletaAntesDeCambiarEscena);
+            this.stage.show();
+            return;
+    	}
         
         //Reestablece la cantidad de movimientos de cada personaje
         for (RepresentacionJugador jugador: representacionJugadores) {
