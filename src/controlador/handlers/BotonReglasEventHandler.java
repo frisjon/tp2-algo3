@@ -28,7 +28,7 @@ public class BotonReglasEventHandler extends BotonHandler {
         "Por cada turno el jugador correspondiente podra realizar una accion de ataque y una accion de movilidad, no " + 
         "necesariamente del mismo personaje. Tanto el movimiento como el ataque hacia un personaje del contrincante " +
         "debera respetar los atributos impuestos por el personaje en cuestion. El ki, cuyo aumento sera de 5 por turno, " +
-        "permitira a la gran mayorïa de los personajes tanto realizar su ataque especial como cambiar de modo (transformarse) " +
+        "permitira a la gran mayoria de los personajes tanto realizar su ataque especial como cambiar de modo (transformarse) " +
         "-tener en cuenta que otros personajes necesitan de otras cosas para poder transformarse y en el caso de Goku su poder " +
         "de ataque aumentara al tener menos del 30% de vida-. Y sera que al atacar a un enemigo de mayor poder de pelea " +
         "el danio se reduce un 20%. \n\n" +
