@@ -40,7 +40,7 @@ public class TestTerceraEntrega extends TestCase {
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
 		camino.add(casillero3);
-		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
+		tablero.moverPersonaje(gohan, camino);
 		
 		Assert.assertEquals(gohan.tieneObjeto(), true);
 		//Assert.assertEquals(esfera.getCasillero(), null);
@@ -65,7 +65,7 @@ public class TestTerceraEntrega extends TestCase {
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
 		camino.add(casillero3);
-		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
+		tablero.moverPersonaje(gohan, camino);
 		
 		Pelea.ataqueBasico(gohan,cell);
 		Assert.assertEquals(cell.getVida(), 484,25);
@@ -85,7 +85,7 @@ public class TestTerceraEntrega extends TestCase {
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
 		camino.add(casillero3);
-		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
+		tablero.moverPersonaje(gohan, camino);
 		
 		camino = new ArrayList<Casillero>();
 		camino.add(casillero4);
@@ -93,7 +93,7 @@ public class TestTerceraEntrega extends TestCase {
 		camino.add(casillero6);
 		camino.add(casillero7);
 		
-		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
+		tablero.moverPersonaje(gohan, camino);
 		
 		Assert.assertEquals(casillero7.getObjeto(), gohan);
 		Assert.assertEquals(casillero3.estaLibre(), true);
@@ -111,7 +111,7 @@ public class TestTerceraEntrega extends TestCase {
 		List<Casillero> camino = new ArrayList<Casillero>();
 		camino.add(casillero2);
 		camino.add(casillero3);
-		tablero.moverPersonaje(gohan, camino, new Equipo(PosibleEquipo.guerreros));
+		tablero.moverPersonaje(gohan, camino);
 		
 		Assert.assertEquals(gohan.getVida(), 300,0);
 	}

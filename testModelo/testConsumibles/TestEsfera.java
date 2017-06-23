@@ -15,12 +15,8 @@ public class TestEsfera extends TestCase {
         this.esfera2 = new Esfera();
     }
 
-    public void test01EsferaAtributoEsAtaque(){
-        assertEquals(esfera1.getAtributo(), "Ataque");
-    }
-    
     public void test02EsferaCantidadAtributoEs025(){
-        assertEquals(esfera1.getCantidadAtributo(), 0.25);
+        assertEquals(esfera1.getCantidadAtributoAtaque(), 0.25);
     }
     
     public void test03EsferaCantidadUsosRestantesEs2(){

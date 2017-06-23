@@ -23,7 +23,7 @@ import modelo.tablero.Tablero;
  * @author Ramiro
  *
  */
-
+//son necesarios los returns de OrganizadorJuego? Esperando respuesta de Carlos
 public class OrganizadorJuego {
 	private static final int TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE = 4;
 	private Tablero tablero;
@@ -138,7 +138,11 @@ public class OrganizadorJuego {
     public List<ObjetoJuego> moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
     	// devuelve los objetos que fueron recodigos por el personaje que realizó el movimiento
     	// si no se puede mover levanta la excepcion correspondiente
-    	List<ObjetoJuego> objetosRecogidos = this.tablero.moverPersonaje(personaje, camino, this.jugadorActual.getEquipo());    			
+    	List<ObjetoJuego> objetosRecogidos = this.tablero.moverPersonaje(personaje, camino);    			
+    	for (ObjetoJuego objeto: objetosRecogidos) {
+    		this.jugadorActual.getEquipo().sumarEsferasObtenidas(objeto.sumarACantidadEsferas());
+    	}    	
+    	
     	return objetosRecogidos;  // si se agarro una esfera mostrar en la consola la cantidad de esferas
     	// del equipo! Queda muy bien. Para fijarse eso no preguntar por instancias de esfera,
     	// se puede hacer por ej con el metodo sumarACantidadEsferas.

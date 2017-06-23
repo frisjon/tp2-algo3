@@ -71,7 +71,7 @@ public class Tablero {
 		}		
 	}
 	
-	public List<ObjetoJuego> moverPersonaje(Personaje personaje, List<Casillero> camino, Equipo equipo) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido{
+	public List<ObjetoJuego> moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido{
 		// camino tiene que tener la lista de casilleros del movimiento deseado, salvo el casillero actual
 		// del personaje
 		// devuelve los objetos que fueron recodigos por el personaje que realizó el movimiento
@@ -93,7 +93,6 @@ public class Tablero {
 					objetosRecogidos.add(objeto);
 					// if (objeto.getAtributo().equals("HP")) 
 					personaje.agregarVida(objeto.getCantidadAtributoHP());
-					equipo.sumarEsferasObtenidas(objeto.sumarACantidadEsferas());
 					this.objetos.remove(objeto);
 					Casillero casillero = objeto.getCasillero();
 					casillero.setObjeto(null);
@@ -303,7 +302,7 @@ public class Tablero {
     } // no creo que se utilice esto, no es necesario
 
     public Casillero getCasilleroEn(int x, int y) {
-        for (Casillero casillero: casilleros) {
+        for (Casillero casillero: this.casilleros) {
             if (casillero.getCoordenada().getX() == x && casillero.getCoordenada().getY() == y)
                 return casillero;
         }

@@ -15,12 +15,8 @@ public class TestNube extends TestCase {
         this.nube2 = new Nube();
     }
 
-    public void test01NubeAtributoEsVelocidad(){
-        assertEquals(nube1.getAtributo(), "Velocidad");
-    }
-    
     public void test02NubeCantidadAtributoEs2(){
-        assertEquals(nube1.getCantidadAtributo(), 2.0);
+        assertEquals(nube1.getCantidadAtributoVelocidad(), 2.0);
     }
     
     public void test03NubeCantidadTurnosRestantesEs2(){

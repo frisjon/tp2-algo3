@@ -37,9 +37,9 @@ public abstract class Consumible implements ObjetoJuego {
         return this.atributo;
     }
     
-    public double getCantidadAtributo(){
-        return this.cantidadAtributo;
-    }
+    public abstract double getCantidadAtributoHP();
+    public abstract double getCantidadAtributoVelocidad();
+    public abstract double getCantidadAtributoAtaque();    
     
     public boolean getInstantaneo(){
         return this.instantaneo;

@@ -13,12 +13,8 @@ public class TestSemilla extends TestCase {
         this.nuevaSemilla = new Semilla();
     }
 
-    public void test01SemillaAtributoEsHP(){
-        assertEquals(nuevaSemilla.getAtributo(), "HP");
-    }
-    
     public void test02SemillaCantidadAtributoEs100(){
-        assertEquals(nuevaSemilla.getCantidadAtributo(), 100.0);
+        assertEquals(nuevaSemilla.getCantidadAtributoHP(), 100.0);
     }
     
     public void test03SemillaCantidadTurnosRestantesEs0(){

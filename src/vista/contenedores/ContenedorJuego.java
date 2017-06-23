@@ -101,7 +101,8 @@ public class ContenedorJuego extends BorderPane {
     }
 
     public void inicializarJuego(Juego juego) {
-        this.juego = juego;
+    	
+    	this.juego = juego;
         
         //this.musicaDeFondo.play();
         
@@ -143,6 +144,7 @@ public class ContenedorJuego extends BorderPane {
         //Panel de Opciones (left) (aca van las opciones del juego. Seleccionar personaje, mover, atacar, stats de los personajes (del jugador de turno), opcion para cancelar)
         //(utilizar consumible no deberia ser opcion porque 2 de 3 consumibles son instantaneos y por ultimo, las esferas no se pueden consumir, solo se tienen y ya)
         this.crearPanelIzquierdo();
+        this.siguienteTurno();
     }
     
     private void crearPanelIzquierdo(){
@@ -237,7 +239,6 @@ public class ContenedorJuego extends BorderPane {
     
     public void eliminarPersonajeDelJuego(RepresentacionPersonaje personaje) {
     	this.contenedorTablero.removerRepresentacionPersonaje(personaje);
-    	personaje.eliminarImagen();
     }
     
     public void desactivarBotonMover() {
