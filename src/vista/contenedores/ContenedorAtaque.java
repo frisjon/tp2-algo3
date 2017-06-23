@@ -22,17 +22,15 @@ public class ContenedorAtaque extends VBox {
 	private Personaje pj1contrincante;
 	private Personaje pj2contrincante;
 	private Personaje pj3contrincante;
-	private RepresentacionJugador representacionJugadorEsperando;
 	private List<RepresentacionPersonaje> personajesDeJugadorEsperando;
 	public static final String ATAQUE_BASICO = "Ataque Basico";
 	public static final String ATAQUE_ESPECIAL = "Ataque Especial";
 	
-	public ContenedorAtaque(ContenedorJuego contenedorJuego,RepresentacionPersonaje representacionAtacante, RepresentacionJugador representacionJugadorEsperando, Personaje personajeAtacante) {
+	public ContenedorAtaque(ContenedorJuego contenedorJuego,RepresentacionJugador representacionJugadorEsperando, Personaje personajeAtacante) {
 		super();
 		this.setPadding(new Insets(0, 50,0,50));
 		this.setSpacing(15);
 	    this.setAlignment(Pos.CENTER);
-	    this.representacionJugadorEsperando = representacionJugadorEsperando;
 	    this.personajesDeJugadorEsperando = representacionJugadorEsperando.getRepresentacionesDePersonajes();
 	    this.pj1contrincante = personajesDeJugadorEsperando.get(0).getPersonaje();
         this.pj2contrincante = personajesDeJugadorEsperando.get(1).getPersonaje();
@@ -45,7 +43,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarBasicoContrincante1.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonAtacarBasicoContrincante1.setMinSize(100.0, 50.0);
         
-        BotonAtaqueEventHandler botonAtacarBasicoContrincante1Handler = new BotonAtaqueEventHandler(contenedorJuego , representacionAtacante, personajeAtacante, this.pj1contrincante, ATAQUE_BASICO);
+        BotonAtaqueEventHandler botonAtacarBasicoContrincante1Handler = new BotonAtaqueEventHandler(contenedorJuego , this.personajesDeJugadorEsperando.get(0), personajeAtacante, this.pj1contrincante, ATAQUE_BASICO);
         botonAtacarBasicoContrincante1.setOnAction(botonAtacarBasicoContrincante1Handler);
         
         Button botonAtacarEspecialContrincante1 = new Button();
@@ -55,7 +53,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarEspecialContrincante1.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonAtacarEspecialContrincante1.setMinSize(100.0, 50.0);
         
-        BotonAtaqueEventHandler botonAtacarEspecialContrincante1Handler = new BotonAtaqueEventHandler(contenedorJuego , representacionAtacante, personajeAtacante, this.pj1contrincante, ATAQUE_ESPECIAL);
+        BotonAtaqueEventHandler botonAtacarEspecialContrincante1Handler = new BotonAtaqueEventHandler(contenedorJuego ,this.personajesDeJugadorEsperando.get(0), personajeAtacante, this.pj1contrincante, ATAQUE_ESPECIAL);
         botonAtacarEspecialContrincante1.setOnAction(botonAtacarEspecialContrincante1Handler);
 		
         Button botonAtacarBasicoContrincante2 = new Button();
@@ -65,7 +63,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarBasicoContrincante2.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonAtacarBasicoContrincante2.setMinSize(100.0, 50.0);
         
-        BotonAtaqueEventHandler botonAtacarBasicoContrincante2Handler = new BotonAtaqueEventHandler(contenedorJuego, representacionAtacante, personajeAtacante, this.pj2contrincante, ATAQUE_BASICO);
+        BotonAtaqueEventHandler botonAtacarBasicoContrincante2Handler = new BotonAtaqueEventHandler(contenedorJuego, this.personajesDeJugadorEsperando.get(1), personajeAtacante, this.pj2contrincante, ATAQUE_BASICO);
         botonAtacarBasicoContrincante2.setOnAction(botonAtacarBasicoContrincante2Handler);
         
         Button botonAtacarEspecialContrincante2 = new Button();
@@ -75,7 +73,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarEspecialContrincante2.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonAtacarEspecialContrincante2.setMinSize(100.0, 50.0);
         
-        BotonAtaqueEventHandler botonAtacarEspecialContrincante2Handler = new BotonAtaqueEventHandler(contenedorJuego , representacionAtacante, personajeAtacante, this.pj2contrincante, ATAQUE_ESPECIAL);
+        BotonAtaqueEventHandler botonAtacarEspecialContrincante2Handler = new BotonAtaqueEventHandler(contenedorJuego ,this.personajesDeJugadorEsperando.get(1), personajeAtacante, this.pj2contrincante, ATAQUE_ESPECIAL);
         botonAtacarEspecialContrincante2.setOnAction(botonAtacarEspecialContrincante2Handler);
         
         Button botonAtacarBasicoContrincante3 = new Button();
@@ -85,7 +83,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarBasicoContrincante3.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonAtacarBasicoContrincante3.setMinSize(100.0, 50.0);
         
-        BotonAtaqueEventHandler botonAtacarBasicoContrincante3Handler = new BotonAtaqueEventHandler(contenedorJuego , representacionAtacante, personajeAtacante, this.pj3contrincante, ATAQUE_BASICO);
+        BotonAtaqueEventHandler botonAtacarBasicoContrincante3Handler = new BotonAtaqueEventHandler(contenedorJuego , this.personajesDeJugadorEsperando.get(2), personajeAtacante, this.pj3contrincante, ATAQUE_BASICO);
         botonAtacarBasicoContrincante3.setOnAction(botonAtacarBasicoContrincante3Handler);
         
         Button  botonAtacarEspecialContrincante3 = new Button();
@@ -95,7 +93,7 @@ public class ContenedorAtaque extends VBox {
         botonAtacarEspecialContrincante3.setStyle("-fx-base: #b6e7c9;; -fx-border-color: rgb(249,219,189)");
         botonAtacarEspecialContrincante3.setMinSize(100.0, 50.0);
         
-        BotonAtaqueEventHandler botonAtacarEspecialContrincante3Handler = new BotonAtaqueEventHandler(contenedorJuego, representacionAtacante, personajeAtacante, this.pj3contrincante, ATAQUE_ESPECIAL);
+        BotonAtaqueEventHandler botonAtacarEspecialContrincante3Handler = new BotonAtaqueEventHandler(contenedorJuego,this.personajesDeJugadorEsperando.get(2), personajeAtacante, this.pj3contrincante, ATAQUE_ESPECIAL);
         botonAtacarEspecialContrincante3.setOnAction(botonAtacarEspecialContrincante3Handler);
         
         this.getChildren().addAll(botonAtacarBasicoContrincante1,botonAtacarEspecialContrincante1, botonAtacarBasicoContrincante2, botonAtacarEspecialContrincante2, botonAtacarBasicoContrincante3,botonAtacarEspecialContrincante3);

@@ -9,21 +9,19 @@ import vista.contenedores.ContenedorJuego;
 
 public class BotonSeleccionAtacarEventHandler extends BotonHandler{
     private ContenedorJuego contenedorJuego;
-    private RepresentacionJugador jugadorEsperando;
+    private RepresentacionJugador reprJugadorEsperando;
     private Personaje atacante;
-    RepresentacionPersonaje representacionDefensor;
 
-    public BotonSeleccionAtacarEventHandler(ContenedorJuego _contenedorJuego, RepresentacionPersonaje _repredefensor, Personaje _atacante){
+    public BotonSeleccionAtacarEventHandler(ContenedorJuego _contenedorJuego, Personaje _atacante){
         this.contenedorJuego = _contenedorJuego;
-        this.jugadorEsperando = this.contenedorJuego.getRepresentacionJugadorEsperando();
+        this.reprJugadorEsperando = this.contenedorJuego.getRepresentacionJugadorEsperando();
         this.atacante = _atacante;
-        this.representacionDefensor = _repredefensor;
     }
     
     @Override
     public void handle(ActionEvent event){
         super.handle(event);
         this.contenedorJuego.setRight(null);
-        this.contenedorJuego.setRight(new ContenedorAtaque(this.contenedorJuego, this.representacionDefensor, this.jugadorEsperando, this.atacante));
+        this.contenedorJuego.setRight(new ContenedorAtaque(this.contenedorJuego, this.reprJugadorEsperando, this.atacante));
     }
 }
