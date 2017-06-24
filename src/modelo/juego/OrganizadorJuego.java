@@ -51,11 +51,11 @@ public class OrganizadorJuego {
 		if (n == 0){
 			this.jugadorActual = listaJugadores.get(0);
 			this.jugadorSiguiente = listaJugadores.get(1);	
-			System.out.println("holaa");
+			//System.out.println("holaa");
 		}else{
 			this.jugadorActual = listaJugadores.get(1);
 			this.jugadorSiguiente = listaJugadores.get(0);
-			System.out.println("holaa222");
+			//System.out.println("holaa222");
 		}	
 	}	
 	

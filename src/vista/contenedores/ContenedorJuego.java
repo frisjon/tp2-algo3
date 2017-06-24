@@ -193,7 +193,7 @@ public class ContenedorJuego extends BorderPane {
     
     public void siguienteTurno() {
     	
-    	if(organizador.finalizarTurno()) {
+    	if(this.organizador.finalizarTurno()) {
     		//musicaDeFondo.stop();
     		ContenedorFinalJuego contenedorFinal = new ContenedorFinalJuego(this.stage, organizador.getJugadorActual());
     		Scene scene = new Scene(contenedorFinal);
@@ -241,9 +241,6 @@ public class ContenedorJuego extends BorderPane {
     public void moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
     	//el organizador le debe decir al tablero que mueva al personaje
     	int cantidadEsferas = this.organizador.moverPersonaje(personaje, camino);
-    	// si es > 0 (osea obtuve esferas moviendome), lo puedo mostrar en consola ya?
-    	// o hay que manderselo al handler del boton y desde ahi se hace mostrar?
-    	// no quiero hacer cagadas
     	
         this.actualizarRepresentacionConsumibles();
     }

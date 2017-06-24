@@ -316,13 +316,12 @@ public class Tablero {
         return objetosQueSePuedenObtener;
     } // no creo que se utilice esto, no es necesario
 
-    public Casillero getCasilleroEn(int x, int y) {
+    public Casillero getCasilleroEn(int x, int y) throws ErrorMovimientoInvalido {
         for (Casillero casillero: this.casilleros) {
             if (casillero.getCoordenada().getX() == x && casillero.getCoordenada().getY() == y)
                 return casillero;
         }
-        
-        return null;
+        throw new ErrorMovimientoInvalido("Movimiento Invalido.");
     }
     
 }

@@ -37,18 +37,17 @@ public class BotonMovimientoEventHandler extends BotonHandler {
         try {
             destino = this.contenedorJuego.getCasilleroEn(pos, this.direccion);
         } catch (ErrorMovimientoInvalido e) {
-            this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion.");
+            this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Movimiento invalido.");
             return;
         }
         
         camino.add(destino);
 
         try {
-        	//if (camino.get(0) != null && camino.get(camino.size() - 1) != null)
         	if (camino.get(0) != null)
-        		this.contenedorJuego.moverPersonaje(personaje, camino);
+        	    this.contenedorJuego.moverPersonaje(personaje, camino);
         } catch (ErrorMovimientoInvalido e) {
-            this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion.");
+            this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Movimiento invalido.");
             return;
         } catch (ErrorCasilleroYaOcupado e) {
             this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Casillero ocupado");
