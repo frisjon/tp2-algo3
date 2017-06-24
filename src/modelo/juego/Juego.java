@@ -1,6 +1,8 @@
 package modelo.juego;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import modelo.jugador.*;
@@ -34,7 +36,12 @@ public class Juego {
 	}
 	
 	public void inicializarJuegoAdjudicandoPrimerTurno() {
-		this.organizador.otorgarPrimerTurno(listaJugadores);
+		List<Jugador> jugadores = new ArrayList<Jugador>();
+		for (Map.Entry<String, Jugador> entry : this.listaJugadores.entrySet()) {
+			jugadores.add(entry.getValue());
+		}
+		
+		this.organizador.otorgarPrimerTurno(jugadores);
 	}
 
 	//Devuelve el OrganizadorJuego

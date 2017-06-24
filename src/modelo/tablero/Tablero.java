@@ -75,9 +75,10 @@ public class Tablero {
 		// camino tiene que tener la lista de casilleros del movimiento deseado, salvo el casillero actual
 		// del personaje
 		// devuelve los objetos que fueron recodigos por el personaje que realizó el movimiento
-		Casillero ultimoCasillero = camino.get(camino.size()-1);
-		List<ObjetoJuego> objetosRecogidos = new ArrayList<ObjetoJuego>();
 		
+		List<ObjetoJuego> objetosRecogidos = new ArrayList<ObjetoJuego>();
+		Casillero ultimoCasillero = camino.get(camino.size()-1);
+				
 		if (!ultimoCasillero.sePuedePasar())
 			throw new ErrorCasilleroYaOcupado("Casillero ocupado");
 		
@@ -195,15 +196,29 @@ public class Tablero {
 		return casillero;
 	}
 	
+	private boolean hayLugarDisponible(){
+		for (Casillero casillero: this.casilleros) {
+			if (casillero.estaLibre() && !casillero.esExtremo(Extremo.derecha, ancho, alto)
+					&& !casillero.esExtremo(Extremo.abajo, ancho, alto))
+				return true;
+		}
+		return false;
+	}
+	
 	public Consumible crearConsumible(){
 		Random rand = new Random();
 		int n = rand.nextInt(100);
 		//entre 0 y 100
-		Consumible consumible = this.crearConsumibleAleatorio(n);
-		this.objetos.add(consumible);
-		Casillero casillero = this.buscarCasilleroLibreAleatorio();
-		consumible.setCasillero(casillero);	
-		casillero.setObjeto(consumible);
+		
+		Consumible consumible = null;
+		if (this.hayLugarDisponible()){		
+			consumible = this.crearConsumibleAleatorio(n);
+			this.objetos.add(consumible);
+			Casillero casillero = this.buscarCasilleroLibreAleatorio();
+			consumible.setCasillero(casillero);	
+			casillero.setObjeto(consumible);
+		}
+		
 		return consumible;
 	}
 	

@@ -90,9 +90,21 @@ public abstract class Personaje implements ObjetoJuego {
         return this.estado.getVelocidad();
     }
     
-    public boolean equals(Personaje personaje){
-        return this.getClass().equals(personaje.getClass());
+    public double getVelocidadFinal(){
+    	double velocidadFinal = this.getVelocidad();
+    	
+    	for (int i = 0; i < this.getObjetos().size(); i++){
+			ObjetoJuego objeto = this.getObjetos().get(i);
+			velocidadFinal *= objeto.getCantidadAtributoVelocidad();			
+		}
+    	
+    	return velocidadFinal;
     }
+    
+    public boolean equals(Personaje personaje){
+    	return this.getClass().equals(personaje.getClass());
+    } // si esto desaparece, no corre el programa
+      // horrible!!!!!!!!
     
     /*
      * Determina si hay suficiente Ki

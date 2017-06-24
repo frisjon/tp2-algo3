@@ -3,6 +3,7 @@ package modelo.juego;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import modelo.consumibles.Consumible;
 import modelo.equipo.Equipo;
@@ -23,7 +24,7 @@ import modelo.tablero.Tablero;
  * @author Ramiro
  *
  */
-//son necesarios los returns de OrganizadorJuego? Esperando respuesta de Carlos
+
 public class OrganizadorJuego {
 	private static final int TURNOS_PARA_QUE_APAREZCA_CONSUMIBLE = 4;
 	private Tablero tablero;
@@ -42,17 +43,21 @@ public class OrganizadorJuego {
 		return this.turno;
 	}
 	
-	//al ser un diccionario no se sabe cual va a ser el ultimo jugador en iterar, y ese va a ser el primero que juegue
-	public void otorgarPrimerTurno( Map<String, Jugador> listajugadores) {
-		for (Map.Entry<String, Jugador> entry : listajugadores.entrySet()) {
-			this.jugadorActual = entry.getValue();
-		}
+	public void otorgarPrimerTurno(List<Jugador> listaJugadores) {
 		
-		for (Map.Entry<String, Jugador> entry : listajugadores.entrySet()) {
-			if (this.jugadorActual == entry.getValue()) continue;
-			this.jugadorSiguiente = entry.getValue();
-		}
-	}
+		Random rand = new Random();
+		int n = rand.nextInt(2);
+		// 0 ó 1
+		if (n == 0){
+			this.jugadorActual = listaJugadores.get(0);
+			this.jugadorSiguiente = listaJugadores.get(1);	
+			System.out.println("holaa");
+		}else{
+			this.jugadorActual = listaJugadores.get(1);
+			this.jugadorSiguiente = listaJugadores.get(0);
+			System.out.println("holaa222");
+		}	
+	}	
 	
 	public Jugador getJugadorActual() {
 		return this.jugadorActual;
@@ -94,7 +99,7 @@ public class OrganizadorJuego {
 		// esto es para que se pueda visualizar		
 	}
 	
-	public List<Equipo> colocarPersonajesEnTablero(Map<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
+	public void colocarPersonajesEnTablero(Map<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
 				
 		for (Map.Entry<String, Jugador> entry : listajugadores.entrySet()) {
@@ -103,13 +108,13 @@ public class OrganizadorJuego {
 		}
 		
 		this.tablero.colocarPersonajes(listaEquipos);
-		return listaEquipos;		
+		//return listaEquipos;		
 	}
 
-	//Devuelve el tablero
+	/*//Devuelve el tablero
     public Tablero getTablero() { // necesario 100% ?
         return this.tablero;
-    }
+    }*/
     
     public boolean ataque(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido {
     	// devuelve true si el personaje atacado muere
@@ -117,11 +122,9 @@ public class OrganizadorJuego {
     	if(p2.getVida() == 0.0) throw new ErrorPersonajeMuerto();
     	boolean resultadoPelea = this.tablero.ataqueBasico(p1,p2);
     	if (resultadoPelea)
-    		//this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
     		this.jugadorSiguiente.getEquipo().matarPersonaje();
-    	 	// murio el p2, lo saco del equipo enemigo
-    	 
-    	 return resultadoPelea;   	 
+    	 	    	 
+    	return resultadoPelea;   	 
     } 
     
     public boolean ataqueEspecial(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial {
@@ -130,25 +133,29 @@ public class OrganizadorJuego {
     	if(p2.getVida() == 0.0) throw new ErrorPersonajeMuerto();
     	boolean resultadoPelea = this.tablero.ataqueEspecial(p1,p2);
     	if (resultadoPelea)
-    		//this.jugadorSiguiente.getEquipo().eliminarPersonaje(p2);
     		this.jugadorSiguiente.getEquipo().matarPersonaje();
-   	 		// murio el p2, lo saco del equipo enemigo
-    	
+   	 		
     	return resultadoPelea;
     }
     
-    public List<ObjetoJuego> moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
-    	// devuelve los objetos que fueron recodigos por el personaje que realizó el movimiento
+    public int moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
+    	// devuelve 0 si no se agarro ninguna esfera, o mas de 0 si se agarro alguna simbolizando
+    	// la cantidad de esferas totales del equipo
     	// si no se puede mover levanta la excepcion correspondiente
-    	List<ObjetoJuego> objetosRecogidos = this.tablero.moverPersonaje(personaje, camino);    			
+    	
+    	List<ObjetoJuego> objetosRecogidos = this.tablero.moverPersonaje(personaje, camino);
+    	int cantidadEsferasObtenidas = 0;
+    	
     	for (ObjetoJuego objeto: objetosRecogidos) {
     		this.jugadorActual.getEquipo().sumarEsferasObtenidas(objeto.sumarACantidadEsferas());
+    		cantidadEsferasObtenidas += objeto.sumarACantidadEsferas();
     	}    	
     	
-    	return objetosRecogidos;  // si se agarro una esfera mostrar en la consola la cantidad de esferas
-    	// del equipo! Queda muy bien. Para fijarse eso no preguntar por instancias de esfera,
-    	// se puede hacer por ej con el metodo sumarACantidadEsferas.
-    }    
+    	if (cantidadEsferasObtenidas > 0)
+    		return this.jugadorActual.getEquipo().getCantidadEsferas();
+    	
+    	return 0;
+    }
     
     public boolean finalizarTurno(){
     	// devuelve true si el jugador que estaba en el turno en cuestión ganó la partida

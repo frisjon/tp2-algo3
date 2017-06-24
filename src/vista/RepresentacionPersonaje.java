@@ -87,12 +87,14 @@ public class RepresentacionPersonaje {
     }
     
     public void actualizarMovimientosTotales() {
-        this.movimientosTotales = this.personaje.getVelocidad();
+        /*this.movimientosTotales = this.personaje.getVelocidad();
 
         for (int i = 0; i < personaje.getObjetos().size(); i++){
             ObjetoJuego objeto = personaje.getObjetos().get(i);
             this.movimientosTotales = this.movimientosTotales * objeto.getCantidadAtributoVelocidad();           
-        }
+        }*/
+    	
+    	this.movimientosTotales = this.personaje.getVelocidadFinal();    	
     }
     
     public void eliminarImagen() {

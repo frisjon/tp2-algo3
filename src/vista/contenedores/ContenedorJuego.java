@@ -33,6 +33,7 @@ import modelo.personajes.Goku;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
 import modelo.tablero.Coordenada;
+import modelo.tablero.ErrorCasilleroYaOcupado;
 import modelo.tablero.ErrorMovimientoInvalido;
 import modelo.tablero.Tablero;
 import vista.BarraDeMenu;
@@ -237,9 +238,13 @@ public class ContenedorJuego extends BorderPane {
         new BotonSeleccionMoverEventHandler(this, personaje);
     }
 
-    public void moverPersonaje(Personaje personaje, List<Casillero> camino) {
-        //el organizador le debe decir al tablero que mueva al personaje
-        this.organizador.moverPersonaje(personaje, camino);
+    public void moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
+    	//el organizador le debe decir al tablero que mueva al personaje
+    	int cantidadEsferas = this.organizador.moverPersonaje(personaje, camino);
+    	// si es > 0 (osea obtuve esferas moviendome), lo puedo mostrar en consola ya?
+    	// o hay que manderselo al handler del boton y desde ahi se hace mostrar?
+    	// no quiero hacer cagadas
+    	
         this.actualizarRepresentacionConsumibles();
     }
 

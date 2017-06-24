@@ -44,7 +44,9 @@ public class BotonMovimientoEventHandler extends BotonHandler {
         camino.add(destino);
 
         try {
-            this.contenedorJuego.moverPersonaje(personaje, camino);
+        	//if (camino.get(0) != null && camino.get(camino.size() - 1) != null)
+        	if (camino.get(0) != null)
+        		this.contenedorJuego.moverPersonaje(personaje, camino);
         } catch (ErrorMovimientoInvalido e) {
             this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion.");
             return;
