@@ -238,11 +238,12 @@ public class ContenedorJuego extends BorderPane {
         new BotonSeleccionMoverEventHandler(this, personaje);
     }
 
-    public void moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
+    public int moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
     	//el organizador le debe decir al tablero que mueva al personaje
     	int cantidadEsferas = this.organizador.moverPersonaje(personaje, camino);
     	
         this.actualizarRepresentacionConsumibles();
+        return cantidadEsferas;
     }
 
     public Casillero getCasilleroEn(Casillero pos, String direccion) {

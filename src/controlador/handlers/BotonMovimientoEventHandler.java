@@ -33,6 +33,7 @@ public class BotonMovimientoEventHandler extends BotonHandler {
 
         Casillero pos = personaje.getCasillero();
         Casillero destino = null;
+        int cantidadEsferas = 0;
         
         try {
             destino = this.contenedorJuego.getCasilleroEn(pos, this.direccion);
@@ -45,7 +46,10 @@ public class BotonMovimientoEventHandler extends BotonHandler {
 
         try {
         	if (camino.get(0) != null)
-        	    this.contenedorJuego.moverPersonaje(personaje, camino);
+        	    cantidadEsferas = this.contenedorJuego.moverPersonaje(personaje, camino);
+        	
+        	if (0 < cantidadEsferas)
+        	    this.contenedorJuego.mostrarConsola(personaje.getNombre()+" tiene "+Integer.toString(cantidadEsferas)+" esferas.");
         } catch (ErrorMovimientoInvalido e) {
             this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Movimiento invalido.");
             return;
