@@ -43,7 +43,7 @@ public class OrganizadorJuego {
 		return this.turno;
 	}
 	
-	public void otorgarPrimerTurno(List<Jugador> listaJugadores) {
+	public int otorgarPrimerTurno(List<Jugador> listaJugadores) {
 		
 		Random rand = new Random();
 		int n = rand.nextInt(2);
@@ -51,11 +51,11 @@ public class OrganizadorJuego {
 		if (n == 0){
 			this.jugadorActual = listaJugadores.get(0);
 			this.jugadorSiguiente = listaJugadores.get(1);	
-			//System.out.println("holaa");
+			return 1;
 		}else{
-			this.jugadorActual = listaJugadores.get(1);
-			this.jugadorSiguiente = listaJugadores.get(0);
-			//System.out.println("holaa222");
+			this.jugadorActual = listaJugadores.get(0);
+			this.jugadorSiguiente = listaJugadores.get(1);
+			return 2;
 		}	
 	}	
 	

@@ -35,13 +35,14 @@ public class Juego {
 		this.organizador.colocarPersonajesEnTablero(this.listaJugadores);		
 	}
 	
-	public void inicializarJuegoAdjudicandoPrimerTurno() {
+	public int inicializarJuegoAdjudicandoPrimerTurno() {
 		List<Jugador> jugadores = new ArrayList<Jugador>();
 		for (Map.Entry<String, Jugador> entry : this.listaJugadores.entrySet()) {
 			jugadores.add(entry.getValue());
 		}
 		
-		this.organizador.otorgarPrimerTurno(jugadores);
+		int definidor_turno = this.organizador.otorgarPrimerTurno(jugadores);
+		return definidor_turno;
 	}
 
 	//Devuelve el OrganizadorJuego
