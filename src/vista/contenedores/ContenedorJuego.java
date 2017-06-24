@@ -84,8 +84,9 @@ public class ContenedorJuego extends BorderPane {
         
         this.representacionJugadores = new ArrayList<RepresentacionJugador>();
         this.representacionJugadores.add(new RepresentacionJugador(jugador1));
+        // jugador 1 = guerrerros
         this.representacionJugadores.add(new RepresentacionJugador(jugador2));
-        
+        // jugador 2 = enemigos
         
         //Inicializamos la musica de fondo
         //this.musicaDeFondo = new AudioClip("file:src/vista/sonidos/.mp3");
@@ -108,13 +109,15 @@ public class ContenedorJuego extends BorderPane {
         //Inicializo a los personajes en el tablero
         this.juego.distribuirPersonajesEquipos();
         int definidor_turno = this.juego.inicializarJuegoAdjudicandoPrimerTurno();
-        if( definidor_turno == 1) {
+        if( definidor_turno == 0) {
         	this.representacionJugadorDeTurno = this.representacionJugadores.get(0);
         	this.representacionJugadorEsperando = this.representacionJugadores.get(1);
+        	// empieza guerreros
         }
         else {
         	this.representacionJugadorDeTurno = this.representacionJugadores.get(1);
         	this.representacionJugadorEsperando = this.representacionJugadores.get(0);
+        	// empieza enemigos
         }
         
         

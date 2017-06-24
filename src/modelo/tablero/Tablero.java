@@ -92,7 +92,6 @@ public class Tablero {
 				if (objeto.sePuedeObtener()){
 					personaje.obtenerObjeto(objeto);
 					objetosRecogidos.add(objeto);
-					// if (objeto.getAtributo().equals("HP")) 
 					personaje.agregarVida(objeto.getCantidadAtributoHP());
 					this.objetos.remove(objeto);
 					Casillero casillero = objeto.getCasillero();
@@ -124,9 +123,7 @@ public class Tablero {
 			// murio el p2, lo saco del tablero
 			Casillero casilleroP2 = p2.getCasillero();
 			casilleroP2.setObjeto(null);
-			p2.setCasillero(null); // no creo que se necesario pero lo pongo por las dudas
-			// el recolector de basura deberia sacarlo ya que no hay más referencias a p2,
-			// pero capaz en la vista / controlador si siga habiendo alguna (no deberia, no es necesario)
+			p2.setCasillero(null);
 			this.objetos.remove(p2);			
 		}
 		
@@ -149,9 +146,7 @@ public class Tablero {
 			// murio el p2, lo saco del tablero
 			Casillero casilleroP2 = p2.getCasillero();
 			casilleroP2.setObjeto(null);
-			p2.setCasillero(null); // no creo que se necesario pero lo pongo por las dudas
-			// el recolector de basura deberia sacarlo ya que no hay más referencias a p2,
-			// pero capaz en la vista / controlador si siga habiendo alguna (no deberia, no es necesario)
+			p2.setCasillero(null);
 			this.objetos.remove(p2);		
 		} 
 		
@@ -178,8 +173,8 @@ public class Tablero {
 		
 		while(true){
 			// hasta encontrar casillero disponible para el consumible
-			y = rand.nextInt(this.alto - 1);
-			x = rand.nextInt(this.ancho - 1);
+			y = rand.nextInt(this.alto);
+			x = rand.nextInt(this.ancho);
 						
 			for (int i = 0; i < this.casilleros.size(); i++){
 				casillero = this.casilleros.get(i); 
@@ -198,8 +193,7 @@ public class Tablero {
 	
 	private boolean hayLugarDisponible(){
 		for (Casillero casillero: this.casilleros) {
-			if (casillero.estaLibre() && !casillero.esExtremo(Extremo.derecha, ancho, alto)
-					&& !casillero.esExtremo(Extremo.abajo, ancho, alto))
+			if (casillero.estaLibre())
 				return true;
 		}
 		return false;
@@ -207,7 +201,7 @@ public class Tablero {
 	
 	public Consumible crearConsumible(){
 		Random rand = new Random();
-		int n = rand.nextInt(100);
+		int n = rand.nextInt(101);
 		//entre 0 y 100
 		
 		Consumible consumible = null;
@@ -303,7 +297,7 @@ public class Tablero {
         return this.ancho;
     }
 	
-    public List<ObjetoJuego> getObjetosQueSePuedenObtener() { // es lo mismo que poner consumibles
+   /* public List<ObjetoJuego> getObjetosQueSePuedenObtener() { // es lo mismo que poner consumibles
     														  // pero así queda más genérico
         List<ObjetoJuego> objetosQueSePuedenObtener = new ArrayList<ObjetoJuego>();
         
@@ -314,7 +308,7 @@ public class Tablero {
         }
         
         return objetosQueSePuedenObtener;
-    } // no creo que se utilice esto, no es necesario
+    } // no creo que se utilice esto, no es necesario*/
 
     public Casillero getCasilleroEn(int x, int y) throws ErrorMovimientoInvalido {
         for (Casillero casillero: this.casilleros) {
