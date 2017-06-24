@@ -43,19 +43,21 @@ public class OrganizadorJuego {
 		return this.turno;
 	}
 	
-	public int otorgarPrimerTurno(List<Jugador> listaJugadores) {
+	public int otorgarPrimerTurno(List<Jugador> jugadores) {
 		
 		Random rand = new Random();
 		int n = rand.nextInt(2);
 		// 0 ó 1
 		if (n == 0){
-			this.jugadorActual = listaJugadores.get(0);
-			this.jugadorSiguiente = listaJugadores.get(1);	
-			return 1;
+			this.jugadorActual = jugadores.get(0);
+			this.jugadorSiguiente = jugadores.get(1);
+			// empieza guerreros
+			return 0;
 		}else{
-			this.jugadorActual = listaJugadores.get(0);
-			this.jugadorSiguiente = listaJugadores.get(1);
-			return 2;
+			this.jugadorActual = jugadores.get(1);
+			this.jugadorSiguiente = jugadores.get(0);
+			// empieza enemigos
+			return 1;
 		}	
 	}	
 	
@@ -99,12 +101,11 @@ public class OrganizadorJuego {
 		// esto es para que se pueda visualizar		
 	}
 	
-	public void colocarPersonajesEnTablero(Map<String, Jugador> listajugadores) throws ErrorNoHayMasExtremos{
+	public void colocarPersonajesEnTablero(List<Jugador> jugadores) throws ErrorNoHayMasExtremos{
 		List<Equipo> listaEquipos = new ArrayList<Equipo>();
 				
-		for (Map.Entry<String, Jugador> entry : listajugadores.entrySet()) {
-			Equipo equipo = entry.getValue().getEquipo();
-			listaEquipos.add(equipo);
+		for (Jugador jugador : jugadores) {
+			listaEquipos.add(jugador.getEquipo());
 		}
 		
 		this.tablero.colocarPersonajes(listaEquipos);
