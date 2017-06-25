@@ -3,7 +3,7 @@ package testMotorPelea;
 import junit.framework.*;
 import modelo.consumibles.Esfera;
 import modelo.consumibles.Nube;
-import modelo.equipo.PosibleEquipo;
+import modelo.juego.PosibleEquipo;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.pelea.Pelea;

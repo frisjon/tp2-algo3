@@ -3,7 +3,7 @@ package vista;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.jugador.Jugador;
+import modelo.juego.Jugador;
 import modelo.personajes.Personaje;
 
 public class RepresentacionJugador {

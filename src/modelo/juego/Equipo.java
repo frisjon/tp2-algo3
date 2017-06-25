@@ -1,4 +1,4 @@
-package modelo.equipo;
+package modelo.juego;
 
 import java.util.ArrayList;
 import java.util.Enumeration;

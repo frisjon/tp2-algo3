@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import modelo.equipo.PosibleEquipo;
+import modelo.juego.PosibleEquipo;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.MajinBoo;
 

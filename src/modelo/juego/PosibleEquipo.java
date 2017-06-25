@@ -1,4 +1,4 @@
-package modelo.equipo;
+package modelo.juego;
 
 public final class PosibleEquipo {
 	

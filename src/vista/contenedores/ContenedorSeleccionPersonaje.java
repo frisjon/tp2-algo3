@@ -20,7 +20,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import modelo.jugador.Jugador;
+import modelo.juego.Jugador;
 import modelo.personajes.Personaje;
 import modelo.tablero.Tablero;
 import vista.BotonMenu;

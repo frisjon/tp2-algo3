@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 import modelo.consumibles.Consumible;
-import modelo.equipo.Equipo;
-import modelo.jugador.Jugador;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.personajes.ErrorPersonajeInutilizado;

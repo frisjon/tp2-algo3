@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import junit.framework.*;
 import modelo.consumibles.Esfera;
-import modelo.equipo.PosibleEquipo;
+import modelo.juego.PosibleEquipo;
 import modelo.personajes.Gohan;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;

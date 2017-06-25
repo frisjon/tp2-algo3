@@ -10,7 +10,7 @@ import modelo.consumibles.ErrorNoTieneCantidadUsos;
 import modelo.consumibles.Esfera;
 import modelo.consumibles.Nube;
 import modelo.consumibles.Semilla;
-import modelo.equipo.Equipo;
+import modelo.juego.Equipo;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.pelea.Pelea;

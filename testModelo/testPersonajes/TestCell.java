@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import modelo.consumibles.ErrorConsumibleInstantaneo;
-import modelo.equipo.PosibleEquipo;
+import modelo.juego.PosibleEquipo;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.pelea.Pelea;

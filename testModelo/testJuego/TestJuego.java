@@ -1,10 +1,10 @@
 package testJuego;
 
 import junit.framework.*;
-import modelo.equipo.Equipo;
-import modelo.equipo.PosibleEquipo;
+import modelo.juego.Equipo;
 import modelo.juego.Juego;
-import modelo.jugador.Jugador;
+import modelo.juego.Jugador;
+import modelo.juego.PosibleEquipo;
 
 import org.junit.Test;
 import org.junit.Assert;

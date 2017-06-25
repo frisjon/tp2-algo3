@@ -26,9 +26,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import modelo.juego.Equipo;
 import modelo.juego.Juego;
+import modelo.juego.Jugador;
 import modelo.juego.OrganizadorJuego;
-import modelo.jugador.Jugador;
 import modelo.personajes.Goku;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
@@ -43,7 +44,6 @@ import vista.RepresentacionConsumible;
 import vista.RepresentacionJugador;
 import vista.RepresentacionPersonaje;
 import modelo.consumibles.Consumible;
-import modelo.equipo.Equipo;
 
 
 public class ContenedorJuego extends BorderPane {
