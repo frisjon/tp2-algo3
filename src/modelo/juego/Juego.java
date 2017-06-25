@@ -15,33 +15,33 @@ import modelo.tablero.ErrorNoHayMasExtremos;
  */
 
 public class Juego {
-	private Map<String, Jugador> listaJugadores; //creo diccionario: {nombre_jugador: JUGADOR}
+	//private Map<String, Jugador> listaJugadores; //creo diccionario: {nombre_jugador: JUGADOR}
+	private List<Jugador> jugadores;
 	private OrganizadorJuego organizador;
 	
 	public Juego() {
-		this.listaJugadores = new HashMap<String, Jugador>();
+		//this.listaJugadores = new HashMap<String, Jugador>();
+		this.jugadores = new ArrayList<Jugador>();
 		this.organizador = new OrganizadorJuego();
 	}
 	
 	public void agregarJugador(Jugador jugador_nuevo) {
-		this.listaJugadores.put(jugador_nuevo.getNombre(), jugador_nuevo);
+		//this.listaJugadores.put(jugador_nuevo.getNombre(), jugador_nuevo);
+		this.jugadores.add(jugador_nuevo);
 	}
 	
-	public Jugador pedirJugador(String nombre_jugador) {
+	/*public Jugador pedirJugador(String nombre_jugador) {
 		return this.listaJugadores.get(nombre_jugador);
-	}
+		
+	}*/
 	
 	public void distribuirPersonajesEquipos() throws ErrorNoHayMasExtremos {
-		this.organizador.colocarPersonajesEnTablero(this.listaJugadores);		
+		this.organizador.colocarPersonajesEnTablero(this.jugadores);		
 	}
 	
-	public void inicializarJuegoAdjudicandoPrimerTurno() {
-		List<Jugador> jugadores = new ArrayList<Jugador>();
-		for (Map.Entry<String, Jugador> entry : this.listaJugadores.entrySet()) {
-			jugadores.add(entry.getValue());
-		}
-		
-		this.organizador.otorgarPrimerTurno(jugadores);
+	public int inicializarJuegoAdjudicandoPrimerTurno() {
+		int definidor_turno = this.organizador.otorgarPrimerTurno(jugadores);
+		return definidor_turno;
 	}
 
 	//Devuelve el OrganizadorJuego

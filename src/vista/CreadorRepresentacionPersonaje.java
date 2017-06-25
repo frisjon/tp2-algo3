@@ -40,27 +40,27 @@ public class CreadorRepresentacionPersonaje {
   
   public RepresentacionPersonaje crearRepresentacionDe(Personaje personaje) {
     
-    if (personaje.equals(new Goku("Guerreros")))
+    if (personaje.getNombre() == "Goku")
         return new RepresentacionPersonaje(personaje,imagenGokuEstado1, imagenGokuEstado2, imagenGokuEstado3);
         //return new RepresentacionPersonaje(personaje,imagenGokuEstado1, imagenGokuEstado2, imagenGokuEstado3, sonidoGoku);
     
-    if (personaje.equals(new Gohan("Guerreros")))
+    if (personaje.getNombre() == "Gohan")
         return new RepresentacionPersonaje(personaje,imagenGohanEstado1, imagenGohanEstado2, imagenGohanEstado3);
         //return new RepresentacionPersonaje(personaje,imagenGohanEstado1, imagenGohanEstado2, imagenGohanEstado3, sonidoGohan);
     
-    if (personaje.equals(new Piccolo("Guerreros")))
+    if (personaje.getNombre() == "Piccolo")
         return new RepresentacionPersonaje(personaje,imagenPiccoloEstado1, imagenPiccoloEstado2, imagenPiccoloEstado3);
         //return new RepresentacionPersonaje(personaje,imagenPiccoloEstado1, imagenPiccoloEstado2, imagenPiccoloEstado3, sonidoPiccolo);
     
-    if (personaje.equals(new Freezer("Enemigos")))
+    if (personaje.getNombre() == "Freezer")
         return new RepresentacionPersonaje(personaje,imagenFreezerEstado1, imagenFreezerEstado2, imagenFreezerEstado3);
         //return new RepresentacionPersonaje(personaje,imagenFreezerEstado1, imagenFreezerEstado2, imagenFreezerEstado3, sonidoFreezer);
     
-    if (personaje.equals(new Cell("Enemigos")))
+    if (personaje.getNombre() == "Cell")
         return new RepresentacionPersonaje(personaje,imagenCellEstado1, imagenCellEstado2, imagenCellEstado3);
         //return new RepresentacionPersonaje(personaje,imagenCellEstado1, imagenCellEstado2, imagenCellEstado3, sonidoCell);
     
-    if (personaje.equals(new MajinBoo("Enemigos")))
+    if (personaje.getNombre() == "MajinBoo")
         return new RepresentacionPersonaje(personaje,imagenMajinBooEstado1, imagenMajinBooEstado2, imagenMajinBooEstado3);
         //return new RepresentacionPersonaje(personaje,imagenMajinBooEstado1, imagenMajinBooEstado2, imagenMajinBooEstado3, sonidoMajinBoo);
     

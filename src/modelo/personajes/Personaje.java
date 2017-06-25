@@ -101,11 +101,6 @@ public abstract class Personaje implements ObjetoJuego {
     	return velocidadFinal;
     }
     
-    public boolean equals(Personaje personaje){
-    	return this.getClass().equals(personaje.getClass());
-    } // si esto desaparece, no corre el programa
-      // horrible!!!!!!!!
-    
     /*
      * Determina si hay suficiente Ki
      * Devuelve true, si el Ki actual es mayor o igual al pedido.

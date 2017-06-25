@@ -49,7 +49,7 @@ public class BotonMovimientoEventHandler extends BotonHandler {
         	    cantidadEsferas = this.contenedorJuego.moverPersonaje(personaje, camino);
         	
         	if (0 < cantidadEsferas)
-        	    this.contenedorJuego.mostrarConsola(personaje.getNombre()+" tiene "+Integer.toString(cantidadEsferas)+" esferas.");
+        	    this.contenedorJuego.mostrarConsola(personaje.getNombreEquipo()+" tienen "+Integer.toString(cantidadEsferas)+" esfera/s.");
         } catch (ErrorMovimientoInvalido e) {
             this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Movimiento invalido.");
             return;
