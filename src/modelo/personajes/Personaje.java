@@ -183,6 +183,10 @@ public abstract class Personaje implements ObjetoJuego {
     	return this.turnosInutilizados;
     }
     
+    public void restarTurnosInutilizados(int turnos){
+    	this.turnosInutilizados -= turnos;
+    }
+    
     public boolean sePuedePasar(){
     	return false;
     }

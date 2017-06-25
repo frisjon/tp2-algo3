@@ -10,6 +10,7 @@ import modelo.equipo.Equipo;
 import modelo.jugador.Jugador;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
+import modelo.personajes.ErrorPersonajeInutilizado;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
 import modelo.tablero.Coordenada;
@@ -76,11 +77,21 @@ public class OrganizadorJuego {
 		this.tablero.restarTurnoRestanteConsumibles();	
 		
 		for (int i = 0; i < this.jugadorActual.getEquipo().pedirListaPersonajes().size(); i++){
-			this.jugadorActual.getEquipo().pedirListaPersonajes().get(i).agregarKi(CANTIDAD_KI_QUE_AUMENTA_CADA_TURNO);
+			Personaje personaje = this.jugadorActual.getEquipo().pedirListaPersonajes().get(i);
+			if (personaje.getTurnosInutilizados() == 0){
+				personaje.agregarKi(CANTIDAD_KI_QUE_AUMENTA_CADA_TURNO);
+			}else{
+				personaje.restarTurnosInutilizados(1);
+			}			
 		}
 		
 		for (int i = 0; i < this.jugadorSiguiente.getEquipo().pedirListaPersonajes().size(); i++){
-			this.jugadorSiguiente.getEquipo().pedirListaPersonajes().get(i).agregarKi(CANTIDAD_KI_QUE_AUMENTA_CADA_TURNO);
+			Personaje personaje = this.jugadorSiguiente.getEquipo().pedirListaPersonajes().get(i);
+			if (personaje.getTurnosInutilizados() == 0){
+				personaje.agregarKi(CANTIDAD_KI_QUE_AUMENTA_CADA_TURNO);
+			}else{
+				personaje.restarTurnosInutilizados(1);
+			}
 		}
 		
 		Consumible consumible = null;
@@ -120,6 +131,9 @@ public class OrganizadorJuego {
     public boolean ataque(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido {
     	// devuelve true si el personaje atacado muere
     	// si el ataque no es válido devuelve una excepcion
+    	if (p1.getTurnosInutilizados() > 0)
+    		throw new ErrorPersonajeInutilizado("Personaje esta inutilizado");
+    	
     	if(p2.getVida() == 0.0) throw new ErrorPersonajeMuerto();
     	boolean resultadoPelea = this.tablero.ataqueBasico(p1,p2);
     	if (resultadoPelea)
@@ -131,6 +145,9 @@ public class OrganizadorJuego {
     public boolean ataqueEspecial(Personaje p1, Personaje p2) throws ErrorAtaqueInvalido, ErrorNoHayKi, ErrorNoSePuedeRealizarAtaqueEspecial {
     	// devuelve true si el personaje atacado muere
     	// si el ataque no es válido devuelve una excepcion
+    	if (p1.getTurnosInutilizados() > 0)
+    		throw new ErrorPersonajeInutilizado("Personaje esta inutilizado");
+    	
     	if(p2.getVida() == 0.0) throw new ErrorPersonajeMuerto();
     	boolean resultadoPelea = this.tablero.ataqueEspecial(p1,p2);
     	if (resultadoPelea)
@@ -139,10 +156,12 @@ public class OrganizadorJuego {
     	return resultadoPelea;
     }
     
-    public int moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido {
+    public int moverPersonaje(Personaje personaje, List<Casillero> camino) throws ErrorCasilleroYaOcupado, ErrorMovimientoInvalido, ErrorPersonajeInutilizado {
     	// devuelve 0 si no se agarro ninguna esfera, o mas de 0 si se agarro alguna simbolizando
     	// la cantidad de esferas totales del equipo
     	// si no se puede mover levanta la excepcion correspondiente
+    	if (personaje.getTurnosInutilizados() > 0)
+    		throw new ErrorPersonajeInutilizado("Personaje esta inutilizado");    	
     	
     	List<ObjetoJuego> objetosRecogidos = this.tablero.moverPersonaje(personaje, camino);
     	int cantidadEsferasObtenidas = 0;
