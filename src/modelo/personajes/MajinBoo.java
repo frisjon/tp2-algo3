@@ -91,7 +91,8 @@ public class MajinBoo extends Personaje {
     }
     
     public void consecuenciasAtaqueEspecial(Personaje pj2){
-    	pj2.inutilizar(MAJINBOO_TURNOS_QUE_INUTILIZA_OPONENTE);
+    	pj2.inutilizar(MAJINBOO_TURNOS_QUE_INUTILIZA_OPONENTE + 1);
+    	// el + 1 ya que al final de cada turno el organizador resta 1 turno siempre
     }
 }
 

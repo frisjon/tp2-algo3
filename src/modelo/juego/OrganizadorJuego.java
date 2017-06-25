@@ -2,7 +2,6 @@ package modelo.juego;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import modelo.consumibles.Consumible;
@@ -80,8 +79,8 @@ public class OrganizadorJuego {
 			Personaje personaje = this.jugadorActual.getEquipo().pedirListaPersonajes().get(i);
 			if (personaje.getTurnosInutilizados() == 0){
 				personaje.agregarKi(CANTIDAD_KI_QUE_AUMENTA_CADA_TURNO);
-			}else{
-				personaje.restarTurnosInutilizados(1);
+			//}else{
+			//	personaje.restarTurnosInutilizados(1);
 			}			
 		}
 		
@@ -89,8 +88,8 @@ public class OrganizadorJuego {
 			Personaje personaje = this.jugadorSiguiente.getEquipo().pedirListaPersonajes().get(i);
 			if (personaje.getTurnosInutilizados() == 0){
 				personaje.agregarKi(CANTIDAD_KI_QUE_AUMENTA_CADA_TURNO);
-			}else{
-				personaje.restarTurnosInutilizados(1);
+			//}else{
+			//	personaje.restarTurnosInutilizados(1);
 			}
 		}
 		
@@ -186,8 +185,18 @@ public class OrganizadorJuego {
     	if (this.jugadorActual.getEquipo().getCantidadEsferas() >= 7)
     		return true;   	
     	
-    	// no se si es necesario hacer algo más al finalizar el turno
-    	
+    	for (int i = 0; i < this.jugadorActual.getEquipo().pedirListaPersonajes().size(); i++){
+			Personaje personaje = this.jugadorActual.getEquipo().pedirListaPersonajes().get(i);
+			if (personaje.getTurnosInutilizados() > 0)
+				personaje.restarTurnosInutilizados(1);
+		}
+		
+		for (int i = 0; i < this.jugadorSiguiente.getEquipo().pedirListaPersonajes().size(); i++){
+			Personaje personaje = this.jugadorSiguiente.getEquipo().pedirListaPersonajes().get(i);
+			if (personaje.getTurnosInutilizados() > 0)
+				personaje.restarTurnosInutilizados(1);
+		}
+    	    	
     	return false;    	
     }
 
