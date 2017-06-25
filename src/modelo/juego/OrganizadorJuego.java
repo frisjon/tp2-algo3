@@ -50,17 +50,10 @@ public class OrganizadorJuego {
 		int n = rand.nextInt(2);
 		// 0 ó 1
 		if (n == 0){
-<<<<<<< HEAD
-			this.jugadorActual = listaJugadores.get(0);
-			this.jugadorSiguiente = listaJugadores.get(1);	
-			
-			return 1;
-=======
 			this.jugadorActual = jugadores.get(0);
 			this.jugadorSiguiente = jugadores.get(1);
 			// empieza guerreros
 			return 0;
->>>>>>> dce8ac451bf55a19907d1bec0ce3d62469c83fee
 		}else{
 			this.jugadorActual = jugadores.get(1);
 			this.jugadorSiguiente = jugadores.get(0);
