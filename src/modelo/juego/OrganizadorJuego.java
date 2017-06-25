@@ -51,6 +51,7 @@ public class OrganizadorJuego {
 		if (n == 0){
 			this.jugadorActual = listaJugadores.get(0);
 			this.jugadorSiguiente = listaJugadores.get(1);	
+			
 			return 1;
 		}else{
 			this.jugadorActual = listaJugadores.get(0);

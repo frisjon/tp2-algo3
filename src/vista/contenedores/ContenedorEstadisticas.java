@@ -4,7 +4,6 @@ import java.util.List;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -14,7 +13,6 @@ import vista.RepresentacionJugador;
 import vista.RepresentacionPersonaje;
 
 public class ContenedorEstadisticas extends VBox {
-    private ContenedorJuego contenedorJuego;
     private RepresentacionJugador jugadorTurno;
     private List<RepresentacionPersonaje> personajesDeTurno;
     private Personaje pj1;
@@ -28,9 +26,7 @@ public class ContenedorEstadisticas extends VBox {
         super();
 
         this.setAlignment(Pos.CENTER);
-        
-        this.contenedorJuego = _contenedorJuego;
-        this.jugadorTurno = this.contenedorJuego.getRepresentacionJugador();
+        this.jugadorTurno = _contenedorJuego.getRepresentacionJugador();
         this.personajesDeTurno = this.jugadorTurno.getRepresentacionesDePersonajes();
         this.pj1 = this.personajesDeTurno.get(0).getPersonaje();
         this.pj2 = this.personajesDeTurno.get(1).getPersonaje();
