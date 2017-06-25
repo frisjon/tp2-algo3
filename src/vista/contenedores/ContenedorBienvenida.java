@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import vista.Reproductor;
 
 public class ContenedorBienvenida extends VBox{
 
@@ -24,6 +25,7 @@ public class ContenedorBienvenida extends VBox{
         this.setAlignment(Pos.TOP_CENTER);
         this.setSpacing(50);
         primaryStage.setFullScreen(true);
+        Reproductor.intro();
         
         Image imagen = new Image("file:src/vista/imagenes/imagen_inicio.jpg");
 

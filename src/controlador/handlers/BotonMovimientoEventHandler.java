@@ -10,6 +10,7 @@ import modelo.tablero.Casillero;
 import modelo.tablero.ErrorCasilleroYaOcupado;
 import modelo.tablero.ErrorMovimientoInvalido;
 import vista.RepresentacionPersonaje;
+import vista.Reproductor;
 import vista.contenedores.ContenedorJuego;
 
 public class BotonMovimientoEventHandler extends BotonHandler {
@@ -40,6 +41,7 @@ public class BotonMovimientoEventHandler extends BotonHandler {
             destino = this.contenedorJuego.getCasilleroEn(pos, this.direccion);
         } catch (ErrorMovimientoInvalido e) {
             this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Movimiento invalido.");
+            Reproductor.buzz();
             return;
         }
         
@@ -53,12 +55,15 @@ public class BotonMovimientoEventHandler extends BotonHandler {
         	    this.contenedorJuego.mostrarConsola(personaje.getNombreEquipo()+" tienen "+Integer.toString(cantidadEsferas)+" esfera/s.");
         } catch (ErrorPersonajeInutilizado e) {
             this.contenedorJuego.mostrarConsola("No se pudo realizar el movimiento porque el personaje esta inutilizado.");
+            Reproductor.buzz();
             return;
         } catch (ErrorMovimientoInvalido e) {
             this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Movimiento invalido.");
+            Reproductor.buzz();
             return;
         } catch (ErrorCasilleroYaOcupado e) {
             this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Casillero ocupado");
+            Reproductor.buzz();
             return;
         }
         

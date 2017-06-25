@@ -8,6 +8,7 @@ import modelo.equipo.PosibleEquipo;
 import modelo.juego.Juego;
 import modelo.jugador.Jugador;
 import vista.contenedores.Escena;
+import vista.Reproductor;
 import vista.contenedores.ContenedorJuego;
 import vista.contenedores.ContenedorNombrarJugadores;
 
@@ -29,10 +30,12 @@ public class BotonJugarEventHandler extends BotonHandler {
     	super.handle(event);
     	
     	if (!contenedorNombres.jugadoresFueronIngresados()) {
+    	    Reproductor.stopAll();
     		contenedorNombres.mostrar();
         }
     	
-    	if (contenedorNombres.jugadoresFueronIngresados()) { 
+    	if (contenedorNombres.jugadoresFueronIngresados()) {
+    	    Reproductor.stopAll();
             String nombreJugador1 = contenedorNombres.getNombreJugador1();
             String nombreJugador2 = contenedorNombres.getNombreJugador2();
             

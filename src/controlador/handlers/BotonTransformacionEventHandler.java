@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.Personaje;
 import vista.RepresentacionPersonaje;
+import vista.Reproductor;
 import vista.contenedores.ContenedorJuego;
 
 public class BotonTransformacionEventHandler extends BotonHandler {
@@ -34,6 +35,7 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 				this.contenedorjuego.resetearPanelEstadisitcas();
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + "ha realizado la transformacion a " + personaje.getNombrePrimeraTransformacion());
 			} catch (ErrorNoPuedeCambiarEstado e1) {
+			    Reproductor.buzz();
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion a " + personaje.getNombrePrimeraTransformacion());
 			}
 		} else {
@@ -47,6 +49,7 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 				this.contenedorjuego.resetearPanelEstadisitcas();
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + "ha realizado la transformacion a " + personaje.getNombreSegundaTransformacion());
 			} catch (ErrorNoPuedeCambiarEstado e2) {
+                Reproductor.buzz();
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre()+ " no puede realizar la tranformacion a " + personaje.getNombreSegundaTransformacion());
 			}
 		}
