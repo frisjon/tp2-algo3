@@ -92,8 +92,6 @@ public class MajinBoo extends Personaje {
     
     public void consecuenciasAtaqueEspecial(Personaje pj2){
     	pj2.inutilizar(MAJINBOO_TURNOS_QUE_INUTILIZA_OPONENTE);
-    	// falta chequear que un personaje este inutilizado!!!!
-    	// esto se hara en OrganizadorJuego cuando se haga lo de los turnos, para la tercera entrega
     }
 }
 
