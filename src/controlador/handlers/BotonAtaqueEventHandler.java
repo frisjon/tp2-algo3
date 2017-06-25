@@ -38,6 +38,7 @@ public class BotonAtaqueEventHandler extends BotonHandler {
 				this.contenedorjuego.mostrarConsola(this.atacante.getNombre() + " efectuo Ataque Simple sobre " + this.defensor.getNombre());
 			}else {
 				murioContrincante = this.contenedorjuego.getOrganizadorJuego().ataqueEspecial(this.atacante, this.defensor);
+				Reproductor.golpeEspecial();
 				this.contenedorjuego.resetearPanelEstadisitcas();
 				this.contenedorjuego.mostrarConsola(this.atacante.getNombre() + " efectuo "+ this.atacante.getAtaqueEspecial()+ " sobre " + this.defensor.getNombre());
 			}

@@ -9,6 +9,9 @@ public class Reproductor {
     private static AudioClip MUERTE = new AudioClip("file:src/vista/sonidos/Death.mp3");
     private static AudioClip INTRO = new AudioClip("file:src/vista/sonidos/Tema_Inicio.mp3");
     private static AudioClip GANADORFINAL = new AudioClip("file:src/vista/sonidos/audioganador.wav");
+    private static AudioClip GOLPEESPECIAL = new AudioClip("file:src/vista/sonidos/audioataqueespecial.wav");
+    private static AudioClip TRANSFORMACION = new AudioClip("file:src/vista/sonidos/audiotransformacion.wav");
+    private static AudioClip TRANSFORMACION2 = new AudioClip("file:src/vista/sonidos/sonidotransformacion2.wav");
     
     public static void buzz(){
         BUZZ.play();
@@ -24,6 +27,10 @@ public class Reproductor {
         GOLPE.play();
     }
     
+    public static void golpeEspecial(){
+    	GOLPEESPECIAL.play();
+    }
+    
     public static void muerte(){
         MUERTE.play();
     }
@@ -33,9 +40,18 @@ public class Reproductor {
         INTRO.play();
     }
     
-    public static void finaljuego(){
+    public static void finalJuego(){
     	GANADORFINAL.play();
     }
+    
+    public static void transformacion(){
+    	TRANSFORMACION.play();
+    }
+    
+    public static void transformacion2(){
+    	TRANSFORMACION2.play();
+    }
+    
     
     public static void stopAll(){
         BUZZ.stop();

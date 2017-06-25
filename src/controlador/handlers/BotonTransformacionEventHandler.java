@@ -33,6 +33,7 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 				this.personaje.cambiarAEstado2();
 				this.representacionPersonaje.cambiarAEstado2();
 				this.contenedorjuego.resetearPanelEstadisitcas();
+				Reproductor.transformacion();
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + "ha realizado la transformacion a " + personaje.getNombrePrimeraTransformacion());
 			} catch (ErrorNoPuedeCambiarEstado e1) {
 			    Reproductor.buzz();
@@ -48,6 +49,7 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 				this.personaje.cambiarAEstado3();
 				this.representacionPersonaje.cambiarAEstado3();
 				this.contenedorjuego.resetearPanelEstadisitcas();
+				Reproductor.transformacion2();
 				this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + "ha realizado la transformacion a " + personaje.getNombreSegundaTransformacion());
 			} catch (ErrorNoPuedeCambiarEstado e2) {
                 Reproductor.buzz();

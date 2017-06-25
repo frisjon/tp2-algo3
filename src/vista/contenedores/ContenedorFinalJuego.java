@@ -41,7 +41,7 @@ public class ContenedorFinalJuego extends BorderPane{
 			
 		VBox contenedor = this.contenedorGanador(jugadorGanador.getNombre());
 		this.setCenter(contenedor); 
-		Reproductor.finaljuego();
+		Reproductor.finalJuego();
 	}
 	
 	private VBox contenedorGanador(String nombreGanador) {
