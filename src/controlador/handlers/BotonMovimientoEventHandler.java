@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.ActionEvent;
+import modelo.personajes.ErrorPersonajeInutilizado;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
 import modelo.tablero.ErrorCasilleroYaOcupado;
@@ -50,6 +51,9 @@ public class BotonMovimientoEventHandler extends BotonHandler {
         	
         	if (0 < cantidadEsferas)
         	    this.contenedorJuego.mostrarConsola(personaje.getNombreEquipo()+" tienen "+Integer.toString(cantidadEsferas)+" esfera/s.");
+        } catch (ErrorPersonajeInutilizado e) {
+            this.contenedorJuego.mostrarConsola("No se pudo realizar el movimiento porque el personaje esta inutilizado.");
+            return;
         } catch (ErrorMovimientoInvalido e) {
             this.contenedorJuego.mostrarConsola(personaje.getNombre()+" no se puede mover en esa direccion. Movimiento invalido.");
             return;

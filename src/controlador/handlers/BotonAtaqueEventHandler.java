@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import modelo.juego.ErrorPersonajeMuerto;
 import modelo.pelea.ErrorNoHayKi;
 import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
+import modelo.personajes.ErrorPersonajeInutilizado;
 import modelo.personajes.Personaje;
 import modelo.tablero.ErrorAtaqueInvalido;
 import vista.RepresentacionPersonaje;
@@ -44,13 +45,15 @@ public class BotonAtaqueEventHandler extends BotonHandler {
 			}
 			this.contenedorjuego.desactivarBotonAtaque();
 			this.contenedorjuego.setRight(null);
-		} catch (ErrorNoHayKi e1){
+		} catch (ErrorPersonajeInutilizado e1) {
+		    this.contenedorjuego.mostrarConsola("El ataque no se pudo realizar porque tu personaje esta inutilizado.");
+		} catch (ErrorNoHayKi e2){
 			this.contenedorjuego.mostrarConsola("El ataque no se pudo realizar debido a la falta de Ki.");
-		} catch (ErrorNoSePuedeRealizarAtaqueEspecial e2) {
+		} catch (ErrorNoSePuedeRealizarAtaqueEspecial e3) {
 			this.contenedorjuego.mostrarConsola("El ataque no se pudo efectuar.");
-		} catch (ErrorAtaqueInvalido e3) {
+		} catch (ErrorAtaqueInvalido e4) {
 			this.contenedorjuego.mostrarConsola("El ataque no se pudo ejecutar debido a la distancia del personaje atacado.");
-		} catch (ErrorPersonajeMuerto e4) {
+		} catch (ErrorPersonajeMuerto e5) {
 			this.contenedorjuego.mostrarConsola("El ataque no se pudo ejecutar debido a que el personaje atacado esta muerto." );
 		}
 	}
