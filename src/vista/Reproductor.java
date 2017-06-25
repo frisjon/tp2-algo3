@@ -8,6 +8,7 @@ public class Reproductor {
     private static AudioClip GOLPE = new AudioClip("file:src/vista/sonidos/Punch.mp3");
     private static AudioClip MUERTE = new AudioClip("file:src/vista/sonidos/Death.mp3");
     private static AudioClip INTRO = new AudioClip("file:src/vista/sonidos/Tema_Inicio.mp3");
+    private static AudioClip GANADORFINAL = new AudioClip("file:src/vista/sonidos/audioganador.wav");
     
     public static void buzz(){
         BUZZ.play();
@@ -30,6 +31,10 @@ public class Reproductor {
     public static void intro(){
         INTRO.setVolume(0.4);
         INTRO.play();
+    }
+    
+    public static void finaljuego(){
+    	GANADORFINAL.play();
     }
     
     public static void stopAll(){

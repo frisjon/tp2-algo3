@@ -41,6 +41,7 @@ public class BotonTransformacionEventHandler extends BotonHandler {
 		} else {
 			try{
 				if(personaje.getIdEstado() == 3) {
+					Reproductor.buzz();
 					this.contenedorjuego.mostrarConsola(this.personaje.getNombre() + " ya se encuentra en estado " + personaje.getNombreSegundaTransformacion());
 					return;
 				}

@@ -22,6 +22,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import modelo.jugador.Jugador;
+import vista.Reproductor;
 
 public class ContenedorFinalJuego extends BorderPane{
 	private Stage scene;
@@ -40,6 +41,7 @@ public class ContenedorFinalJuego extends BorderPane{
 			
 		VBox contenedor = this.contenedorGanador(jugadorGanador.getNombre());
 		this.setCenter(contenedor); 
+		Reproductor.finaljuego();
 	}
 	
 	private VBox contenedorGanador(String nombreGanador) {
