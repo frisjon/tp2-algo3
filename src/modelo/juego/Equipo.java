@@ -92,9 +92,16 @@ public class Equipo {
 
 	//Agrega a la instantcia de equipo, los personajes del equipo Guerreros
     public void asignarEquipoGuerreros() {
-        this.agregarPersonaje(new Goku("Guerreros Z"));
-        this.agregarPersonaje(new Gohan("Guerreros Z"));
-        this.agregarPersonaje(new Piccolo("Guerreros Z"));
+    	Gohan gohan = new Gohan("Guerreros Z");
+    	Piccolo piccolo = new Piccolo("Guerreros Z");
+    	Goku goku = new Goku("Guerreros Z");
+        this.agregarPersonaje(goku);
+        this.agregarPersonaje(gohan);
+        this.agregarPersonaje(piccolo);
+        gohan.setAliado1(goku);
+        gohan.setAliado2(piccolo);
+        piccolo.setProtegido(gohan);
+        
     }
 
     //Agrega a la instantcia de equipo, los personajes del equipo Enemigos

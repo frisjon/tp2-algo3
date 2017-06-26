@@ -231,4 +231,5 @@ public class OrganizadorJuego {
     public int getAncho() {
         return this.tablero.getAncho();
     }
+    
 }
