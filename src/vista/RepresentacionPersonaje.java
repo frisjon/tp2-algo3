@@ -2,10 +2,8 @@ package vista;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.media.AudioClip;
 import modelo.personajes.Personaje;
 import modelo.tablero.Casillero;
-import modelo.tablero.ObjetoJuego;
 
 public class RepresentacionPersonaje {
     
@@ -18,12 +16,12 @@ public class RepresentacionPersonaje {
     private Image imagenEstado1;
     private Image imagenEstado2;
     private Image imagenEstado3;
-    //private AudioClip sonidoAtaqueEspecial;
+
     
     private double movimientosTotales;
     private double movimientosRestantes;
     
-    //public RepresentacionPersonaje(Personaje _personaje, Image _imagenEstado1, Image _imagenEstado2, Image _imagenEstado3, AudioClip _sonidoAtaqueEspecial)
+   
     public RepresentacionPersonaje(Personaje _personaje, Image _imagenEstado1, Image _imagenEstado2, Image _imagenEstado3) {
         
         this.personaje = _personaje;
@@ -31,7 +29,7 @@ public class RepresentacionPersonaje {
         this.imagenEstado2 = _imagenEstado2;
         this.imagenEstado3 = _imagenEstado3;
         
-        //this.sonidoAtaqueEspecial = _sonidoAtaqueEspecial;
+   
 
         this.ivImagen = new ImageView();
         this.ivImagenEst = new ImageView();

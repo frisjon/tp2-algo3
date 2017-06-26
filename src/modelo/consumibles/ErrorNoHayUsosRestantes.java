@@ -7,7 +7,12 @@ package modelo.consumibles;
  *
  */
 public class ErrorNoHayUsosRestantes extends RuntimeException{
-    public ErrorNoHayUsosRestantes(String mensaje){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ErrorNoHayUsosRestantes(String mensaje){
         super(mensaje);
     }
 }

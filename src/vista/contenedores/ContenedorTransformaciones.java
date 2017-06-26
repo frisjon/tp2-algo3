@@ -12,7 +12,7 @@ import modelo.personajes.Personaje;
 import vista.RepresentacionPersonaje;
 
 public class ContenedorTransformaciones extends VBox{
-	//supuesto de q no se puede volver a transformar en estado 1 (no conlleva ninguna ventaja)
+	
 	public ContenedorTransformaciones(ContenedorJuego contenedorJuego, RepresentacionPersonaje representacionPersonaje,Personaje personaje_a_convertir) {
 		super();
 		this.setPadding(new Insets(0, 50,0,50));

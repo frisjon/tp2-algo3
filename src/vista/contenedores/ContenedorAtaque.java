@@ -1,15 +1,11 @@
 package vista.contenedores;
 
-import java.io.IOException;
 import java.util.List;
 
 import controlador.handlers.BotonAtaqueEventHandler;
-import controlador.handlers.BotonReglasEventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

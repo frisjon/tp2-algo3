@@ -1,13 +1,12 @@
 package testPersonajes;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import modelo.consumibles.ErrorConsumibleInstantaneo;
 import modelo.juego.PosibleEquipo;
 import modelo.pelea.Pelea;
 import modelo.personajes.Cell;

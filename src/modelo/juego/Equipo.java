@@ -20,7 +20,7 @@ import modelo.personajes.Personaje;
  */
 
 public class Equipo {
-	private Hashtable<String, Personaje> listaPersonajes; //cree diccionario: {nombre_personaje: PERSONAJE}
+	private Hashtable<String, Personaje> listaPersonajes; //se crea diccionario: {nombre_personaje: PERSONAJE}
 	private String nombre;
 	private int cantidadEsferas;
 	private int cantidadPersonajesInicial;

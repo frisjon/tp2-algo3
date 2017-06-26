@@ -3,7 +3,6 @@ package controlador.handlers;
 import javafx.event.ActionEvent;
 import modelo.personajes.Personaje;
 import vista.RepresentacionJugador;
-import vista.RepresentacionPersonaje;
 import vista.contenedores.ContenedorAtaque;
 import vista.contenedores.ContenedorJuego;
 

@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.pelea.ErrorNoHayKi;
+
 public class Freezer extends Personaje {
 
     public static final double FREEZER_CANTIDAD_KI_INICIAL = 0;
@@ -76,7 +78,7 @@ public class Freezer extends Personaje {
      */
     public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(FREEZER_ESTADO_3_COSTO))
-            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
+            throw new ErrorNoHayKi("Ki insuficiente.");
         this.quitarKi(FREEZER_ESTADO_3_COSTO);
         this.estado.cambiarAFreezerEstado3();
     }

@@ -1,7 +1,6 @@
 package controlador.handlers;
 
 import javafx.event.ActionEvent;
-import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import modelo.juego.Equipo;
 import modelo.juego.Juego;
@@ -14,14 +13,12 @@ import vista.contenedores.ContenedorNombrarJugadores;
 
 public class BotonJugarEventHandler extends BotonHandler {
 
-    //private final AudioClip musicaDeFondo;
     private Stage stage;
     private ContenedorNombrarJugadores contenedorNombres;
 
     public BotonJugarEventHandler(Stage stage) {
         this.stage = stage;
         this.contenedorNombres = new ContenedorNombrarJugadores();
-        //this.musicaDeFondo = musicaDeFondo;
         
     }
 

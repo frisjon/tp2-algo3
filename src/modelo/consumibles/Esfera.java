@@ -17,7 +17,6 @@ public class Esfera extends Consumible{
         this.cantidadAtributo = Constantes.ESFERA_CANTIDAD_ATRIBUTO;
         this.instantaneo = Constantes.ESFERA_INSTANTANEO;
         this.cantidadUsosRestantes = Constantes.ESFERA_CANTIDAD_USOS_RESTANTES;
-        //this.cantidadTurnosRestantes = Constantes.ESFERA_CANTIDAD_TURNOS_RESTANTES;
     }
     
     public int getCantidadUsosRestantes(){

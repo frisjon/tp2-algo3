@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.pelea.ErrorNoHayKi;
+
 public class MajinBoo extends Personaje {
 
     public static final double MAJINBOO_CANTIDAD_KI_INICIAL = 0;
@@ -78,7 +80,7 @@ public class MajinBoo extends Personaje {
      */
     public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(MAJINBOO_ESTADO_3_COSTO))
-            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
+            throw new ErrorNoHayKi("Ki insuficiente.");
         this.quitarKi(MAJINBOO_ESTADO_3_COSTO);
         this.estado.cambiarAMajinBooEstado3();
     }

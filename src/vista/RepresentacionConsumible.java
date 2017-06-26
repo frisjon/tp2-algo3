@@ -3,7 +3,6 @@ package vista;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.consumibles.Consumible;
-import modelo.consumibles.Consumible;
 import modelo.tablero.Casillero;
 
 public class RepresentacionConsumible {

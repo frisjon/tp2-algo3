@@ -10,7 +10,6 @@ import modelo.tablero.ErrorAtaqueInvalido;
 import vista.RepresentacionPersonaje;
 import vista.Reproductor;
 import vista.contenedores.ContenedorJuego;
-//TOMO SUPUESTO QIUE LUEGO DE REALIZAR LA ULTIMA ACCION DEL TURNO NO SE PUEDE TRASNFORMAR UN PJ YA QUE DIRECTAMENTE PASA AL OTRO EQUIPO
 public class BotonAtaqueEventHandler extends BotonHandler {
 	private Personaje atacante;
 	private Personaje defensor;
@@ -19,7 +18,6 @@ public class BotonAtaqueEventHandler extends BotonHandler {
 	RepresentacionPersonaje representacionDefensor;
 
 	public BotonAtaqueEventHandler(ContenedorJuego contenedorJuego, RepresentacionPersonaje repr_defensor, Personaje pj_atacante, Personaje pj_defensor, String ataque) {
-		// TODO Auto-generated constructor stub
 		this.atacante = pj_atacante;
 		this.defensor = pj_defensor;
 		this.tipoDeAtaque = ataque;

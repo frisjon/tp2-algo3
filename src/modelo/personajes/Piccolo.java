@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.pelea.ErrorNoHayKi;
+
 public class Piccolo extends Personaje {
 	
     public static final double PICCOLO_CANTIDAD_KI_INICIAL = 0;
@@ -89,7 +91,7 @@ public class Piccolo extends Personaje {
      */
     public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(PICCOLO_ESTADO_3_COSTO))
-            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
+            throw new ErrorNoHayKi("Ki insuficiente.");
         if (this.protegido == null)
             throw new ErrorNoPuedeCambiarEstado(PICCOLO_MENSAJE_PROTEGIDO_INVALIDO);
         if (!(this.protegido.getVida() < this.vidaInicialProtegido * PICCOLO_PORCENTAJE_VIDA_PROTEGIDO))

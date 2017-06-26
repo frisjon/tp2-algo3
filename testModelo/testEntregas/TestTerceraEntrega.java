@@ -8,7 +8,6 @@ import junit.framework.TestCase;
 import modelo.consumibles.Esfera;
 import modelo.consumibles.Nube;
 import modelo.consumibles.Semilla;
-import modelo.juego.Equipo;
 import modelo.juego.PosibleEquipo;
 import modelo.pelea.Pelea;
 import modelo.personajes.Cell;

@@ -1,5 +1,5 @@
 package controlador.handlers;
-//TOMO COMO SUPUESTO
+
 import javafx.event.ActionEvent;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
 import modelo.personajes.Personaje;

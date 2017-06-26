@@ -1,11 +1,8 @@
 package testFinalJuego;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Assert;
 import junit.framework.TestCase;
-import modelo.consumibles.Esfera;
 import modelo.juego.Equipo;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
@@ -17,7 +14,6 @@ import modelo.personajes.Gohan;
 import modelo.personajes.Goku;
 import modelo.personajes.MajinBoo;
 import modelo.personajes.Piccolo;
-import modelo.tablero.Casillero;
 
 public class TestFinalizacionJuego extends TestCase {
 	private Juego juego;

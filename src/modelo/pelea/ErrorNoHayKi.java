@@ -1,7 +1,12 @@
 package modelo.pelea;
 
 public class ErrorNoHayKi extends RuntimeException{
-    public ErrorNoHayKi(String mensaje){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ErrorNoHayKi(String mensaje){
         super(mensaje);
     }
 }

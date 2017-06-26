@@ -1,7 +1,12 @@
 package modelo.consumibles;
 
 public class ErrorNoHayTurnosDeDuracion extends RuntimeException{
-    public ErrorNoHayTurnosDeDuracion(String mensaje){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ErrorNoHayTurnosDeDuracion(String mensaje){
         super(mensaje);
     }
   }

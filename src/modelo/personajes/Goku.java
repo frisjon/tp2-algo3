@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.pelea.ErrorNoHayKi;
+
 public class Goku extends Personaje {
 
     public static final double GOKU_CANTIDAD_KI_INICIAL = 0;
@@ -77,7 +79,7 @@ public class Goku extends Personaje {
      */
     public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(GOKU_ESTADO_3_COSTO))
-            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
+            throw new ErrorNoHayKi("Ki insuficiente.");
         this.quitarKi(GOKU_ESTADO_3_COSTO);
         this.estado.cambiarAGokuEstado3();
     }

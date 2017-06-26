@@ -1,15 +1,11 @@
 package testEntregas;
-//CREAR TESTS UNITARIOS PARA CELL Y GOKU Y ASI LES SACO ASSERTS DEMAS
 import org.junit.Assert;
 
 import junit.framework.*;
-import modelo.consumibles.ErrorConsumibleInstantaneo;
 import modelo.juego.Equipo;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
 import modelo.juego.PosibleEquipo;
-import modelo.pelea.ErrorNoHayKi;
-import modelo.pelea.ErrorNoSePuedeRealizarAtaqueEspecial;
 import modelo.pelea.Pelea;
 import modelo.personajes.Cell;
 import modelo.personajes.ErrorNoPuedeCambiarEstado;
@@ -19,7 +15,6 @@ import modelo.personajes.MajinBoo;
 import modelo.personajes.Piccolo;
 import modelo.tablero.Casillero;
 import modelo.tablero.ErrorCasilleroYaOcupado;
-import modelo.tablero.ErrorNoHayMasExtremos;
 
 public class TestSegundaEntrega extends TestCase {
 	public void test01VerificarGohanNoLlegaASegundaTransformacionDebeLanzarExcepcion() {

@@ -1,9 +1,7 @@
 package modelo.juego;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import modelo.tablero.ErrorNoHayMasExtremos;
 
@@ -14,25 +12,17 @@ import modelo.tablero.ErrorNoHayMasExtremos;
  */
 
 public class Juego {
-	//private Map<String, Jugador> listaJugadores; //creo diccionario: {nombre_jugador: JUGADOR}
 	private List<Jugador> jugadores;
 	private OrganizadorJuego organizador;
 	
 	public Juego() {
-		//this.listaJugadores = new HashMap<String, Jugador>();
 		this.jugadores = new ArrayList<Jugador>();
 		this.organizador = new OrganizadorJuego();
 	}
 	
 	public void agregarJugador(Jugador jugador_nuevo) {
-		//this.listaJugadores.put(jugador_nuevo.getNombre(), jugador_nuevo);
 		this.jugadores.add(jugador_nuevo);
 	}
-	
-	/*public Jugador pedirJugador(String nombre_jugador) {
-		return this.listaJugadores.get(nombre_jugador);
-		
-	}*/
 	
 	public void distribuirPersonajesEquipos() throws ErrorNoHayMasExtremos {
 		this.organizador.colocarPersonajesEnTablero(this.jugadores);		

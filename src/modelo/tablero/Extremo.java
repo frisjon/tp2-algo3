@@ -10,7 +10,12 @@ public final class Extremo {
 	 public static final String arriba = "arriba";
 	 public static final String abajo = "abajo";
 	 private static final List<String> orden = new ArrayList<String>(){
-		 {
+		 /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		{
 			 add(izquierda);
 		     add(derecha);
 		     add(arriba);

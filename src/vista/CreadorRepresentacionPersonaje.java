@@ -1,7 +1,6 @@
 package vista;
 
 import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
 import modelo.personajes.*;
 
 public class CreadorRepresentacionPersonaje {
@@ -30,14 +29,6 @@ public class CreadorRepresentacionPersonaje {
     private static final Image imagenMajinBooEstado2 = new Image("file:src/vista/imagenes/majinbooEstado2.png",ancho,alto,preserveRatio,smooth);
     private static final Image imagenMajinBooEstado3 = new Image("file:src/vista/imagenes/majinbooEstado3.png",ancho,alto,preserveRatio,smooth);
 
-    /*
-    private static final AudioClip sonidoGoku = new AudioClip("file:src/vista/sonidos/Goku.mp3");
-    private static final AudioClip sonidoGohan = new AudioClip("file:src/vista/sonidos/Gohan.mp3");
-    private static final AudioClip sonidoPiccolo = new AudioClip("file:src/vista/sonidos/Piccolo.mp3");
-    private static final AudioClip sonidoFreezer = new AudioClip("file:src/vista/sonidos/Freezer.mp3");
-    private static final AudioClip sonidoCell = new AudioClip("file:src/vista/sonidos/Cell.mp3");
-    private static final AudioClip sonidoMajinBoo = new AudioClip("file:src/vista/sonidos/MajinBoo.mp3");*/
-  
   public RepresentacionPersonaje crearRepresentacionDe(Personaje personaje) {
     
     if (personaje.getNombre() == "Goku")

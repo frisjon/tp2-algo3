@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import modelo.personajes.Personaje;
 import vista.RepresentacionPersonaje;
 import vista.contenedores.ContenedorJuego;
-import vista.contenedores.ContenedorMover;
 import vista.contenedores.ContenedorTransformaciones;
 
 public class BotonSeleccionTransformarEventHandler extends BotonHandler{

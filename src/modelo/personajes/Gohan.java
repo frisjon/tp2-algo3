@@ -1,5 +1,7 @@
 package modelo.personajes;
 
+import modelo.pelea.ErrorNoHayKi;
+
 public class Gohan extends Personaje {
 
     public static final double GOHAN_CANTIDAD_KI_INICIAL = 0;
@@ -101,12 +103,16 @@ public class Gohan extends Personaje {
      */
     public void cambiarAEstado3() throws ErrorNoPuedeCambiarEstado {
         if (!this.kiSuficiente(GOHAN_ESTADO_3_COSTO))
-            throw new ErrorNoPuedeCambiarEstado("Ki insuficiente.");
-        if (this.aliado1 == null || this.aliado2 == null)
+            throw new ErrorNoHayKi("Ki insuficiente.");
+        if (this.aliado1 == null || this.aliado2 == null) {
+        	System.out.println("Esto sale en pantalla\n");
             throw new ErrorNoPuedeCambiarEstado(GOHAN_MENSAJE_ALIADO_INVALIDO);
+        }
         if (!((this.aliado1.getVida() < this.vidaInicialAliado1 * GOHAN_PORCENTAJE_VIDA_ALIADO_1) &&
-              (this.aliado2.getVida() < this.vidaInicialAliado2 * GOHAN_PORCENTAJE_VIDA_ALIADO_2) ))
+              (this.aliado2.getVida() < this.vidaInicialAliado2 * GOHAN_PORCENTAJE_VIDA_ALIADO_2) )) {
+        	System.out.println("aaaaaasd");
             throw new ErrorNoPuedeCambiarEstado(GOHAN_MENSAJE_ALIADOS_SANOS);
+    	}
         this.quitarKi(GOHAN_ESTADO_3_COSTO);
         this.estado.cambiarAGohanEstado3();
     }

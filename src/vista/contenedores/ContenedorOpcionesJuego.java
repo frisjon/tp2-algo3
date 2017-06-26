@@ -19,12 +19,8 @@ public class ContenedorOpcionesJuego extends VBox {
     private Button botonTransformar;
     private Button botonPasarTurno;
     
-    //InformacionParaJugador informacionParaJugador
-    //Partida partida, ContenedorPelea contenedor, Jugador jugador
-    
     public ContenedorOpcionesJuego(ContenedorJuego _contenedorJuego) {
         super();
-        // usar lo que esta en AlgoM para poder hacer que se mueva y ataque, la idea es la misma
 
         this.setPadding(new Insets(10, 10,10,10));
         this.setSpacing(15);

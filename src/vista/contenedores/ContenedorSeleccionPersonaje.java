@@ -2,28 +2,18 @@ package vista.contenedores;
 
 import java.util.List;
 
-import controlador.handlers.BotonHandler;
-import controlador.handlers.BotonMenuEventHandler;
 import controlador.handlers.BotonSeleccionAtacarEventHandler;
 import controlador.handlers.BotonSeleccionMoverEventHandler;
 import controlador.handlers.BotonSeleccionTransformarEventHandler;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
 import javafx.scene.control.Label;
-import modelo.juego.Jugador;
 import modelo.personajes.Personaje;
-import modelo.tablero.Tablero;
-import vista.BotonMenu;
 import vista.RepresentacionJugador;
 import vista.RepresentacionPersonaje;
 

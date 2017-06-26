@@ -1,7 +1,12 @@
 package modelo.pelea;
 
 public class ErrorNoSePuedeRealizarAtaqueEspecial extends RuntimeException{
-    public ErrorNoSePuedeRealizarAtaqueEspecial(String mensaje){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ErrorNoSePuedeRealizarAtaqueEspecial(String mensaje){
         super(mensaje);
     }
 }

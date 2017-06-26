@@ -7,7 +7,12 @@ package modelo.consumibles;
  *
  */
 public class ErrorConsumibleInstantaneo extends RuntimeException{
-    public ErrorConsumibleInstantaneo(String mensaje){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ErrorConsumibleInstantaneo(String mensaje){
         super(mensaje);
     }
 }
