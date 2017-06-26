@@ -92,16 +92,16 @@ public class Equipo {
 
 	//Agrega a la instantcia de equipo, los personajes del equipo Guerreros
     public void asignarEquipoGuerreros() {
-        this.agregarPersonaje(new Goku("Guerreros"));
-        this.agregarPersonaje(new Gohan("Guerreros"));
-        this.agregarPersonaje(new Piccolo("Guerreros"));
+        this.agregarPersonaje(new Goku("Guerreros Z"));
+        this.agregarPersonaje(new Gohan("Guerreros Z"));
+        this.agregarPersonaje(new Piccolo("Guerreros Z"));
     }
 
     //Agrega a la instantcia de equipo, los personajes del equipo Enemigos
     public void asignarEquipoEnemigos() {
-        this.agregarPersonaje(new Cell("Enemigos"));
-        this.agregarPersonaje(new Freezer("Enemigos"));
-        this.agregarPersonaje(new MajinBoo("Enemigos"));
+        this.agregarPersonaje(new Cell("Enemigos de la Tierra"));
+        this.agregarPersonaje(new Freezer("Enemigos de la Tierra"));
+        this.agregarPersonaje(new MajinBoo("Enemigos de la Tierra"));
     }
     
     public void sumarEsferasObtenidas(int cantidadEsferas){
